@@ -18,10 +18,13 @@ body{
 	height: 500px;
 }
 #sidebar {
-	background: #00B358;
+	background: #F2F3F0;
 	float: right;
-	width: 150px;
-	padding: 20px;
+	width: 180px;
+	margin: 5px;
+	border-radius: 5px;
+	font-family: tahoma;
+	font-size: 13px;
 }
 #main {
 	margin: 0 auto;
@@ -29,7 +32,7 @@ body{
 }
 #menu {
 	background: #BEF56E;
-	border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 10px 0px;
 }
 .menuItem {
 	padding: 10px 10px 10px 10px;
@@ -88,4 +91,37 @@ body{
 	width: 90px;
 }
 .tranDes{
+}
+.lastBarItem a{
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding: 0px 10px 0px 0px;
+}
+.lastBarItem{
+	line-height: 28px;
+	color: black;
+}
+.barItem{
+	line-height: 28px;
+	color: black;
+	border-bottom: 1px solid rgb(213, 213, 213);
+}
+.barItem a{
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding: 0px 10px 0px 0px;
+}
+.barItem a:hover{
+	background: rgb(207, 207, 207);
+	color: rgb(29, 29, 148);
+}
+.lastBarItem a:hover{
+	background: rgb(207, 207, 207);
+	font-weight: normal;
+	color: rgb(29, 29, 148);
+}
+.barItem.active{
+	background: rgb(191, 191, 245);
 }
