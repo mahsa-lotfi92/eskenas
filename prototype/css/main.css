@@ -2,6 +2,12 @@ body{
 	direction: rtl;
 	font-family: tahoma;
 }
+input, textarea, select{
+	font-family: tahoma;
+}
+button.btn {
+	font-family: tahoma;
+}
 #header {
 	text-align: right;
 	height: 110px;
