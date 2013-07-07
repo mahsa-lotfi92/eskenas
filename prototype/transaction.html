@@ -124,16 +124,20 @@
 			<div class="xrow cat"><div class="name">درآمد نوع ۱</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
 			<div class="xrow subcat"><div class="name">زیر نوع یک</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
 			<div class="xrow subcat"><div class="name ">زیر نوع دوم!!</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
+			<div class="hider"><div class="xrow add anim"><input type="text" placeholder="نام را وارد کنید"><i class="icon-plus"></i></div></div>
 			
 			<div class="xrow cat"><div class="name ">دسته فیلان</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
+			<div class="hider"><div class="xrow add anim"><input type="text" placeholder="نام را وارد کنید"><i class="icon-plus"></i></div></div>
 			
 			<div class="xrow cat"><div class="name ">پوشاک</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
 			<div class="xrow subcat"><div class="name ">شلوار</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
 			<div class="xrow subcat"><div class="name ">بلوز</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
 			<div class="xrow subcat"><div class="name ">لباس مهمونی :پی</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
+			<div class="hider"><div class="xrow add anim"><input type="text" placeholder="نام را وارد کنید"><i class="icon-plus"></i></div></div>
 			
 			<div class="xrow cat"><div class="name ">تغذیه</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
 			<div class="xrow subcat"><div class="name ">رستوران</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
+			<div class="hider"><div class="xrow add anim"><input type="text" placeholder="نام را وارد کنید"><i class="icon-plus"></i></div></div>
 		</div>
 
 
@@ -144,5 +148,25 @@
 	<div class="clearfix"></div>
 	</div>
 	</div>
-	<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script>
+$(function() {
+	// plus button under each category
+	$('.cat-table').on('click', '.add .icon-plus', function() {
+		var row = $(this).parent()
+
+		if (row.data('pressed')) {
+			var text = row.find('input').val()
+			alert(text)
+
+			row.find('input').val('')
+			row.toggleClass('out')
+			row.data('pressed', false)
+		} else {
+			row.toggleClass('out')
+			row.data('pressed', true)
+		}
+	})
+})
+	</script>
 </body>
