@@ -1,0 +1,87 @@
+body{
+	direction: rtl;
+	font-family: tahoma;
+}
+#header {
+	text-align: right;
+	height: 120px;
+	font-family: phalls tannaz;
+}
+#header h1 {
+	padding: 30px;
+	font-size: 100px;
+}
+#content {
+	background: #FFEB73;
+	float: right;
+	width: 770px;
+	height: 500px;
+}
+#sidebar {
+	background: #00B358;
+	float: right;
+	width: 150px;
+	padding: 20px;
+}
+#main {
+	margin: 0 auto;
+	width: 960px;
+}
+#menu {
+	background: #BEF56E;
+	border-radius: 10px 10px 0 0;
+}
+.menuItem {
+	padding: 10px 10px 10px 10px;
+	width: 100px;
+	float: right;
+	line-height: 30px;
+	text-align: center;
+	font-weight: bold;
+}
+.menuItem a{
+	color: black;
+	font-size: 20px;
+	font-family: B kamran;
+}
+.menuItem:hover a{
+	text-decoration: none;
+	color: rgb(10, 47, 196);
+	font-weight: normal;
+}
+.tranTable {
+	background: #FFF3DA;
+	font-family: tahoma;
+	font-size: 13px;
+	margin: 20px;
+	border-radius: 10px;
+}
+.tranRow {
+	height: 50px;
+	display: table-row;
+}
+.tranPay, .tranDate, .tranDes{
+	line-height: 40px;
+}
+.tranType {
+	width: 30px;
+}
+.tranPay, .tranDate, .tranDes, .tranType{
+	padding: 7px;
+	display: table-cell;
+	border-bottom: 1px solid rgb(213, 203, 203);
+}
+.tranType.up{
+	background: url(../img/uarr.png) no-repeat 0 10px;
+}
+.tranType.down{
+	background: url(../img/darr.png) no-repeat 0 10px;
+}
+.tranPay {
+	width: 80px;
+}
+.tranDate{
+	width: 90px;
+}
+.tranDes{
+}
