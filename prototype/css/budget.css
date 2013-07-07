@@ -20,3 +20,11 @@
 #cat ul {
 	text-align: right;
 }
+.remainBug {
+	text-align: right;
+	height: 100px;
+	background: red;
+}
+.bugName {
+	text-align: right;
+}
