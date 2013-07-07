@@ -23,8 +23,10 @@
 .remainBug {
 	text-align: right;
 	height: 100px;
-	background: red;
+	padding: 15px;
 }
 .bugName {
 	text-align: right;
+	font-size: 20px;
+	margin: 10px;
 }
