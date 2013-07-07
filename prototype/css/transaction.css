@@ -127,7 +127,7 @@ transition: all 0.4s ease-in-out;
 	margin-right: 0;
 }
 .cat-table .add input {
-	margin: 3px 0 3px 24px;
+	margin: 5px 0 5px 24px;
 }
 .hider{
 	overflow: hidden;
