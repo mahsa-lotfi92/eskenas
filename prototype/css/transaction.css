@@ -2,7 +2,6 @@
 	background: #FFF3DA;
 	font-family: tahoma;
 	font-size: 13px;
-	margin: 20px;
 	border-radius: 10px;
 }
 .tranRow {
@@ -70,4 +69,44 @@
 }
 .barItem.active{
 	background: rgb(191, 191, 245);
+}
+
+
+.cat-table{
+	/*box-shadow: 5px 5px 10px #888;*/
+}
+.cat-table .xrow {
+	line-height: 30px;
+	padding-right: 10px;
+}
+/*.cat-table .xrow:nth-child(odd) {
+	background: #FFF6B8;
+}
+.cat-table .xrow:nth-child(even) {
+	background: #FFCE77;
+}*/
+.cat-table .cat{
+	margin-top: 25px;
+	border-bottom: 1px solid #AA8E1F;
+}
+.cat-table .subcat{
+	border-bottom: 1px solid #FCD436;
+}
+.cat-table .cat:first-child{
+	/*border-top: none;*/
+}
+.cat-table .xrow .name{
+	float: right;
+	width: 220px;
+}
+.cat-table .cat .name{
+	font-weight: bold;
+}
+.cat-table .subcat .name{
+	padding-right: 40px;
+	margin-left: -40px;
+}
+.cat-table .xrow .name, .cat-table .xrow .edit, .cat-table .xrow .remove{
+	margin-right: 5px;
+	vertical-align: middle;
 }
