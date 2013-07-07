@@ -60,14 +60,18 @@ body{
 	height: 50px;
 	display: table-row;
 }
+.tranRow.head {
+	font-size: 22px;
+	font-family: b yekan;
+}
 .tranPay, .tranDate, .tranDes{
 	line-height: 40px;
 }
 .tranType {
-	width: 30px;
+	width: 20px;
 }
 .tranPay, .tranDate, .tranDes, .tranType{
-	padding: 7px;
+	padding: 4px 7px;
 	display: table-cell;
 	border-bottom: 1px solid rgb(213, 203, 203);
 }
