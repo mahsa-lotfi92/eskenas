@@ -132,3 +132,15 @@ transition: all 0.4s ease-in-out;
 .hider{
 	overflow: hidden;
 }
+#inCon {
+	width: 2295px;
+	margin-right: -1550px;
+}
+.solsCon {
+	width: 725px;
+	float: right;
+	padding: 20px;
+}
+#content {
+	overflow: hidden;
+}
