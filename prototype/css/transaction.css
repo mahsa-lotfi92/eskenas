@@ -129,6 +129,9 @@ transition: all 0.4s ease-in-out;
 .cat-table .add input {
 	margin: 5px 0 5px 24px;
 }
+.cat-table [class^=icon] {
+	cursor: pointer;
+}
 .hider{
 	overflow: hidden;
 }
