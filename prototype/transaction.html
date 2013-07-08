@@ -167,6 +167,25 @@ $(function() {
 			row.data('pressed', true)
 		}
 	})
+
+	// edit each (sub)category
+	$('.cat-table').on('click', '.xrow .edit', function() {
+		var row = $(this).parent()
+
+		var inp = prompt('New value:')
+		if (inp) {
+			row.find('.name').html(inp)
+		}
+	})
+
+	// remove each (sub)category
+	$('.cat-table').on('click', '.xrow .remove', function() {
+		var row = $(this).parent()
+
+		if (confirm('Are you sure to remove ' + row.find('.name').text() + '?')) {
+			row.remove()			
+		}
+	})
 })
 	</script>
 </body>
