@@ -139,16 +139,15 @@ transition: all 0.4s ease-in-out;
 #content {
 	overflow: hidden;
 }
-.addTran {
-	height: 100px;
-	background: red;
-}
 .tranPart {
 	float: right;
 	padding: 20px;
 }
-input {
-	width: 175px;
+input#transaction {
+	width: 119px;
+}
+input#auto{
+	width: 200px;
 }
 #upOrDown{
 	direction: ltr;
@@ -166,6 +165,15 @@ input {
 #upOrDown .btn {
 	padding: 0px;
 }
+input#desc.auto {
+	width: 502px;
+}
 input#desc {
-	width: 507px;
+	width: 541px;
+}
+input.transaction {
+	width: 191px;
+}
+input.auto {
+	width: 119px;
 }

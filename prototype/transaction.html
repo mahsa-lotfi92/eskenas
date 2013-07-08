@@ -58,10 +58,10 @@
 			  </div>
 			</div>
 			<div class="tranPart">
-				<input type="text" placeholder="تاریخ">
+				<input type="text" placeholder="تاریخ" class="transaction">
 			</div>
 			<div class="tranPart">
-				<input type="text" placeholder="مبلغ">
+				<input type="text" placeholder="مبلغ" class="transaction">
 			</div>
 			<div class="tranPart">
 			<div class="btn-group" id="cat">
@@ -200,6 +200,58 @@
 		<br>
 	</div>
 	<div class="solsCon">
+	<div class="addTran">
+		<div class="tranPart">
+
+			<div class="btn-group" id="upOrDown">
+			  	<button class="btn"><div class="icoUp"></div></button>
+			  	<button class="btn"><div class="icoDown"></div></button>
+			  </div>
+		</div>
+		<div class="tranPart">
+				<input type="text" placeholder="تاریخ شروع" class="auto">
+			</div>
+			<div class="tranPart">
+				<input type="text" placeholder="مبلغ" class="auto">
+			</div>
+			<div class="tranPart">
+			<div class="btn-group" id="cat">
+  				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    			دسته‌ها
+    			<span class="caret"></span>
+  				</a>
+  				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+				 <li><a href="#">رستوران</a></li>
+				 <li><a href="#">لباس</a></li>
+				 <li><a href="#">لوازم تحریر</a></li>
+				</ul>
+				</div>
+			</div>
+		<div class="tranPart">
+			<div class="btn-group" id="cat">
+  				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    			بازه‌ی زمانی
+    			<span class="caret"></span>
+  				</a>
+  				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+				 <li><a href="#">روزانه</a></li>
+				 <li><a href="#">ماهانه</a></li>
+				</ul>
+				</div>
+			</div>
+		<div class="tranPart">
+				<input type="text" placeholder="توضیحات" id= "desc" class="auto" >
+		</div>
+			
+		<div class="tranPart">
+				<button class="btn btn-success" >
+					<i class="icon-plus icon-white"></i> تراکنش خودکار
+				</button>
+				
+		</div>
+	</div>
+	<div class="clearfix"></div>
+
 	<div class="tranTable">
 			<div class="tranRow head">
 				<div class="tranType">
