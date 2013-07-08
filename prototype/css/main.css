@@ -9,13 +9,15 @@ button.btn {
 	font-family: tahoma;
 }
 #header {
+	background: url(../img/5toman.png) -18px 0 no-repeat;
 	text-align: right;
-	height: 110px;
+	height: 130px;
 	font-family: phalls tannaz;
 }
 #header h1 {
-	padding: 30px;
+	padding: 36px 20px;
 	font-size: 100px;
+	margin: 0;
 }
 #content {
 	background: #FFEB73;
