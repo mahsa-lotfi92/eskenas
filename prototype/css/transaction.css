@@ -19,13 +19,13 @@ transition: all 0.4s ease-in-out;
 	font-size: 22px;
 	font-family: b yekan;
 }
-.tranPay, .tranDate, .tranDes{
+.tranPay, .tranDate, .tranDes, .tranCat{
 	line-height: 40px;
 }
 .tranType {
 	width: 20px;
 }
-.tranPay, .tranDate, .tranDes, .tranType{
+.tranPay, .tranDate, .tranDes, .tranType , .tranCat{
 	padding: 4px 7px;
 	display: table-cell;
 	border-bottom: 1px solid rgb(213, 203, 203);
@@ -37,12 +37,15 @@ transition: all 0.4s ease-in-out;
 	background: url(../img/darr.png) no-repeat 0 10px;
 }
 .tranPay {
-	width: 80px;
+	width: 45px;
 }
 .tranDate{
 	width: 90px;
 }
 .tranDes{
+}
+.tranCat{
+	width: 55px;
 }
 .lastBarItem a{
 	display: block;
@@ -134,7 +137,7 @@ transition: all 0.4s ease-in-out;
 }
 #inCon {
 	width: 2295px;
-	margin-right: -1550px;
+	margin-right: -20px;
 }
 .solsCon {
 	width: 725px;
