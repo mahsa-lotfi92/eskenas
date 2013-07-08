@@ -50,6 +50,43 @@
 	<div id="content">
 		<div id="inCon" class="anim">
 			<div class="solsCon">
+			<div id="addTran">
+			<div class="tranPart">
+			  <div class="btn-group" id="upOrDown">
+			  	<button class="btn"><div class="icoUp"></div></button>
+			  	<button class="btn"><div class="icoDown"></div></button>
+			  </div>
+			</div>
+			<div class="tranPart">
+				<input type="text" placeholder="تاریخ">
+			</div>
+			<div class="tranPart">
+				<input type="text" placeholder="مبلغ">
+			</div>
+			<div class="tranPart">
+			<div class="btn-group" id="cat">
+  				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    			دسته‌ها
+    			<span class="caret"></span>
+  				</a>
+  				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+				 <li><a href="#">رستوران</a></li>
+				 <li><a href="#">لباس</a></li>
+				 <li><a href="#">لوازم تحریر</a></li>
+				</ul>
+				</div>
+			</div>
+			<div class="tranPart">
+				<input type="text" placeholder="توضیحات" id= "desc">
+			</div>
+			<div class="tranPart">
+				<button class="btn btn-success" >
+					<i class="icon-plus icon-white"></i> تراکنش
+				</button>
+				
+			</div>
+		</div>
+		<div class="clearfix"></div>
 		<div class="tranTable">
 			<div class="tranRow head">
 				<div class="tranType">
@@ -306,6 +343,7 @@
 	</div>
 	</div>
 	<script src="js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script>
 	$(function () {
 		$('#sidebar .barItem').eq(0).click(function(ev) {

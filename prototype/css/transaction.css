@@ -79,6 +79,7 @@ transition: all 0.4s ease-in-out;
 }
 .barItem.active{
 	background: rgb(191, 191, 245);
+	border-radius: 5px;
 }
 
 
@@ -149,4 +150,34 @@ transition: all 0.4s ease-in-out;
 }
 #content {
 	overflow: hidden;
+}
+.addTran {
+	height: 100px;
+	background: red;
+}
+.tranPart {
+	float: right;
+	padding: 20px;
+}
+input {
+	width: 175px;
+}
+#upOrDown{
+	direction: ltr;
+}
+.icoUp {
+	height: 31px;
+	width: 31px;
+	background-image:  url(../img/uarr.png);
+}
+.icoDown {
+	height: 31px;
+	width: 31px;
+	background-image: url(../img/darr.png);
+}
+#upOrDown .btn {
+	padding: 0px;
+}
+input#desc {
+	width: 507px;
 }
