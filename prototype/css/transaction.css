@@ -113,10 +113,10 @@ transition: all 0.4s ease-in-out;
 	margin-right: 5px;
 }
 .cat-table .add {
-	margin-right: -250px;
+	margin-right: -220px;
 }
 .cat-table .add.out {
-	margin-right: 0;
+	margin-right: 30px;
 }
 .cat-table .add input {
 	margin: 5px 0 5px 24px;
