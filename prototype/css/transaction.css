@@ -113,10 +113,10 @@ transition: all 0.4s ease-in-out;
 	margin-right: 5px;
 }
 .cat-table .add {
-	margin-right: -220px;
+	margin-right: -250px;
 }
 .cat-table .add.out {
-	margin-right: 30px;
+	margin-right: 0;
 }
 .cat-table .add input {
 	margin: 5px 0 5px 24px;
@@ -176,4 +176,26 @@ input.transaction {
 }
 input.auto {
 	width: 119px;
+}
+
+h3 {
+	font-family: b yekan;
+}
+#moshakhasat {
+	color: #777;
+}
+.loading {
+	background: url(../img/loading.gif);
+	width: 24px;
+	height: 24px;
+	display: none;
+}
+#syncConfig {
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 40%;
+}
+#sync .tranTable{
+	margin-bottom: 20px;
 }
