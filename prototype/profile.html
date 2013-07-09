@@ -145,7 +145,7 @@
 						</div>
 					</div>
 					<div class="solsCon">
-						<div class="passTable">
+						<form class="passTable">
 							<div class="passRow">
 								<div class="pass">
 									رمز عبور قبلی
@@ -166,11 +166,11 @@
 							</div>
 							<div class="passRow">
 								<div class="savePass">
-									<button value="ثبت رمز" class="btn btn-success sub"></button>
+									<input type="submit" value="ثبت رمز">
 								</div>
 							</div>
 
-						</div>
+						</form>
 						<div class="message-box">
 							<div class="warning">
 								اخطار!
@@ -272,15 +272,15 @@
 				input.fadeIn("slow");
 			});
 
-			$('.sub').click(function() {
-
-				$(this).parent().parent().parent().parrent().find('.message-box').fadeIn();
+			$('.passTable').submit(function(ev) {
+				ev.preventDefault()
+				$(this).parent().find('.message-box').fadeIn();
+				$(this).parent().find('.message-box').find('.warning').hide();
 				var fst = $(this).find('.passRow').eq(1).find('.passIn').val();
 				var scnd = $(this).find('.passRow').eq(2).find('.passIn').val();
 				if (fst != scnd) {
 					$(this).parent().find('.message-box').find('.warning').fadeIn();
-					$(this).parent().find('.message-box').find('.message').text("یکی نیست");
-					alert("khar");
+					$(this).parent().find('.message-box').find('.message').text("تکرار رمز جدید نادرست است.");
 				} else {
 					$(this).parent().find('.message-box').find('.message').text("با موفقیت ثبت شد");
 				}
