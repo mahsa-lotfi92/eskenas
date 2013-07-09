@@ -30,53 +30,143 @@
 			});
 		
 			// Build the chart
-	        $('#container').highcharts({
-	            chart: {
-	                plotBackgroundColor: null,
-	                plotBorderWidth: null,
-	                plotShadow: false
-	            },
-	            title: {
-	                text: null
-	            },
-	            tooltip: {
-	        	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-	            	percentageDecimals: 1
-	            },
-	            plotOptions: {
-	                pie: {
-	                    allowPointSelect: true,
-	                    cursor: 'pointer',
-	                    dataLabels: {
-	                        enabled: true,
-	                        color: '#000000',
-	                        connectorColor: '#000000',
-	                        formatter: function() {
-	                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
-	                        }
-	                    }
-	                }
-	            },
-	            series: [{
-	                type: 'pie',
-	                name: 'Browser share',
-	                data: [
-	                    ['خوراک',   45.0],
-	                    ['حمل و نقل',       26.8],
-	                    {
-	                        name: 'سلامت',
-	                        y: 12.8,
-	                        sliced: true,
-	                        selected: true
-	                    },
-	                    ['پوشاک',    8.5],
-	                    ['بدون دسته',     6.9],
-	                ]
-	            }]
+	        $('#income .chart-container').highcharts({
+			
+				            chart: {
+
+				                renderTo: 'container',
+
+				                type: 'bar'
+
+				            },
+
+				            title: {
+
+				                text: ''
+
+				            },
+
+				            xAxis: {
+
+				                categories: ['حقوق بنیاد', 'تدریس خصوصی', 'پروژه تحلیل']
+
+				            },
+
+				            yAxis: {
+
+				                min: 0,
+
+				                title: {
+
+				                    text: null
+
+				                },
+				                stackLabels: {
+				                enabled: true,
+				                style: {
+				                    fontWeight: 'bold',
+				                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+				                }
+				            }
+
+				            },
+
+				            legend: {
+
+				               align: 'right',
+				            x: -100,
+				            verticalAlign: 'top',
+				            y: 20,
+				            floating: true,
+				            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+				            borderColor: '#CCC',
+				            borderWidth: 1,
+				            shadow: false
+
+				            },
+
+				            tooltip: {
+
+				              formatter: function() {
+				                return '<b>'+ this.x +'</b><br/>'+
+				                    this.series.name +': '+ this.y +'<br/>'+
+				                    'Total: '+ this.point.stackTotal;
+				            }
+
+				            },
+
+				            plotOptions: {
+
+				                series: {
+
+				                    stacking: 'normal',
+				                    dataLabels: {
+				                    enabled: true,
+				                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
+				                }
+                    
+
+				                }
+
+				            },
+
+				                series: [{
+
+				                name: 'درآمد',
+
+				                data: [2000, 500, 1500]
+
+				            }]
+
 	        });
-	    });
+
     
 	
+       	 	$('#spending .chart-container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: null
+            },
+            tooltip: {
+        	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+            	percentageDecimals: 1
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+                        }
+                    }
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Browser share',
+                data: [
+                    ['خوراک',   45.0],
+                    ['حمل و نقل',       26.8],
+                    {
+                        name: 'سلامت',
+                        y: 12.8,
+                        sliced: true,
+                        selected: true
+                    },
+                    ['پوشاک',    8.5],
+                    ['بدون دسته',     6.9],
+                ]
+            }]
+        });
+    });
 
 
 	</script>
@@ -117,73 +207,79 @@
 	<div id="content">
 		<div id="inCon" class="anim">
 			<div class="solsCon">
+				A
+			</div>
+			
+			<div id="income" class="solsCon">
 				<div class="report">
 					<div class="header">
 						<h3>
-							درآمدها بر اساس دسته بندی
+							هزینه ها بر اساس دسته بندی
 						</h3>
 					</div>
 					<div class="filter">
+						<div calss="wrapper">
+							<div class="btn-group open criteria account">
+				                <button class="btn dropdown-toggle" data-toggle="dropdown">
+									تمام حساب‌ها
+									 <span class="caret"></span></button>
+				                <ul class="dropdown-menu">
 
-						<div class="btn-group open">
-			                <button class="btn dropdown-toggle" data-toggle="dropdown">
-								تمام حساب‌ها
-								 <span class="caret"></span></button>
-			                <ul class="dropdown-menu">
+	  			                  <li><a href="#">
+									  تمام حساب‌ها
+								  </a></li>
+				                  <li class="divider"></li>
+				                  <li><a href="#">
+									  <span class="name">
+										  سپرده
+									  </span>
+									  <span class="bank">
+										  پاسارگارد
+									  </span>
+								  </a></li>
+				                  <li><a href="#">
+									  <span class="name">
+										  قرض‌افحسنه
+									  </span>
+									  <span class="bank">
+										  پارسیان
+									  </span>
 
-  			                  <li><a href="#">
-								  تمام حساب‌ها
-							  </a></li>
-			                  <li class="divider"></li>
-			                  <li><a href="#">
-								  <span class="name">
-									  سپرده
-								  </span>
-								  <span class="bank">
-									  پاسارگارد
-								  </span>
-							  </a></li>
-			                  <li><a href="#">
-								  <span class="name">
-									  قرض‌افحسنه
-								  </span>
-								  <span class="bank">
-									  پارسیان
-								  </span>
-
-			                  </a></li>
+				                  </a></li>
 			                  
-			                </ul>
-			              </div>
+				                </ul>
+				              </div>
 						  
-  						<div class="btn-group open">
-  			                <button class="btn dropdown-toggle" data-toggle="dropdown">
-								سال گذشته
-  								 <span class="caret"></span></button>
-  			                <ul class="dropdown-menu">
+	  						<div class="btn-group open criteria time">
+	  			                <button class="btn dropdown-toggle" data-toggle="dropdown">
+									سال گذشته
+	  								 <span class="caret"></span></button>
+	  			                <ul class="dropdown-menu">
 
-  			                  <li><a href="#"> بازه‌ی دلخواه
-							    </a></li>
-  			                  <li><a href="#">   هفته گذشته  </a></li>
-  			                  <li><a href="#">   ماه گذشته  </a></li>
-			                  <li><a href="#"> سال گذشته  </a></li>
-  			                  <li><a href="#"> تمام ادوار  </a></li>
+	  			                  <li><a href="#"> بازه‌ی دلخواه
+								    </a></li>
+	  			                  <li><a href="#">   هفته گذشته  </a></li>
+	  			                  <li><a href="#">   ماه گذشته  </a></li>
+				                  <li><a href="#"> سال گذشته  </a></li>
+	  			                  <li><a href="#"> تمام ادوار  </a></li>
 							  
 			                  
-  			      			</ul>
-  			              </div>
+	  			      			</ul>
+	  			              </div>
 						  
 						  
-						  <div class="btn-group btn-group-vertical">
-						    <button class="btn">A</button>
-						    <button class="btn">B</button>
-						  </div>
-						  
+							  <div class="btn-group btn-group-vertical criteria type">
+							    <button class="btn">نمودار برحسب زمان</button>
+							    <button class="btn disabled">نمودار برحسب دسته</button>
+							  </div>
+							  
+							  <div class="clearfix"></div>
+						 </div>
 						  
 					</div>
 					<div class="chart">
 
-						<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+						<div class="chart-container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 
 					</div>
 					<div class="detail">
@@ -259,12 +355,154 @@
 					</div>
 				</div> 
 			</div>
-			<div class="solsCon">
-				B
+			
+			<div id="spending" class="solsCon">
+				<div class="report">
+					<div class="header">
+						<h3>
+							هزینه ها بر اساس دسته بندی
+						</h3>
+					</div>
+					<div class="filter">
+						<div calss="wrapper">
+							<div class="btn-group open criteria account">
+				                <button class="btn dropdown-toggle" data-toggle="dropdown">
+									تمام حساب‌ها
+									 <span class="caret"></span></button>
+				                <ul class="dropdown-menu">
+
+	  			                  <li><a href="#">
+									  تمام حساب‌ها
+								  </a></li>
+				                  <li class="divider"></li>
+				                  <li><a href="#">
+									  <span class="name">
+										  سپرده
+									  </span>
+									  <span class="bank">
+										  پاسارگارد
+									  </span>
+								  </a></li>
+				                  <li><a href="#">
+									  <span class="name">
+										  قرض‌افحسنه
+									  </span>
+									  <span class="bank">
+										  پارسیان
+									  </span>
+
+				                  </a></li>
+			                  
+				                </ul>
+				              </div>
+						  
+	  						<div class="btn-group open criteria time">
+	  			                <button class="btn dropdown-toggle" data-toggle="dropdown">
+									سال گذشته
+	  								 <span class="caret"></span></button>
+	  			                <ul class="dropdown-menu">
+
+	  			                  <li><a href="#"> بازه‌ی دلخواه
+								    </a></li>
+	  			                  <li><a href="#">   هفته گذشته  </a></li>
+	  			                  <li><a href="#">   ماه گذشته  </a></li>
+				                  <li><a href="#"> سال گذشته  </a></li>
+	  			                  <li><a href="#"> تمام ادوار  </a></li>
+							  
+			                  
+	  			      			</ul>
+	  			              </div>
+						  
+						  
+							  <div class="btn-group btn-group-vertical criteria type">
+							    <button class="btn">نمودار برحسب زمان</button>
+							    <button class="btn disabled">نمودار برحسب دسته</button>
+							  </div>
+							  
+							  <div class="clearfix"></div>
+						 </div>
+						  
+					</div>
+					<div class="chart">
+
+						<div class="chart-container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+					</div>
+					<div class="detail">
+						<h4>
+							
+											جزئیات 
+						</h4>
+								
+						<div class="tranTable">
+							<div class="tableWrapper">
+								<div class="tranRow head">
+									<div class="tranCat">
+										دسته
+									</div>
+									<div class="tranPay">
+									هزینه	
+									</div>
+								</div>
+								<div class="tranRow">
+									<div class="tranCat">
+										خوراک
+									</div>
+									<div class="tranPay">
+									۲۴۳ هزار
+									</div>
+								</div>
+								<div class="tranRow">
+									<div class="tranCat">
+										خوراک
+									</div>
+									<div class="tranPay">
+									۲۴۳ هزار
+									</div>
+								</div>
+								<div class="tranRow">
+									<div class="tranCat">
+										خوراک
+									</div>
+									<div class="tranPay">
+									۲۴۳ هزار
+									</div>
+								</div>
+								<div class="tranRow">
+									<div class="tranCat">
+										خوراک
+									</div>
+									<div class="tranPay">
+									۲۴۳ هزار
+									</div>
+								</div>
+							</div>
+							<div class="extra">
+								<h5>مجموع هزینه:</h5>
+								<h7>۱، ۲۷۳ هزار تومن</h7>
+								<br>	
+								<br>
+								<h5>پر هزینه ترین دسته:</h5>
+								<h7>خوراک، ۲۴۳ هزار</h7>
+
+								<div class="alert alert-info" style="margin-top:10px;">
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									با 
+									<strong>
+									بودجه بندی
+									</strong>
+									 در پرهینه ترین دسته‌ی خود فلان قدر پول ذخیره کنید.
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+
+
+					</div>
+				</div> 
 			</div>
-			<div class="solsCon">
-				C
-			</div>
+			
+			
 			<div class="solsCon">
 				D
 			</div>
