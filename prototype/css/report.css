@@ -1,0 +1,175 @@
+.anim{
+-webkit-transition: all 0.4s ease-in-out;
+-moz-transition: all 0.4s ease-in-out;
+-ms-transition: all 0.4s ease-in-out;
+-o-transition: all 0.4s ease-in-out;
+transition: all 0.4s ease-in-out;
+}
+.tranTable {
+	background: #FFF3DA;
+	font-family: tahoma;
+	font-size: 13px;
+	border-radius: 10px;
+	padding: 15px 10px;
+}
+
+.tranRow {
+	height: 50px;
+	display: table-row;
+}
+.tranRow.head {
+	font-size: 22px;
+	font-family: b yekan;
+}
+.tranPay, .tranDate, .tranDes, .tranCat{
+	line-height: 40px;
+}
+.tranType {
+	width: 20px;
+}
+.tranPay, .tranDate, .tranDes, .tranType , .tranCat{
+	padding: 4px 7px;
+	display: table-cell;
+	border-bottom: 1px solid rgb(213, 203, 203);
+}
+.tranType.up{
+	background: url(../img/uarr.png) no-repeat 0 10px;
+}
+.tranType.down{
+	background: url(../img/darr.png) no-repeat 0 10px;
+}
+.tranPay {
+	width: 80px;
+}
+.tranDate{
+	width: 90px;
+}
+.tranDes{
+}
+.tranCat{
+	width: 160px;
+}
+.lastBarItem a{
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding: 0px 10px 0px 0px;
+}
+.lastBarItem{
+	line-height: 28px;
+	color: black;
+}
+.barItem{
+	line-height: 28px;
+	color: black;
+	border-bottom: 1px solid rgb(213, 213, 213);
+}
+.barItem a{
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding: 0px 10px 0px 0px;
+}
+.barItem a:hover{
+	background: rgb(207, 207, 207);
+	color: rgb(29, 29, 148);
+}
+.lastBarItem a:hover{
+	background: rgb(207, 207, 207);
+	font-weight: normal;
+	color: rgb(29, 29, 148);
+}
+.barItem.active{
+	background: rgb(191, 191, 245);
+}
+
+
+.cat-table{
+	/*box-shadow: 5px 5px 10px #888;*/
+}
+.cat-table .xrow {
+	line-height: 30px;
+	padding-right: 10px;
+}
+/*.cat-table .xrow:nth-child(odd) {
+	background: #FFF6B8;
+}
+.cat-table .xrow:nth-child(even) {
+	background: #FFCE77;
+}*/
+.cat-table .cat{
+	margin-top: 25px;
+	border-bottom: 1px solid #AA8E1F;
+}
+.cat-table .subcat{
+	border-bottom: 1px solid #FCD436;
+}
+.cat-table .cat:first-child{
+	/*border-top: none;*/
+}
+.cat-table .xrow .name{
+	float: right;
+	width: 220px;
+}
+.cat-table .cat .name{
+	font-weight: bold;
+}
+.cat-table .subcat .name{
+	padding-right: 40px;
+	margin-left: -40px;
+}
+.cat-table .xrow{
+	vertical-align: middle;
+}
+/*.cat-table .xrow .name, .cat-table .xrow .edit, .cat-table .xrow .remove{*/
+.cat-table .xrow > * {
+	margin-right: 5px;
+}
+.cat-table .add {
+	margin-right: -250px;
+}
+.cat-table .add.out {
+	margin-right: 0;
+}
+.cat-table .add input {
+	margin: 5px 0 5px 24px;
+}
+.cat-table [class^=icon] {
+	cursor: pointer;
+}
+.hider{
+	overflow: hidden;
+}
+#inCon {
+	width: 3500px;
+	margin-right: -20px;
+}
+.solsCon {
+	width: 725px;
+	float: right;
+	padding: 20px;
+}
+#content {
+	overflow: hidden;
+}
+
+
+
+/* --------------------- Detail ------------------------------ */
+
+#content .detail{
+	margin-top: 20px;
+}
+
+#content .detail .tableWrapper{
+	float: right;
+	width: 300px;
+	padding: 0px 20px 0px 5px;
+	border-left: 1px dotted #CCC;
+}
+
+#content .detail .extra{
+	float: right;
+	width: 346px;
+	margin-right: 20px;
+}

@@ -1,0 +1,329 @@
+<!doctype html>
+<head>
+	<meta charset="utf-8">
+	<title>اسکناس</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/report.css">
+
+
+	
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
+	<script src="js/highcharts.js"></script>
+	<script src="js/exporting.js"></script>
+	<script>
+	
+	
+	$(function () {
+    	
+	    	// Radialize the colors
+			Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+			    return {
+			        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+			        stops: [
+			            [0, color],
+			            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+			        ]
+			    };
+			});
+		
+			// Build the chart
+	        $('#container').highcharts({
+	            chart: {
+	                plotBackgroundColor: null,
+	                plotBorderWidth: null,
+	                plotShadow: false
+	            },
+	            title: {
+	                text: null
+	            },
+	            tooltip: {
+	        	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+	            	percentageDecimals: 1
+	            },
+	            plotOptions: {
+	                pie: {
+	                    allowPointSelect: true,
+	                    cursor: 'pointer',
+	                    dataLabels: {
+	                        enabled: true,
+	                        color: '#000000',
+	                        connectorColor: '#000000',
+	                        formatter: function() {
+	                            return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+	                        }
+	                    }
+	                }
+	            },
+	            series: [{
+	                type: 'pie',
+	                name: 'Browser share',
+	                data: [
+	                    ['خوراک',   45.0],
+	                    ['حمل و نقل',       26.8],
+	                    {
+	                        name: 'سلامت',
+	                        y: 12.8,
+	                        sliced: true,
+	                        selected: true
+	                    },
+	                    ['پوشاک',    8.5],
+	                    ['بدون دسته',     6.9],
+	                ]
+	            }]
+	        });
+	    });
+    
+	
+
+
+	</script>
+	
+
+	<!-- <link rel="stylesheet" type="text/css" href="css/flat-ui.css"> -->
+</head>
+<body>
+	<div id="main">
+	<div id="header">
+		<h1>اسکناس</h1>
+	</div>
+	<div id="menu">
+		<div class= "menuItem">
+		<a href="?">
+					گزارش‌گیری
+				</a>
+				</div>
+		<div class= "menuItem">
+		<a href="?">
+					تراکنش
+				</a>
+				</div>
+		<div class= "menuItem">
+		<a href="?">
+					بودجه‌بندی
+				</a>
+				</div>
+		<div class= "menuItem">
+		<a href="?">
+					حساب‌ کاربری
+				</a>
+				</div>
+		<div class="clearfix"></div>		
+	</div>
+	<div id="mainw">
+	<div id="sidebar">
+		<div class="barItem active">
+			<a href="?">کلی</a>
+		</div>
+		<div class="barItem">
+			<a href="?">درآمد‌ها  <a/>
+		</div>
+		
+		<div class="barItem">
+			<a href="?">هزینه‌ها  <a/>
+		</div>
+		
+		<div class="barItem">
+			<a href="?">ماهانه</a>
+		</div>
+
+	</div>
+	<div id="content">
+		<div id="inCon" class="anim">
+			<div class="solsCon">
+				<div class="report">
+					<div class="header">
+						<h3>
+							درآمدها بر اساس دسته بندی
+						</h3>
+					</div>
+					<div class="filter">
+
+						<div class="btn-group open">
+			                <button class="btn dropdown-toggle" data-toggle="dropdown">
+								تمام حساب‌ها
+								 <span class="caret"></span></button>
+			                <ul class="dropdown-menu">
+
+  			                  <li><a href="#">
+								  تمام حساب‌ها
+							  </a></li>
+			                  <li class="divider"></li>
+			                  <li><a href="#">
+								  <span class="name">
+									  سپرده
+								  </span>
+								  <span class="bank">
+									  پاسارگارد
+								  </span>
+							  </a></li>
+			                  <li><a href="#">
+								  <span class="name">
+									  قرض‌افحسنه
+								  </span>
+								  <span class="bank">
+									  پارسیان
+								  </span>
+
+			                  </a></li>
+			                  
+			                </ul>
+			              </div>
+						  
+  						<div class="btn-group open">
+  			                <button class="btn dropdown-toggle" data-toggle="dropdown">
+								سال گذشته
+  								 <span class="caret"></span></button>
+  			                <ul class="dropdown-menu">
+
+  			                  <li><a href="#"> بازه‌ی دلخواه
+							    </a></li>
+  			                  <li><a href="#">   هفته گذشته  </a></li>
+  			                  <li><a href="#">   ماه گذشته  </a></li>
+			                  <li><a href="#"> سال گذشته  </a></li>
+  			                  <li><a href="#"> تمام ادوار  </a></li>
+							  
+			                  
+  			      			</ul>
+  			              </div>
+						  
+						  
+						  <div class="btn-group btn-group-vertical">
+						    <button class="btn">A</button>
+						    <button class="btn">B</button>
+						  </div>
+						  
+						  
+					</div>
+					<div class="chart">
+
+						<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+					</div>
+					<div class="detail">
+						<h4>
+							
+											جزئیات 
+						</h4>
+								
+						<div class="tranTable">
+							<div class="tableWrapper">
+								<div class="tranRow head">
+									<div class="tranCat">
+										دسته
+									</div>
+									<div class="tranPay">
+									هزینه	
+									</div>
+								</div>
+								<div class="tranRow">
+									<div class="tranCat">
+										خوراک
+									</div>
+									<div class="tranPay">
+									۲۴۳ هزار
+									</div>
+								</div>
+								<div class="tranRow">
+									<div class="tranCat">
+										خوراک
+									</div>
+									<div class="tranPay">
+									۲۴۳ هزار
+									</div>
+								</div>
+								<div class="tranRow">
+									<div class="tranCat">
+										خوراک
+									</div>
+									<div class="tranPay">
+									۲۴۳ هزار
+									</div>
+								</div>
+								<div class="tranRow">
+									<div class="tranCat">
+										خوراک
+									</div>
+									<div class="tranPay">
+									۲۴۳ هزار
+									</div>
+								</div>
+							</div>
+							<div class="extra">
+								<h5>مجموع هزینه:</h5>
+								<h7>۱، ۲۷۳ هزار تومن</h7>
+								<br>	
+								<br>
+								<h5>پر هزینه ترین دسته:</h5>
+								<h7>خوراک، ۲۴۳ هزار</h7>
+
+								<div class="alert alert-info" style="margin-top:10px;">
+									<button type="button" class="close" data-dismiss="alert">×</button>
+									با 
+									<strong>
+									بودجه بندی
+									</strong>
+									 در پرهینه ترین دسته‌ی خود فلان قدر پول ذخیره کنید.
+								</div>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+
+
+					</div>
+				</div> 
+			</div>
+			<div class="solsCon">
+				B
+			</div>
+			<div class="solsCon">
+				C
+			</div>
+			<div class="solsCon">
+				D
+			</div>
+		<div class="clearfix"></div>
+	</div>
+	</div>
+	
+	
+	<script>
+$(function () {
+	$('#sidebar .barItem').eq(0).click(function(ev) {
+		ev.preventDefault()
+
+		$ ('#inCon').css('margin-right', -20 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
+	})
+
+	$('#sidebar .barItem').eq(1).click(function(ev) {
+		ev.preventDefault()
+
+		$ ('#inCon').css('margin-right', -785 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
+	})
+
+	$('#sidebar .barItem').eq(2).click(function(ev) {
+		ev.preventDefault()
+
+		$ ('#inCon').css('margin-right', -1550 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
+	})
+	
+	$('#sidebar .barItem').eq(3).click(function(ev) {
+		ev.preventDefault()
+
+		$ ('#inCon').css('margin-right', -2315 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
+	})
+})	
+</script>
+	
+	
+</body>
