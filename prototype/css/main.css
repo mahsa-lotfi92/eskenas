@@ -20,7 +20,7 @@ button.btn {
 	margin: 0;
 }
 #content {
-	background: rgb(242, 245, 127);
+	background: rgb(253, 255, 176);
 	float: right;
 	width: 725px;
 	min-height: 500px;
@@ -42,8 +42,8 @@ button.btn {
 	width: 960px;
 }
 #menu {
-	background: #97F17A;
-	border-radius: 10px;
+	background: #BEF56E;
+	border-radius: 5px;
 }
 .menuItem a {
 	display: block;
