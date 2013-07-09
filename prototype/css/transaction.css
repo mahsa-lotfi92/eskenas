@@ -177,3 +177,25 @@ input.transaction {
 input.auto {
 	width: 119px;
 }
+
+h3 {
+	font-family: b yekan;
+}
+#moshakhasat {
+	color: #777;
+}
+.loading {
+	background: url(../img/loading.gif);
+	width: 24px;
+	height: 24px;
+	display: none;
+}
+#syncConfig {
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 10px;
+	width: 40%;
+}
+#sync .tranTable{
+	margin-bottom: 20px;
+}
