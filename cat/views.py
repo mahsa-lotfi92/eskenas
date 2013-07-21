@@ -14,5 +14,3 @@ def catForm(req):
         if req.POST['formID']=="3":
             Cat.objects.filter(id= req.POST['id']).delete()
     return render(req, 'catForm.html', {'cats': Cat.objects.filter(isSub=False)})
-
-	
