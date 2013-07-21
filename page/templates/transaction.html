@@ -74,126 +74,123 @@
 	</div>
 		</div>
 		<div class="solsCon">
-		<div id="addTran">
-		<div class="tranPart">
-		  <div class="btn-group" id="upOrDown">
-		  	<button class="btn"><div class="icoUp"></div></button>
-		  	<button class="btn"><div class="icoDown"></div></button>
-		  </div>
+		
+						<form method="post" id="addTran" action="/transaction/add/">
+							<div class="tranPart">
+								<input  name="isIncome" class="isIncome"  type="hidden"/>
+								<div class="btn-group" id="upOrDown">
+									<button class="btn income" >
+										<div class="icoUp"></div>
+									</button>
+									<button class="btn outcome" >
+										<div class="icoDown"></div>
+									</button>
+								</div>
+							</div>
+							<div class="tranPart">
+								<input type="text" placeholder="تاریخ" class="transaction" name="date">
+
+							</div>
+							<div class="tranPart">
+								<input type="text" placeholder="مبلغ" class="transaction" name="cost">
+							</div>
+							<div class="tranPart">
+								<input  name="Category" class="Category" type="hidden"/>
+								<div class="btn-group" id="cat">
+									<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> دسته‌ها <span class="caret"></span> </a>
+									<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+										{%for c in cats%}
+										<li>
+											<a href="#" class="catItem">{{c.name}}</a>
+										</li>
+										{%endfor%}
+
+									</ul>
+								</div>
+							</div>
+							<div class="tranPart">
+								<input type="text" placeholder="توضیحات" id= "desc" name="description">
+							</div>
+							<div class="tranPart">
+								<button class="btn btn-success" id="addTranSubmit">
+									<i class="icon-plus icon-white"></i>
+									تراکنش
+								</button>
+
+							</div>
+						</form>
+						<div class="clearfix"></div>
+						<div class="tranTable">
+							<div class="tranRow head">
+								<div class="tranType"></div>
+								<div class="tranDate">
+									تاریخ
+								</div>
+								<div class="tranPay">
+									مبلغ
+								</div>
+								<div class="tranCat">
+									دسته
+								</div>
+								<div class="tranDes">
+									توضیحات
+								</div>
+							</div>
+							{%for t in Tran%}
+							<div>
+
+								<form class="tranRow" method="post" action="/transaction/delete/">
+									{%if t.isIncome%}
+									<div class="tranType up"></div>
+									{%else%}
+									<div class="tranType down"></div>
+									{%endif%}
+									<input type="hidden" value="{{t.id}}" name="id">
+									<div class="tranDate">
+
+										{{t.date}}
+
+									</div>
+									<div class="tranPay">
+										{{t.cost}}
+									</div>
+									<div class="tranCat">
+										{{t.Category}}
+									</div>
+									<div class="tranDes">
+										{{t.description}}
+									</div>
+									<div class="TranER">
+										<i class="icon-remove TranRemove"></i>
+										<i class="icon-pencil TranEdit"></i>
+									</div>
+								</form>
+								<form class="TRedit" method="post" action="/transaction/edit/">
+									<input  name="isIncome" class="isIncome"  type="hidden"/>
+									<div class="btn-group" id="upOrDownEdit">
+										<button class="btn income" >
+											<div class="icoUp"></div>
+										</button>
+										<button class="btn outcome" >
+											<div class="icoDown"></div>
+										</button>
+									</div>
+									<input type="hidden" value="{{t.id}}" name="id">
+									<input type="text" class="tranDateEdit" value="{{t.date}}" name="date"/>
+									<input type="text" class="tranPayEdit" value="{{t.cost}}" name="cost"/>
+									<input type="text" class="tranCatEdit" value="{{t.Category}}" name="Category"/>
+									<input type="text" class="tranDesEdit" value="{{t.description}}" name="description"/>
+									<input type="submit" class="btn-success editAction" value="ثبت"/>
+									<button class="btn-warning editAction cancelEdit" >انصراف</button>
+
+								</form>
+
+							</div>
+							{% endfor %}
+
+						</div>
 		</div>
-		<div class="tranPart">
-			<input type="text" placeholder="تاریخ" class="transaction">
-		</div>
-		<div class="tranPart">
-			<input type="text" placeholder="مبلغ" class="transaction">
-		</div>
-		<div class="tranPart">
-		<div class="btn-group" id="cat">
-				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-			دسته‌ها
-			<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-			 <li><a href="#">رستوران</a></li>
-			 <li><a href="#">لباس</a></li>
-			 <li><a href="#">لوازم تحریر</a></li>
-			</ul>
-			</div>
-		</div>
-		<div class="tranPart">
-			<input type="text" placeholder="توضیحات" id= "desc">
-		</div>
-		<div class="tranPart">
-			<button class="btn btn-success" >
-				<i class="icon-plus icon-white"></i> تراکنش
-			</button>
-			
-		</div>
-	</div>
-	<div class="clearfix"></div>
-	<div class="tranTable">
-		<div class="tranRow head">
-			<div class="tranType">
-			</div>
-			<div class="tranDate">
-			تاریخ
-			</div>
-			<div class="tranPay">
-			مبلغ
-			</div>
-			<div class="tranCat">
-				دسته
-			</div>
-			<div class="tranDes">
-				توضیحات
-			</div>
-		</div>
-		<div class="tranRow">
-			<div class="tranType down">
-			</div>
-			<div class="tranDate">
-			۲۲/۱۱/۹۱
-			</div>
-			<div class="tranPay">
-			۱۰۰۰۰
-			</div>
-			<div class="tranCat">
-				خوراک
-			</div>
-			<div class="tranDes">
-				خرج ناهار
-			</div>
-		</div>
-		<div class="tranRow">
-			<div class="tranType down">
-			</div>
-			<div class="tranDate">
-			۲۲/۴/۹۰
-			</div>
-			<div class="tranPay">
-			۱۵۰۰۰
-			</div>
-			<div class="tranCat">
-				پوشاک
-			</div>
-			<div class="tranDes">
-			خرید بلوز
-			</div>
-		</div>
-		<div class="tranRow">
-			<div class="tranType down">
-			</div>
-			<div class="tranDate">
-			۴/۳/۹۱
-			</div>
-			<div class="tranPay">
-			۲۵۰۰۰
-			</div>
-			<div class="tranCat">
-				هدیه
-			</div>
-			<div class="tranDes">
-				کادوی ماعده
-			</div>
-		</div>
-		<div class="tranRow">
-			<div class="tranType up">
-			</div>
-			<div class="tranDate">
-			۲۵/۴/۹۱
-			</div>
-			<div class="tranPay">
-			۲۰۰۰۰۰
-			</div>
-			<div class="tranCat">
-				دریافتی
-			</div>
-			<div class="tranDes">
-				دریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاددریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاد
-			</div>
-		</div>
-	</div>
-</div>
+
 				
 <div class="solsCon">
 <div class="addTran">
