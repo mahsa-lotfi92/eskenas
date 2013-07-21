@@ -176,7 +176,7 @@
 										</button>
 									</div>
 									<input type="hidden" value="{{t.id}}" name="id">
-									<input type="text" class="tranDateEdit" value="{{t.date}}" name="date"/>
+									<input type="text" class="tranDateEdit" value="{{t.date|date:"Y-m-d"}}" name="date"/>
 									<input type="text" class="tranPayEdit" value="{{t.cost}}" name="cost"/>
 									<input type="text" class="tranCatEdit" value="{{t.Category}}" name="Category"/>
 									<input type="text" class="tranDesEdit" value="{{t.description}}" name="description"/>
