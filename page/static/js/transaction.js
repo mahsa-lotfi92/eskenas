@@ -24,21 +24,20 @@ $(function () {
 	})
 })
 
+$(function (){
+	$('#addCat .btn.btn-success').click(function() {
+		var row = $(this).parent()
+		row.find('form').submit()
+	})
 
-$(function() {
 	// plus button under each category
 	$('.cat-table').on('click', '.add .icon-plus', function() {
 		var row = $(this).parent()
 
 		if (row.data('pressed')) {
-			var text = row.find('input').val()
-			alert(text)
-
-			row.find('input').val('')
-			row.toggleClass('out')
-			row.data('pressed', false)
+			row.find('form').submit()
 		} else {
-			row.toggleClass('out')
+			row.addClass('out')
 			row.data('pressed', true)
 		}
 	})
@@ -56,9 +55,8 @@ $(function() {
 	// remove each (sub)category
 	$('.cat-table').on('click', '.xrow .remove', function() {
 		var row = $(this).parent()
-
-		if (confirm('Are you sure to remove ' + row.find('.name').text() + '?')) {
-			row.remove()			
+		if (confirm('زیر دسته‌ی ' + row.find('.name').text() + ' حذف شود؟ ')) {
+		row.find('form').submit()
 		}
 	})
 

@@ -72,18 +72,18 @@ transition: all 0.4s ease-in-out;
 
 
 .cat-table{
-	/*box-shadow: 5px 5px 10px #888;*/
 }
 .cat-table .xrow {
 	line-height: 30px;
 	padding-right: 10px;
 }
-/*.cat-table .xrow:nth-child(odd) {
-	background: #FFF6B8;
+.cat-table .xrow.add form, #addCat form {
+	display: inline-block;
+	margin: 0;
 }
-.cat-table .xrow:nth-child(even) {
-	background: #FFCE77;
-}*/
+.cat-table .xrow form {
+	display: none;
+}
 .cat-table .cat{
 	margin-top: 25px;
 	border-bottom: 1px solid #AA8E1F;
@@ -92,7 +92,6 @@ transition: all 0.4s ease-in-out;
 	border-bottom: 1px solid #FCD436;
 }
 .cat-table .cat:first-child{
-	/*border-top: none;*/
 }
 .cat-table .xrow .name{
 	float: right;
@@ -108,7 +107,6 @@ transition: all 0.4s ease-in-out;
 .cat-table .xrow{
 	vertical-align: middle;
 }
-/*.cat-table .xrow .name, .cat-table .xrow .edit, .cat-table .xrow .remove{*/
 .cat-table .xrow > * {
 	margin-right: 5px;
 }
@@ -119,7 +117,7 @@ transition: all 0.4s ease-in-out;
 	margin-right: 0;
 }
 .cat-table .add input {
-	margin: 5px 0 5px 24px;
+	margin: 5px 0 5px 20px;
 }
 .cat-table [class^=icon] {
 	cursor: pointer;

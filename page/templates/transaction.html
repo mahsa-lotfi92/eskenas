@@ -1,3 +1,4 @@
+{%extends 'base.html'%}
 {%block css%}
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/transaction.css">
 {%endblock%}
@@ -147,15 +148,40 @@
 	<h1>دسته‌بندی‌ها</h1>
 	</div>
 	<div id= 'addCat'>
-	<input type="text" placeholder="نام دسته" id= 'catHeadInput' >
+	
+	<form action='.' method="post">
+		<input name= "formID" value="1" type="hidden">
+		<input name="name" placeholder="نام دسته" type="text" id= 'catHeadInput'>
+	</form>
+	
 	<button class="btn btn-success" >
 				<i class="icon-plus icon-white"></i> دسته
-			</button>
+	</button>
 	</div>
 	<div class="clearfix">
 	</div>
 	<div class="cat-table">
+		{% for c in cats %}
 		<div class="xrow cat"><div class="name">{{c.name}}</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
+		{% for b in c.cat_set.all %}
+		<div class="xrow subcat"><div class="name">{{b.name}}</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
+			<form action='.' method="post">
+				    	<input name= "formID" value="3" type="hidden">
+						<input name= "id" value="{{b.id}}" type="hidden">
+			</form>
+		<div class="clearfix"></div></div>
+		{%endfor%}
+		<div class="hider"> <div class="xrow add anim"> 
+			<form action='.' method="post">
+				<input type="text" placeholder="نام زیر دسته" name= "name">
+		    	<input name= "formID" value="2" type="hidden">
+				<input name= "parent" value="{{c.id}}" type="hidden">
+			</form>
+			
+			<i class="icon-plus"></i>
+			
+		</div></div>
+		{%endfor%}
 	</div>
 
 
