@@ -1,0 +1,35 @@
+#sidebar {
+	width: 180px;
+	height: 100px;
+}
+#addBudget {
+	width: 680px;
+	height: 100px;
+}
+.budgetPart {
+	width: 224px;
+	height: 100px;
+	float: right;
+	margin: 1px;
+	text-align: center;
+	padding: 63px 0 0 0;
+}
+#cat > a{
+	width: 100px;
+}
+#cat ul {
+	text-align: right;
+}
+.remainBug {
+	text-align: right;
+	height: 100px;
+	padding: 15px;
+}
+.bugName {
+	text-align: right;
+	font-size: 20px;
+	margin: 10px;
+}
+.progress {
+	margin-bottom: 0px;
+}

@@ -1,0 +1,376 @@
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/transaction.css">
+{%endblock%}
+
+{%block js%}
+<script src="{{STATIC_URL}}js/transaction.js"></script>
+{%endblock%}
+
+{%block sidebar%}
+	<div class="barItem active">
+		<a href="?">تراکنش‌ها</a>
+	</div>
+	<div class="barItem">
+		<a href="?">تراکنش‌های خودکار</a>
+	</div>
+	<div class="barItem lastBarItem">
+		<a href="?">هم‌گام‌سازی</a>
+	</div>
+{%endblock%}
+
+{%block content%}
+	<div id="inCon" class="anim">
+		<div class="solsCon">
+		<div id="addTran">
+		<div class="tranPart">
+		  <div class="btn-group" id="upOrDown">
+		  	<button class="btn"><div class="icoUp"></div></button>
+		  	<button class="btn"><div class="icoDown"></div></button>
+		  </div>
+		</div>
+		<div class="tranPart">
+			<input type="text" placeholder="تاریخ" class="transaction">
+		</div>
+		<div class="tranPart">
+			<input type="text" placeholder="مبلغ" class="transaction">
+		</div>
+		<div class="tranPart">
+		<div class="btn-group" id="cat">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			دسته‌ها
+			<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+			 <li><a href="#">رستوران</a></li>
+			 <li><a href="#">لباس</a></li>
+			 <li><a href="#">لوازم تحریر</a></li>
+			</ul>
+			</div>
+		</div>
+		<div class="tranPart">
+			<input type="text" placeholder="توضیحات" id= "desc">
+		</div>
+		<div class="tranPart">
+			<button class="btn btn-success" >
+				<i class="icon-plus icon-white"></i> تراکنش
+			</button>
+			
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="tranTable">
+		<div class="tranRow head">
+			<div class="tranType">
+			</div>
+			<div class="tranDate">
+			تاریخ
+			</div>
+			<div class="tranPay">
+			مبلغ
+			</div>
+			<div class="tranCat">
+				دسته
+			</div>
+			<div class="tranDes">
+				توضیحات
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۲۲/۱۱/۹۱
+			</div>
+			<div class="tranPay">
+			۱۰۰۰۰
+			</div>
+			<div class="tranCat">
+				خوراک
+			</div>
+			<div class="tranDes">
+				خرج ناهار
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۲۲/۴/۹۰
+			</div>
+			<div class="tranPay">
+			۱۵۰۰۰
+			</div>
+			<div class="tranCat">
+				پوشاک
+			</div>
+			<div class="tranDes">
+			خرید بلوز
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۴/۳/۹۱
+			</div>
+			<div class="tranPay">
+			۲۵۰۰۰
+			</div>
+			<div class="tranCat">
+				هدیه
+			</div>
+			<div class="tranDes">
+				کادوی ماعده
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType up">
+			</div>
+			<div class="tranDate">
+			۲۵/۴/۹۱
+			</div>
+			<div class="tranPay">
+			۲۰۰۰۰۰
+			</div>
+			<div class="tranCat">
+				دریافتی
+			</div>
+			<div class="tranDes">
+				دریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاددریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاد
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<br>
+	<div id= 'catHead'>
+	<h1>دسته‌بندی‌ها</h1>
+	</div>
+	<div id= 'addCat'>
+	<input type="text" placeholder="نام دسته" id= 'catHeadInput' >
+	<button class="btn btn-success" >
+				<i class="icon-plus icon-white"></i> دسته
+			</button>
+	</div>
+	<div class="clearfix">
+	</div>
+	<div class="cat-table">
+		<div class="xrow cat"><div class="name">{{c.name}}</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
+	</div>
+
+
+
+
+	<br>
+</div>
+<div class="solsCon">
+<div class="addTran">
+	<div class="tranPart">
+
+		<div class="btn-group" id="upOrDown">
+		  	<button class="btn"><div class="icoUp"></div></button>
+		  	<button class="btn"><div class="icoDown"></div></button>
+		  </div>
+	</div>
+	<div class="tranPart">
+			<input type="text" placeholder="تاریخ شروع" class="auto">
+		</div>
+		<div class="tranPart">
+			<input type="text" placeholder="مبلغ" class="auto">
+		</div>
+		<div class="tranPart">
+		<div class="btn-group" id="cat">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			دسته‌ها
+			<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+			 <li><a href="#">رستوران</a></li>
+			 <li><a href="#">لباس</a></li>
+			 <li><a href="#">لوازم تحریر</a></li>
+			</ul>
+			</div>
+		</div>
+	<div class="tranPart">
+		<div class="btn-group" id="cat">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+			بازه‌ی زمانی
+			<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+			 <li><a href="#">روزانه</a></li>
+			 <li><a href="#">ماهانه</a></li>
+			</ul>
+			</div>
+		</div>
+	<div class="tranPart">
+			<input type="text" placeholder="توضیحات" id= "desc" class="auto" >
+	</div>
+		
+	<div class="tranPart">
+			<button class="btn btn-success" >
+				<i class="icon-plus icon-white"></i> تراکنش خودکار
+			</button>
+			
+	</div>
+</div>
+<div class="clearfix"></div>
+
+<div class="tranTable">
+		<div class="tranRow head">
+			<div class="tranType">
+			</div>
+			<div class="tranDate">
+			تاریخ
+			</div>
+			<div class="tranPay">
+			مبلغ
+			</div>
+			<div class="tranDes">
+				توضیحات
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۲۲/۱۱/۹۱
+			</div>
+			<div class="tranPay">
+			۱۰۰۰۰
+			</div>
+			<div class="tranDes">
+				خرج ناهار
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۲۲/۴/۹۰
+			</div>
+			<div class="tranPay">
+			۱۵۰۰۰
+			</div>
+			<div class="tranDes">
+			خرید بلوز
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۴/۳/۹۱
+			</div>
+			<div class="tranPay">
+			۲۵۰۰۰
+			</div>
+			<div class="tranDes">
+				کادوی ماعده
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType up">
+			</div>
+			<div class="tranDate">
+			۲۵/۴/۹۱
+			</div>
+			<div class="tranPay">
+			۲۰۰۰۰۰
+			</div>
+			<div class="tranDes">
+				دریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاددریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاد
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="solsCon" id="sync">
+		<h3>همگام سازی با بانک فیلان</h3>
+		<span id="moshakhasat">بانک پاسارگاد - شماره حساب ۵۶۴۱۹۸۰۱۲۷ </span>
+		<button class="btn btn-success" id="btnSyncNow">همگام شو</button>
+		<br><br>
+		<div class="loading hide"></div>
+		<br>
+
+
+		<div class="tranTable hide">
+		<div class="tranRow head">
+			<div class="tranType">
+			</div>
+			<div class="tranDate">
+			تاریخ
+			</div>
+			<div class="tranPay">
+			مبلغ
+			</div>
+			<div class="tranDes">
+				توضیحات
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۲۲/۱۱/۹۱
+			</div>
+			<div class="tranPay">
+			۱۰۰۰۰
+			</div>
+			<div class="tranDes">
+				خرج ناهار
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۲۲/۴/۹۰
+			</div>
+			<div class="tranPay">
+			۱۵۰۰۰
+			</div>
+			<div class="tranDes">
+			خرید بلوز
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType down">
+			</div>
+			<div class="tranDate">
+			۴/۳/۹۱
+			</div>
+			<div class="tranPay">
+			۲۵۰۰۰
+			</div>
+			<div class="tranDes">
+				کادوی ماعده
+			</div>
+		</div>
+		<div class="tranRow">
+			<div class="tranType up">
+			</div>
+			<div class="tranDate">
+			۲۵/۴/۹۱
+			</div>
+			<div class="tranPay">
+			۲۰۰۰۰۰
+			</div>
+			<div class="tranDes">
+				دریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاددریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاد
+			</div>
+		</div>
+	</div>
+
+	<button class="btn btn-warning" id="btnSyncConfig">تنظیم همگام‌سازی بانک</button>
+	<br>
+	<form action="" id="syncConfig" class="hide">
+		<input type="text" placeholder="شماره حساب"><br>
+		<input type="text" placeholder="شماره کاربری"><br>
+		<input type="text" placeholder="رمز عبوربانک"><br>
+		<br>
+		<input type="submit" class="btn btn-success" value="اعمال">
+	</form>
+
+	</div>
+	</div>
+{%endblock%}

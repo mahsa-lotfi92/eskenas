@@ -10,7 +10,9 @@ transition: all 0.4s ease-in-out;
 	font-family: tahoma;
 	font-size: 13px;
 	border-radius: 10px;
+	padding: 15px 10px;
 }
+
 .tranRow {
 	height: 50px;
 	display: table-row;
@@ -37,7 +39,7 @@ transition: all 0.4s ease-in-out;
 	background: url(../img/darr.png) no-repeat 0 10px;
 }
 .tranPay {
-	width: 45px;
+	width: 80px;
 }
 .tranDate{
 	width: 90px;
@@ -45,7 +47,17 @@ transition: all 0.4s ease-in-out;
 .tranDes{
 }
 .tranCat{
-	width: 55px;
+	width: 160px;
+}
+.lastBarItem a{
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding: 0px 10px 0px 0px;
+}
+.lastBarItem{
+	line-height: 28px;
+	color: black;
 }
 .barItem{
 	line-height: 28px;
@@ -62,12 +74,13 @@ transition: all 0.4s ease-in-out;
 	background: rgb(207, 207, 207);
 	color: rgb(29, 29, 148);
 }
-.lastBarItem{
-	border-bottom: none;
+.lastBarItem a:hover{
+	background: rgb(207, 207, 207);
+	font-weight: normal;
+	color: rgb(29, 29, 148);
 }
 .barItem.active{
 	background: rgb(191, 191, 245);
-	border-radius: 5px;
 }
 
 
@@ -128,7 +141,7 @@ transition: all 0.4s ease-in-out;
 	overflow: hidden;
 }
 #inCon {
-	width: 2295px;
+	width: 3500px;
 	margin-right: -20px;
 }
 .solsCon {
@@ -139,74 +152,54 @@ transition: all 0.4s ease-in-out;
 #content {
 	overflow: hidden;
 }
-.tranPart {
-	float: right;
-	padding: 20px;
-}
-input#transaction {
-	width: 119px;
-}
-input#auto{
-	width: 200px;
-}
-#upOrDown{
-	direction: ltr;
-}
-.icoUp {
-	height: 31px;
-	width: 31px;
-	background-image:  url(../img/uarr.png);
-}
-.icoDown {
-	height: 31px;
-	width: 31px;
-	background-image: url(../img/darr.png);
-}
-#upOrDown .btn {
-	padding: 0px;
-}
-input#desc.auto {
-	width: 502px;
-}
-input#desc {
-	width: 541px;
-}
-input.transaction {
-	width: 191px;
-}
-input.auto {
-	width: 119px;
+
+/* --------------------- Header ------------------------------ */
+#content .header{
+	margin-top: -20px;
 }
 
-h3 {
-	font-family: b yekan;
+/* --------------------- Filter ------------------------------ */
+
+#content .filter {
+	width: 100%;
+	border: 1px dotted #CCC;
+	border-radius: 5px;
+	padding: 3px 0px;
+	margin-bottom: 25px;
 }
-#moshakhasat {
-	color: #777;
+
+#content .filter .criteria{
+	float:right;
 }
-.loading {
-	background: url(../img/loading.gif);
-	width: 24px;
-	height: 24px;
-	display: none;
+
+#content .filter .criteria.account{
+    margin: 15px 30px 0px 0px;
 }
-#syncConfig {
-	margin: 20px auto;
-	padding: 20px;
-	border-radius: 10px;
-	width: 40%;
+
+#content .filter .criteria.time{
+    margin: 15px 45px 0px 0px;	
 }
-#sync .tranTable{
-	margin-bottom: 20px;
+
+#content .filter .criteria.type{
+	float:left;
+	margin-left: 15px;
 }
-#catHead {
+
+/* --------------------- Detail ------------------------------ */
+
+#content .detail{
+	margin-top: 20px;
+}
+
+#content .detail .tableWrapper{
 	float: right;
-	width: 350px;
+	width: 300px;
+	padding: 0px 20px 0px 5px;
+	border-left: 1px dotted #CCC;
 }
-#addCat {
+
+#content .detail .extra{
 	float: right;
-	margin: 20px;
-}
-#catHeadInput{
-	margin: 0px;
+	width: 346px;
+	margin-right: 20px;
 }

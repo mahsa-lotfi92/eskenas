@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<body>
+	<form action='.' method="post">
+		<input name= "formID" value="1" type="hidden">
+		<input name="name" placeholder="نام دسته" type="text"><br>
+		<input type="submit">
+	</form>
+	<ul>
+		{% for c in cats %}
+        	<li>
+        		{{c.name}}
+        		<ul>
+        			{% for b in c.cat_set.all %}
+        			<li>
+        			{{b.name}}
+        			<form action='.' method="post">
+				    	<input name= "formID" value="3" type="hidden">
+						<input name= "id" value="{{b.id}}" type="hidden">
+						<input type="submit" value="حذف">
+					</form>
+        			</li>
+        			{% endfor %}
+				    <form action='.' method="post">
+				    	<input name= "formID" value="2" type="hidden">
+						<input name="name" placeholder="نام زیر دسته" type="text"><br>
+						<input name= "parent" value="{{c.id}}" type="hidden">
+						<input type="submit">
+					</form>
+        		</ul>
+        	</li>
+    	{% endfor %}
+	</ul>
+</body>
+</html>

@@ -156,26 +156,19 @@
 
 		<br>
 		<br>
-
+		<div id= 'catHead'>
 		<h1>دسته‌بندی‌ها</h1>
+		</div>
+		<div id= 'addCat'>
+		<input type="text" placeholder="نام دسته" id= 'catHeadInput' >
+		<button class="btn btn-success" >
+					<i class="icon-plus icon-white"></i> دسته
+				</button>
+		</div>
+		<div class="clearfix">
+		</div>
 		<div class="cat-table">
-			<div class="xrow cat"><div class="name">درآمد نوع ۱</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="xrow subcat"><div class="name">زیر نوع یک</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="xrow subcat"><div class="name ">زیر نوع دوم!!</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="hider"><div class="xrow add anim"><input type="text" placeholder="نام را وارد کنید"><i class="icon-plus"></i></div></div>
-			
-			<div class="xrow cat"><div class="name ">دسته فیلان</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="hider"><div class="xrow add anim"><input type="text" placeholder="نام را وارد کنید"><i class="icon-plus"></i></div></div>
-			
-			<div class="xrow cat"><div class="name ">پوشاک</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="xrow subcat"><div class="name ">شلوار</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="xrow subcat"><div class="name ">بلوز</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="xrow subcat"><div class="name ">لباس مهمونی :پی</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="hider"><div class="xrow add anim"><input type="text" placeholder="نام را وارد کنید"><i class="icon-plus"></i></div></div>
-			
-			<div class="xrow cat"><div class="name ">تغذیه</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="xrow subcat"><div class="name ">رستوران</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-			<div class="hider"><div class="xrow add anim"><input type="text" placeholder="نام را وارد کنید"><i class="icon-plus"></i></div></div>
+			<div class="xrow cat"><div class="name">{{c.name}}</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
 		</div>
 
 
