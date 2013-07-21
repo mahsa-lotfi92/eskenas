@@ -22,6 +22,14 @@ $(function () {
 		$ ('.barItem').removeClass('active')
 		$(this).addClass('active')
 	})
+	
+	$('#sidebar .barItem').eq(3).click(function(ev) {
+		ev.preventDefault()
+
+		$ ('#inCon').css('margin-right', -2315 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
+	})
 })
 
 $(function (){

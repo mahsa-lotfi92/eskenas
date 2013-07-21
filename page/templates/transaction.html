@@ -9,6 +9,9 @@
 
 {%block sidebar%}
 	<div class="barItem active">
+		<a href="?">دسته‌بندی‌ها</a>
+	</div>
+	<div class="barItem">
 		<a href="?">تراکنش‌ها</a>
 	</div>
 	<div class="barItem">
@@ -21,6 +24,55 @@
 
 {%block content%}
 	<div id="inCon" class="anim">
+		<div class="solsCon">
+			<div id= 'catHead'>
+	<h1>دسته‌بندی‌ها</h1>
+	</div>
+	<div id= 'addCat'>
+	
+	<form action='.' method="post">
+		<input name= "formID" value="1" type="hidden">
+		<input name="name" placeholder="نام دسته" type="text" id= 'catHeadInput'>
+	</form>
+	
+	<button class="btn btn-success" >
+				<i class="icon-plus icon-white"></i> دسته
+	</button>
+	</div>
+	<div class="clearfix">
+	</div>
+	<div class="cat-table">
+		{% for c in cats %}
+		<div class="xrow cat"><div class="name">{{c.name}}</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
+		
+			<form action='.' method="post">
+				    	<input name= "formID" value="3" type="hidden">
+						<input name= "id" value="{{c.id}}" type="hidden">
+			</form>
+
+		
+		<div class="clearfix"></div></div>
+		{% for b in c.cat_set.all %}
+		<div class="xrow subcat"><div class="name">{{b.name}}</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
+			<form action='.' method="post">
+				    	<input name= "formID" value="3" type="hidden">
+						<input name= "id" value="{{b.id}}" type="hidden">
+			</form>
+		<div class="clearfix"></div></div>
+		{%endfor%}
+		<div class="hider"> <div class="xrow add anim"> 
+			<form action='.' method="post">
+				<input type="text" placeholder="نام زیر دسته" name= "name">
+		    	<input name= "formID" value="2" type="hidden">
+				<input name= "parent" value="{{c.id}}" type="hidden">
+			</form>
+			
+			<i class="icon-plus"></i>
+			
+		</div></div>
+		{%endfor%}
+	</div>
+		</div>
 		<div class="solsCon">
 		<div id="addTran">
 		<div class="tranPart">
@@ -141,54 +193,8 @@
 			</div>
 		</div>
 	</div>
-
-	<br>
-	<br>
-	<div id= 'catHead'>
-	<h1>دسته‌بندی‌ها</h1>
-	</div>
-	<div id= 'addCat'>
-	
-	<form action='.' method="post">
-		<input name= "formID" value="1" type="hidden">
-		<input name="name" placeholder="نام دسته" type="text" id= 'catHeadInput'>
-	</form>
-	
-	<button class="btn btn-success" >
-				<i class="icon-plus icon-white"></i> دسته
-	</button>
-	</div>
-	<div class="clearfix">
-	</div>
-	<div class="cat-table">
-		{% for c in cats %}
-		<div class="xrow cat"><div class="name">{{c.name}}</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i><div class="clearfix"></div></div>
-		{% for b in c.cat_set.all %}
-		<div class="xrow subcat"><div class="name">{{b.name}}</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
-			<form action='.' method="post">
-				    	<input name= "formID" value="3" type="hidden">
-						<input name= "id" value="{{b.id}}" type="hidden">
-			</form>
-		<div class="clearfix"></div></div>
-		{%endfor%}
-		<div class="hider"> <div class="xrow add anim"> 
-			<form action='.' method="post">
-				<input type="text" placeholder="نام زیر دسته" name= "name">
-		    	<input name= "formID" value="2" type="hidden">
-				<input name= "parent" value="{{c.id}}" type="hidden">
-			</form>
-			
-			<i class="icon-plus"></i>
-			
-		</div></div>
-		{%endfor%}
-	</div>
-
-
-
-
-	<br>
 </div>
+				
 <div class="solsCon">
 <div class="addTran">
 	<div class="tranPart">
@@ -310,7 +316,8 @@
 		</div>
 		</div>
 	</div>
-	<div class="solsCon" id="sync">
+
+		<div class="solsCon">
 		<h3>همگام سازی با بانک فیلان</h3>
 		<span id="moshakhasat">بانک پاسارگاد - شماره حساب ۵۶۴۱۹۸۰۱۲۷ </span>
 		<button class="btn btn-success" id="btnSyncNow">همگام شو</button>
