@@ -23,34 +23,31 @@ transition: all 0.4s ease-in-out;
 	line-height: 40px;
 }
 .tranType {
-	width: 20px;
+	width: 55px;
 }
-.tranPay, .tranDate, .tranDes, .tranType , .tranCat{
+.tranPay, .tranDate, .tranDes, .tranType, .tranCat {
 	padding: 4px 7px;
 	display: table-cell;
 	border-bottom: 1px solid rgb(213, 203, 203);
+border-bottom: 1px solid rgb(213, 203, 203);
 }
-.tranType.up{
+.tranType.up {
 	background: url(../img/uarr.png) no-repeat 0 10px;
 }
-.tranType.down{
+.tranType.down {
 	background: url(../img/darr.png) no-repeat 0 10px;
 }
 .tranPay {
-	width: 45px;
+	width: 65px;
 }
-.tranDate{
-	width: 90px;
+.tranDate {
+	width: 95px;
 }
-.tranDes{
+.tranDes {
+	width: 220px;
 }
-.tranCat{
-	width: 55px;
-}
-.barItem{
-	line-height: 28px;
-	color: black;
-	border-bottom: 1px solid rgb(213, 213, 213);
+.tranCat {
+	width: 65px;
 }
 .barItem a{
 	display: block;
@@ -207,4 +204,58 @@ h3 {
 }
 #catHeadInput{
 	margin: 0px;
+}
+.TranEdit {
+	float: left;
+}
+.TranRemove {
+	float: left;
+	width: 20px;
+}
+.TranER {
+	width: 130px;
+	float: left;
+}
+
+.TRedit {
+
+	height: 50px;
+	margin: 5px;
+	border-bottom: 1px solid rgb(213, 203, 203);
+	display: none;
+
+}
+
+.tranPayEdit {
+	padding: 4px;
+	width: 65px;
+}
+.tranDateEdit {
+	width: 90px;
+}
+.tranDesEdit {
+	width: 240px;
+}
+.tranCatEdit {
+	width: 65px;
+}
+.tranPayEdit, .tranDateEdit, .tranDesEdit, .tranTypeEdit, .tranCatEdit {
+	margin-top:10px; 
+}
+#upOrDownEdit {
+	margin: 0px;
+	direction: ltr;
+}
+#upOrDownEdit .btn {
+	padding: 0px;
+}
+.btn-warning{
+	font-family: Tahoma;
+	height: auto;
+}
+.editAction{
+	font-family: Tahoma;
+	height: 23px;
+	text-align: center;
+	border-radius: 3px;
 }

@@ -73,3 +73,43 @@ $(function (){
 		$('#syncConfig').slideDown()
 	})
 })
+
+		$(function() {
+
+			$('#addTranSubmit').click(function(ev) {
+				ev.preventDefault();
+				$(this).parent().parent().submit()
+
+			});
+
+			$('.TranRemove').click(function(ev) {
+				ev.preventDefault();
+				$(this).parent().parent().submit()
+
+			});
+			$('.TranEdit').click(function(ev) {
+				ev.preventDefault();
+				$(this).parent().parent().parent().find('.TRedit').css('display', 'inherit');
+			});
+			$('.cancelEdit').click(function(ev) {
+				ev.preventDefault();
+				$(this).parent().css('display', 'none');
+			});
+			$('.catItem').click(function(ev) {
+				ev.preventDefault();
+				$('.Category').val($(this).text());
+
+			});
+			$('.income').click(function(ev) {
+				ev.preventDefault();
+				$('.isIncome').val(1);
+
+			});
+			$('.outcome').click(function(ev) {
+				ev.preventDefault();
+
+				$('.isIncome').val(0);
+
+			});
+
+		})
