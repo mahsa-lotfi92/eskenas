@@ -10,6 +10,14 @@
 		{% for c in cats %}
         	<li>
         		{{c.name}}
+        		
+        			<form action='.' method="post">
+					<input name= "formID" value="4" type="hidden">
+					<input name= "id" value="{{c.id}}" type="hidden">
+					<input name= "new" type="text" placeholder="نام جدید">
+					<input type= "submit" value="تغییر">
+					</form>
+					
         		<ul>
         			{% for b in c.cat_set.all %}
         			<li>
@@ -19,6 +27,14 @@
 						<input name= "id" value="{{b.id}}" type="hidden">
 						<input type="submit" value="حذف">
 					</form>
+					
+					<form action='.' method="post">
+					<input name= "formID" value="4" type="hidden">
+					<input name= "id" value="{{b.id}}" type="hidden">
+					<input name= "new" type="text" placeholder="نام جدید">
+					<input type= "submit" value="تغییر">
+					</form>
+					
         			</li>
         			{% endfor %}
 				    <form action='.' method="post">

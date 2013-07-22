@@ -60,7 +60,7 @@ $(function() {
 	$('.cat-table').on('click', '.xrow .remove', function() {
 		var row = $(this).parent()
 		if (confirm('حتما ' + row.find('.name').text() + ' حذف شود؟ ')) {
-			row.find('form').submit()
+			row.find('form#delete').submit()
 		}
 	})
 	// sync now!
