@@ -27,6 +27,10 @@ def transaction(req):
             new.save()
         if req.POST['formID']=="3":
             Cat.objects.filter(id= req.POST['id']).delete()
+        if req.POST['formID']=="4":
+            p= Cat.objects.get(id= req.POST['id'])
+            p.name= req.POST['new']
+            p.save()
     T = Transaction.objects.all().order_by('-date')
     return  render(req, 'transaction.html', {"Tran":T, 'cats': Cat.objects.filter(isSub=False)})
 

@@ -48,14 +48,15 @@ $(function() {
 		}
 	})
 	// edit each (sub)category
-	$('.cat-table').on('click', '.xrow .edit', function() {
-		var row = $(this).parent()
-
-		var inp = prompt('New value:')
-		if (inp) {
-			row.find('.name').html(inp)
-		}
-	})
+		$('.cat-table').on('click', '.xrow .edit', function() {
+			var row = $(this).parent()
+			if (row.data('pressed')) {
+				row.find('form.forSub').submit()
+			} else {
+				row.find('form.edt').removeClass('edt')
+				row.data('pressed', true)
+			}
+		})
 	// remove each (sub)category
 	$('.cat-table').on('click', '.xrow .remove', function() {
 		var row = $(this).parent()

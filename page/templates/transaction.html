@@ -47,7 +47,7 @@
 					{{c.name}}
 				</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
 				
-				<form action='.' method="post">
+				<form action='.' method="post" class= "edt" class="forSub">
 					<input name= "formID" value="4" type="hidden">
 					<input name= "id" value="{{c.id}}" type="hidden">
 					<input name= "new" type="text" placeholder="نام جدید">
@@ -67,7 +67,15 @@
 				<div class="name">
 					{{b.name}}
 				</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
-				<form action='.' method="post">
+				
+				<form action='.' method="post" class= "edt" class="forSub">
+					<input name= "formID" value="4" type="hidden">
+					<input name= "id" value="{{b.id}}" type="hidden">
+					<input name= "new" type="text" placeholder="نام جدید">
+					<input type= "submit" value="تغییر">
+				</form>
+				
+				<form action='.' method="post" id="delete">
 					<input name= "formID" value="3" type="hidden">
 					<input name= "id" value="{{b.id}}" type="hidden">
 				</form>
