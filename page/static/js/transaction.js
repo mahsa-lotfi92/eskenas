@@ -63,7 +63,7 @@ $(function (){
 	// remove each (sub)category
 	$('.cat-table').on('click', '.xrow .remove', function() {
 		var row = $(this).parent()
-		if (confirm('زیر دسته‌ی ' + row.find('.name').text() + ' حذف شود؟ ')) {
+		if (confirm('حتما ' +row.find('.name').text() + ' حذف شود؟ ')) {
 		row.find('form').submit()
 		}
 	})
