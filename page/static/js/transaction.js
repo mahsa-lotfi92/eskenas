@@ -51,6 +51,7 @@ $(function() {
 		$('.cat-table').on('click', '.xrow .edit', function() {
 			var row = $(this).parent()
 			if (row.data('pressed')) {
+				console.log(row.find('form.forSub'))
 				row.find('form.forSub').submit()
 			} else {
 				row.find('form.edt').removeClass('edt')
