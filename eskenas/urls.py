@@ -9,5 +9,7 @@ urlpatterns = patterns('',
      url(r'^transaction/$', 'transaction.views.transaction'),
 	 url(r'^transaction/add/$', 'transaction.views.addTransaction'),
      url(r'^transaction/delete/$', 'transaction.views.deleteTransaction'),
-     url(r'^transaction/edit/$', 'transaction.views.editTransaction')
+     url(r'^transaction/edit/$', 'transaction.views.editTransaction'),
+     url(r'^report/$', 'report.views.general'),
 )
+
