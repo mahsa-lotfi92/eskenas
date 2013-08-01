@@ -11,5 +11,6 @@ urlpatterns = patterns('',
      url(r'^transaction/delete/$', 'transaction.views.deleteTransaction'),
      url(r'^transaction/edit/$', 'transaction.views.editTransaction'),
      url(r'^report/$', 'report.views.general'),
+     url(r'^ajax/monthly_report/$', 'report.views.monthly'),
 )
 
