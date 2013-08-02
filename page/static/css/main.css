@@ -63,3 +63,14 @@ button.btn {
 	color: rgb(10, 47, 196);
 	font-weight: normal;
 }
+#user{
+	width: 200px;
+	background: red;
+	height: 100px;
+	position: fixed;
+	top: 0;
+	left: 20%;
+	margin-left: -100px;
+}
+#nearMain {
+}
