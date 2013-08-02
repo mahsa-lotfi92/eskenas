@@ -65,12 +65,18 @@ button.btn {
 }
 #user{
 	width: 200px;
-	background: red;
-	height: 100px;
+	background:#F2F3F0;
+	height: 30px;
 	position: fixed;
 	top: 0;
-	left: 20%;
-	margin-left: -100px;
+	margin-top: 5px;
+	left: 50%;
+	margin-left: -710px;
+	border-radius: 5px;
+	padding: 10px;
+	float: right;
 }
-#nearMain {
+#userName {
+	width: 70%;
+	float: right;
 }
