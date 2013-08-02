@@ -15,57 +15,38 @@
 
 
 {%block content%}
+			<form method="post" action=".">
 				<div id="addBudget">
 			<div class="budgetPart">
-				<button class="btn btn-success" >
+				<button class="btn btn-success" idid="addBudget">
 					<i class="icon-plus icon-white"></i> بودجه
 				</button>
 				
 			</div>
 			<div class="budgetPart">
-				<input type="text" placeholder="مبلغ">
+				<input name= "formID" value="1" type="hidden">
+				<input type="text" placeholder="مبلغ" name="limit">
 			</div>
 			<div class="budgetPart">
-			<div class="btn-group" id="cat">
-  				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-    			دسته‌ها
-    			<span class="caret"></span>
-  				</a>
-  				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-				 <li><a href="#">رستوران</a></li>
-				 <li><a href="#">لباس</a></li>
-				 <li><a href="#">لوازم تحریر</a></li>
-				</ul>
-				</div>
+				<select name= "catList" id="catList">
+					{%for c in cats%}
+					<option class="catItem" value="{{c.id}}">{{c.name}}</option>
+					{%endfor%}
+				</select>
 			</div>
 		</div>
+		</form>
 		<div class="clearfix"></div>
+		{%for b in bugs%}
 		<div class="remainBug">
 			<div class="bugName">
-				رستوران
+				{{b.bugCat.name}}
 			</div>
 			<div class="progress progress-danger">
 			 	<div class="bar" style="width: 99%;"> 99,000</div>
 			</div>
-			100,000
+			{{b.limit}}
 		</div>
-		<div class="remainBug">
-			<div class="bugName">
-				کادو
-			</div>
-			<div class="progress progress-warning">
-			 	<div class="bar" style="width: 60%;">30,000</div>
-			</div>
-			50,000
-		</div>
-		<div class="remainBug">
-			<div class="bugName">
-				کرایه
-			</div>
-			<div class="progress">
-			 	<div class="bar" style="width: 20%;">6,000</div>
-			</div>
-			30,000
-		</div>
+		{%endfor%}
 
 {%endblock%}
