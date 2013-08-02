@@ -38,8 +38,7 @@ $(function () {
 			            },
 
 			            xAxis: {
-
-			                categories: ['حقوق بنیاد', 'تدریس خصوصی', 'پروژه تحلیل'],
+			                categories: [],
 							style:
 		                    {
 		                        direction: "rtl",
@@ -62,45 +61,41 @@ $(function () {
 								
 
 			                },
-			                stackLabels: {
-			                enabled: true,
-			                style: {
-			                    fontWeight: 'bold',
-			                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray',
-		                        direction: "rtl",
-		                        fontSize: "16px"
-			                }
-			            }
+				                stackLabels: {
+				                enabled: true,
+				                style: {
+				                    fontWeight: 'bold',
+				                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray',
+			                        direction: "rtl",
+			                        fontSize: "16px"
+				                }
+				            }
 
 			            },
 
 			            legend: {
+							align: 'right',
+				            x: -100,
+				            verticalAlign: 'top',
+				            y: 20,
+				            floating: true,
+				            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
+				            borderColor: '#CCC',
+				            borderWidth: 1,
+				            shadow: false,
+									style:
+				                    {
+				                        direction: "rtl",
+				                        fontSize: "16px"
+				                    }
 
-			               align: 'right',
-			            x: -100,
-			            verticalAlign: 'top',
-			            y: 20,
-			            floating: true,
-			            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
-			            borderColor: '#CCC',
-			            borderWidth: 1,
-			            shadow: false,
-								style:
-			                    {
-			                        direction: "rtl",
-			                        fontSize: "16px"
-			                    }
-
-			            },
-
+				            },
 			            tooltip: {
-
 			              formatter: function() {
 			                return '<b>'+ this.x +'</b><br/>'+
 			                    this.series.name +': '+ this.y +'<br/>'+
 			                    'Total: '+ this.point.stackTotal ;
-			            }
-
+				            }
 			            },
 
 			            plotOptions: {
@@ -120,13 +115,7 @@ $(function () {
 			                }
 
 			            },
-
-			                series: [{
-
-			                name: 'درآمد',
-
-			                data: [2000, 500, 1500]
-
+			            series: [{
 			            }]
         });
 
@@ -298,7 +287,7 @@ $(function () {
 
 window.report.core = (function () {
 	//Private
-	var chartData, sortable; 
+	var chartData, sortable, total; 
 	
 	function beginLoading(){
 		$("#report-loading").animate({opacity:1});
@@ -322,8 +311,8 @@ window.report.core = (function () {
 		if (data.result == "OK"){
 			//---------------
 			chartData = data.data ;
-			var total = 0 ;
-			var sortable = [];
+			total = 0 ;
+			sortable = [];
 			
 			for (var key in chartData) {
 				sortable.push([key, chartData[key]])
@@ -351,8 +340,6 @@ window.report.core = (function () {
 window.report.ui = (function () {
 	//Private
 	function loadDetail(data, total){
-		console.log('detail : ')
-		console.log(data);		
 		for(var i = 0 ; i < 4 ; i++){
 			if (i < data.length){
 				$('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
@@ -362,14 +349,32 @@ window.report.ui = (function () {
 				$('.detail .tranRow').eq(i+1).find(' .tranPay').html('');				
 			}
 		}
-		
-		$('.detail .total').html(total)
-		
+		$('.detail .total').eq(0).html(total)
+		$('.detail .total').eq(1).html(data[0][0])
 	}
 	
 	function loadChart(data){
-		console.log('chart : ');
-		console.log(data);
+		var chart =  $('#income .chart-container').highcharts();
+		//------------------------------------------------
+	    while(chart.series.length > 0)
+			chart.series[0].remove();
+			
+		var arr = [], category = [] 
+		for(var cat in data){
+			arr.push(data[cat]) 
+			category.push(cat)
+		}
+		//------------------------------------------------
+		chart.xAxis[0].setCategories(category, false);
+		var  variable =   [{
+		    type: 'column',
+		    name: 'درآمد',
+		    data: arr
+		}]; 
+		for(var i in variable) {
+		    chart.addSeries(variable[i], false);
+		}
+		chart.redraw(); 
 	}
 	
 	return {
