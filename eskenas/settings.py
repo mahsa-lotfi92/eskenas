@@ -119,7 +119,8 @@ INSTALLED_APPS = (
 
     'cat',
     'page',
-	'transaction'
+	'transaction',
+    'budget'
 )
 
 # A sample logging configuration. The only tangible logging
