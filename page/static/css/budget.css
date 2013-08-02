@@ -40,3 +40,9 @@
 cursor: pointer;
 padding: 5px;
 }
+.edt {
+	display: none;
+}
+.limitEdit {
+	margin-top: 10px;
+}

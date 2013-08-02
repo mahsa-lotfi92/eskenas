@@ -15,5 +15,6 @@ urlpatterns = patterns('',
      url(r'^budget/$', 'budget.views.budgetForm'),
      url(r'^budget/add/$', 'budget.views.budgetAdd'),
      url(r'^budget/del/$', 'budget.views.budgetDel'),
+     url(r'^budget/edit/$', 'budget.views.budgetEdit'),
 )
 
