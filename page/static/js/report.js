@@ -364,8 +364,7 @@ window.report.ui = (function () {
 			arr.push(data[cat]) 
 			category.push(cat)
 		}
-		//------------------------------------------------
-		chart.xAxis[0].setCategories(category, false);
+		//------------------------------------------------	
 		var  variable =   [{
 		    type: 'column',
 		    name: 'درآمد',
@@ -374,6 +373,7 @@ window.report.ui = (function () {
 		for(var i in variable) {
 		    chart.addSeries(variable[i], false);
 		}
+		chart.xAxis[0].setCategories(category, false);
 		chart.redraw(); 
 	}
 	
