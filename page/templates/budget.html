@@ -28,10 +28,9 @@
 				<input type="text" placeholder="مبلغ" name="limit">
 			</div>
 			<div class="budgetPart">
-				<input  name="Category" id="Category" type="hidden" />
-				<select id="catList">
+				<select name= "catList" id="catList">
 					{%for c in cats%}
-					<option class="catItem">{{c.name}}</option>
+					<option class="catItem" value="{{c.id}}">{{c.name}}</option>
 					{%endfor%}
 				</select>
 			</div>
