@@ -15,17 +15,20 @@
 
 
 {%block content%}
+			<form method="post" action=".">
 				<div id="addBudget">
 			<div class="budgetPart">
-				<button class="btn btn-success" >
+				<button class="btn btn-success" idid="addBudget">
 					<i class="icon-plus icon-white"></i> بودجه
 				</button>
 				
 			</div>
 			<div class="budgetPart">
-				<input type="text" placeholder="مبلغ">
+				<input name= "formID" value="1" type="hidden">
+				<input type="text" placeholder="مبلغ" name="limit">
 			</div>
 			<div class="budgetPart">
+				<input  name="Category" id="Category" type="hidden" />
 				<select id="catList">
 					{%for c in cats%}
 					<option class="catItem">{{c.name}}</option>
@@ -33,6 +36,7 @@
 				</select>
 			</div>
 		</div>
+		</form>
 		<div class="clearfix"></div>
 		{%for b in bugs%}
 		<div class="remainBug">
