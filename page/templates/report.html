@@ -1,0 +1,428 @@
+{%extends 'base.html'%}
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/report.css">
+{%endblock%}
+
+{%block js%}
+<script src="{{STATIC_URL}}js/highcharts.js"></script>
+<script src="{{STATIC_URL}}js/exporting.js"></script>
+<script src="{{STATIC_URL}}js/report.js"></script>
+
+<script>
+
+</script>
+{%endblock%}
+
+{%block sidebar%}
+<div class="barItem active">
+	<a href="?">کلی</a>
+</div>
+<div class="barItem">
+	<a href="?">درآمد‌ها  <a/>
+</div>
+
+<div class="barItem">
+	<a href="?">هزینه‌ها  <a/>
+</div>
+
+<div class="barItem">
+	<a href="?">ماهانه</a>
+</div>
+{%endblock%}
+
+{%block content%}
+<div id="content">
+	<div id="inCon" class="anim">
+		<div class="solsCon">
+			<h5>
+			منتظر گزارش های ما در این مکان باشید :)
+			</h5>
+		</div>
+		
+		<div id="income" class="solsCon">
+			<div class="report">
+				<div class="header">
+					<h3>
+						هزینه ها بر اساس دسته بندی
+					</h3>
+				</div>
+				<button id="refresh" class="btn btn-success">ارسال</button>
+				
+				<div class="filter">
+					<div calss="wrapper">
+						<div class="btn-group open criteria account">
+			                <button class="btn dropdown-toggle" data-toggle="dropdown">
+								تمام حساب‌ها
+								 <span class="caret"></span></button>
+			                <ul class="dropdown-menu">
+
+  			                  <li><a href="#">
+								  تمام حساب‌ها
+							  </a></li>
+			                  <li class="divider"></li>
+			                  <li><a href="#">
+								  <span class="name">
+									  سپرده
+								  </span>
+								  <span class="bank">
+									  پاسارگارد
+								  </span>
+							  </a></li>
+			                  <li><a href="#">
+								  <span class="name">
+									  قرض‌افحسنه
+								  </span>
+								  <span class="bank">
+									  پارسیان
+								  </span>
+
+			                  </a></li>
+		                  
+			                </ul>
+			              </div>
+					  
+  						<div class="btn-group open criteria time">
+  			                <button class="btn dropdown-toggle" data-toggle="dropdown">
+								سال گذشته
+  								 <span class="caret"></span></button>
+  			                <ul class="dropdown-menu">
+
+  			                  <li><a href="#"> بازه‌ی دلخواه
+							    </a></li>
+  			                  <li><a href="#">   هفته گذشته  </a></li>
+  			                  <li><a href="#">   ماه گذشته  </a></li>
+			                  <li><a href="#"> سال گذشته  </a></li>
+  			                  <li><a href="#"> تمام ادوار  </a></li>
+						  
+		                  
+  			      			</ul>
+  			              </div>
+					  
+					  
+						  <div class="btn-group btn-group-vertical criteria type">
+						    <button class="btn">نمودار برحسب زمان</button>
+						    <button class="btn disabled">نمودار برحسب دسته</button>
+						  </div>
+						  
+						  <div class="clearfix"></div>
+					 </div>
+				</div>
+				
+				<div class="chart">
+
+					<div class="chart-container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+				</div>
+				<div class="detail">
+					<h4>
+						
+										جزئیات 
+					</h4>
+							
+					<div class="tranTable">
+						<div class="tableWrapper">
+							<div class="tranRow head">
+								<div class="tranCat">
+									دسته
+								</div>
+								<div class="tranPay">
+								هزینه	
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">-
+								</div>
+								<div class="tranPay">-
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">-
+								</div>
+								<div class="tranPay">-
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">-
+								</div>
+								<div class="tranPay">-
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">-
+								</div>
+								<div class="tranPay">-
+								</div>
+							</div>
+						</div>
+						<div class="extra">
+							<h5>مجموع هزینه:</h5>
+							<h7 class="total">-</h7>
+							<br>	
+							<br>
+							<h5>پر درآمد ترین دسته:</h5>
+							<h7 class="total">-</h7>
+
+							<!-- <div class="alert alert-info" style="margin-top:10px;">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+								با 
+								<strong>
+								بودجه بندی
+								</strong>
+								 در پرهینه ترین دسته‌ی خود فلان قدر پول ذخیره کنید.
+							</div> -->
+						</div>
+						
+						
+						<div class="clearfix"></div>
+					</div>
+
+
+				</div>
+			</div> 
+		</div>
+		
+		<div id="spending" class="solsCon">
+			<div class="report">
+				<div class="header">
+					<h3>
+						هزینه ها بر اساس دسته بندی
+					</h3>
+				</div>
+				
+				<div class="filter">
+					<div calss="wrapper">
+						<div class="btn-group open criteria account">
+			                <button class="btn dropdown-toggle" data-toggle="dropdown">
+								تمام حساب‌ها
+								 <span class="caret"></span></button>
+			                <ul class="dropdown-menu">
+
+  			                  <li><a href="#">
+								  تمام حساب‌ها
+							  </a></li>
+			                  <li class="divider"></li>
+			                  <li><a href="#">
+								  <span class="name">
+									  سپرده
+								  </span>
+								  <span class="bank">
+									  پاسارگارد
+								  </span>
+							  </a></li>
+			                  <li><a href="#">
+								  <span class="name">
+									  قرض‌افحسنه
+								  </span>
+								  <span class="bank">
+									  پارسیان
+								  </span>
+
+			                  </a></li>
+		                  
+			                </ul>
+			              </div>
+					  
+  						<div class="btn-group open criteria time">
+  			                <button class="btn dropdown-toggle" data-toggle="dropdown">
+								سال گذشته
+  								 <span class="caret"></span></button>
+  			                <ul class="dropdown-menu">
+
+  			                  <li><a href="#"> بازه‌ی دلخواه
+							    </a></li>
+  			                  <li><a href="#">   هفته گذشته  </a></li>
+  			                  <li><a href="#">   ماه گذشته  </a></li>
+			                  <li><a href="#"> سال گذشته  </a></li>
+  			                  <li><a href="#"> تمام ادوار  </a></li>
+						  
+		                  
+  			      			</ul>
+  			              </div>
+					  
+					  
+						  <div class="btn-group btn-group-vertical criteria type">
+						    <button class="btn">نمودار برحسب زمان</button>
+						    <button class="btn disabled">نمودار برحسب دسته</button>
+						  </div>
+						  
+						  <div class="clearfix"></div>
+					 </div>
+					  
+				</div>
+				<div class="chart">
+
+					<div class="chart-container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+				</div>
+				<div class="detail">
+					<h4>
+						
+										جزئیات 
+					</h4>
+							
+					<div class="tranTable">
+						<div class="tableWrapper">
+							<div class="tranRow head">
+								<div class="tranCat">
+									دسته
+								</div>
+								<div class="tranPay">
+								هزینه	
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">
+									خوراک
+								</div>
+								<div class="tranPay">
+								۲۴۳ هزار
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">
+									خوراک
+								</div>
+								<div class="tranPay">
+								۲۴۳ هزار
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">
+									خوراک
+								</div>
+								<div class="tranPay">
+								۲۴۳ هزار
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">
+									خوراک
+								</div>
+								<div class="tranPay">
+								۲۴۳ هزار
+								</div>
+							</div>
+						</div>
+						<div class="extra">
+							<h5>مجموع هزینه:</h5>
+							<h7>۱، ۲۷۳ هزار تومن</h7>
+							<br>	
+							<br>
+							<h5>پر هزینه ترین دسته:</h5>
+							<h7>خوراک، ۲۴۳ هزار</h7>
+
+							<div class="alert alert-info" style="margin-top:10px;">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+								با 
+								<strong>
+								بودجه بندی
+								</strong>
+								 در پرهینه ترین دسته‌ی خود فلان قدر پول ذخیره کنید.
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+
+				</div>
+			</div> 
+		</div>
+		
+		
+		<div id="monthly" class="solsCon">
+			<div class="report">
+				<div class="header">
+					<h3>
+						گزارش ماهانه
+					</h3>
+				</div>
+				
+				<div class="chart">
+
+					<div class="chart-container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+				</div>
+				<div class="detail">
+					<h4>
+						
+										جزئیات 
+					</h4>
+							
+					<div class="tranTable">
+						<div class="tableWrapper">
+							<div class="tranRow head">
+								<div class="tranCat">
+									دسته
+								</div>
+								<div class="tranPay">
+								هزینه	
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">
+									خوراک
+								</div>
+								<div class="tranPay">
+								۲۴۳ هزار
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">
+									خوراک
+								</div>
+								<div class="tranPay">
+								۲۴۳ هزار
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">
+									خوراک
+								</div>
+								<div class="tranPay">
+								۲۴۳ هزار
+								</div>
+							</div>
+							<div class="tranRow">
+								<div class="tranCat">
+									خوراک
+								</div>
+								<div class="tranPay">
+								۲۴۳ هزار
+								</div>
+							</div>
+						</div>
+						<div class="extra">
+							<h5>مجموع هزینه:</h5>
+							<h7>۱، ۲۷۳ هزار تومن</h7>
+							<br>	
+							<br>
+							<h5>پر هزینه ترین دسته:</h5>
+							<h7>خوراک، ۲۴۳ هزار</h7>
+
+							<div class="alert alert-info" style="margin-top:10px;">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+								با 
+								<strong>
+								بودجه بندی
+								</strong>
+								 در پرهینه ترین دسته‌ی خود فلان قدر پول ذخیره کنید.
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+
+				</div>
+			</div> 
+		</div>
+		
+		
+	<div class="clearfix"></div>
+</div>
+{%endblock%}
+
+
+
+	
+	
+	
