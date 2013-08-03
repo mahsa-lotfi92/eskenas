@@ -116,11 +116,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
-
+    'django.contrib.humanize',
+    
     'cat',
     'page',
 	'transaction',
-    'budget'
+    'budget',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-
+{% load humanize %}
 {%block css%}
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/budget.css">
 {%endblock%}
@@ -58,10 +58,21 @@
 			
 			</div>
 			<div class="clearfix"></div>
+			
+			{%if b.per >= 70%}
 			<div class="progress progress-danger">
-			 	<div class="bar" style="width: 99%;"> 99,000</div>
+
+			{%elif 35 <= b.per %}
+			<div class="progress progress-warning">
+
+			{%else %}
+			<div class="progress progress-success">
+
+			{%endif%}
+			
+			 	<div class="bar" style="width: {{b.per}}%;"> {{b.cost|intcomma}} </div>
 			</div>
-			{{b.limit}}
+			{{b.limit | intcomma}}
 		<div class="clearfix"></div>
 		{%endfor%}
 
