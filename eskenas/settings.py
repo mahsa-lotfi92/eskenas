@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.humanize',
     
     'cat',
+	'myprofile',
     'page',
 	'transaction',
     'budget',
