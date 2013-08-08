@@ -1,0 +1,80 @@
+{%extends 'base.html'%}
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/home.css">
+{%endblock%}
+
+{%block js%}
+<script src="{{STATIC_URL}}js/home.js"></script>
+{%endblock%}
+
+{%block sidebar%}
+<div class="barItem active">
+	<a href="?">‌‌ورود به حساب</a>
+</div>
+<div class="barItem">
+	<a href="?"> درباره ما</a>
+</div>
+<div class="barItem">
+	<a href="?">تماس با ما</a>
+</div>
+{%endblock%}
+
+{%block content%}
+<div id="inCon" class="anim">
+	<div class="solsCon">
+		
+		<form class="login" method="post" action="/home/">
+			<div class="passRow">
+				{{khar}}
+				<div class="pass">
+					نام کاربری
+				</div>
+				<input type="text"  class="passIn" name="username">
+			</div>
+			<div class="passRow">
+				<div class="pass">
+					رمز عبور
+				</div>
+				<input type="password"  class="passIn" name="password">
+			</div>
+
+			<div class="passRow">
+				<div class="savePass">
+					<input type="submit" value="ورود">
+				</div>
+			</div>
+
+		</form>
+		<div class="message-box">
+			<div class="warning">
+				اخطار!
+			</div>
+			<div class="message">}</div>
+		</div>
+	</div>
+	<div class="solsCon">
+
+		<div class="textBox">
+			<div class="head">
+				خوش آمدید
+			</div>
+		</div>
+	</div>
+	<div class="solsCon">
+		<h3>تماس با ما</h3>
+		<div class="textBox">
+			<div id="contact">
+				<div class="rrow">
+					<label>ایمیل</label><span>info@eskenas.ir</span>
+				</div>
+				<div class="rrow">
+					<label>شماره تماس</label><span>021-26408374</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+{%endblock%}

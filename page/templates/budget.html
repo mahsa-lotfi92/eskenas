@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-
+{% load humanize %}
 {%block css%}
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/budget.css">
 {%endblock%}
@@ -15,14 +15,8 @@
 
 
 {%block content%}
-			<form method="post" action=".">
+			<form method="post" action="/budget/add/">
 				<div id="addBudget">
-			<div class="budgetPart">
-				<button class="btn btn-success" idid="addBudget">
-					<i class="icon-plus icon-white"></i> بودجه
-				</button>
-				
-			</div>
 			<div class="budgetPart">
 				<input name= "formID" value="1" type="hidden">
 				<input type="text" placeholder="مبلغ" name="limit">
@@ -34,6 +28,12 @@
 					{%endfor%}
 				</select>
 			</div>
+			<div class="budgetPart">
+				<button class="btn btn-success" idid="addBudget">
+					<i class="icon-plus icon-white"></i> بودجه
+				</button>
+				
+			</div>
 		</div>
 		</form>
 		<div class="clearfix"></div>
@@ -41,12 +41,39 @@
 		<div class="remainBug">
 			<div class="bugName">
 				{{b.bugCat.name}}
+			</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
+			
+			<form action='/budget/edit/' method="post" class= "edt forSub">
+					<input name= "id" value="{{b.id}}" type="hidden">
+					<input name= "new" type="text" placeholder="مبلغ جدید" class="limitEdit">
+					<input type= "submit" value="تایید" class="btn btn-info">
+			</form>
+			
+			
+			<form action='/budget/del/' method="post"  id="delete">
+					<input name= "id" value="{{b.id}}" type="hidden">
+			</form>
+				
+			
+			
 			</div>
+			<div class="clearfix"></div>
+			
+			{%if b.per >= 70%}
 			<div class="progress progress-danger">
-			 	<div class="bar" style="width: 99%;"> 99,000</div>
+
+			{%elif 35 <= b.per %}
+			<div class="progress progress-warning">
+
+			{%else %}
+			<div class="progress progress-success">
+
+			{%endif%}
+			
+			 	<div class="bar" style="width: {{b.per}}%;"> {{b.cost|intcomma}} </div>
 			</div>
-			{{b.limit}}
-		</div>
+			{{b.limit | intcomma}}
+		<div class="clearfix"></div>
 		{%endfor%}
 
 {%endblock%}

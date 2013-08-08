@@ -5,6 +5,7 @@
 #addBudget {
 	width: 680px;
 	height: 100px;
+	padding-right: 50px;
 }
 .budgetPart {
 	width: 224px;
@@ -22,14 +23,26 @@
 }
 .remainBug {
 	text-align: right;
-	height: 100px;
 	padding: 15px;
+	float: right;
+	margin-top: 70px;
 }
 .bugName {
 	text-align: right;
 	font-size: 20px;
-	margin: 10px;
+	width: 177px;
+	float: right;
 }
 .progress {
 	margin-bottom: 0px;
+}
+.remainBug [class^=icon] {
+cursor: pointer;
+padding: 5px;
+}
+.edt {
+	display: none;
+}
+.limitEdit {
+	margin-top: 10px;
 }

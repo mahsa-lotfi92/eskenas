@@ -1,0 +1,230 @@
+{%extends 'base.html'%}
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profile.css">
+{%endblock%}
+
+{%block js%}
+<script src="{{STATIC_URL}}js/profile.js"></script>
+{%endblock%}
+
+{%block sidebar%}
+
+<div class="barItem active">
+	<a href="?">‌‌اطلاعات حساب</a>
+</div>
+<div class="barItem">
+	<a href="?">تاریخچه‌ حساب</a>
+</div>
+<div class="barItem">
+	<a href="?">تغییر رمزعبور</a>
+</div>
+<div class="barItem lastBarItem">
+	<a href="?">تمدید یا ارتقا حساب </a>
+</div>
+
+{%endblock%}
+{%block content%}
+<div id="inCon" class="anim">
+	<div class="solsCon">
+		<div class="profTable">
+			<div class="profRow">
+				<div class="infType">
+					نام
+				</div>
+				<div class="inf">
+					{{user.first_name}}
+				</div>
+
+				<div class="newInp">
+					<input type="text" class="inp">
+					<div class="save"></div>
+
+				</div>
+				<div class="edit"></div>
+			</div>
+			<div class="profRow">
+				<div class="infType">
+					نام خانوادگی
+				</div>
+				<div class="inf">
+					{{user.last_name}}
+				</div>
+				<div class="newInp">
+					<input type="text" class="inp">
+					<div class="save" ></div>
+
+				</div>
+				<div class="edit"></div>
+			</div>
+			<div class="profRow">
+				<div class="infType">
+					پست الکترونیکی
+				</div>
+				<div class="inf">
+					{{user.email}}
+				</div>
+
+				<div class="newInp">
+					<input type="text" class="inp" >
+					<div class="save"></div>
+
+				</div>
+				<div class="edit"></div>
+			</div>
+			{% if credit.isGolden%}
+			<div class="profRow">
+				<div class="infType">
+					نوع حساب
+				</div>
+				<div class="inf">
+					طلائی
+				</div>
+
+			</div>
+			<div class="profRow">
+				<div class="infType">
+					اعتبار
+				</div>
+				<div class="inf">
+					{{credit.credit}}
+				</div>
+
+			</div>
+			{%else%}
+			<div class="profRow">
+				<div class="infType">
+					نوع حساب
+				</div>
+				<div class="inf">
+					عادی
+				</div>
+
+			</div>
+			{%endif%}
+
+		</div>
+
+	</div>
+	<div class="solsCon">
+		<div class="profTable">
+			<div class="historyRow head">
+				<div class="tranDate">
+					تاریخ
+				</div>
+				<div class="tranPay">
+					مبلغ
+				</div>
+				<div class="tranDes">
+					توضیحات
+				</div>
+			</div>
+			<div class="historyRow">
+				<div class="tranDate">
+					{{credit.registerDate}}
+				</div>
+				<div class="tranPay">
+					-
+				</div>
+				<div class="tranDes">
+					افتتاح حساب
+				</div>
+			</div>
+			{%for p in plan%}
+			<div class="historyRow">
+				<div class="tranDate">
+					{{p.plan_begin}}
+				</div>
+				<div class="tranPay">
+					{{p.plan_money}}
+				</div>
+				<div class="tranDes">
+					{%if p.isTamdid%}
+					تمدید حساب طلائی
+					{{p.plan_duration}}
+
+					 ماهه
+					{%else%}
+					ارتقا به حساب طلائی
+					{{p.plan_duration}}
+					 ماهه
+
+					{%endif%}
+				</div>
+			</div>
+			{%endfor%}
+
+		</div>
+	</div>
+	<div class="solsCon">
+		<form class="passTable" method="post" action="/profile/changepass/">
+			<div class="passRow">
+				<div class="pass">
+					رمز عبور قبلی
+				</div>
+				<input type="password"  class="passIn">
+			</div>
+			<div class="passRow">
+				<div class="pass">
+					رمز عبور جدید
+				</div>
+				<input type="password"  class="passIn">
+			</div>
+			<div class="passRow">
+				<div class="pass">
+					تکرار رمز عبور جدید
+				</div>
+				<input type="password"  class="passIn">
+			</div>
+			<div class="passRow">
+				<div class="savePass">
+					<input type="submit" value="ثبت رمز">
+				</div>
+			</div>
+
+		</form>
+		<div class="message-box">
+			<div class="warning">
+				اخطار!
+			</div>
+			<div class="message"></div>
+		</div>
+	</div>
+	<div class="solsCon">
+		<div class="profTable">
+			<form class="extRow">
+				<div class="exTitle">
+					ارتقای حساب
+				</div>
+
+				مایل به ارتقای حساب خود به حساب طلائی مبلغ
+				<select class="cost">
+					<option value="10هزار تومان دو ماهه ">10 هزار تومان دو ماهه</option>
+					<option value="20 هزار تومان پنج ماهه">20 هزار تومان پنج ماهه</option>
+					<option value="50 هزار تومان یک ساله ">50 هزار تومان یکساله</option>
+				</select>
+				هستم.
+				<input type="submit" value="اتصال با بانک" class="bank"/>
+			</form>
+			<form class="extRow">
+				<div class="exTitle">
+					تمدید حساب
+				</div>
+
+				مایل به تمدید حساب  طلائی خود به مبلغ
+				<select class="cost">
+					<option value="10 هزار تومان دوماهه ">10 هزار تومان دو ماهه</option>
+					<option value="20 هزار تومان پنج ماهه">20 هزار تومان پنج ماهه</option>
+					<option value="50 هزار تومان یک ساله ">50 هزار تومان یکساله</option>
+				</select>
+				هستم.
+				<input type="submit" value="اتصال با بانک" class="bank"/>
+			</form>
+		</div>
+
+	</div>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+
+{%endblock%}
