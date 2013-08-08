@@ -2,11 +2,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
-from myprofile.models import userCredit
+from myprofile.models import userCredit, user_plan
 
 def profile(request):
         c = userCredit.objects.filter(user=request.user)[0]
-        return  render(request, 'profile.html', {"credit":c })
+        #plan=user_plan.objects.order_by('-plan_end').filter(user=request.user)[0]
+        plan=user_plan.objects.order_by('-plan_begin').filter(user=request.user)
+        
+        return  render(request, 'profile.html', {"plan":plan, "credit":c})
    
 def myLogin(request):
     if request.method == "POST":
@@ -25,6 +28,7 @@ def myLogin(request):
     return  render(request, 'home.html', {})
 
 def changePass(request):
+    
     return redirect('/profile/')
 
     

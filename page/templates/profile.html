@@ -4,8 +4,7 @@
 {%endblock%}
 
 {%block js%}
-<script src="{{STATIC_URL}}js/transaction.js"></script>
-
+<script src="{{STATIC_URL}}js/profile.js"></script>
 {%endblock%}
 
 {%block sidebar%}
@@ -121,7 +120,7 @@
 			</div>
 			<div class="historyRow">
 				<div class="tranDate">
-					۲۲/۴/۹۰
+					{{credit.registerDate}}
 				</div>
 				<div class="tranPay">
 					-
@@ -130,29 +129,29 @@
 					افتتاح حساب
 				</div>
 			</div>
+			{%for p in plan%}
 			<div class="historyRow">
 				<div class="tranDate">
-					۴/۳/۹۱
+					{{p.plan_begin}}
 				</div>
 				<div class="tranPay">
-					۱۰۰۰۰
+					{{p.plan_money}}
 				</div>
 				<div class="tranDes">
-					ارتقا به حساب طلائی دو ماهه
-				</div>
-			</div>
-			<div class="historyRow">
-				<div class="tranDate">
-					۲۲/۱۱/۹۱
+					{%if p.isTamdid%}
+					تمدید حساب طلائی
+					{{p.plan_duration}}
 
-				</div>
-				<div class="tranPay">
-					۵۰۰۰۰
-				</div>
-				<div class="tranDes">
-					ارتقا حساب طلائی یک ساله
+					 ماهه
+					{%else%}
+					ارتقا به حساب طلائی
+					{{p.plan_duration}}
+					 ماهه
+
+					{%endif%}
 				</div>
 			</div>
+			{%endfor%}
 
 		</div>
 	</div>

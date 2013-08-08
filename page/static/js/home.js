@@ -1,5 +1,5 @@
 $(function() {
-	$('.passTable').submit(function() {
+	$('.login').submit(function() {
 
 		$(this).parent().find('.message-box').fadeIn();
 		var fst = $(this).find('.passRow').eq(1).find('.passIn').val();
@@ -7,7 +7,7 @@ $(function() {
 		if (fst != scnd) {
 			$(this).parent().find('.message-box').find('.warning').fadeIn();
 			$(this).parent().find('.message-box').find('.message').text(" نام کاربری یا کلمه عبور نادست است!");
-			alert("khar");
+			
 		} else {
 			$(this).parent().find('.message-box').find('.message').text("با موفقیت ثبت شد");
 		}
