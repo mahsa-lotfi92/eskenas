@@ -242,6 +242,9 @@ $(function () {
 
 
 $(function () {
+	window.report.core.initialize()
+	
+	
 	$ ('#inCon').css('margin-right', -790 )
 	$ ('.barItem').removeClass('active')
 	$('#sidebar .barItem').eq(1).addClass('active')
@@ -283,11 +286,47 @@ $(function () {
 		//------------------
 		window.report.core.refresh();
 	})
+	
+
 })	
+
+window.report.filter = (function (){
+
+	return{
+		
+	}
+})();
+
+window.report.filter = (function () {
+	//Private
+	var sDate, eDate;
+	
+	return {
+		//Public 
+		initialize: function(){
+			sDate = new Date()
+			eDate = new Date()
+		    with(sDate)
+		    {
+		      // setDate(1);
+		      setMonth(getMonth()-1);
+		    }
+		},
+		getStartDate: function(){
+			return sDate.getTime() / 1000 ;
+		},
+		getEndDate: function(){
+			return eDate.getTime() / 1000 ;
+		}
+	};
+})();
+
 
 window.report.core = (function () {
 	//Private
+	var filter 
 	var chartData, sortable, total; 
+	
 	
 	function beginLoading(){
 		$("#report-loading").animate({opacity:1});
@@ -300,7 +339,7 @@ window.report.core = (function () {
 	function refresh(){
 		beginLoading() ;
 		//---------------
-		var additionalData = {'behrooz': 15} ;
+		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'isIncome': true, 'type': 'category'} ;
 		//---------------
 		$.post('/ajax/monthly_report/', additionalData, load);
 	}
@@ -313,6 +352,8 @@ window.report.core = (function () {
 			chartData = data.data ;
 			total = 0 ;
 			sortable = [];
+			
+			console.log(chartData)
 			
 			for (var key in chartData) {
 				sortable.push([key, chartData[key]])
@@ -331,6 +372,10 @@ window.report.core = (function () {
 	
 	return {
 		//Public 
+		initialize: function(){
+			filter = window.report.filter
+			filter.initialize();	
+		},
 		set: function(input){
 		},
 		refresh: refresh
