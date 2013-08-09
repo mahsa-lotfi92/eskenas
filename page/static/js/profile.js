@@ -38,7 +38,7 @@ $(function() {
 		var row = input.parent();
 		var value = input.find('.inp').val();
 		if (confirm('Are you sure to save ' + value + '? ')) {
-			row.find('.inf').text(value);
+			input.submit()
 		}
 		input.fadeOut()
 
