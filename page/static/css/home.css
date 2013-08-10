@@ -11,13 +11,6 @@
 	font-size: 13px;
 	border-radius: 10px;
 }
-.login {
-	font-family: tahoma;
-	font-size: 13px;
-	border-radius: 10px;
-	width: 400px;
-	float: right;
-}
 
 .barItem {
 	line-height: 28px;
@@ -76,28 +69,116 @@
 	height: 100px;
 	margin: 20px 30px;
 }
-.textBox{
+.textBox {
 	height: 200px;
 	width: 700px;
 }
-.head{
+.head {
 	font-size: 40px;
 	font-family: phalls tannaz;
 	padding: 15px 30px;
 	width: 500px;
 }
 
-#contact{
+#contact {
 	width: 40%;
 	box-shadow: 2px 2px 5px #666;
 	border: 1px solid #999;
 	padding: 8px;
-/*	margin: 0 auto;*/
+	/*	margin: 0 auto;*/
 }
-.rrow{
+.rrow {
 	padding: 5px;
 }
-.rrow label{
+.rrow label {
 	width: 100px;
 	display: inline-block;
+}
+
+.home_menuItem a {
+	display: block;
+	padding: 10px 10px 10px 10px;
+	width: 60px;
+	line-height: 30px;
+	text-align: center;
+	float: left;
+	color: black;
+	font-family: B kamran;
+	font-size: 20px;
+	font-weight: bold;
+}
+.home_menuItem:hover a {
+	text-decoration: none;
+	color: rgb(10, 47, 196);
+	font-weight: normal;
+}
+#login {
+	display:none;
+	font-family: tahoma;
+	font-size: 13px;
+	border-radius: 10px;
+	width: 400px;
+	height: 220px;
+	z-index: 100;
+	background-color: rgb(238, 235, 235);
+	position: absolute;
+	right: 500px;
+	top: 190px;
+}
+#reg {
+	display: none;
+	font-family: tahoma;
+	font-size: 13px;
+	border-radius: 10px;
+	width: 400px;
+	height: 500px;
+	z-index: 101;
+	background-color: rgb(238, 235, 235);
+	position: absolute;
+	right: 500px;
+	top: 190px;
+}
+.passIn {
+	float: right;
+	margin-top: 22px;
+	width: 180px;
+}
+
+.pass {
+	margin-top: 25px;
+	margin-right: 45px;
+	margin-left: 10PX;
+	float: right;
+	width: 100px;
+	font-size: 13px;
+
+}
+.savePass {
+	width: 100px;
+	margin: 15px 320px;
+}
+.passRow {
+	height: 60px;
+	border-top-width: 2px;
+	width: 400px;
+	float: right;
+}
+.errRow {
+	height: 30px;
+	width: 390px;
+	margin-left:5px;
+	margin-right:5px;
+	float: right;
+}
+.close {
+	height: 30px;
+	width: 400px;
+}
+.closePic {
+	background: url("../img/close.png") no-repeat  0px 10px;
+	margin: 10px 10px;
+	height: 40px;
+	width: 31px;
+	margin: 0px 0px;
+	
 }

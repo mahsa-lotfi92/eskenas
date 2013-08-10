@@ -27,6 +27,7 @@
 <div id="inCon" class="anim">
 	<div class="solsCon">
 		<div class="profTable">
+
 			<div class="profRow">
 				<div class="infType">
 					نام
@@ -36,8 +37,11 @@
 				</div>
 
 				<div class="newInp">
-					<input type="text" class="inp">
+					<form method="post" action="/profile/edit">
+						<input name= "formID" value="1" type="hidden">
+						<input type="text" class="inp" name="first_name">
 					<div class="save"></div>
+					</form>
 
 				</div>
 				<div class="edit"></div>
@@ -50,8 +54,11 @@
 					{{user.last_name}}
 				</div>
 				<div class="newInp">
-					<input type="text" class="inp">
+					<form method="post" action="/profile/edit">
+						<input name= "formID" value="2" type="hidden">
+						<input type="text" class="inp" name="last_name">
 					<div class="save" ></div>
+					</form>
 
 				</div>
 				<div class="edit"></div>
@@ -65,8 +72,11 @@
 				</div>
 
 				<div class="newInp">
-					<input type="text" class="inp" >
-					<div class="save"></div>
+					<form method="post" action="/profile/edit">
+						<input name= "formID" value="3" type="hidden">
+						<input type="text" class="inp" name="email">
+						<div class="save"></div>
+					</form>
 
 				</div>
 				<div class="edit"></div>
@@ -142,11 +152,11 @@
 					تمدید حساب طلائی
 					{{p.plan_duration}}
 
-					 ماهه
+					ماهه
 					{%else%}
 					ارتقا به حساب طلائی
 					{{p.plan_duration}}
-					 ماهه
+					ماهه
 
 					{%endif%}
 				</div>
