@@ -15,7 +15,8 @@ def addTransaction(request):
    name = request.POST["Category"]
    c = Cat.objects.get(name=name)
    t.Category = c
-   t.user=request.user
+   t.user=request.user 
+   
    t.save()
    return redirect('/transaction/') 
 def transaction(req):
