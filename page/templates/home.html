@@ -12,7 +12,7 @@
 
 </head>
 <body>
-	<form id="reg" method="post" action="/home/register/">
+	<form id="reg" method="post" action="/home/register/" {%if reg_error%} style="display:block"{%endif%} >
 		<div class="close">
 			<div class="closePic" ></div>
 		</div>
@@ -56,13 +56,18 @@
 		</div>
 
 		<div class="passRow">
+			{%if error%}
+			<div class="error">
+				{{reg_error}}
+			</div>
+			{%endif%}
 			<div class="savePass">
 				<input type="submit" value="ثبت" class="btn btn-info">
 			</div>
 		</div>
 
 	</form>
-	<form id="login" action="/home/" method="post">
+	<form id="login" action="/home/" method="post" {%if login_error%}style="display:block"{%endif%}>
 		<div class="close">
 			<div class="closePic" ></div>
 		</div>
@@ -82,7 +87,7 @@
 		<div class="passRow">
 			{%if error%}
 			<div class="error">
-				{{error}}
+				{{login_error}}
 			</div>
 			{%endif%}
 			
@@ -93,7 +98,7 @@
 
 	</form>
 
-	<div id="main">
+	<div id="main" class="{%if error%}setOpacity{%endif%}">
 		<div id="header">
 			<h1>اسکناس</h1>
 		</div>

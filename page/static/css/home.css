@@ -221,8 +221,15 @@
 	font-weight: normal;
 }
 .error {
-	text-shadow: 1px 1px 2px rgb(255, 0, 0);
-	width: 200px;
-	float: right;
-	margin: 15px 51px 0 0;
+text-shadow: 0px 1px 0px #ddd;
+width: 200px;
+float: right;
+margin: 15px 51px 0px 0px;
+color: #f00;
+}
+.setOpacity{
+	opacity: 0.5;
+}
+.show{
+	display: block !important;
 }

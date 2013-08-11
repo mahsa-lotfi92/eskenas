@@ -1,4 +1,4 @@
-# Create your views here.
+#encoding: utf8
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -38,7 +38,7 @@ def myLogin(request):
             else:
                 return  render(request, 'home.html', {'error': 'user suspended'})
         else:
-            return  render(request, 'home.html', {'error': 'bad password'})
+            return  render(request, 'home.html', {'error':'err' ,'login_error':'نام کاربری یا رمز عبور اشتباه است!'})
     return  render(request, 'home.html', {})
 
 
@@ -48,6 +48,9 @@ def register(request):
         u.first_name = request.POST['first_name']
         u.last_name = request.POST['last_name']
         u.username = request.POST['username']
+        if User.objects.filter(username=u.username).count():
+            return  render(request, 'home.html', {'error':'err','reg_error':"قبلا ثبت شده"})
+            
         u.email = request.POST['email']
         u.set_password(request.POST['password'])
         u.save()
