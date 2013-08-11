@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from myprofile.models import userCredit, user_plan
 from datetime import date
 
@@ -60,6 +60,10 @@ def register(request):
             
         
     return redirect('/home/') 
+
+def logout_view(request):
+    logout(request)
+    return redirect('/home/')
     
 
 def changePass(request):

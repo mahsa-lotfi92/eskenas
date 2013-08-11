@@ -1,8 +1,8 @@
-body{
+body {
 	direction: rtl;
 	font-family: tahoma;
 }
-input, textarea, select{
+input, textarea, select {
 	font-family: tahoma;
 }
 button.btn {
@@ -52,20 +52,19 @@ button.btn {
 	line-height: 30px;
 	text-align: center;
 	float: right;
-	
 	color: black;
 	font-family: B kamran;
 	font-size: 20px;
 	font-weight: bold;
 }
-.menuItem:hover a{
+.menuItem:hover a {
 	text-decoration: none;
 	color: rgb(10, 47, 196);
 	font-weight: normal;
 }
-#user{
+#user {
 	width: 200px;
-	background:#F2F3F0;
+	background: #F2F3F0;
 	height: 30px;
 	position: fixed;
 	top: 0;
@@ -79,4 +78,8 @@ button.btn {
 #userName {
 	width: 70%;
 	float: right;
+}
+#logout_link {
+	color: white;
+	text-decoration: none;
 }
