@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
-
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -12,6 +12,7 @@ urlpatterns = patterns('',
      url(r'^transaction/delete/$', 'transaction.views.deleteTransaction'),
      url(r'^transaction/edit/$', 'transaction.views.editTransaction'),
 	 url(r'^profile/$', 'myprofile.views.profile'),
+     url(r'^logout/$', 'myprofile.views.logout_view'),
      url(r'^profile/edit$', 'myprofile.views.edit'),
      url(r'^profile/changepass$', 'myprofile.views.changePass'),
 	 url(r'^home/$', 'myprofile.views.myLogin'),
