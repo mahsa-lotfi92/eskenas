@@ -48,7 +48,7 @@
 	background: rgb(253, 255, 176);
 	float: top;
 	min-height: 500px;
-	margin: 5px 5px 0 0;
+	margin: 5px 0 0 0;
 	border-radius: 5px;
 	padding: 20px;
 }
@@ -101,7 +101,7 @@
 	display: inline-block;
 }
 #menu {
-	height: 60px;
+	height: 49px;
 	border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 0px;
 }
@@ -201,17 +201,15 @@
 	float: top;
 }
 .menuItem {
-	margin-left: -30px;
-	height: 40px;
-	width: 140px;
+	width: 120px;
 	float: right;
 	text-align: center;
-	padding-top: 20px;
+	line-height: 50px;
 }
 .menuItem.active {
 	background: rgb(253, 255, 176);
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
+	/* border-top-left-radius: 20px; */
+	/* border-top-right-radius: 20px; */
 	
 }
 .menuItem:hover {
