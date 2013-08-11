@@ -46,7 +46,7 @@
 				<div class="name">
 					{{c.name}}
 				</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
-				
+
 				<form action='.' method="post" class= "edt forSub">
 					<input name= "formID" value="4" type="hidden">
 					<input name= "id" value="{{c.id}}" type="hidden">
@@ -58,7 +58,6 @@
 					<input name= "formID" value="3" type="hidden">
 					<input name= "id" value="{{c.id}}" type="hidden">
 				</form>
-				
 
 				<div class="clearfix"></div>
 			</div>
@@ -67,14 +66,14 @@
 				<div class="name">
 					{{b.name}}
 				</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
-				
+
 				<form action='.' method="post" class= "edt forSub">
 					<input name= "formID" value="4" type="hidden">
 					<input name= "id" value="{{b.id}}" type="hidden">
 					<input name= "new" type="text" placeholder="نام جدید">
 					<input type= "submit" value="تایید" class="btn btn-info edtCat">
 				</form>
-				
+
 				<form action='.' method="post" id="delete">
 					<input name= "formID" value="3" type="hidden">
 					<input name= "id" value="{{b.id}}" type="hidden">
@@ -119,10 +118,10 @@
 				<input type="text" placeholder="مبلغ" class="transaction" name="cost">
 			</div>
 			<div class="tranPart">
-				<input  name="Category" id="Category" type="hidden" />
-				<select id="catList">
+				
+				<select id="catList" name="catId">
 					{%for c in cats%}
-					<option class="catItem">{{c.name}}</option>
+					<option class="catItem" value="{{c.id}}">{{c.name}}</option>
 					{%endfor%}
 				</select>
 				<!-- 		<div class="btn-group" id="cat">
@@ -208,20 +207,19 @@
 					<input type="text" class="tranDateEdit" value="{{t.date|date:"Y-m-d"}}" name="date"/>
 					<input type="text" class="tranPayEdit" value="{{t.cost}}" name="cost"/>
 
-					<select class="catEditList">
+					<select class="catEditList" name="catId">
 						{%for c in cats%}
 						{%if c.name == t.Category.name%}
-						<option class="catEditItem">{{c.name}}</option>
+						<option class="catEditItem" value="{{c.id}}">{{c.name}}</option>
 						{%endif%}
 						{%endfor%}
 						{%for c in cats%}
 						{%if c.name != t.Category.name%}
-						<option class="catEditItem">{{c.name}}</option>
+						<option class="catEditItem" value="{{c.id}}">{{c.name}}</option>
 						{%endif%}
 						{%endfor%}
 					</select>
 
-					<input type="hidden" class="tranCatEdit" value="{{t.Category}}" name="Category"/>
 					<input type="text" class="tranDesEdit" value="{{t.description}}" name="description"/>
 					<input type="submit" class="btn-success editAction" value="ثبت"/>
 					<button class="btn-warning editAction cancelEdit" >

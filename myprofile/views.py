@@ -35,11 +35,10 @@ def myLogin(request):
             if user.is_active:
                 login(request, user)
                 return redirect('/transaction/') 
-           # else:
-              # Return a 'disabled account' error message
+            else:
+                return  render(request, 'home.html', {'error': 'user suspended'})
         else:
-            print "&"*30
-            return  render(request, 'home.html', {})
+            return  render(request, 'home.html', {'error': 'bad password'})
     return  render(request, 'home.html', {})
 
 

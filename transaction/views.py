@@ -12,8 +12,8 @@ def addTransaction(request):
      t.isIncome = True
    else:
      t.isIncome = False
-   name = request.POST["Category"]
-   c = Cat.objects.get(name=name)
+   cid = request.POST["catId"]
+   c = Cat.objects.get(id=cid)
    t.Category = c
    t.user=request.user 
    
@@ -55,8 +55,7 @@ def editTransaction(request):
       t.isIncome = True
     else:
       t.isIncome = False
-    name = request.POST["Category"]
-    c = Cat.objects.filter(name=name)[0]
+    c = Cat.objects.get(id=request.POST["catId"])
     t.Category = c;
     t.save()
     return redirect('/transaction/')

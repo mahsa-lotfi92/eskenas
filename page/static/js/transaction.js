@@ -104,11 +104,7 @@ $(function() {
 		ev.preventDefault();
 		$(this).parent().css('display', 'none');
 	});
-	$('.catItem').click(function(ev) {
-		ev.preventDefault();
-		$('#Category').val($(this).text());
 
-	});
 		$('.catEditItem').click(function(ev) {
 		ev.preventDefault();
 		$(this).parent().parent().find('.tranCatEdit').val($(this).text());

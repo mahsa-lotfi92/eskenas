@@ -16,12 +16,7 @@
 		<div class="close">
 			<div class="closePic" ></div>
 		</div>
-		<div class="errRow">
 
-			<div class="alert">
-				<strong>Warning!</strong> TODO
-			</div>
-		</div>
 		<div class="passRow">
 			<div class="pass">
 				نام
@@ -85,6 +80,12 @@
 		</div>
 
 		<div class="passRow">
+			{%if error%}
+			<div class="error">
+				{{error}}
+			</div>
+			{%endif%}
+			
 			<div class="savePass">
 				<input type="submit" value="ورود" class="btn btn-primary">
 			</div>
