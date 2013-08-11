@@ -136,6 +136,7 @@
 	top: 190px;
 	left: 50%;
 	margin-left: -200px;
+	color: white;
 }
 #reg {
 	display: none;
@@ -150,6 +151,7 @@
 	top: 190px;
 	left: 50%;
 	margin-left: -200px;
+	color: white;
 }
 .passIn {
 	float: right;
