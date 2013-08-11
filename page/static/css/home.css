@@ -131,10 +131,11 @@
 	width: 400px;
 	height: 220px;
 	z-index: 100;
-	background-color: rgb(238, 235, 235);
+	background-color: rgb(9,116,138);
 	position: absolute;
-	right: 500px;
 	top: 190px;
+	left: 50%;
+	margin-left: -200px;
 }
 #reg {
 	display: none;
@@ -144,10 +145,11 @@
 	width: 400px;
 	height: 500px;
 	z-index: 101;
-	background-color: rgb(238, 235, 235);
+	background-color: rgb(9,116,138);
 	position: absolute;
-	right: 500px;
 	top: 190px;
+	left: 50%;
+	margin-left: -200px;
 }
 .passIn {
 	float: right;
