@@ -23,6 +23,8 @@ $(function() {
 		ev.preventDefault();
 		$('.menuItem').removeClass('active')
 		$(this).addClass('active')
+		$('.home').hide();
+		$('.home').eq($(this).index()).show();
 	})
 });
 
