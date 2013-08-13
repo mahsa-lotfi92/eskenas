@@ -242,12 +242,13 @@ color: #f00;
 }
 .advImg{
 	width: 30%;
-	background: blue;
 	height: 100%
 }
 .advText{
-	width: 70%;
+	width: 68%;
 	height: 100%;
+	line-height: 25px;
+	padding: 0 10px 0 0;
 }
 .right{
 	float: right;

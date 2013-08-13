@@ -59,14 +59,17 @@
 			</div>
 			<div class="clearfix"></div>
 			
-			{%if b.per >= 70%}
+			{%if b.per >= 75%}
 			<div class="progress progress-danger">
 
-			{%elif 35 <= b.per %}
+			{%elif b.per >=50 %}
 			<div class="progress progress-warning">
+			
+			{%elif b.per >=25 %}
+			<div class="progress progress-success">
 
 			{%else %}
-			<div class="progress progress-success">
+			<div class="progress progress-info">
 
 			{%endif%}
 			
