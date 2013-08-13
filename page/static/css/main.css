@@ -22,9 +22,9 @@ button.btn {
 #content {
 	background: rgb(253, 255, 176);
 	float: right;
-	width: 725px;
+	width: 730px;
 	min-height: 500px;
-	margin: 5px 5px 0 0;
+	/* margin: 5px 0 0 0; */
 	border-radius: 5px;
 	padding: 20px;
 }
@@ -45,13 +45,16 @@ button.btn {
 	background: #BEF56E;
 	border-radius: 5px;
 }
+.menuItem{
+	float: right;
+	
+}
 .menuItem a {
 	display: block;
 	padding: 10px 10px 10px 10px;
 	width: 100px;
 	line-height: 30px;
 	text-align: center;
-	float: right;
 	color: black;
 	font-family: B kamran;
 	font-size: 20px;
@@ -82,4 +85,12 @@ button.btn {
 #logout_link {
 	color: white;
 	text-decoration: none;
+}
+#line {
+	height: 10px;
+	background: rgb(253, 255, 176);
+	float: top;
+}
+.active{
+	background: rgb(253, 255, 176);
 }
