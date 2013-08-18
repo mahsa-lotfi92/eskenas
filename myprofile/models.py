@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.fields.related import ForeignKey
+import datetime
+
 
 class userCredit(models.Model):
 
@@ -18,4 +20,13 @@ class user_plan(models.Model):
     plan_duration=models.IntegerField()
     plan_money=models.IntegerField()
     
+    @staticmethod
+    def getCurrentPlan(user, d=None):
+        if not d:
+            d = datetime.date.today()
+        q = user_plan.objects.filter(user=user, plan_begin__gte=d, plan_end__lte=d)
+        if len(q):
+            return q[0]
+        return None
+
     

@@ -118,23 +118,15 @@
 				<input type="text" placeholder="مبلغ" class="transaction" name="cost">
 			</div>
 			<div class="tranPart">
-				
+
 				<select id="catList" name="catId">
 					{%for c in cats%}
-					<option class="catItem" value="{{c.id}}">{{c.name}}</option>
+					{% for b in c.cat_set.all %}
+					<option class="catItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
+					{%endfor%}
 					{%endfor%}
 				</select>
-				<!-- 		<div class="btn-group" id="cat">
-				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> دسته‌ها <span class="caret"></span> </a>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-				{%for c in cats%}
-				<li>
-				<a href="#" class="catItem">{{c.name}}</a>
-				</li>
-				{%endfor%}
 
-				</ul>
-				</div> -->
 			</div>
 			<div class="tranPart">
 				<input type="text" placeholder="توضیحات" id= "desc" name="description">
@@ -160,9 +152,10 @@
 				<div class="tranCat">
 					دسته
 				</div>
-				<div class="tranDes">
-					توضیحات
-				</div>
+			
+				<!-- 	<div class="tranDes">
+				توضیحات
+				</div> -->
 			</div>
 			{%for t in Tran%}
 			<div>
@@ -183,11 +176,13 @@
 						{{t.cost}}
 					</div>
 					<div class="tranCat">
-						{{t.Category}}
+						{{t.Category.parentCat}} - {{t.Category}}
+
 					</div>
-					<div class="tranDes">
-						{{t.description}}
-					</div>
+				
+					<!-- 	<div class="tranDes">
+					{{t.description}}
+					</div> -->
 					<div class="TranER">
 						<i class="icon-remove TranRemove"></i>
 						<i class="icon-pencil TranEdit"></i>
@@ -219,6 +214,7 @@
 						{%endif%}
 						{%endfor%}
 					</select>
+					<br />
 
 					<input type="text" class="tranDesEdit" value="{{t.description}}" name="description"/>
 					<input type="submit" class="btn-success editAction" value="ثبت"/>
