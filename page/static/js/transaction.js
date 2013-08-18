@@ -1,32 +1,9 @@
 $(function() {
-	$('#sidebar .barItem').eq(0).click(function(ev) {
+	$('#sidebar').on('click', '.barItem', function(ev) {
 		ev.preventDefault()
 
-		$('#inCon').css('margin-right', -20)
-		$('.barItem').removeClass('active')
-		$(this).addClass('active')
-	})
-
-	$('#sidebar .barItem').eq(1).click(function(ev) {
-		ev.preventDefault()
-
-		$('#inCon').css('margin-right', -785)
-		$('.barItem').removeClass('active')
-		$(this).addClass('active')
-	})
-
-	$('#sidebar .barItem').eq(2).click(function(ev) {
-		ev.preventDefault()
-
-		$('#inCon').css('margin-right', -1550)
-		$('.barItem').removeClass('active')
-		$(this).addClass('active')
-	})
-
-	$('#sidebar .barItem').eq(3).click(function(ev) {
-		ev.preventDefault()
-
-		$('#inCon').css('margin-right', -2315)
+		var mr = -20 - $('#inCon > div').eq(0).outerWidth() * $(this).index()
+		$('#inCon').css('margin-right', mr)
 		$('.barItem').removeClass('active')
 		$(this).addClass('active')
 	})

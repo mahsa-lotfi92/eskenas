@@ -17,6 +17,9 @@ bank acount tu jadval ezafe beshe
 	<a href="?">دسته‌بندی‌ها</a>
 </div>
 <div class="barItem">
+	<a href="?">حساب‌های بانکی</a>
+</div>
+<div class="barItem">
 	<a href="?">تراکنش‌ها</a>
 </div>
 <div class="barItem">
@@ -97,6 +100,43 @@ bank acount tu jadval ezafe beshe
 					<i class="icon-plus"></i>
 
 				</div>
+			</div>
+			{%endfor%}
+		</div>
+	</div>
+	<div class="solsCon">
+		<div id= 'catHead'>
+			<h1>حساب‌های بانکی</h1>
+		</div>
+		<div id= 'addCat'>
+
+			<form action="/transaction/addBankAccount/" method="post">
+				<input name="name" placeholder="نام حساب" type="text" id= 'catHeadInput'>
+			</form>
+
+			<button class="btn btn-success" >
+				<i class="icon-plus icon-white"></i> حساب بانکی
+			</button>
+		</div>
+		<div class="clearfix"></div>
+		<div class="cat-table">
+			{% for a in bankAccounts %}
+			<div class="xrow cat">
+				<div class="name">
+					{{a.name}}
+				</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
+
+				<form action='/transaction/editBankAccount/' method="post" class= "edt forSub">
+					<input name= "id" value="{{a.id}}" type="hidden">
+					<input name= "new" type="text" placeholder="نام جدید">
+					<input type= "submit" value="تایید" class="btn btn-info edtCat">
+				</form>
+
+				<form action='/transaction/delBankAccount/' method="post"  id="delete">
+					<input name= "id" value="{{a.id}}" type="hidden">
+				</form>
+
+				<div class="clearfix"></div>
 			</div>
 			{%endfor%}
 		</div>

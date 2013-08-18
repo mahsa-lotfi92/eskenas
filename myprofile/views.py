@@ -73,4 +73,9 @@ def changePass(request):
     request.user.save()
     return redirect('/profile/')
 
-    
+def index(request):
+    if request.user.is_authenticated():
+        return redirect('/transaction/')
+    else:
+        return redirect('/home/')
+

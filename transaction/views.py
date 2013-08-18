@@ -1,3 +1,4 @@
+from cat.models import BankAccount
 # Create your views here.
 from django.shortcuts import render, redirect
 from cat.models import Cat
@@ -32,7 +33,7 @@ def transaction(req):
             p.name= req.POST['new']
             p.save()
     T = Transaction.objects.all().order_by('-date')
-    return  render(req, 'transaction.html', {"Tran":T.filter(user=req.user), 'cats': Cat.objects.filter(isSub=False , user= req.user)})
+    return  render(req, 'transaction.html', {"Tran":T, 'cats': Cat.objects.filter(isSub=False , user= req.user), 'bankAccounts': BankAccount.objects.filter(user= req.user)})
 
 
 def deleteTransaction(request):
@@ -57,7 +58,17 @@ def editTransaction(request):
     t.Category = c;
     t.save()
     return redirect('/transaction/')
-
-
+def bankAccountAdd (req):
+    new = BankAccount(name=req.POST['name'], user= req.user)
+    new.save()
+    return redirect('/transaction/') 
+def bankAccountDel (req):
+    BankAccount.objects.filter(id=req.POST['id']).delete()
+    return redirect('/transaction/')
+def bankAccountEdit (req):
+    p = BankAccount.objects.get(id=req.POST['id'])
+    p.name = req.POST['new']
+    p.save()
+    return redirect('/transaction/')
 
 
