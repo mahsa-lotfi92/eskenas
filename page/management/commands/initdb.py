@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from cat.models import Cat, BankAccount
 import datetime
 from transaction.models import Transaction
+from myprofile.models import userCredit
 
 
 class Command(BaseCommand):
@@ -17,7 +18,8 @@ class Command(BaseCommand):
             u.set_password(x)
             return u.password
         user_admin, _ = User.objects.get_or_create(username="admin", defaults={'email': 'a@b.com', 'first_name': 'admin', 'last_name': 'admini', 'password': hash_("admin"), 'is_staff': True, 'is_active': True, 'is_superuser': True})
-        
+        userCredit.objects.create(user=user_admin, isGolden=True, registerDate=datetime.date.today(), credit=datetime.date.today() + datetime.timedelta(days=+10))
+
         print 'categories...'
         cat_khorak, _ = Cat.objects.get_or_create(user=user_admin, name=u'خوراک', defaults={'isSub': False, 'parentCat': None})
         cat_pushak, _ = Cat.objects.get_or_create(user=user_admin, name=u'پوشاک', defaults={'isSub': False, 'parentCat': None})
