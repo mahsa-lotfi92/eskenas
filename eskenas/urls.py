@@ -22,5 +22,9 @@ urlpatterns = patterns('',
      url(r'^budget/add/$', 'budget.views.budgetAdd'),
      url(r'^budget/del/$', 'budget.views.budgetDel'),
      url(r'^budget/edit/$', 'budget.views.budgetEdit'),
+     url(r'^transaction/addBankAccount/$', 'transaction.views.bankAccountAdd'),
+     url(r'^transaction/delBankAccount/$', 'transaction.views.bankAccountDel'),
+     url(r'^transaction/editBankAccount/$', 'transaction.views.bankAccountEdit'),
+     
 )
 
