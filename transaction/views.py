@@ -22,19 +22,19 @@ def addTransaction(request):
 def transaction(req):
     if req.method == "POST":
         if req.POST['formID']=="1":
-            new = Cat(name = req.POST['name'], isSub=False,parentCat= None )
+            new = Cat(name = req.POST['name'], isSub=False,parentCat= None, user= req.user)
             new.save()
         if req.POST['formID']=="2":
-            new = Cat(name = req.POST['name'], isSub=True ,parentCat= Cat.objects.get(id= req.POST['parent']))
+            new = Cat(name = req.POST['name'], isSub=True ,parentCat= Cat.objects.get(id= req.POST['parent']),user= req.user)
             new.save()
         if req.POST['formID']=="3":
-            Cat.objects.filter(id= req.POST['id']).delete()
+            Cat.objects.filter(id= req.POST['id'], user= req.user).delete()
         if req.POST['formID']=="4":
-            p= Cat.objects.get(id= req.POST['id'])
+            p= Cat.objects.get(id= req.POST['id'], user= req.user)
             p.name= req.POST['new']
             p.save()
     T = Transaction.objects.all().order_by('-date')
-    return  render(req, 'transaction.html', {"Tran":T, 'cats': Cat.objects.filter(isSub=False)})
+    return  render(req, 'transaction.html', {"Tran":T, 'cats': Cat.objects.filter(isSub=False , user= req.user)})
 
 
 def deleteTransaction(request):

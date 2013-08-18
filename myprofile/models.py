@@ -17,5 +17,3 @@ class user_plan(models.Model):
     plan_begin = models.DateField('plan_begin')
     plan_duration=models.IntegerField()
     plan_money=models.IntegerField()
-    
-    
