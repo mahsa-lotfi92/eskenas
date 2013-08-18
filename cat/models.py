@@ -12,8 +12,8 @@ class Cat(models.Model):
         return self.name
 
 class BankAccount(models.Model):
-    user = models.ForeignKey('User')
-    name = models.CharField(100)
+    user = models.ForeignKey(User)
+    name = models.CharField(max_length=100)
 
     def __unicode__(self):
         return self.name
