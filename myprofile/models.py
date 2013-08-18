@@ -29,4 +29,3 @@ class user_plan(models.Model):
             return q[0]
         return None
 
-    
