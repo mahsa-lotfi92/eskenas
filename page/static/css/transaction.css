@@ -25,7 +25,7 @@ transition: all 0.4s ease-in-out;
 .tranType {
 	width: 55px;
 }
-.tranPay, .tranDate, .tranDes, .tranType, .tranCat {
+.tranPay, .tranDate, .tranDes, .tranType, .tranCat{
 	padding: 4px 7px;
 	display: table-cell;
 	border-bottom: 1px solid rgb(213, 203, 203);
@@ -47,7 +47,7 @@ border-bottom: 1px solid rgb(213, 203, 203);
 	width: 220px;
 }
 .tranCat {
-	width: 65px;
+	width: 100px;
 }
 .barItem{
 	line-height: 28px;
@@ -172,7 +172,7 @@ input#desc {
 	width: 520px;
 }
 input.transaction {
-	width: 171px;
+	width: 130px;
 }
 input.auto {
 	width: 119px;
@@ -224,7 +224,7 @@ h3 {
 
 .TRedit {
 
-	height: 50px;
+	height: 100px;
 	margin: 5px;
 	border-bottom: 1px solid rgb(213, 203, 203);
 	display: none;
@@ -265,10 +265,10 @@ h3 {
 	border-radius: 3px;
 }
 #catList{
-	width: 100px;
+	width: 150px;
 }
 .catEditList{
-	width: 80px;
+	width: 150px;
 }
 .edt {
 	display: none;
