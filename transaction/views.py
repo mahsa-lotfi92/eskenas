@@ -4,21 +4,19 @@ from cat.models import Cat
 from transaction.models import Transaction
 
 def addTransaction(request):
-   t = Transaction()
-   t.date = request.POST["date"]
-   t.description = request.POST["description"]
-   t.cost = request.POST["cost"]
-   if request.POST["isIncome"] == '1':
-     t.isIncome = True
-   else:
-     t.isIncome = False
-   cid = request.POST["catId"]
-   c = Cat.objects.get(id=cid)
-   t.Category = c
-   t.user=request.user 
-   
-   t.save()
-   return redirect('/transaction/') 
+    t = Transaction()
+    t.date = request.POST["date"]
+    t.description = request.POST["description"]
+    t.cost = request.POST["cost"]
+    t.isIncome = request.POST["isIncome"] == '1' 
+    cid = request.POST["catId"]
+    c = Cat.objects.get(id=cid)
+    t.Category = c
+    t.user=request.user 
+    t.save()
+    
+    return redirect('/transaction/')
+
 def transaction(req):
     if req.method == "POST":
         if req.POST['formID']=="1":

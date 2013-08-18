@@ -5,14 +5,12 @@ import datetime
 
 
 class userCredit(models.Model):
-
     isGolden=models.BooleanField();
     credit= models.DateField('credit_Date')
     registerDate = models.DateField('register_Date')
     user= models.ForeignKey(User)
 
 class user_plan(models.Model):
-    
     user=models.ForeignKey(User)
     isTamdid=models.BooleanField()
     #tamdid ya ertegha
@@ -28,4 +26,3 @@ class user_plan(models.Model):
         if len(q):
             return q[0]
         return None
-
