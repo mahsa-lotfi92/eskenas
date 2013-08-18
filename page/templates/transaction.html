@@ -105,8 +105,7 @@
 		</div>
 		<div id= 'addCat'>
 
-			<form action='.' method="post">
-				<input name= "formID" value="1" type="hidden">
+			<form action="/transaction/addBankAccount/" method="post">
 				<input name="name" placeholder="نام حساب" type="text" id= 'catHeadInput'>
 			</form>
 
@@ -122,13 +121,13 @@
 					{{a.name}}
 				</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
 
-				<form action='.' method="post" class= "edt forSub">
+				<form action='/transaction/editBankAccount/' method="post" class= "edt forSub">
 					<input name= "id" value="{{a.id}}" type="hidden">
 					<input name= "new" type="text" placeholder="نام جدید">
 					<input type= "submit" value="تایید" class="btn btn-info edtCat">
 				</form>
 
-				<form action='.' method="post"  id="delete">
+				<form action='/transaction/delBankAccount/' method="post"  id="delete">
 					<input name= "id" value="{{a.id}}" type="hidden">
 				</form>
 
@@ -136,7 +135,6 @@
 			</div>
 			{%endfor%}
 		</div>
-	</div>
 	</div>
 	<div class="solsCon">
 

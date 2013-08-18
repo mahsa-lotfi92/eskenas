@@ -65,7 +65,7 @@ def bankAccountAdd (req):
 def bankAccountDel (req):
     BankAccount.objects.filter(id=req.POST['id']).delete()
     return redirect('/transaction/')
-def BankAccountEdit (req):
+def bankAccountEdit (req):
     p = BankAccount.objects.get(id=req.POST['id'])
     p.name = req.POST['new']
     p.save()
