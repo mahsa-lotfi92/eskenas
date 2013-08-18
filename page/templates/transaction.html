@@ -152,7 +152,7 @@
 				<div class="tranCat">
 					دسته
 				</div>
-			
+
 				<!-- 	<div class="tranDes">
 				توضیحات
 				</div> -->
@@ -179,7 +179,7 @@
 						{{t.Category.parentCat}} - {{t.Category}}
 
 					</div>
-				
+
 					<!-- 	<div class="tranDes">
 					{{t.description}}
 					</div> -->
@@ -204,14 +204,25 @@
 
 					<select class="catEditList" name="catId">
 						{%for c in cats%}
-						{%if c.name == t.Category.name%}
-						<option class="catEditItem" value="{{c.id}}">{{c.name}}</option>
+							{%if c.id == t.Category.parentCat.id%}
+								{% for b in c.cat_set.all %}
+									{%if b.id == t.Category.id%}
+									<option class="catEditItem" value="{{c.id}}">{{c.name}} - {{b.name}}</option>
+									{%endif%}
+								{%endfor%}
+								{% for b in c.cat_set.all %}
+									{%if b.id != t.Category.id%}
+									<option class="catEditItem" value="{{c.id}}">{{c.name}} - {{b.name}}</option>
+									{%endif%}
+								{%endfor%}
+
+							{%else%}
+								{% for b in c.cat_set.all %}
+								<option class="catEditItem" value="{{c.id}}">{{c.name}} - {{b.name}}</option>
+								{%endfor%}
+
 						{%endif%}
-						{%endfor%}
-						{%for c in cats%}
-						{%if c.name != t.Category.name%}
-						<option class="catEditItem" value="{{c.id}}">{{c.name}}</option>
-						{%endif%}
+
 						{%endfor%}
 					</select>
 					<br />
