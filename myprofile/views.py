@@ -69,7 +69,8 @@ def logout_view(request):
     
 
 def changePass(request):
-    
+    request.user.set_password(request.POST['new_pass'])
+    request.user.save()
     return redirect('/profile/')
 
     

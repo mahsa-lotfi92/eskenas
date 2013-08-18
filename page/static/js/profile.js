@@ -53,7 +53,6 @@ $(function() {
 	})
 
 	$('.passTable').submit(function(ev) {
-		ev.preventDefault()
 		$(this).parent().find('.message-box').fadeIn();
 		$(this).parent().find('.message-box').find('.warning').hide();
 		var fst = $(this).find('.passRow').eq(1).find('.passIn').val();
@@ -61,8 +60,11 @@ $(function() {
 		if (fst != scnd) {
 			$(this).parent().find('.message-box').find('.warning').fadeIn();
 			$(this).parent().find('.message-box').find('.message').text("تکرار رمز جدید نادرست است.");
+			return false;
 		} else {
 			$(this).parent().find('.message-box').find('.message').text("با موفقیت ثبت شد");
+			$(this).submit();
+			
 		}
 		$('.barItem').removeClass('active');
 		$('#sidebar .barItem').eq(2).addClass('active');

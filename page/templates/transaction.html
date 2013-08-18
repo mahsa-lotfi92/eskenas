@@ -1,3 +1,8 @@
+<!-- <TODO>
+category ke sub nadare tu lista nemiad!!
+moratab kardane transaction
+bank acount tu jadval ezafe beshe
+</TODO> -->
 {%extends 'base.html'%}
 {%block css%}
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/transaction.css">
@@ -204,26 +209,26 @@
 
 					<select class="catEditList" name="catId">
 						{%for c in cats%}
-							{%if c.id == t.Category.parentCat.id%}
-								{% for b in c.cat_set.all %}
-									{%if b.id == t.Category.id%}
-									<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
-									{%endif%}
-								{%endfor%}
-								{% for b in c.cat_set.all %}
-									{%if b.id != t.Category.id%}
-									<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
-									{%endif%}
-								{%endfor%}
-							{%endif%}
+						{%if c.id == t.Category.parentCat.id%}
+						{% for b in c.cat_set.all %}
+						{%if b.id == t.Category.id%}
+						<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
+						{%endif%}
 						{%endfor%}
-							{%for c in cats%}
-						  		{%if c.id != t.Category.parentCat.id%}
-									{% for b in c.cat_set.all %}
-									<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
-									{%endfor%}
+						{% for b in c.cat_set.all %}
+						{%if b.id != t.Category.id%}
+						<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
+						{%endif%}
+						{%endfor%}
+						{%endif%}
+						{%endfor%}
+						{%for c in cats%}
+						{%if c.id != t.Category.parentCat.id%}
+						{% for b in c.cat_set.all %}
+						<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
+						{%endfor%}
 
-					  			{%endif%}
+						{%endif%}
 
 						{%endfor%}
 					</select>
