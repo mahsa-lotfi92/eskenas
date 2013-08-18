@@ -15,6 +15,7 @@
 
 
 {%block content%}
+			{%if myUser.isGolden%}
 			<form method="post" action="/budget/add/">
 				<div id="addBudget">
 			<div class="budgetPart">
@@ -78,5 +79,16 @@
 			{{b.limit|intcomma}}
 		<div class="clearfix"></div>
 		{%endfor%}
-
+		{%else%}
+		
+		<div class="advGold">
+			<h2> طلایی شوید</h2>
+			شما کاربر طلایی نیستید! طلایی شوید تا از امکان بودجه‌بندی دسته‌های مخارجی خود بهره‌مند شوید.
+			<br />
+			به کمک بودجه بندی سقف مخارج خود را مدیریت کرده و صرفه‌جویی کنید.
+		</div>
+		<div class="clearfix"></div>
+		<img id="budgetImg" src="/static/img/bugShow.png" />
+		{%endif%}
+		
 {%endblock%}

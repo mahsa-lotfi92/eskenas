@@ -4,6 +4,7 @@ from cat.models import Cat
 from budget.models import Bug
 from transaction.models import Transaction
 from django.db.models.aggregates import Sum
+from myprofile.models import userCredit
 
 
 
@@ -15,7 +16,7 @@ def budgetForm (req):
             i.cost += j.cost
         i.per= i.cost * 100.0 / i.limit
         
-    return render(req, 'budget.html', {'cats': Cat.objects.filter(isSub=False), 'bugs': bugs})
+    return render(req, 'budget.html', {'cats': Cat.objects.filter(isSub=False, user= req.user), 'bugs': bugs, 'myUser': userCredit.objects.get(user= req.user)})
 
 
 def budgetAdd (req):
