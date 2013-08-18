@@ -207,21 +207,23 @@
 							{%if c.id == t.Category.parentCat.id%}
 								{% for b in c.cat_set.all %}
 									{%if b.id == t.Category.id%}
-									<option class="catEditItem" value="{{c.id}}">{{c.name}} - {{b.name}}</option>
+									<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
 									{%endif%}
 								{%endfor%}
 								{% for b in c.cat_set.all %}
 									{%if b.id != t.Category.id%}
-									<option class="catEditItem" value="{{c.id}}">{{c.name}} - {{b.name}}</option>
+									<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
 									{%endif%}
 								{%endfor%}
+							{%endif%}
+						{%endfor%}
+							{%for c in cats%}
+						  		{%if c.id != t.Category.parentCat.id%}
+									{% for b in c.cat_set.all %}
+									<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
+									{%endfor%}
 
-							{%else%}
-								{% for b in c.cat_set.all %}
-								<option class="catEditItem" value="{{c.id}}">{{c.name}} - {{b.name}}</option>
-								{%endfor%}
-
-						{%endif%}
+					  			{%endif%}
 
 						{%endfor%}
 					</select>

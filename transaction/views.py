@@ -32,7 +32,7 @@ def transaction(req):
             p.name= req.POST['new']
             p.save()
     T = Transaction.objects.all().order_by('-date')
-    return  render(req, 'transaction.html', {"Tran":T, 'cats': Cat.objects.filter(isSub=False , user= req.user)})
+    return  render(req, 'transaction.html', {"Tran":T.filter(user=req.user), 'cats': Cat.objects.filter(isSub=False , user= req.user)})
 
 
 def deleteTransaction(request):
