@@ -47,10 +47,6 @@ button.btn {
 	float: right;
 	
 }
-#mainw{
-	background: rgb(253, 255, 176);
-	min-height: 500px;
-}
 .menuItem a {
 	display: block;
 	padding: 10px 10px 10px 10px;
