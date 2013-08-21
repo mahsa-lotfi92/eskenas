@@ -26,5 +26,22 @@ $(function() {
 		$('.home').hide();
 		$('.home').eq($(this).index()).show();
 	})
+	
+		$('#reg').submit(function(ev) {
+		var fst = $(this).find('.passRow').eq(4).find('.passIn').val();
+		var scnd = $(this).find('.passRow').eq(5).find('.passIn').val();
+		if (fst != scnd) {
+			$(this).find('.passRow').eq(6).find('.error').css('display','block');
+			$(this).find('.passRow').eq(6).find('.error').text("تکرار رمز عبور نادرست است");
+			
+			return false;
+		} else {
+			$(this).submit();
+
+		}
+		return false;
+
+	});
+	
 });
 

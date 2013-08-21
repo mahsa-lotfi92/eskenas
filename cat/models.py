@@ -12,6 +12,7 @@ class Cat(models.Model):
         return self.name
 
 class BankAccount(models.Model):
+    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User)
     name = models.CharField(max_length=100)
 

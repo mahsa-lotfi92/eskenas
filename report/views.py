@@ -1,7 +1,10 @@
 # Create your views here.
+import decimal
 from django.shortcuts import render, redirect
 
 from django.db.models import Sum
+from django.utils.encoding import smart_str
+from django.utils.timezone import is_aware
 from cat.models import Cat
 from transaction.models import Transaction
 
@@ -25,9 +28,9 @@ class DjangoJSONEncoder(simplejson.JSONEncoder):
     def default(self, o):
         # See "Date Time String Format" in the ECMA-262 specification.
         if isinstance(o, datetime.datetime):
-            return time.mktime(o.timetuple()) * 1000 ;
+            return time.mktime(o.timetuple()) * 1000
         elif isinstance(o, datetime.date):
-            return time.mktime(o.timetuple()) * 1000 ;
+            return time.mktime(o.timetuple()) * 1000
         elif isinstance(o, datetime.time):
             if is_aware(o):
                 raise ValueError("JSON can't represent timezone-aware times.")
@@ -36,7 +39,6 @@ class DjangoJSONEncoder(simplejson.JSONEncoder):
                 r = r[:12]
             return r
         elif isinstance(o, decimal.Decimal):
-            print 'salam5'
             return str(o)
         else:
             return super(DjangoJSONEncoder, self).default(o)
@@ -65,6 +67,7 @@ def monthly(request):
     #------------------------------------------------------
     usr = request.user     
     isIncome = request.POST['isIncome'] == 'true' and True or False
+    accountName = request.POST['account']
     rType = request.POST['type']
     
     startDate = datetime.datetime.fromtimestamp(float(request.POST['startDate']))
@@ -77,17 +80,24 @@ def monthly(request):
     #     print t.isIncome
     print startDate
     print endDate
-    
+
+    print accountName
+
+    baseTran = Transaction.objects.filter(isIncome = isIncome, user=usr)
+    if accountName != -1:
+        baseTran = baseTran.filter(bankAccount = accountName)
+
     obj = dict() 
     if rType == 'category':
         for cat in Cat.objects.all():
-            val = (Transaction.objects.filter(Category = cat, isIncome = isIncome, user=usr, date__range = [startDate, endDate]).aggregate(Sum('cost')))['cost__sum']
-            obj[cat.name] = val
+            val = (baseTran.filter(Category = cat, date__range = [startDate, endDate]).aggregate(Sum('cost')))['cost__sum']
+            if val > 0:
+                obj[cat.name] = val
     else:
         delta = endDate - startDate
         if delta.days <= 31:
             for dt in (startDate + timedelta(n) for n in range(delta.days)):
-                val = (Transaction.objects.filter(isIncome = isIncome, user=usr, date__range = [dt, dt]).aggregate(Sum('cost')))['cost__sum']
+                val = (baseTran.filter(date__range = [dt, dt]).aggregate(Sum('cost')))['cost__sum']
                 obj[time.mktime(dt.timetuple()) * 1000] = val
         else:
             pass 

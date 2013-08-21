@@ -1,35 +1,37 @@
-.anim{
--webkit-transition: all 0.4s ease-in-out;
--moz-transition: all 0.4s ease-in-out;
--ms-transition: all 0.4s ease-in-out;
--o-transition: all 0.4s ease-in-out;
-transition: all 0.4s ease-in-out;
+.anim {
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
 }
 .tranTable {
 	background: #FFF3DA;
 	font-family: tahoma;
 	font-size: 13px;
 	border-radius: 10px;
+	margin-top: 20px;
 }
 .tranRow {
 	height: 50px;
 	display: table-row;
+	padding-right: 30px;
 }
 .tranRow.head {
 	font-size: 22px;
 	font-family: b yekan;
 }
-.tranPay, .tranDate, .tranDes, .tranCat{
+.tranPay, .tranDate, .tranDes, .tranCat, .tranBA {
 	line-height: 40px;
 }
 .tranType {
 	width: 55px;
 }
-.tranPay, .tranDate, .tranDes, .tranType, .tranCat{
+.tranPay, .tranDate, .tranDes, .tranType, .tranCat, .tranBA {
 	padding: 4px 7px;
 	display: table-cell;
 	border-bottom: 1px solid rgb(213, 203, 203);
-border-bottom: 1px solid rgb(213, 203, 203);
+	border-bottom: 1px solid rgb(213, 203, 203);
 }
 .tranType.up {
 	background: url(../img/uarr.png) no-repeat 0 10px;
@@ -38,44 +40,46 @@ border-bottom: 1px solid rgb(213, 203, 203);
 	background: url(../img/darr.png) no-repeat 0 10px;
 }
 .tranPay {
-	width: 65px;
+	width: 75px;
 }
 .tranDate {
-	width: 95px;
+	width: 105px;
 }
 .tranDes {
-	width: 220px;
+	width: 320px;
 }
 .tranCat {
-	width: 200px;
+	width: 110px;
 }
-.barItem{
+.tranBA {
+	width: 160px;
+}
+.barItem {
 	line-height: 28px;
 	color: black;
 	border-bottom: 1px solid rgb(213, 213, 213);
 }
-.barItem a{
+.barItem a {
 	display: block;
 	text-decoration: none;
 	color: black;
 	padding: 0px 10px 0px 0px;
 }
-.barItem a:hover{
+.barItem a:hover {
 	background: rgb(207, 207, 207);
 	color: rgb(29, 29, 148);
 }
-.lastBarItem{
+.lastBarItem {
 	border-bottom: none;
 }
-.barItem.active{
+.barItem.active {
 	background: rgb(191, 191, 245);
 	border-radius: 5px;
 }
 
-
-.cat-table{
+.cat-table {
 }
-.cat-table form{
+.cat-table form {
 	margin: 0;
 }
 .cat-table .xrow {
@@ -86,27 +90,27 @@ border-bottom: 1px solid rgb(213, 203, 203);
 	display: inline-block;
 	margin: 0;
 }
-.cat-table .cat{
+.cat-table .cat {
 	margin-top: 25px;
 	border-bottom: 1px solid #AA8E1F;
 }
-.cat-table .subcat{
+.cat-table .subcat {
 	border-bottom: 1px solid #FCD436;
 }
-.cat-table .cat:first-child{
+.cat-table .cat:first-child {
 }
-.cat-table .xrow .name{
+.cat-table .xrow .name {
 	float: right;
 	width: 220px;
 }
-.cat-table .cat .name{
+.cat-table .cat .name {
 	font-weight: bold;
 }
-.cat-table .subcat .name{
+.cat-table .subcat .name {
 	padding-right: 40px;
 	margin-left: -40px;
 }
-.cat-table .xrow{
+.cat-table .xrow {
 	vertical-align: middle;
 }
 .cat-table .xrow > * {
@@ -124,7 +128,7 @@ border-bottom: 1px solid rgb(213, 203, 203);
 .cat-table [class^=icon] {
 	cursor: pointer;
 }
-.hider{
+.hider {
 	overflow: hidden;
 }
 #inCon {
@@ -141,21 +145,22 @@ border-bottom: 1px solid rgb(213, 203, 203);
 }
 .tranPart {
 	float: right;
-	padding: 20px;
+	padding: 5px;
+	height: 50px;
 }
 input#transaction {
 	width: 119px;
 }
-input#auto{
+input#auto {
 	width: 200px;
 }
-#upOrDown{
+#upOrDown {
 	direction: ltr;
 }
 .icoUp {
 	height: 31px;
 	width: 31px;
-	background-image:  url(../img/uarr.png);
+	background-image: url(../img/uarr.png);
 }
 .icoDown {
 	height: 31px;
@@ -167,10 +172,13 @@ input#auto{
 }
 input#desc.auto {
 	width: 502px;
+	margin-left: 50px;
 }
 input#desc {
 	width: 520px;
+	margin-left: 60px;
 }
+
 input.transaction {
 	width: 130px;
 }
@@ -196,7 +204,7 @@ h3 {
 	border-radius: 10px;
 	width: 40%;
 }
-#sync .tranTable{
+#sync .tranTable {
 	margin-bottom: 20px;
 }
 #catHead {
@@ -207,7 +215,7 @@ h3 {
 	float: right;
 	margin: 20px;
 }
-#catHeadInput{
+#catHeadInput {
 	margin: 0px;
 }
 .TranEdit {
@@ -228,7 +236,7 @@ h3 {
 	margin: 5px;
 	border-bottom: 1px solid rgb(213, 203, 203);
 	display: none;
-
+	padding-right: 10px;
 }
 
 .tranPayEdit {
@@ -239,13 +247,11 @@ h3 {
 	width: 80px;
 }
 .tranDesEdit {
-	width: 250px;
+	width: 520px;
+	margin-left: 60px;
 }
-.tranCatEdit {
-	width: 65px;
-}
-.tranPayEdit, .tranDateEdit, .tranDesEdit, .tranTypeEdit, .tranCatEdit,.catEditList {
-	margin-top:10px; 
+.tranPayEdit, .tranDateEdit, .tranDesEdit, .tranTypeEdit, .tranCatEdit, .catEditList, .BAEditList {
+	margin-top: 10px;
 }
 #upOrDownEdit {
 	margin: 0px;
@@ -254,21 +260,27 @@ h3 {
 #upOrDownEdit .btn {
 	padding: 0px;
 }
-.btn-warning{
+.btn-warning {
 	font-family: Tahoma;
 	height: auto;
 }
-.editAction{
+.editAction {
 	font-family: Tahoma;
 	height: 23px;
 	text-align: center;
 	border-radius: 3px;
 }
-#catList{
+#catList {
 	width: 150px;
 }
-.catEditList{
-	width: 180px;
+#BAList {
+	width: 150px;
+}
+.catEditList {
+	width: 140px;
+}
+.BAEditList {
+	width: 140px;
 }
 .edt {
 	display: none;

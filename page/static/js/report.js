@@ -317,7 +317,11 @@ window.report.filter = (function () {
 		},
 		getEndDate: function(){
 			return eDate.getTime() / 1000 ;
-		}
+		},
+        getAccount: function(){
+            //TODO
+            return 1 ;
+        }
 	};
 })();
 
@@ -339,7 +343,7 @@ window.report.core = (function () {
 	function refresh(){
 		beginLoading() ;
 		//---------------
-		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'isIncome': true, 'type': 'category'} ;
+		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': true, 'type': 'category'} ;
 		//---------------
 		$.post('/ajax/monthly_report/', additionalData, load);
 	}
