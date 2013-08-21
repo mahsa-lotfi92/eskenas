@@ -10,6 +10,7 @@ $(function() {
 		}
 		if (k != s.length){
 		ev.preventDefault()
+		$('.budgWar').show()
 		}
 	})
 	$('.remainBug').on('click', '.remove', function() {
@@ -40,7 +41,8 @@ $(function() {
 		}
 		if (k != s.length){
 		ev.preventDefault()
-		$('.budgWar').show()
+		$('.budgWar').hide();
+		$('.budgWar').eq($(this).index()-1).show();
 		}
 	})
 })
