@@ -26,5 +26,21 @@ $(function() {
 		$('.home').hide();
 		$('.home').eq($(this).index()).show();
 	})
+	
+		$('#reg').submit(function(ev) {
+		var fst = $(this).find('.passRow').eq(4).find('.passIn').val();
+		var scnd = $(this).find('.passRow').eq(5).find('.passIn').val();
+		if (fst != scnd) {
+			alert("khata!");
+			return false;
+		} else {
+			alert("submit");
+			$(this).submit();
+
+		}
+		return false;
+
+	});
+	
 });
 
