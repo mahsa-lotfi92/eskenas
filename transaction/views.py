@@ -35,7 +35,7 @@ def transaction(req):
             p = Cat.objects.get(id=req.POST['id'], user=req.user)
             p.name = req.POST['new']
             p.save()
-    T = Transaction.objects.all().order_by('-date')
+    T = Transaction.objects.all().filter(user=req.user).order_by('-date')
     return  render(req, 'transaction.html', {"Tran":T, 'cats': Cat.objects.filter(isSub=False , user=req.user), 'bankAccounts': BankAccount.objects.filter(user=req.user)})
 
 
