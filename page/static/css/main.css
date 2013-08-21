@@ -9,10 +9,9 @@ button.btn {
 	font-family: tahoma;
 }
 #header {
-	background: url(../img/5toman.png) -18px 0 no-repeat;
+	background: url(../img/header.png) -18px 0 no-repeat;
 	text-align: right;
 	height: 130px;
-	font-family: phalls tannaz;
 }
 #header h1 {
 	padding: 36px 20px;
@@ -55,9 +54,8 @@ button.btn {
 	line-height: 30px;
 	text-align: center;
 	color: black;
-	font-family: B kamran;
-	font-size: 20px;
-	font-weight: bold;
+	font-family: Tahoma;
+	font-size: 13px;
 }
 .menuItem:hover a {
 	text-decoration: none;

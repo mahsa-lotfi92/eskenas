@@ -18,7 +18,7 @@ from django.utils import simplejson
 import datetime
 from datetime import timedelta
 import time
-from dateutil.relativedelta import relativedelta
+#from dateutil.relativedelta import relativedelta
 
 
 class DjangoJSONEncoder(simplejson.JSONEncoder):
