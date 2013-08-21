@@ -225,6 +225,7 @@ width: 200px;
 float: right;
 margin: 15px 51px 0px 0px;
 color: #f00;
+display: none;
 }
 .setOpacity{
 	opacity: 0.5;

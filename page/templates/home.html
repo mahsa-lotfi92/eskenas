@@ -56,11 +56,10 @@
 		</div>
 
 		<div class="passRow">
-			{%if error%}
-			<div class="error">
+			<div class="error" {%if error%} style="display: block"	{%endif%}>
 				{{reg_error}}
 			</div>
-			{%endif%}
+		
 			<div class="savePass">
 				<input type="submit" value="ثبت" class="btn btn-info">
 			</div>

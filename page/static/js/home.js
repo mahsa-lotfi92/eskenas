@@ -31,10 +31,11 @@ $(function() {
 		var fst = $(this).find('.passRow').eq(4).find('.passIn').val();
 		var scnd = $(this).find('.passRow').eq(5).find('.passIn').val();
 		if (fst != scnd) {
-			alert("khata!");
+			$(this).find('.passRow').eq(6).find('.error').css('display','block');
+			$(this).find('.passRow').eq(6).find('.error').text("تکرار رمز عبور نادرست است");
+			
 			return false;
 		} else {
-			alert("submit");
 			$(this).submit();
 
 		}
