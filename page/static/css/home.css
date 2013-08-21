@@ -11,38 +11,6 @@
 	font-size: 13px;
 	border-radius: 10px;
 }
-
-.barItem {
-	line-height: 28px;
-	color: black;
-	border-bottom: 1px solid rgb(213, 213, 213);
-}
-.barItem a {
-	display: block;
-	text-decoration: none;
-	color: black;
-	padding: 0px 10px 0px 0px;
-}
-.barItem a:hover {
-	background: rgb(207, 207, 207);
-	color: rgb(29, 29, 148);
-}
-.lastBarItem {
-	border-bottom: none;
-}
-.barItem.active {
-	background: rgb(191, 191, 245);
-}
-
-#inCon {
-	width: 4000px;
-	margin-right: -20px;
-}
-.solsCon {
-	width: 725px;
-	float: right;
-	padding: 20px;
-}
 .home {
 	background: rgb(253, 255, 176);
 	float: top;
@@ -116,11 +84,6 @@
 	font-family: tahoma;
 	font-size: 13px;
 	margin: 7px;
-}
-.home_menuItem:hover a {
-	text-decoration: none;
-	color: rgb(10, 47, 196);
-	font-weight: normal;
 }
 #login {
 	display: none;
@@ -207,12 +170,11 @@
 }
 .menuItem.active {
 	background: rgb(253, 255, 176);
-	/* border-top-left-radius: 20px; */
-	/* border-top-right-radius: 20px; */
 	
 }
 .menuItem:hover {
 	font-weight: bold;
+	cursor: pointer;
 
 }
 .menuItem.active:hover {

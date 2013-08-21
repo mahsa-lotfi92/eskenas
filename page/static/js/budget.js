@@ -40,6 +40,7 @@ $(function() {
 		}
 		if (k != s.length){
 		ev.preventDefault()
+		$('.budgWar').show()
 		}
 	})
 })

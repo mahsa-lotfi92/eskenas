@@ -9,7 +9,7 @@
 }
 .budgetPart {
 	width: 224px;
-	height: 100px;
+	height: 50px;
 	float: right;
 	margin: 1px;
 	text-align: center;
@@ -57,4 +57,8 @@ padding: 5px;
 #budgetImg {
 	display: block;
 	margin: 0 auto;
+}
+
+.budgWar{
+	color: rgb(202, 1, 1);
 }
