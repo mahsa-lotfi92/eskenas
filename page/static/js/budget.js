@@ -1,7 +1,17 @@
 $(function() {
-	$('#addBudget .btn.btn-success').click(function() {
+	$('#addBudget .btn.btn-success').click(function(ev) {
+		ev.preventDefault()
 		var row = $(this).parent()
+		s= $('#budgetLimit').val()
+		var k=0
+		for (var x=0; x< s.length; x++){
+			if (s[x] >= '0' && s[x] <= '9') {
+					k++;
+			}
+		}
+		if (k== s.length){
 		row.find('form').submit()
+		}
 	})
 	$('.remainBug').on('click', '.remove', function() {
 		var row = $(this).parent()
