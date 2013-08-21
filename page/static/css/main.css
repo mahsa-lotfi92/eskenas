@@ -54,9 +54,8 @@ button.btn {
 	line-height: 30px;
 	text-align: center;
 	color: black;
-	font-family: B kamran;
-	font-size: 20px;
-	font-weight: bold;
+	font-family: Tahoma;
+	font-size: 13px;
 }
 .menuItem:hover a {
 	text-decoration: none;
