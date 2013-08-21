@@ -59,7 +59,7 @@
 			<div class="error" {%if error%} style="display: block"	{%endif%}>
 				{{reg_error}}
 			</div>
-		
+
 			<div class="savePass">
 				<input type="submit" value="ثبت" class="btn btn-info">
 			</div>
@@ -84,12 +84,10 @@
 		</div>
 
 		<div class="passRow">
-			{%if error%}
-			<div class="error">
+			<div class="error" {%if error%} style="display: block"	{%endif%}>
 				{{login_error}}
 			</div>
-			{%endif%}
-			
+
 			<div class="savePass">
 				<input type="submit" value="ورود" class="btn btn-primary">
 			</div>
@@ -114,57 +112,57 @@
 			<div class="home_menuItem" id="reg_link" >
 				<a href="/home/" class="btn">عضویت</a>
 			</div>
-		<div class="clearfix"></div>
+			<div class="clearfix"></div>
 
 		</div>
-			<div class="home">
-				<div class="adv">
-					<div class="advImg right">
-						<img src="/static/img/tran.png" />
-					</div>
-					<div class="advText right">
-						<h3> ثبت تراکنش‌ها</h3>
-						خرج و درآمد روزانه‌ی خود را ثبت کنید.
-						<br />
-						تراکنش‌های حساب بانکی خود را مدیریت کنید.
-						<br />
-						اقساط و درآمد های ثابت ماهانه خود را با یک بار وارد کنید تا به صورت خودکار هر ماه محاسبه شود.
-					</div>
+		<div class="home">
+			<div class="adv">
+				<div class="advImg right">
+					<img src="/static/img/tran.png" />
 				</div>
-				<div class="adv">
-					<div class="advImg left">
-						<img src="/static/img/report.png" />
-					</div>
-					<div class="advText left">
-						<h3> گزارش‌گیری</h3>
-						گزارش مالی خود را به صورت تصویری دریافت کنید.
-						<br />
-						گزارش ماهانه، سالانه و دسته‌بندی شده بگیرید.
-					</div>
-				</div>
-				<div class="adv">
-					<div class="advImg right">
-						<img src="/static/img/bugShow.png" />
-					</div>
-					<div class="advText right">
-						<h3> بودجه بندی</h3>
-						سقف ماهیانه برای دسته‌های مخارجی خود تعیین کنید.
-						<br />
-						به کمک بودجه بندی سقف مخارج خود را مدیریت کرده و صرفه‌جویی کنید.
-					</div>
-				</div>
-				<div class="adv">
-					<div class="advImg left">
-						<img src="/static/img/cat.png" />
-					</div>
-					<div class="advText left">
-						<h3> دسته‌بندی</h3>
-						مخارج خود را با دسته بندی مدیریت کنید.
-						<br />
-						دسته‌ها و زیردسته‌های دلخواه خود را تعریف کنید.
-					</div>
+				<div class="advText right">
+					<h3> ثبت تراکنش‌ها</h3>
+					خرج و درآمد روزانه‌ی خود را ثبت کنید.
+					<br />
+					تراکنش‌های حساب بانکی خود را مدیریت کنید.
+					<br />
+					اقساط و درآمد های ثابت ماهانه خود را با یک بار وارد کنید تا به صورت خودکار هر ماه محاسبه شود.
 				</div>
 			</div>
-			<div class="home hide"></div>
+			<div class="adv">
+				<div class="advImg left">
+					<img src="/static/img/report.png" />
+				</div>
+				<div class="advText left">
+					<h3> گزارش‌گیری</h3>
+					گزارش مالی خود را به صورت تصویری دریافت کنید.
+					<br />
+					گزارش ماهانه، سالانه و دسته‌بندی شده بگیرید.
+				</div>
+			</div>
+			<div class="adv">
+				<div class="advImg right">
+					<img src="/static/img/bugShow.png" />
+				</div>
+				<div class="advText right">
+					<h3> بودجه بندی</h3>
+					سقف ماهیانه برای دسته‌های مخارجی خود تعیین کنید.
+					<br />
+					به کمک بودجه بندی سقف مخارج خود را مدیریت کرده و صرفه‌جویی کنید.
+				</div>
+			</div>
+			<div class="adv">
+				<div class="advImg left">
+					<img src="/static/img/cat.png" />
+				</div>
+				<div class="advText left">
+					<h3> دسته‌بندی</h3>
+					مخارج خود را با دسته بندی مدیریت کنید.
+					<br />
+					دسته‌ها و زیردسته‌های دلخواه خود را تعریف کنید.
+				</div>
+			</div>
+		</div>
+		<div class="home hide"></div>
 	</div>
 </body>

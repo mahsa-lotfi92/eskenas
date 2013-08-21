@@ -56,11 +56,7 @@ $(function() {
 	})
 })
 $(function() {
-	$('#Category').ready(function() {
-		$('#Category').val($('#catList .catItem').eq(0).text());
-		//#chera this nemishe?
-	});
-	
+
 
 	$('#addTranSubmit').click(function(ev) {
 		ev.preventDefault();
