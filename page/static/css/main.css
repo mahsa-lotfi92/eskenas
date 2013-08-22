@@ -25,6 +25,7 @@ button.btn {
 	min-height: 500px;
 	border-radius: 5px;
 	padding: 20px;
+	padding-bottom: 200px;
 }
 #sidebar {
 	background: #F2F3F0;

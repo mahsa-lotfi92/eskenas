@@ -20,7 +20,7 @@
 				<div id="addBudget">
 			<div class="budgetPart">
 				<input name= "formID" value="1" type="hidden">
-				<input type="text" placeholder="مبلغ" name="limit">
+				<input type="text" placeholder="مبلغ" name="limit" id="budgetLimit">
 			</div>
 			<div class="budgetPart">
 				<select name= "catList" id="catList">
@@ -35,6 +35,10 @@
 				</button>
 				
 			</div>
+			<div class="budgWar hide">
+				مبلغ به درستی وارد نشده‌است.
+				
+			</div>
 		</div>
 		</form>
 		<div class="clearfix"></div>
@@ -47,7 +51,10 @@
 			<form action='/budget/edit/' method="post" class= "edt forSub">
 					<input name= "id" value="{{b.id}}" type="hidden">
 					<input name= "new" type="text" placeholder="مبلغ جدید" class="limitEdit">
-					<input type= "submit" value="تایید" class="btn btn-info">
+					<input type="submit" value="تایید" class="btn btn-info" id="edtSubmit">
+			<div class="budgWar hide">
+				مبلغ به درستی وارد نشده‌است.
+			</div>
 			</form>
 			
 			
