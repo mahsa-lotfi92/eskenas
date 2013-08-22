@@ -242,16 +242,14 @@ $(function () {
 
 
 $(function () {
-	window.report.core.initialize()
-	
-	
-	$ ('#inCon').css('margin-right', -790 )
-	$ ('.barItem').removeClass('active')
-	$('#sidebar .barItem').eq(1).addClass('active')
-	
+//	$ ('#inCon').css('margin-right', -790 )
+//	$ ('.barItem').removeClass('active')
+//	$('#sidebar .barItem').eq(1).addClass('active')
+//	window.report.core.refresh();
+
 	$('#sidebar .barItem').eq(0).click(function(ev) {
 		ev.preventDefault()
-		// 
+
 		// $ ('#inCon').css('margin-right', -20 )
 		// $ ('.barItem').removeClass('active')
 		// $(this).addClass('active')
@@ -259,18 +257,18 @@ $(function () {
 
 	$('#sidebar .barItem').eq(1).click(function(ev) {
 		ev.preventDefault()
-		// 
-		// $ ('#inCon').css('margin-right', -790 )
-		// $ ('.barItem').removeClass('active')
-		// $(this).addClass('active')
+        window.report.core.initialize(1);
+		$ ('#inCon').css('margin-right', -790 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
 	})
 
 	$('#sidebar .barItem').eq(2).click(function(ev) {
 		ev.preventDefault()
-		// 
-		// $ ('#inCon').css('margin-right', -1545 )
-		// $ ('.barItem').removeClass('active')
-		// $(this).addClass('active')
+		window.report.core.initialize(2);
+		$ ('#inCon').css('margin-right', -1545 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
 	})
 	
 	$('#sidebar .barItem').eq(3).click(function(ev) {
@@ -281,7 +279,7 @@ $(function () {
 		// $(this).addClass('active')
 	})
 	
-	$('#refresh').click(function(ev){
+	$('.refresh').click(function(ev){
 		ev.preventDefault();
 		//------------------
 		window.report.core.refresh();
@@ -323,8 +321,8 @@ window.report.filter = (function () {
 
 window.report.core = (function () {
 	//Private
-	var filter 
-	var chartData, sortable, total; 
+	var filter
+	var chartData, sortable, total, isIncome;
 	
 	
 	function beginLoading(){
@@ -338,7 +336,7 @@ window.report.core = (function () {
 	function refresh(){
 		beginLoading() ;
 		//---------------
-		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': true, 'type': 'category'} ;
+		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': isIncome, 'type': 'category'} ;
         console.log(additionalData);
 		//---------------
 		$.post('/ajax/monthly_report/', additionalData, load);
@@ -372,11 +370,13 @@ window.report.core = (function () {
 	
 	return {
 		//Public 
-		initialize: function(){
-			filter = window.report.filter
-			filter.initialize();
+		initialize: function(tabIndex){
+            window.report.ui.initialize(tabIndex, window.data.accounts);
+			window.report.filter.initialize();
+            filter = window.report.filter ;
             //------------------
-            window.report.ui.initialize(window.data.accounts);
+            isIncome = (tabIndex == 1) ;
+            refresh() ;
 		},
 		set: function(input){
 		},
@@ -393,19 +393,19 @@ window.report.ui = (function () {
 	function loadDetail(data, total){
 		for(var i = 0 ; i < 4 ; i++){
 			if (i < data.length){
-				$('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
-				$('.detail .tranRow').eq(i+1).find(' .tranPay').html(data[i][1]);				
+				base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
+				base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(data[i][1]);
 			}else{
-				$('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
-				$('.detail .tranRow').eq(i+1).find(' .tranPay').html('');				
+				base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
+				base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html('');
 			}
 		}
-		$('.detail .total').eq(0).html(total)
-		$('.detail .total').eq(1).html(data[0][0])
+		base.find('.detail .total').eq(0).html(total)
+		base.find('.detail .total').eq(1).html(data[0][0])
 	}
 	
 	function loadChart(data){
-		var chart =  $('#income .chart-container').highcharts();
+		var chart =  base.find('.chart-container').highcharts();
 		//------------------------------------------------
 	    while(chart.series.length > 0)
 			chart.series[0].remove();
@@ -496,8 +496,11 @@ window.report.ui = (function () {
 	
 	return {
 		//Public
-        initialize: function(accounts){
-            base = $("#income")
+        initialize: function(tabIndex, accounts){
+            if (tabIndex == 1)
+                base = $("#income")
+            else
+                base = $("#spending")
             setAccount(accounts) ;
             setTime() ;
         },

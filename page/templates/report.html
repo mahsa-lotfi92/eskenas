@@ -52,12 +52,14 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 			<div class="report">
 				<div class="header">
 					<h3>
-						هزینه ها بر اساس دسته بندی
+						درآمد ها بر اساس دسته بندی
 					</h3>
 				</div>
-				<button id="refresh" class="btn btn-success">ارسال</button>
+
 				
 				<div class="filter">
+                    <button class="refresh btn btn-success">ارسال</button>
+
 					<div calss="wrapper">
 						<div class="btn-group open criteria account">
 			                <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -135,7 +137,7 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 							</div>
 						</div>
 						<div class="extra">
-							<h5>مجموع هزینه:</h5>
+							<h5>مجموع درآمد:</h5>
 							<h7 class="total">-</h7>
 							<br>	
 							<br>
@@ -170,6 +172,8 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 				</div>
 				
 				<div class="filter">
+                    <button class="refresh btn btn-success">ارسال</button>
+
 					<div calss="wrapper">
 						<div class="btn-group open criteria account">
 			                <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -177,46 +181,16 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 								 <span class="caret"></span></button>
 			                <ul class="dropdown-menu">
 
-  			                  <li><a href="#">
-								  تمام حساب‌ها
-							  </a></li>
-			                  <li class="divider"></li>
-			                  <li><a href="#">
-								  <span class="name">
-									  سپرده
-								  </span>
-								  <span class="bank">
-									  پاسارگارد
-								  </span>
-							  </a></li>
-			                  <li><a href="#">
-								  <span class="name">
-									  قرض‌افحسنه
-								  </span>
-								  <span class="bank">
-									  پارسیان
-								  </span>
-
-			                  </a></li>
-		                  
 			                </ul>
 			              </div>
 					  
   						<div class="btn-group open criteria time">
   			                <button class="btn dropdown-toggle" data-toggle="dropdown">
-								سال گذشته
+								 هفته گذشته
   								 <span class="caret"></span></button>
   			                <ul class="dropdown-menu">
 
-  			                  <li><a href="#"> بازه‌ی دلخواه
-							    </a></li>
-  			                  <li><a href="#">   هفته گذشته  </a></li>
-  			                  <li><a href="#">   ماه گذشته  </a></li>
-			                  <li><a href="#"> سال گذشته  </a></li>
-  			                  <li><a href="#"> تمام ادوار  </a></li>
-						  
-		                  
-  			      			</ul>
+  			                <ul>
   			              </div>
 					  
 					  
@@ -252,53 +226,53 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 							</div>
 							<div class="tranRow">
 								<div class="tranCat">
-									خوراک
+
 								</div>
 								<div class="tranPay">
-								۲۴۳ هزار
+
 								</div>
 							</div>
 							<div class="tranRow">
 								<div class="tranCat">
-									خوراک
+
 								</div>
 								<div class="tranPay">
-								۲۴۳ هزار
+
 								</div>
 							</div>
 							<div class="tranRow">
 								<div class="tranCat">
-									خوراک
+
 								</div>
 								<div class="tranPay">
-								۲۴۳ هزار
+
 								</div>
 							</div>
 							<div class="tranRow">
 								<div class="tranCat">
-									خوراک
+
 								</div>
 								<div class="tranPay">
-								۲۴۳ هزار
+
 								</div>
 							</div>
 						</div>
 						<div class="extra">
 							<h5>مجموع هزینه:</h5>
-							<h7>۱، ۲۷۳ هزار تومن</h7>
+							<h7 class="total">-</h7>
 							<br>	
 							<br>
 							<h5>پر هزینه ترین دسته:</h5>
-							<h7>خوراک، ۲۴۳ هزار</h7>
+							<h7 class="total">-</h7>
 
-							<div class="alert alert-info" style="margin-top:10px;">
+							<!--<div class="alert alert-info" style="margin-top:10px;">
 								<button type="button" class="close" data-dismiss="alert">×</button>
-								با 
+								با
 								<strong>
 								بودجه بندی
 								</strong>
 								 در پرهینه ترین دسته‌ی خود فلان قدر پول ذخیره کنید.
-							</div>
+							</div>-->
 						</div>
 						<div class="clearfix"></div>
 					</div>
