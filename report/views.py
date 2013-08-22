@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.db.models import Sum
 from django.utils.encoding import smart_str
 from django.utils.timezone import is_aware
-from cat.models import Cat
+from cat.models import Cat, BankAccount
 from transaction.models import Transaction
 
 from django.http import HttpResponse
@@ -45,7 +45,13 @@ class DjangoJSONEncoder(simplejson.JSONEncoder):
 
 
 def general(request):
-    return  render(request, 'report.html', {"Name": "behrooz", "Family": "kidding"})
+    if not request.user.is_authenticated():
+        s = json.dumps({'result': 'ERROR', 'usr' : 'not logged in'}, cls=DjangoJSONEncoder)
+        return HttpResponse(s, mimetype='application/json')
+
+    usr = request.user
+    account = BankAccount.objects.filter(user = usr)
+    return  render(request, 'report.html', {"account": account})
 
 
 # @csrf_exempt
@@ -67,7 +73,7 @@ def monthly(request):
     #------------------------------------------------------
     usr = request.user     
     isIncome = request.POST['isIncome'] == 'true' and True or False
-    accountName = request.POST['account']
+    accountID = int(request.POST['account'])
     rType = request.POST['type']
     
     startDate = datetime.datetime.fromtimestamp(float(request.POST['startDate']))
@@ -81,16 +87,14 @@ def monthly(request):
     print startDate
     print endDate
 
-    print accountName
-
     baseTran = Transaction.objects.filter(isIncome = isIncome, user=usr)
-    if accountName != -1:
-        baseTran = baseTran.filter(bankAccount = accountName)
+    if accountID != -1:
+        baseTran = baseTran.filter(bankAccount__id = accountID)
 
     obj = dict() 
     if rType == 'category':
         for cat in Cat.objects.all():
-            val = (baseTran.filter(Category = cat, date__range = [startDate, endDate]).aggregate(Sum('cost')))['cost__sum']
+            val = (baseTran.filter(Category__parentCat= cat, date__range= [startDate, endDate]).aggregate(Sum('cost')))['cost__sum']
             if val > 0:
                 obj[cat.name] = val
     else:
@@ -106,6 +110,7 @@ def monthly(request):
 #                 e = startDate + timedelta(n+1)
                 # obj[s] = (Transaction.objects.filter(Category = cat, isIncome = isIncome, user=usr, date__range[s, e]).aggregate(Sum('cost')))['cost__sum']
     #------------------------------------------------------
+    print obj
     s = json.dumps({'result': 'OK', 'data' : obj}, cls=DjangoJSONEncoder)
     return HttpResponse(s, mimetype='application/json')
 

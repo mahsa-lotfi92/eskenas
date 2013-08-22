@@ -9,6 +9,15 @@
 <script src="{{STATIC_URL}}js/report.js"></script>
 
 <script>
+window.console = window.console || {log: function(){}}; // IE :D
+
+window.data = {} ;
+//----------------------------
+window.data.accounts = {}
+{% for m in account %}
+window.data.accounts[{{m.id}}] = '{{m.name}}' ;
+{% endfor %}
+//----------------------------
 
 </script>
 {%endblock%}
@@ -56,45 +65,16 @@
 								 <span class="caret"></span></button>
 			                <ul class="dropdown-menu">
 
-  			                  <li><a href="#">
-								  تمام حساب‌ها
-							  </a></li>
-			                  <li class="divider"></li>
-			                  <li><a href="#">
-								  <span class="name">
-									  سپرده
-								  </span>
-								  <span class="bank">
-									  پاسارگارد
-								  </span>
-							  </a></li>
-			                  <li><a href="#">
-								  <span class="name">
-									  قرض‌افحسنه
-								  </span>
-								  <span class="bank">
-									  پارسیان
-								  </span>
 
-			                  </a></li>
 		                  
 			                </ul>
 			              </div>
 					  
   						<div class="btn-group open criteria time">
   			                <button class="btn dropdown-toggle" data-toggle="dropdown">
-								سال گذشته
+								 هفته گذشته
   								 <span class="caret"></span></button>
   			                <ul class="dropdown-menu">
-
-  			                  <li><a href="#"> بازه‌ی دلخواه
-							    </a></li>
-  			                  <li><a href="#">   هفته گذشته  </a></li>
-  			                  <li><a href="#">   ماه گذشته  </a></li>
-			                  <li><a href="#"> سال گذشته  </a></li>
-  			                  <li><a href="#"> تمام ادوار  </a></li>
-						  
-		                  
   			      			</ul>
   			              </div>
 					  

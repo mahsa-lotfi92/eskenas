@@ -288,29 +288,18 @@ $(function () {
 	})
 	
 
-})	
-
-window.report.filter = (function (){
-
-	return{
-		
-	}
-})();
+})
 
 window.report.filter = (function () {
 	//Private
-	var sDate, eDate;
+	var sDate, eDate, account = -1;
 	
 	return {
 		//Public 
 		initialize: function(){
 			sDate = new Date()
+            sDate.setDate(sDate.getDate() - 7)
 			eDate = new Date()
-		    with(sDate)
-		    {
-		      // setDate(1);
-		      setMonth(getMonth()-1);
-		    }
 		},
 		getStartDate: function(){
 			return sDate.getTime() / 1000 ;
@@ -319,8 +308,14 @@ window.report.filter = (function () {
 			return eDate.getTime() / 1000 ;
 		},
         getAccount: function(){
-            //TODO
-            return 1 ;
+            return account ;
+        },
+        setAccount: function(acc){
+            account = acc ;
+        },
+        setTime: function(s, e){
+            sDate = s ;
+            eDate = e ;
         }
 	};
 })();
@@ -344,6 +339,7 @@ window.report.core = (function () {
 		beginLoading() ;
 		//---------------
 		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': true, 'type': 'category'} ;
+        console.log(additionalData);
 		//---------------
 		$.post('/ajax/monthly_report/', additionalData, load);
 	}
@@ -378,15 +374,21 @@ window.report.core = (function () {
 		//Public 
 		initialize: function(){
 			filter = window.report.filter
-			filter.initialize();	
+			filter.initialize();
+            //------------------
+            window.report.ui.initialize(window.data.accounts);
 		},
 		set: function(input){
 		},
-		refresh: refresh
+		refresh: refresh,
+        addAccount: function addAccount(id, name){
+            console.log(id + " " + name);
+        }
 	};
 })();
 
 window.report.ui = (function () {
+    var base ;
 	//Private
 	function loadDetail(data, total){
 		for(var i = 0 ; i < 4 ; i++){
@@ -425,9 +427,80 @@ window.report.ui = (function () {
 		chart.xAxis[0].setCategories(category, false);
 		chart.redraw(); 
 	}
+
+    function setAccount(accounts){
+        var list = base.find('.filter .account .dropdown-menu')
+        list.html('')
+
+        var tmp = $("<li><a href=\"#\"><span class=\"name\"> </span> <span class=\"bank\"> </span></a></li>")
+
+        var item = tmp.clone() ;
+        item.find(".name").html('تمام حساب‌ها');
+        item.data('id', -1).data('name', 'تمام حساب‌ها') ;
+        item.appendTo(list)
+        $('<li class=\"divider\"></li>').appendTo(list);
+
+        for (var key in accounts) {
+            var item = tmp.clone() ;
+            item.find(".name").html(accounts[key])
+            item.data('id', key).data('name', accounts[key]) ;
+            item.appendTo(list) ;
+        }
+
+        $('.filter .account .dropdown-menu li').click(function(event){
+            window.report.filter.setAccount($(this).data('id'));
+            base.find('.filter .account .btn').html($(this).data('name') + '<span class=\"caret\"></span></button>');
+            event.preventDefault() ;
+        });
+    }
+
+    function getBefore(y, m, d){
+        var ret = new Date();
+
+        with(ret)
+        {
+            ret.setDate(ret.getDate()-d);
+            setMonth(getMonth()-m);
+            setYear(getFullYear()-y);
+        }
+        return ret;
+    }
+
+    function setTime(){
+
+        var times = [] ;
+        times[0] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 0, 7), 'name' : 'هفته‌ گذشته'};
+        times[1] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 1, 0), 'name' : 'ماه‌ گذشته'};
+        times[2] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(1, 0, 0), 'name' : 'سال گذشته'};
+        times[3] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(100, 0, 0), 'name' : 'تمام ادوار'};
+        times[4] = {'eDate' : null, 'sDate' : null, 'name': 'بازه‌ دلخواه'};
+
+        var list = base.find('.filter .time .dropdown-menu')
+        list.html('')
+
+        var tmp = $("<li><a href=\"#\"> </a></li>")
+        for (var i = 0; i < times.length ; i++) {
+            var item = tmp.clone() ;
+            item.find("a").html(times[i].name)
+            item.data('date', times[i])
+            item.appendTo(list) ;
+        }
+
+        $('.filter .time .dropdown-menu li:not(:last-child)').click(function(event){
+            var dict = $(this).data('date') ;
+            window.report.filter.setTime(dict['sDate'], dict['eDate']);
+            base.find('.filter .time .btn').html(dict['name'] + '<span class=\"caret\"></span></button>');
+            event.preventDefault() ;
+        });
+    }
 	
 	return {
-		//Public 
+		//Public
+        initialize: function(accounts){
+            base = $("#income")
+            setAccount(accounts) ;
+            setTime() ;
+        },
 		loadChart: loadChart,
 		loadDetail: loadDetail
 	};
