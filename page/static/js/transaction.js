@@ -24,6 +24,13 @@ $(function() {
 			row.data('pressed', true)
 		}
 	})
+	
+	$('.cat-table').on('click', '.add .icon-chevron-right', function() {
+		var row = $(this).parent()
+			row.removeClass('out')
+			row.data('pressed', false)
+	})
+	
 	// edit each (sub)category
 		$('.cat-table').on('click', '.xrow .edit', function() {
 			var row = $(this).parent()
