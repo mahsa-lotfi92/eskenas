@@ -124,6 +124,7 @@
 }
 .cat-table .add input {
 	margin: 5px 0 5px 20px;
+	width: 183px;
 }
 .cat-table [class^=icon] {
 	cursor: pointer;
