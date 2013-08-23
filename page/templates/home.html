@@ -12,7 +12,7 @@
 
 </head>
 <body>
-	<div class="modal fade hide" id="reg"  {%if reg_error%} style="display:block"{%endif%}>
+	<div class="modal fade hide" id="reg" {%if reg_error%}style="display:block"{%endif%}>
 	
 	<div class="modal-header topic">
 		عضویت
@@ -71,12 +71,12 @@
 	
 	
 	
-	<div class="modal hide fade" id="login">
+	<div class="modal hide fade" id="login" {%if login_error%}style="display:block"{%endif%}>
 	 <div class="modal-header topic">
 		ورود
 		<button type="button" class="close exit" data-dismiss="modal" aria-hidden="true">&times;</button>
 	</div>
-	<form action="/home/" method="post" {%if login_error%}style="display:block"{%endif%}>
+	<form action="/home/" method="post">
 		<div class="passRow">
 			<div class="pass">
 				نام کاربری
