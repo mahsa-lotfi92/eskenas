@@ -87,9 +87,11 @@ def monthly(request):
     print startDate
     print endDate
 
-    baseTran = Transaction.objects.filter(isIncome = isIncome, user=usr)
+    baseTran = Transaction.objects.filter(user=usr)
     if accountID != -1:
         baseTran = baseTran.filter(bankAccount__id = accountID)
+    if rType == 'category':
+        baseTran = baseTran.filter(isIncome = isIncome)
 
     obj = dict() 
     if rType == 'category':
@@ -100,9 +102,11 @@ def monthly(request):
     else:
         delta = endDate - startDate
         if delta.days <= 31:
-            for dt in (startDate + timedelta(n) for n in range(delta.days)):
-                val = (baseTran.filter(date__range = [dt, dt]).aggregate(Sum('cost')))['cost__sum']
-                obj[time.mktime(dt.timetuple()) * 1000] = val
+            for isIncome in [True, False]:
+                obj[isIncome] = dict()
+                for dt in (startDate + timedelta(n) for n in range(delta.days)):
+                    val = (baseTran.filter(isIncome = isIncome, date__range = [dt, dt]).aggregate(Sum('cost')))['cost__sum']
+                    obj[isIncome][time.mktime(dt.timetuple()) * 1000] = val
         else:
             pass 
             # for dt in (startDate + timedelta(n) for n in range(delta.days)):

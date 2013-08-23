@@ -189,7 +189,7 @@ $(function () {
 	
 	$('#sidebar .barItem').eq(3).click(function(ev) {
 		ev.preventDefault()
-
+        window.report.core.initialize(3);
 		$ ('#inCon').css('margin-right', -2305 )
 		$ ('.barItem').removeClass('active')
 		$(this).addClass('active')
@@ -247,13 +247,13 @@ window.report.filter = (function () {
 window.report.core = (function () {
 	//Private
 	var filter
-	var chartData, sortable, total, isIncome;
-
+	var chartData, sortable, total, tabIndex;
+    var title = ['', 'درآمد', 'هزینه', 'زمانی']
 	
 	function refresh(){
 		window.report.ui.beginLoading() ;
 		//---------------
-		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': isIncome, 'type': 'category'} ;
+		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': tabIndex==1, 'type': (tabIndex==3?'time':'category')} ;
         console.log(additionalData);
 		//---------------
 		$.post('/ajax/monthly_report/', additionalData, load);
@@ -277,7 +277,7 @@ window.report.core = (function () {
 			sortable.sort(function(a, b) {return b[1] - a[1]})
 			
 			//---------------
-			window.report.ui.loadChart(chartData, window.report.filter.getType(), (isIncome? 'درآمد' : 'هزینه') ) ;
+			window.report.ui.loadChart(chartData, window.report.filter.getType(), title[tabIndex], tabIndex) ;
 			window.report.ui.loadDetail(sortable, total) ;
 		}else{
 			//TODO show error
@@ -287,12 +287,16 @@ window.report.core = (function () {
 	
 	return {
 		//Public 
-		initialize: function(tabIndex){
+		initialize: function(tabindex){
+            tabIndex = tabindex ;
+            //--------------------
             var base = null ;
             if (tabIndex == 1)
                 base = $("#income")
-            else
+            else if (tabIndex == 2)
                 base = $("#spending")
+            else if (tabIndex == 3)
+                base = $("#monthly")
             //------------------
             window.report.ui.initialize(base, window.data.accounts);
 			window.report.filter.initialize(base);
@@ -327,31 +331,74 @@ window.report.ui = (function () {
 		base.find('.detail .total').eq(1).html(data[0][0])
 	}
 	
-	function loadChart(data, type, name){
-        console.log('type is : ' + type)
+	function loadChart(data, type, name, tabIndex){
 		var chart =  base.find('.chart-container').highcharts();
 		//------------------------------------------------
+        if (tabIndex == 3){
+            type = 'bar' ;
+        }
+
 	    while(chart.series.length > 0)
 			chart.series[0].remove();
 			
-		var arr = [], category = [] 
-		for(var cat in data){
-			arr.push([cat, data[cat]])
-			category.push(cat)
-		}
-		//------------------------------------------------	
-		var  variable =   [{
-		    type: type,
-		    name: name,
-		    data: arr
-		}]; 
-		for(var i in variable) {
-            console.log(variable[i])
-		    chart.addSeries(variable[i], false);
-		}
+		var arr = [], category = []
+        if (tabIndex != 3){
+            for(var cat in data){
+                arr.push([cat, data[cat]])
+                category.push(cat)
+            }
 
-//		chart.xAxis[0].setCategories(category, false);
+            var  variable =   [{
+                type: type,
+                name: name,
+                data: arr
+            }];
+            for(var i in variable) {
+                console.log(variable[i])
+                chart.addSeries(variable[i], false);
+            }
+        }else{
+            for(var up  in data){
+                arr = [], category = [], tmpDates = []
 
+                for(var cat in data[up]){
+                    var d = new Date(Math.floor(cat))
+                    var curr_date = d.getDate();
+                    var curr_month = d.getMonth() + 1; //Months are zero based
+                    var curr_year = d.getFullYear();
+
+                    var tmp = curr_date + "-" + curr_month + "-" + curr_year
+
+                    arr.push([tmp, data[up][cat]])
+                    tmpDates.push(Math.floor(cat))
+                }
+                 //---------------------------------
+                tmpDates.sort(function(a, b) {return a - b})
+                for(var i = 0; i < tmpDates.length ; i++){
+                    var d = new Date(tmpDates[i])
+                    var curr_date = d.getDate();
+                    var curr_month = d.getMonth() + 1; //Months are zero based
+                    var curr_year = d.getFullYear();
+
+                    var tmp = curr_date + "-" + curr_month + "-" + curr_year
+                    if (Object.keys(data[up]).length > 10)
+                        tmp = curr_date
+                    category.push(tmp);
+                }
+                 //---------------------------------
+                var  variable =   [{
+                    type: type,
+                    name: (up == 'True'? 'درآمد' : 'هزینه'),
+                    data: arr
+                }];
+
+                for(var i in variable) {
+                    console.log(variable[i])
+                    chart.addSeries(variable[i], false);
+                }
+            }
+            chart.xAxis[0].setCategories(category, false);
+        }
 		chart.redraw(); 
 	}
 
