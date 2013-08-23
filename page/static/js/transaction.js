@@ -93,12 +93,16 @@ $(function() {
 	$('.income').click(function(ev) {
 		ev.preventDefault();
 		$('.isIncome').val(1);
+		$(this).addClass('selected')
+		$('.outcome').removeClass("selected")
 
 	});
 	$('.outcome').click(function(ev) {
 		ev.preventDefault();
-
 		$('.isIncome').val(0);
+		$(this).addClass('selected')
+		$('.income').removeClass("selected")
+		
 
 	});
 

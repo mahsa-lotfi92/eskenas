@@ -168,6 +168,10 @@ input#auto {
 	width: 31px;
 	background-image: url(../img/darr.png);
 }
+.selected{
+	background: rgb(200,200,200);
+	background-position:0px -15px;
+}
 #upOrDown .btn {
 	padding: 0px;
 }
