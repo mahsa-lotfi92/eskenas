@@ -21,13 +21,8 @@ $(function() {
 	})
 	$('.remainBug').on('click', '.edit', function() {
 		var row = $(this).parent()
-		if (row.data('pressed')) {
-			row.find('form.forSub').addClass('edt')
-			row.data('pressed', false)
-		} else {
 			row.find('form.edt').removeClass('edt')
 			row.data('pressed', true)
-		}
 	})
 	
 	$('#edtSubmit').click(function(ev) {
@@ -45,4 +40,10 @@ $(function() {
 		$('.budgWar').eq($(this).index()-1).show();
 		}
 	})
+	
+	$('.cancelEdit').click(function(ev) {
+		ev.preventDefault();
+		var row = $(this).parent()
+		$('form.forSub').addClass('edt')
+	});
 })
