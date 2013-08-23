@@ -1,22 +1,20 @@
 $(function() {
 	$('#login_link').click(function(ev) {
 		ev.preventDefault();
-		$('#login').css('display', 'inline');
-		$('#reg').css('display', 'none');
-
+		$('#login').removeClass("hide fade");
+		$('#reg').addClass("hide fade");
 		$('#main').addClass('setOpacity');
 	});
 
 	$('#reg_link').click(function(ev) {
 		ev.preventDefault();
-		$('#reg').css('display', 'inline');
-		$('#login').css('display', 'none');
-
+		$('#reg').removeClass("hide fade");
+		$('#login').addClass("hide fade");
 		$('#main').addClass('setOpacity');
 	});
-	$('.closePic').click(function(ev) {
+	$('.close').click(function(ev) {
 		ev.preventDefault();
-		$(this).parent().parent().css('display', 'none');
+		$(this).parent().parent().addClass("hide fade");
 		$('#main').css('opacity', '1');
 	});
 	$('.menuItem').click(function(ev) {
