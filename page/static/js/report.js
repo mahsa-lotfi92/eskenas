@@ -18,158 +18,74 @@ $(function () {
 	
 		// Build the chart
         $('#income .chart-container').highcharts({
-		
-			            chart: {
-
-			                renderTo: 'container',
-
-			                type: 'bar'
-
-			            },
-
-			            title: {
-
-			                text: '',
-							style:
-		                    {
-		                        direction: "rtl",
-		                        fontSize: "16px"
-		                    }
-			            },
-
-			            xAxis: {
-			                categories: [],
-							style:
-		                    {
-		                        direction: "rtl",
-		                        fontSize: "16px"
-		                    }
-			            },
-
-			            yAxis: {
-
-			                min: 0,
-
-			                title: {
-
-			                    text: null,
-								style:
-			                    {
-			                        direction: "rtl",
-			                        fontSize: "16px"
-			                    }
-								
-
-			                },
-				                stackLabels: {
-				                enabled: true,
-				                style: {
-				                    fontWeight: 'bold',
-				                    color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray',
-			                        direction: "rtl",
-			                        fontSize: "16px"
-				                }
-				            }
-
-			            },
-
-			            legend: {
-							align: 'right',
-				            x: -100,
-				            verticalAlign: 'top',
-				            y: 20,
-				            floating: true,
-				            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColorSolid) || 'white',
-				            borderColor: '#CCC',
-				            borderWidth: 1,
-				            shadow: false,
-									style:
-				                    {
-				                        direction: "rtl",
-				                        fontSize: "16px"
-				                    }
-
-				            },
-			            tooltip: {
-			              formatter: function() {
-			                return '<b>'+ this.x +'</b><br/>'+
-			                    this.series.name +': '+ this.y +'<br/>'+
-			                    'Total: '+ this.point.stackTotal ;
-				            }
-			            },
-
-			            plotOptions: {
-
-			                series: {
-
-			                    stacking: 'normal',
-			                    dataLabels: {
-			                    enabled: true,
-			                    color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white'
-			               	 	},
-								style:
-			                    {
-			                        direction: "rtl",
-			                        fontSize: "16px"
-			                    }
-			                }
-
-			            },
-			            series: [{
-			            }]
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1,
+                formatter: function() {
+                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2); +' %';
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                        },
+                        style:
+                        {
+                            direction: "rtl",
+                            fontSize: "16px"
+                        }
+                    }
+                }
+            }
         });
 
 
 
    	 	$('#spending .chart-container').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false
-        },
-        title: {
-            text: null
-        },
-        tooltip: {
-    	    pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-        	percentageDecimals: 1
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    color: '#000000',
-                    connectorColor: '#000000',
-                    formatter: function() {
-                        return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
-                    },
-					style:
-                    {
-                        direction: "rtl",
-                        fontSize: "16px"
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1,
+                formatter: function() {
+                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2); +' %';
+                }
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000',
+                        formatter: function() {
+                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                        },
+                        style:
+                        {
+                            direction: "rtl",
+                            fontSize: "16px"
+                        }
                     }
                 }
             }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Browser share',
-            data: [
-                ['خوراک',   45.0],
-                ['حمل و نقل',       26.8],
-                {
-                    name: 'سلامت',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['پوشاک',    8.5],
-                ['بدون دسته',     6.9],
-            ]
-        }]
-   });
+        });
 
 
 
@@ -250,9 +166,9 @@ $(function () {
 	$('#sidebar .barItem').eq(0).click(function(ev) {
 		ev.preventDefault()
 
-		// $ ('#inCon').css('margin-right', -20 )
-		// $ ('.barItem').removeClass('active')
-		// $(this).addClass('active')
+		$ ('#inCon').css('margin-right', -20 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
 	})
 
 	$('#sidebar .barItem').eq(1).click(function(ev) {
@@ -273,10 +189,10 @@ $(function () {
 	
 	$('#sidebar .barItem').eq(3).click(function(ev) {
 		ev.preventDefault()
-		// 
-		// $ ('#inCon').css('margin-right', -2305 )
-		// $ ('.barItem').removeClass('active')
-		// $(this).addClass('active')
+
+		$ ('#inCon').css('margin-right', -2305 )
+		$ ('.barItem').removeClass('active')
+		$(this).addClass('active')
 	})
 	
 	$('.refresh').click(function(ev){
@@ -290,14 +206,18 @@ $(function () {
 
 window.report.filter = (function () {
 	//Private
-	var sDate, eDate, account = -1;
+	var sDate, eDate, account, base, type;
 	
 	return {
 		//Public 
-		initialize: function(){
+		initialize: function(baseDiv){
+            base = baseDiv ;
+            //-------------------
 			sDate = new Date()
             sDate.setDate(sDate.getDate() - 7)
 			eDate = new Date()
+            account = -1
+            type = 'bar'
 		},
 		getStartDate: function(){
 			return sDate.getTime() / 1000 ;
@@ -314,27 +234,24 @@ window.report.filter = (function () {
         setTime: function(s, e){
             sDate = s ;
             eDate = e ;
+        },
+        setType: function(t){
+            type = t ;
+        },
+        getType: function(){
+            return type
         }
 	};
 })();
-
 
 window.report.core = (function () {
 	//Private
 	var filter
 	var chartData, sortable, total, isIncome;
-	
-	
-	function beginLoading(){
-		$("#report-loading").animate({opacity:1});
-	}
-	
-	function stopLoading(){
-		$("#report-loading").animate({opacity:0});	
-	}
+
 	
 	function refresh(){
-		beginLoading() ;
+		window.report.ui.beginLoading() ;
 		//---------------
 		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': isIncome, 'type': 'category'} ;
         console.log(additionalData);
@@ -343,7 +260,7 @@ window.report.core = (function () {
 	}
 	
 	function load(data){
-		stopLoading();
+		window.report.ui.stopLoading();
 		//---------------
 		if (data.result == "OK"){
 			//---------------
@@ -360,7 +277,7 @@ window.report.core = (function () {
 			sortable.sort(function(a, b) {return b[1] - a[1]})
 			
 			//---------------
-			window.report.ui.loadChart(chartData) ;
+			window.report.ui.loadChart(chartData, window.report.filter.getType(), (isIncome? 'درآمد' : 'هزینه') ) ;
 			window.report.ui.loadDetail(sortable, total) ;
 		}else{
 			//TODO show error
@@ -371,8 +288,14 @@ window.report.core = (function () {
 	return {
 		//Public 
 		initialize: function(tabIndex){
-            window.report.ui.initialize(tabIndex, window.data.accounts);
-			window.report.filter.initialize();
+            var base = null ;
+            if (tabIndex == 1)
+                base = $("#income")
+            else
+                base = $("#spending")
+            //------------------
+            window.report.ui.initialize(base, window.data.accounts);
+			window.report.filter.initialize(base);
             filter = window.report.filter ;
             //------------------
             isIncome = (tabIndex == 1) ;
@@ -404,7 +327,8 @@ window.report.ui = (function () {
 		base.find('.detail .total').eq(1).html(data[0][0])
 	}
 	
-	function loadChart(data){
+	function loadChart(data, type, name){
+        console.log('type is : ' + type)
 		var chart =  base.find('.chart-container').highcharts();
 		//------------------------------------------------
 	    while(chart.series.length > 0)
@@ -412,19 +336,22 @@ window.report.ui = (function () {
 			
 		var arr = [], category = [] 
 		for(var cat in data){
-			arr.push(data[cat]) 
+			arr.push([cat, data[cat]])
 			category.push(cat)
 		}
 		//------------------------------------------------	
 		var  variable =   [{
-		    type: 'column',
-		    name: 'درآمد',
+		    type: type,
+		    name: name,
 		    data: arr
 		}]; 
 		for(var i in variable) {
+            console.log(variable[i])
 		    chart.addSeries(variable[i], false);
 		}
-		chart.xAxis[0].setCategories(category, false);
+
+//		chart.xAxis[0].setCategories(category, false);
+
 		chart.redraw(); 
 	}
 
@@ -493,19 +420,35 @@ window.report.ui = (function () {
             event.preventDefault() ;
         });
     }
+
+    function setType(){
+        base.find('.type .btn').eq(0).data('type', 'pie') ;
+        base.find('.type .btn').eq(1).data('type', 'bar') ;
+        //-----------
+        base.find('.type .btn').click(function(event){
+            base.find('.criteria.type .btn').addClass('inactive').removeClass('active') ;
+            $(this).addClass('active').removeClass('inactive');
+            window.report.filter.setType($(this).data('type'));
+            event.preventDefault() ;
+        });
+    }
 	
 	return {
 		//Public
-        initialize: function(tabIndex, accounts){
-            if (tabIndex == 1)
-                base = $("#income")
-            else
-                base = $("#spending")
+        initialize: function(baseDiv, accounts){
+            base = baseDiv ;
             setAccount(accounts) ;
             setTime() ;
+            setType() ;
         },
 		loadChart: loadChart,
-		loadDetail: loadDetail
+		loadDetail: loadDetail,
+        beginLoading: function (){
+            $("#report-loading").animate({opacity:1});
+        },
+        stopLoading: function (){
+            $("#report-loading").animate({opacity:0});
+        }
 	};
 })();
 
