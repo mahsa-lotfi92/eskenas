@@ -221,10 +221,12 @@ h3 {
 }
 .TranEdit {
 	float: left;
+	cursor: pointer;
 }
 .TranRemove {
 	float: left;
 	width: 20px;
+	cursor: pointer;
 }
 .TranER {
 	width: 130px;
