@@ -69,8 +69,13 @@ def logout_view(request):
     
 
 def changePass(request):
-    request.user.set_password(request.POST['new_pass'])
-    request.user.save()
+    if request.user.check_password(request.POST['last_pass']):
+        request.user.set_password(request.POST['new_pass'])
+        request.user.save()
+        
+        return  render(request, 'profile.html', {'sabt':'هوراا'})
+    else:
+        return  render(request, 'profile.html', {'error':'err','change_pass_err':"رمز عبور نادرست است."})
     return redirect('/profile/')
 
 def index(request):

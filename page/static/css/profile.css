@@ -142,6 +142,7 @@
 	height: 100px;
 	margin: 20px 30px;
 }
+
 .extRow {
 	padding-right: 20px;
 	border-bottom: 1px solid rgb(213, 203, 203);
@@ -188,4 +189,12 @@
 .sub{
 	height: 10px;
 	width: 20px;
+}
+.txt {
+text-shadow: 0px 1px 0px #ddd;
+width: 200px;
+float: right;
+margin: 15px 21px 0px 0px;
+color:rgb(5,164,77);
+display: none;
 }

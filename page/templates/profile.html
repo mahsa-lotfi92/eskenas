@@ -37,7 +37,7 @@
 				</div>
 
 				<div class="newInp">
-					<form method="post" action="/profile/edit">
+					<form method="post" action="/profile/edit/">
 						<input name= "formID" value="1" type="hidden">
 						<input type="text" class="inp" name="first_name">
 					<div class="save"></div>
@@ -186,17 +186,21 @@
 				<input type="password"  class="passIn" name="re-new_pass">
 			</div>
 			<div class="passRow">
+				<div class="txt" {%if sabt%} style="display: block" {%endif%}>با موفقیت ثبت شد.</div>
 				<div class="savePass">
 					<input type="submit" value="ثبت رمز" class="btn btn-primary">
 				</div>
 			</div>
 
 		</form>
-		<div class="message-box">
-			<div class="warning">
+		<div class="message-box" {%if error%} style="display: block"	{%endif%}>
+			<div class="warning" {%if error%} style="display: block"	{%endif%}>
 				اخطار!
 			</div>
-			<div class="message"></div>
+			<div class="message">
+				{%if error%} {{change_pass_err}}{%endif%}
+			</div>
+			
 		</div>
 	</div>
 	<div class="solsCon">
@@ -213,7 +217,7 @@
 					<option value="50 هزار تومان یک ساله ">50 هزار تومان یکساله</option>
 				</select>
 				هستم.
-				<input type="submit" value="اتصال با بانک" class="bank"/>
+				<input type="submit" value="اتصال با بانک" class="bank btn btn-info"/>
 			</form>
 			<form class="extRow">
 				<div class="exTitle">
@@ -227,7 +231,7 @@
 					<option value="50 هزار تومان یک ساله ">50 هزار تومان یکساله</option>
 				</select>
 				هستم.
-				<input type="submit" value="اتصال با بانک" class="bank"/>
+				<input type="submit" value="اتصال با بانک" class="bank btn btn-info"/>
 			</form>
 		</div>
 
