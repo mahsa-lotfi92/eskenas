@@ -12,14 +12,14 @@
 
 </head>
 <body>
-	<div class="modal fade hide" id="reg">
+	<div class="modal fade hide" id="reg"  {%if reg_error%} style="display:block"{%endif%}>
 	
 	<div class="modal-header topic">
 		عضویت
 		<button type="button" class="close exit" data-dismiss="modal" aria-hidden="true">&times;</button>
 	</div>
 	
-	<form method="post" action="/home/register/" {%if reg_error%} style="display:block"{%endif%} >
+	<form method="post" action="/home/register/">
 		<div class="passRow">
 			<div class="pass">
 				نام
