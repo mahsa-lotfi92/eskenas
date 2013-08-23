@@ -8,7 +8,7 @@ $(function() {
 					k++;
 			}
 		}
-		if (k != s.length){
+		if (k != s.length || s.length==0){
 		ev.preventDefault()
 		$('.budgWar').hide()
 		$('.budgWar').eq(0).show()
@@ -37,7 +37,7 @@ $(function() {
 					k++;
 			}
 		}
-		if (k != s.length){
+		if (k != s.length || s.length==0){
 		ev.preventDefault()
 		$('.budgWar').hide()
 		$('.budgWar').eq(i+1).show();
