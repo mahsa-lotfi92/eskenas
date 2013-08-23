@@ -12,7 +12,7 @@ def budgetForm (req):
     bugs = Bug.objects.all()
     for i in bugs:
         i.cost = 0
-        for j in Transaction.objects.filter(Category=i.bugCat , isIncome=False):
+        for j in Transaction.objects.filter(Category__parentCat=i.bugCat , isIncome=False):
             i.cost += j.cost
         i.per= i.cost * 100.0 / i.limit
         

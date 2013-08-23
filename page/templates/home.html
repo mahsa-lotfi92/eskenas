@@ -12,11 +12,14 @@
 
 </head>
 <body>
-	<form id="reg" method="post" action="/home/register/" {%if reg_error%} style="display:block"{%endif%} >
-		<div class="close">
-			<div class="closePic" ></div>
-		</div>
-
+	<div class="modal fade hide" id="reg">
+	
+	<div class="modal-header topic">
+		عضویت
+		<button type="button" class="close exit" data-dismiss="modal" aria-hidden="true">&times;</button>
+	</div>
+	
+	<form method="post" action="/home/register/" {%if reg_error%} style="display:block"{%endif%} >
 		<div class="passRow">
 			<div class="pass">
 				نام
@@ -60,16 +63,20 @@
 				{{reg_error}}
 			</div>
 
-			<div class="savePass">
-				<input type="submit" value="ثبت" class="btn btn-info">
-			</div>
+				<input type="submit" value="ثبت" class="btn btn-info verify">
 		</div>
 
 	</form>
-	<form id="login" action="/home/" method="post" {%if login_error%}style="display:block"{%endif%}>
-		<div class="close">
-			<div class="closePic" ></div>
-		</div>
+	</div>
+	
+	
+	
+	<div class="modal hide fade" id="login">
+	 <div class="modal-header topic">
+		ورود
+		<button type="button" class="close exit" data-dismiss="modal" aria-hidden="true">&times;</button>
+	</div>
+	<form action="/home/" method="post" {%if login_error%}style="display:block"{%endif%}>
 		<div class="passRow">
 			<div class="pass">
 				نام کاربری
@@ -90,12 +97,11 @@
 			</div>
 			
 			<div class="passRow">
-			<div class="savePass">
-				<input type="submit" value="ورود" class="btn btn-primary">
-			</div>
+				<input type="submit" value="ورود" class="btn btn-info verify">
 		</div>
 
 	</form>
+	</div>
 
 	<div id="main" class="{%if error%}setOpacity{%endif%}">
 		<div id="header">
