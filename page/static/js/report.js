@@ -362,33 +362,30 @@ window.report.ui = (function () {
                 arr = [], category = [], tmpDates = []
 
                 for(var cat in data[up]){
+                    tmpDates.push(cat)
+                }
+                 //---------------------------------
+
+                tmpDates.sort(function(a, b) {return a - b})
+                for(var i = 0; i < tmpDates.length ; i++){
+                    var cat = tmpDates[i]
                     var d = new Date(Math.floor(cat))
                     var curr_date = d.getDate();
                     var curr_month = d.getMonth() + 1; //Months are zero based
                     var curr_year = d.getFullYear();
-
-                    var tmp = curr_date + "-" + curr_month + "-" + curr_year
-
-                    arr.push([tmp, data[up][cat]])
-                    tmpDates.push(Math.floor(cat))
-                }
-                 //---------------------------------
-                tmpDates.sort(function(a, b) {return a - b})
-                for(var i = 0; i < tmpDates.length ; i++){
-                    var d = new Date(tmpDates[i])
-                    var curr_date = d.getDate();
-                    var curr_month = d.getMonth() + 1; //Months are zero based
-                    var curr_year = d.getFullYear();
-
+                    //-------------------------------------------------
                     var tmp = curr_date + "-" + curr_month + "-" + curr_year
                     if (Object.keys(data[up]).length > 10)
                         tmp = curr_date
                     category.push(tmp);
+                    //----------------------------------------------
+                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+                    arr.push([tmp2, data[up][cat]])
                 }
                  //---------------------------------
                 var  variable =   [{
                     type: type,
-                    name: (up == 'True'? 'درآمد' : 'هزینه'),
+                    name: up,
                     data: arr
                 }];
 
@@ -446,7 +443,7 @@ window.report.ui = (function () {
         times[0] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 0, 7), 'name' : 'هفته‌ گذشته'};
         times[1] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 1, 0), 'name' : 'ماه‌ گذشته'};
         times[2] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(1, 0, 0), 'name' : 'سال گذشته'};
-        times[3] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(100, 0, 0), 'name' : 'تمام ادوار'};
+        times[3] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(10, 0, 0), 'name' : 'تمام ادوار'};
         times[4] = {'eDate' : null, 'sDate' : null, 'name': 'بازه‌ دلخواه'};
 
         var list = base.find('.filter .time .dropdown-menu')

@@ -1,5 +1,8 @@
+#encoding: utf-8
+
 # Create your views here.
 import decimal
+from dateutil import rrule
 from django.shortcuts import render, redirect
 
 from django.db.models import Sum
@@ -54,6 +57,20 @@ def general(request):
     return  render(request, 'report.html', {"account": account})
 
 
+def first_day_of_month(d):
+    return datetime.date(d.year, d.month, 1)
+def next_month(d):
+    if d.month == 12:
+        return datetime.date(d.year+1, 1, 1)
+    else:
+        return datetime.date(d.year, d.month+1, 1)
+
+def first_day_of_year(d):
+    return datetime.date(d.year, 1, 1)
+def next_year(d):
+    return datetime.date(d.year+1, 1, 1)
+
+
 # @csrf_exempt
 def monthly(request):
     print request.POST
@@ -103,19 +120,39 @@ def monthly(request):
         delta = endDate - startDate
         if delta.days <= 31:
             for isIncome in [True, False]:
-                obj[isIncome] = dict()
-                for dt in (startDate + timedelta(n) for n in range(delta.days)):
+                name = isIncome and u'درآمد' or u'هزینه'
+                obj[name] = dict()
+                for dt in (startDate + timedelta(n+1) for n in range(delta.days)):
                     val = (baseTran.filter(isIncome = isIncome, date__range = [dt, dt]).aggregate(Sum('cost')))['cost__sum']
-                    obj[isIncome][time.mktime(dt.timetuple()) * 1000] = val
+                    obj[name][time.mktime(dt.timetuple()) * 1000] = val
+        elif delta.days <= 365 + 185 :
+            for isIncome in [True, False]:
+                name = isIncome and u'درآمد' or u'هزینه'
+                obj[name] = dict()
+                for dt in rrule.rrule(rrule.MONTHLY, dtstart=next_month(first_day_of_month(startDate)), until=first_day_of_month(endDate)):
+                    print dt, next_month(dt)
+                    val = (baseTran.filter(isIncome = isIncome, date__range = [dt, next_month(dt)]).aggregate(Sum('cost')))['cost__sum']
+                    obj[name][time.mktime(dt.timetuple()) * 1000] = val
         else:
-            pass 
-            # for dt in (startDate + timedelta(n) for n in range(delta.days)):
-#                 s = startDate + timedelta(n)
-#                 e = startDate + timedelta(n+1)
-                # obj[s] = (Transaction.objects.filter(Category = cat, isIncome = isIncome, user=usr, date__range[s, e]).aggregate(Sum('cost')))['cost__sum']
+            first = dict()
+            for isIncome in [True, False]:
+                name = isIncome and u'درآمد' or u'هزینه'
+                obj[name] = dict()
+                isFirst = True
+                for dt in rrule.rrule(rrule.YEARLY, dtstart=first_day_of_year(startDate), until=first_day_of_year(endDate)):
+                    val = (baseTran.filter(isIncome = isIncome, date__range = [dt, next_year(dt)]).aggregate(Sum('cost')))['cost__sum']
+                    obj[name][time.mktime(dt.timetuple()) * 1000] = val
+                    if val > 0 and isFirst :
+                        isFirst = False
+                        first[name] = time.mktime(dt.timetuple()) * 1000
+            #TOFF
+            f = min(first.values())
+            for k, d in obj.iteritems():
+                for kk in obj[k].keys():
+                    if kk < f:
+                        del obj[k][kk]
+
     #------------------------------------------------------
     print obj
     s = json.dumps({'result': 'OK', 'data' : obj}, cls=DjangoJSONEncoder)
     return HttpResponse(s, mimetype='application/json')
-
-
