@@ -24,9 +24,8 @@
 .remainBug {
 	text-align: right;
 	padding: 15px;
-	float: right;
 	margin-top: 70px;
-	width: 500px;
+	height: 40px;
 }
 .bugName {
 	text-align: right;
@@ -45,7 +44,9 @@ padding: 5px;
 	display: none;
 }
 .limitEdit {
-	margin-top: 10px;
+	margin: 0;
+	float: right;
+	margin-right: 20px;
 }
 .advGold{
 	height: 120px;
@@ -62,10 +63,20 @@ padding: 5px;
 
 .budgWar{
 	color: rgb(202, 1, 1);
+	margin-right: 10px;
 }
 .forSub{
-	height: 60px;
+	width: 100%;
 }
 .cancelEdit{
 	width: 65px;
+	float: right;
+	margin-right: 10px;
+}
+.edtSubmit{
+	float: right;
+	margin-right: 10px;
+}
+i{
+	float: right;
 }
