@@ -62,9 +62,9 @@
 	width: 160px;
 }
 .barItem {
-	line-height: 28px;
+	line-height: 40px;
 	color: black;
-	border-bottom: 1px solid rgb(213, 213, 213);
+	border-bottom: 1px solid #FFE594;
 }
 .barItem a {
 	display: block;
@@ -73,15 +73,20 @@
 	padding: 0px 10px 0px 0px;
 }
 .barItem a:hover {
-	background: rgb(207, 207, 207);
+	background: #FFD996;
 	color: rgb(29, 29, 148);
 }
-.lastBarItem {
-	border-bottom: none;
+.barItem:first-child{
+	border-top: none;
 }
 .barItem.active {
-	background: rgb(191, 191, 245);
-	border-radius: 5px;
+	/* background: #FFD44D; */
+	font-weight: bold;
+    
+	font-size: 16px;
+}
+.barItem.active a{
+    color: #C02626;
 }
 
 .cat-table {

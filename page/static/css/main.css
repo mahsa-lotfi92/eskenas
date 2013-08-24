@@ -23,18 +23,20 @@ button.btn {
 	float: right;
 	width: 730px;
 	min-height: 500px;
-	border-radius: 5px;
 	padding: 20px;
 	padding-bottom: 200px;
 }
 #sidebar {
-	background: #F2F3F0;
+    background: #FFFDE7;
+	
+    /* background: #F2F3F0; */
 	float: right;
-	width: 180px;
-	margin: 5px;
-	border-radius: 5px;
+	
+    width: 190px;
+    /* border-left: 1px solid #FFD44D; */
 	font-family: tahoma;
 	font-size: 13px;
+    /* padding-top: 30px; */
 }
 #main {
 	margin: 0 auto;
@@ -42,7 +44,7 @@ button.btn {
 }
 #menu {
 	background: #BEF56E;
-	border-radius: 5px;
+	border-radius: 5px 5px 0 0;
 }
 .menuItem{
 	float: right;
