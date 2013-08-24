@@ -17,7 +17,7 @@ $(function() {
 	$('.close').click(function(ev) {
 		ev.preventDefault();
 		$(this).parent().parent().addClass("hide fade");
-		$('#main').css('opacity', '1');
+		$('#main').removeClass("setOpacity")
 	});
 	$('.menuItem').click(function(ev) {
 		ev.preventDefault();

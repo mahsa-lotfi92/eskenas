@@ -13,15 +13,7 @@
 </head>
 <body>
 
-<div id= "user">
-<div id="userName">
-{{user.first_name}}
-</div>
-<div class="btn btn-info" >
-	<a href="/logout/" id="logout_link">خروج</a>
-</div>
-	
-</div>
+
 <div id="main">
 	<div id="header">
 	</div>
@@ -35,6 +27,19 @@
 	<div id="line"></div>
 	<div id="mainw">
 	<div id="sidebar">
+		
+		
+					<div id= "user">
+			<div id="userName">
+			{{user.first_name}}
+			</div>
+			<div class="btn btn-info" >
+				<a href="/logout/" id="logout_link">خروج</a>
+			</div>
+				
+			</div>
+			
+			
 	{%block sidebar%}
 	{%endblock%}
 	</div>
