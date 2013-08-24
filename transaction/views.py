@@ -1,4 +1,4 @@
-# Create your views here.
+#encoding: utf-8
 from django.shortcuts import render, redirect
 from cat.models import Cat, BankAccount
 from transaction.models import Transaction
@@ -6,9 +6,17 @@ from transaction.models import Transaction
 
 def addTransaction(request):
     t = Transaction()
-    t.date = request.POST["date"]
+    try:
+        t.date = request.POST["date"]
+        t.save()
+    except:
+        return transaction(request,{'error':'فرمت تاریخ نادرست است. YYYY-MM-DD','error-date':'1'})
+    try:
+        t.cost = request.POST["cost"]
+        t.save()
+    except:
+        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.','error-cost':'1'})
     t.description = request.POST["description"]
-    t.cost = request.POST["cost"]
     t.isIncome = request.POST["isIncome"] == '1' 
     cid = request.POST["catId"]
     bid = request.POST["BAId"]
@@ -19,10 +27,11 @@ def addTransaction(request):
     t.user = request.user 
     t.save()
     
+
     return redirect('/transaction/')
 
-def transaction(req):
-    if req.method == "POST":
+def transaction(req, extra={}):
+    if req.method == "POST" and 'formID' in req.POST:
         if req.POST['formID'] == "1":
             new = Cat(name=req.POST['name'], isSub=False, parentCat=None, user=req.user)
             new.save()
@@ -36,7 +45,9 @@ def transaction(req):
             p.name = req.POST['new']
             p.save()
     T = Transaction.objects.all().filter(user=req.user).order_by('-date')
-    return  render(req, 'transaction.html', {"Tran":T, 'cats': Cat.objects.filter(isSub=False , user=req.user), 'bankAccounts': BankAccount.objects.filter(user=req.user)})
+    a = {"Tran":T, 'cats': Cat.objects.filter(isSub=False , user=req.user), 'bankAccounts': BankAccount.objects.filter(user=req.user)}
+    a.update(extra)
+    return  render(req, 'transaction.html', a)
 
 
 def deleteTransaction(request):

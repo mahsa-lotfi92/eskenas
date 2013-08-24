@@ -142,6 +142,9 @@ bank acount tu jadval ezafe beshe
 		</div>
 	</div>
 	<div class="solsCon">
+		{%if error%}
+		<div id="addTR-err">{{error}}</div>
+		{%endif%}
 
 		<form method="post" id="addTran" action="/transaction/add/">
 			<div class="tranPart">
