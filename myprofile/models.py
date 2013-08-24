@@ -15,7 +15,7 @@ class user_plan(models.Model):
     isTamdid=models.BooleanField()
     #tamdid ya ertegha
     plan_begin = models.DateField('plan_begin')
-    plan_duration=models.IntegerField()
+    plan_end=models.DateField('plan_end')
     plan_money=models.IntegerField()
     
     @staticmethod

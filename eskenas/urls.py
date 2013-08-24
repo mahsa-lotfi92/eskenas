@@ -20,6 +20,7 @@ urlpatterns = patterns('',
      
      url(r'^logout/$', 'myprofile.views.logout_view'),
      url(r'^profile/edit/$', 'myprofile.views.edit'),
+     url(r'^profile/ertegha/$', 'myprofile.views.ertegha'),
      url(r'^profile/changepass/$', 'myprofile.views.changePass'),
      url(r'^profile/$', 'myprofile.views.profile'),
      
