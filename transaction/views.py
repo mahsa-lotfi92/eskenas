@@ -2,22 +2,15 @@
 from django.shortcuts import render, redirect
 from cat.models import Cat, BankAccount
 from transaction.models import Transaction
+from datetime import date
 
 
 def addTransaction(request):
     t = Transaction()
-    try:
-        t.date = request.POST["date"]
-        t.save()
-    except:
-        return transaction(request, {'error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'error-date':'1'})
-    try:
-        t.cost = request.POST["cost"]
-        t.save()
-    except:
-        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.', 'error-cost':'1'})
     t.description = request.POST["description"]
     t.isIncome = request.POST["isIncome"] == '1' 
+    if  not "catId" in request.POST or not "BAId" in request.POST:
+        return redirect('/transaction/')
     cid = request.POST["catId"]
     bid = request.POST["BAId"]
     c = Cat.objects.get(id=cid)
@@ -25,12 +18,25 @@ def addTransaction(request):
     t.Category = c
     t.bankAccount = ba
     t.user = request.user 
+    t.date=date.today()
+    
     try:
+        t.cost = request.POST["cost"]
+        t.save()
+    except :
+        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.', 'error-cost':'1'})
+    
+    try:
+        t.date = request.POST["date"]
+        print t.date
         t.save()
     except:
-        print "error"
+        t.delete()
+        return transaction(request, {'error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'error-date':'1'})
     
-
+    
+    
+    t.save()
     return redirect('/transaction/')
 
 def transaction(req, extra={}):
