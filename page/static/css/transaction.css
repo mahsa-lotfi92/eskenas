@@ -5,6 +5,13 @@
 	-o-transition: all 0.4s ease-in-out;
 	transition: all 0.4s ease-in-out;
 }
+.noanim {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  -ms-transition: none !important;
+  transition: none !important;
+}
 .tranTable {
 	background: #FFF3DA;
 	font-family: tahoma;
@@ -134,7 +141,7 @@
 }
 #inCon {
 	width: 3060px;
-	margin-right: -20px;
+	margin-right: 1000px;
 }
 .solsCon {
 	width: 725px;
