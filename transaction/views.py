@@ -10,12 +10,12 @@ def addTransaction(request):
         t.date = request.POST["date"]
         t.save()
     except:
-        return transaction(request,{'error':'فرمت تاریخ نادرست است. YYYY-MM-DD','error-date':'1'})
+        return transaction(request, {'error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'error-date':'1'})
     try:
         t.cost = request.POST["cost"]
         t.save()
     except:
-        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.','error-cost':'1'})
+        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.', 'error-cost':'1'})
     t.description = request.POST["description"]
     t.isIncome = request.POST["isIncome"] == '1' 
     cid = request.POST["catId"]
@@ -25,7 +25,10 @@ def addTransaction(request):
     t.Category = c
     t.bankAccount = ba
     t.user = request.user 
-    t.save()
+    try:
+        t.save()
+    except:
+        print "error"
     
 
     return redirect('/transaction/')
@@ -69,9 +72,9 @@ def editTransaction(request):
     else:
       t.isIncome = False
     c = Cat.objects.get(id=request.POST["catId"])
-    ba=BankAccount.objects.get(id=request.POST['BAId'])
+    ba = BankAccount.objects.get(id=request.POST['BAId'])
     t.Category = c
-    t.bankAccount=ba
+    t.bankAccount = ba
     t.save()
     return redirect('/transaction/')
 def bankAccountAdd (req):

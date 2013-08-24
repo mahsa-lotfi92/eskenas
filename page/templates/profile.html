@@ -103,7 +103,8 @@
 					اعتبار
 				</div>
 				<div class="inf">
-					{{credit.credit}}
+					{{credit.remain}}
+					 روز
 				</div>
 
 			</div>
@@ -157,12 +158,12 @@
 				<div class="tranDes">
 					{%if p.isTamdid%}
 					تمدید حساب طلائی
-					{{p.plan_duration}}
+					{{p.duration}}
 
 					ماهه
 					{%else%}
 					ارتقا به حساب طلائی
-					{{p.plan_duration}}
+					{{p.duration}}
 					ماهه
 
 					{%endif%}
@@ -229,16 +230,16 @@
 			</form>
 			{%endif%}
 			{% if  credit.isGolden%}
-			<form class="extRow" id="tamdid-form">
+			<form class="extRow" id="tamdid-form" method="post" action="/profile/tamdid/">
 				<div class="exTitle">
 					تمدید حساب
 				</div>
 
 				مایل به تمدید حساب  طلائی خود به مبلغ
-				<select class="cost">
-					<option value="10 هزار تومان دوماهه ">10 هزار تومان دو ماهه</option>
-					<option value="20 هزار تومان پنج ماهه">20 هزار تومان پنج ماهه</option>
-					<option value="50 هزار تومان یک ساله ">50 هزار تومان یکساله</option>
+				<select class="cost" name="tamdid_info" >
+					<option value="1"> 10هزار تومان دو ماهه</option>
+					<option value="2"> 20هزار تومان پنج ماهه</option>
+					<option value="3"> 50هزار تومان  یکساله</option>
 				</select>
 				هستم.
 				<input type="submit" value="اتصال با بانک" class="bank btn btn-info"/>

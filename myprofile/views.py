@@ -9,8 +9,11 @@ import datetime
 def profile(request):
         c = userCredit.objects.filter(user=request.user)[0]
         #plan=user_plan.objects.order_by('-plan_end').filter(user=request.user)[0]
-        plan = user_plan.objects.order_by('-plan_begin').filter(user=request.user)
-        
+        plan = user_plan.objects.order_by('plan_begin').filter(user=request.user)
+        for p in plan:
+            p.duration= (p.plan_end-p.plan_begin).days/31
+        if c.isGolden:
+            c.remain=(c.credit-date.today()).days
         return  render(request, 'profile.html', {"plan":plan, "credit":c})
    
 def edit(request):
@@ -85,7 +88,6 @@ def index(request):
     else:
         return redirect('/home/')
 def ertegha(request):
-    print "er "*10
     up=user_plan()
     up.user=request.user
     up.plan_begin=date.today()
@@ -104,6 +106,28 @@ def ertegha(request):
     uc.credit=up.plan_end
     uc.save()
     return redirect('/profile/')    
+
+def tamdid(request):
+    last_plan = user_plan.objects.order_by('-plan_begin').filter(user=request.user)[0]
+    up=user_plan()
+    up.isTamdid=True
+    up.user=request.user
+    up.plan_begin=last_plan.plan_end
+    if request.POST['tamdid_info']=='1':
+        up.plan_end=up.plan_begin+datetime.timedelta(days=31*2)
+        up.plan_money=10000
+    if request.POST['tamdid_info']=='2':
+        up.plan_end=up.plan_begin+datetime.timedelta(days=31*5)
+        up.plan_money=20000
+    if request.POST['tamdid_info']=='3':
+        up.plan_end=up.plan_begin+datetime.timedelta(days=31*12)
+        up.plan_money=50000
+    up.save()
+    uc = userCredit.objects.get(user=request.user)
+    uc.credit=up.plan_end
+    uc.save()
     
+    return redirect('/profile/')    
+
         
 
