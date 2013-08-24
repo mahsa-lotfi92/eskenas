@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.db.models import Sum
 from django.utils.encoding import smart_str
 from django.utils.timezone import is_aware
+import math
 from cat.models import Cat, BankAccount
 from transaction.models import Transaction
 
@@ -22,6 +23,10 @@ import datetime
 from datetime import timedelta
 import time
 #from dateutil.relativedelta import relativedelta
+
+
+from budget.models import Bug
+from myprofile.models import userCredit
 
 
 class DjangoJSONEncoder(simplejson.JSONEncoder):
@@ -54,7 +59,43 @@ def general(request):
 
     usr = request.user
     account = BankAccount.objects.filter(user = usr)
-    return  render(request, 'report.html', {"account": account})
+
+    s = first_day_of_month(datetime.date.today())
+    e = next_month(s)
+
+    current = dict()
+    for isIncome in [True, False]:
+        name = isIncome and u'درآمد' or u'هزینه'
+        current[name] = (Transaction.objects.filter(user=usr, isIncome = isIncome, date__range = [s, e]).aggregate(Sum('cost')))['cost__sum']
+    #-----------------------------------
+    avg = dict(); total = dict()
+    for isIncome in [True, False]:
+        name = isIncome and u'درآمد' or u'هزینه'
+        avg[name] = dict()
+        sum = 0; cnt = 0
+        for dt in rrule.rrule(rrule.MONTHLY, dtstart=first_day_of_year(datetime.date(2012, 1, 1)), until=datetime.date.today()):
+            val = (Transaction.objects.filter(user=usr, isIncome = isIncome, date__range = [dt, next_month(dt)]).aggregate(Sum('cost')))['cost__sum']
+            if val > 0 :
+                print dt.month
+                sum += val
+                cnt += 1
+        total[name] = (Transaction.objects.filter(user=usr, isIncome = isIncome).aggregate(Sum('cost')))['cost__sum']
+        avg[name] = math.floor(sum / cnt)
+    data = {"account": account, "current": current, "avg": avg, "total": total}
+    #------------------------------------
+    bugs = Bug.objects.all()
+    for i in bugs:
+        i.cost = 0
+        for j in Transaction.objects.filter(Category__parentCat=i.bugCat , isIncome=False):
+            i.cost += j.cost
+        i.per= i.cost * 100.0 / i.limit
+
+    data.update({'cats': Cat.objects.filter(isSub=False, user= usr), 'bugs': bugs, 'myUser': userCredit.objects.get(user= usr)})
+    #-------------------------------------
+    # print total
+    # print avg
+    # print current
+    return  render(request, 'report.html', data)
 
 
 def first_day_of_month(d):

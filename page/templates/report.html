@@ -1,4 +1,6 @@
 {%extends 'base.html'%}
+{% load humanize %}
+
 {%block css%}
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/report.css">
 {%endblock%}
@@ -17,6 +19,21 @@ window.data.accounts = {}
 {% for m in account %}
 window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 {% endfor %}
+
+window.data.avg = {} ; window.data.total = {} ; window.data.current = {}
+{% for key, value in avg.items %}
+window.data.avg['{{ key }}'] = {{ value }}
+{% endfor %}
+{% for key, value in total.items %}
+window.data.total['{{ key }}'] = {{ value }}
+{% endfor %}
+{% for key, value in current.items %}
+window.data.current['{{ key }}'] = {{ value }}
+{% endfor %}
+console.log(window.data.avg)
+console.log(window.data.total)
+console.log(window.data.current)
+
 //----------------------------
 
 </script>
@@ -43,9 +60,52 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 <div id="content">
 	<div id="inCon" class="anim">
 		<div class="solsCon">
-			<h5>
-			منتظر گزارش های ما در این مکان باشید :)
-			</h5>
+            <div class="info">
+               <div class="item">
+                    میانگین
+               </div>
+                <div class="item">
+کل
+               </div>
+                <div class="item">
+ماه حاضر
+               </div>
+            </div>
+            <div class="budget-info">
+                <div class = "title">
+                    وضعیت بودجه بانکی
+                </div>
+                {%for b in bugs%}
+                    <div class="remainBug">
+
+                        <div class="bugName">
+                            {{b.bugCat.name}}
+                        </div>
+
+
+                        <div class="clearfix"></div>
+
+                        {%if b.per >= 75%}
+                        <div class="progress progress-danger">
+
+                        {%elif b.per >= 50 %}
+                        <div class="progress progress-warning">
+
+                        {%elif b.per >= 25 %}
+                        <div class="progress progress-success">
+
+                        {%else %}
+                        <div class="progress progress-info">
+
+                        {%endif%}
+
+                        <div class="bar" style="width: {{b.per}}%;"> {{b.cost|intcomma}} </div>
+                        </div>
+                        {{b.limit|intcomma}}
+                    <div class="clearfix"></div>
+                 </div>
+                {%endfor%}
+            </div>
 		</div>
 		
 		<div id="income" class="solsCon">
@@ -62,7 +122,7 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 						<div class="btn-group open criteria account">
 			                <button class="btn dropdown-toggle" data-toggle="dropdown">
 								تمام حساب‌ها
-								 <span class="caret"></span></button>
+								 <span class="caret""></span></button>
 			                <ul class="dropdown-menu">
 
 
@@ -78,10 +138,10 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
   			      			</ul>
   			              </div>
 					  
-					  
-						  <div class="btn-group btn-group-horizontal criteria type">
-						    <button class="btn inactive"> Pie </button>
-						    <button class="btn active"> Bar </button>
+
+                          <div class="criteria type">
+                            <div class="chart-type pie inactive" >  </div>
+						    <div class="chart-type bar active" > </div>
 						  </div>
 
                             <button class="refresh btn btn-success">ارسال</button>
@@ -195,9 +255,9 @@ window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 
 
 					  
-						  <div class="btn-group btn-group-horizontal criteria type">
-						    <button class="btn inactive"> Pie </button>
-						    <button class="btn active"> Bar </button>
+						  <div class="criteria type">
+                            <div class="chart-type pie inactive" >  </div>
+						    <div class="chart-type bar active" > </div>
 						  </div>
 
 

@@ -466,12 +466,12 @@ window.report.ui = (function () {
     }
 
     function setType(){
-        base.find('.type .btn').eq(0).data('type', 'pie') ;
-        base.find('.type .btn').eq(1).data('type', 'bar') ;
+        base.find('.type .pie').data('type', 'pie') ;
+        base.find('.type .bar').data('type', 'bar') ;
         //-----------
-        base.find('.type .btn').click(function(event){
-            base.find('.criteria.type .btn').addClass('inactive').removeClass('active') ;
-            $(this).addClass('active').removeClass('inactive');
+        base.find('.type .chart-type').click(function(event){
+            base.find('.criteria.type .chart-type').removeClass('active') ;
+            $(this).addClass('active');
             window.report.filter.setType($(this).data('type'));
             event.preventDefault() ;
         });
