@@ -168,21 +168,73 @@ transition: all 0.4s ease-in-out;
 	margin-bottom: 25px;
 }
 
+#content .filter .wrapper{
+    padding: 1px 0px ;
+}
+
 #content .filter .criteria{
 	float:right;
 }
 
 #content .filter .criteria.account{
-    margin: 15px 30px 0px 0px;
+    margin: 0px 30px 0px 0px;
+}
+
+#content .filter .criteria.account > *{
+    min-width: 150px;
+}
+
+#content .filter .criteria.time > *{
+    min-width: 150px;
+}
+
+#content .filter .criteria .caret{
+    float: left ;
 }
 
 #content .filter .criteria.time{
-    margin: 15px 45px 0px 0px;	
+    margin: 0px 45px 0px 0px;
 }
 
 #content .filter .criteria.type{
 	float:left;
-	margin-left: 15px;
+	float: right;
+    margin: 5px 45px 0px 60px;
+}
+
+#content .filter .criteria.type .bar{
+    background: transparent url('../img/chart_icons.png') no-repeat -27px -61px;
+    position: relative;
+    border-right: 1px solid #CCC;
+    padding-right: 5px;
+    height: 20px;
+    width: 24px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#content .filter .criteria.type .bar.active{
+    background-position: -27px 0px;
+    cursor: default;
+}
+
+#content .filter .criteria.type .pie{
+    background: transparent url('../img/chart_icons.png') no-repeat 0 -62px;
+    height: 20px;
+    width: 27px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#content .filter .criteria.type .pie.active{
+    background-position: 0 0px;
+    cursor: default;
+}
+
+#content .filter .refresh{
+    margin: 0px 45px 0px 15px;
+    float: left;
+    width: 100px;
 }
 
 /* --------------------- Detail ------------------------------ */

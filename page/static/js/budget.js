@@ -8,9 +8,10 @@ $(function() {
 					k++;
 			}
 		}
-		if (k != s.length){
+		if (k != s.length || s.length==0){
 		ev.preventDefault()
-		$('.budgWar').show()
+		$('.budgWar').hide()
+		$('.budgWar').eq(0).show()
 		}
 	})
 	$('.remainBug').on('click', '.remove', function() {
@@ -25,19 +26,21 @@ $(function() {
 			row.data('pressed', true)
 	})
 	
-	$('#edtSubmit').click(function(ev) {
+	$('.edtSubmit').click(function(ev) {
 		var row = $(this).parent()
-		s= $('.limitEdit').val()
+		var i= $(".edtSubmit").index(this);
+		s= $('.limitEdit').eq(i).val()
+		console.log(s);
 		var k=0
 		for (var x=0; x< s.length; x++){
 			if (s[x] >= '0' && s[x] <= '9') {
 					k++;
 			}
 		}
-		if (k != s.length){
+		if (k != s.length || s.length==0){
 		ev.preventDefault()
-		$('.budgWar').hide();
-		$('.budgWar').eq($(this).index()-1).show();
+		$('.budgWar').hide()
+		$('.budgWar').eq(i+1).show();
 		}
 	})
 	
@@ -45,5 +48,5 @@ $(function() {
 		ev.preventDefault();
 		var row = $(this).parent()
 		$('form.forSub').addClass('edt')
-	});
+	})
 })
