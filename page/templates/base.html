@@ -22,6 +22,15 @@
 		<div class="menuItem"><a href="/transaction/">تراکنش</a></div>
 		<div class="menuItem"><a href="/budget/">بودجه‌بندی</a></div>
 		<div class="menuItem"><a href="/profile/">حساب‌ کاربری</a></div>
+			<div id= "user">
+			<div id="userName">
+			{{user.first_name}}
+			</div>
+			<div class="btn btn-info">
+				<a href="/logout/" id="logout_link">خروج</a>
+			</div>
+				
+			</div>
 		<div class="clearfix"></div>
 	</div>
 	<div id="line"></div>
@@ -29,15 +38,6 @@
 	<div id="sidebar">
 		
 		
-					<div id= "user">
-			<div id="userName">
-			{{user.first_name}}
-			</div>
-			<div class="btn btn-info" >
-				<a href="/logout/" id="logout_link">خروج</a>
-			</div>
-				
-			</div>
 			
 			
 	{%block sidebar%}
