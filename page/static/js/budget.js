@@ -22,8 +22,7 @@ $(function() {
 	})
 	$('.remainBug').on('click', '.edit', function() {
 		var row = $(this).parent()
-			row.find('form.edt').removeClass('edt')
-			row.data('pressed', true)
+		row.find('form.edt').removeClass('edt')
 	})
 	
 	$('.edtSubmit').click(function(ev) {
@@ -46,7 +45,6 @@ $(function() {
 	
 	$('.cancelEdit').click(function(ev) {
 		ev.preventDefault();
-		var row = $(this).parent()
 		$('form.forSub').addClass('edt')
 	})
 })

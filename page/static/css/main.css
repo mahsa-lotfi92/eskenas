@@ -75,8 +75,8 @@ button.btn {
 	display: inline-block;
 }
 #logout_link {
-	color: white;
 	text-decoration: none;
+	color: black;
 }
 #line {
 	height: 10px;
