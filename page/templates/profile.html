@@ -19,7 +19,14 @@
 	<a href="?">تغییر رمزعبور</a>
 </div>
 <div class="barItem lastBarItem">
-	<a href="?">تمدید یا ارتقا حساب </a>
+	<a href="?">
+		{%if credit.isGolden%}
+		تمدید حساب طلائی
+		{%else%}
+		ارتقا به حساب 
+		{%endif%}
+		
+		</a>
 </div>
 
 {%endblock%}
@@ -96,7 +103,8 @@
 					اعتبار
 				</div>
 				<div class="inf">
-					{{credit.credit}}
+					{{credit.remain}}
+					 روز
 				</div>
 
 			</div>
@@ -150,12 +158,12 @@
 				<div class="tranDes">
 					{%if p.isTamdid%}
 					تمدید حساب طلائی
-					{{p.plan_duration}}
+					{{p.duration}}
 
 					ماهه
 					{%else%}
 					ارتقا به حساب طلائی
-					{{p.plan_duration}}
+					{{p.duration}}
 					ماهه
 
 					{%endif%}
@@ -205,34 +213,38 @@
 	</div>
 	<div class="solsCon">
 		<div class="profTable">
-			<form class="extRow">
+			{% if not credit.isGolden%}
+			<form class="extRow" id="ertegha-form" method="post" action="/profile/ertegha/">
 				<div class="exTitle">
 					ارتقای حساب
 				</div>
 
 				مایل به ارتقای حساب خود به حساب طلائی مبلغ
-				<select class="cost">
-					<option value="10هزار تومان دو ماهه ">10 هزار تومان دو ماهه</option>
-					<option value="20 هزار تومان پنج ماهه">20 هزار تومان پنج ماهه</option>
-					<option value="50 هزار تومان یک ساله ">50 هزار تومان یکساله</option>
+				<select class="cost" name="ertegha_info" >
+					<option value="1"> 10هزار تومان دو ماهه</option>
+					<option value="2"> 20هزار تومان پنج ماهه</option>
+					<option value="3"> 50هزار تومان  یکساله</option>
 				</select>
 				هستم.
 				<input type="submit" value="اتصال با بانک" class="bank btn btn-info"/>
 			</form>
-			<form class="extRow">
+			{%endif%}
+			{% if  credit.isGolden%}
+			<form class="extRow" id="tamdid-form" method="post" action="/profile/tamdid/">
 				<div class="exTitle">
 					تمدید حساب
 				</div>
 
 				مایل به تمدید حساب  طلائی خود به مبلغ
-				<select class="cost">
-					<option value="10 هزار تومان دوماهه ">10 هزار تومان دو ماهه</option>
-					<option value="20 هزار تومان پنج ماهه">20 هزار تومان پنج ماهه</option>
-					<option value="50 هزار تومان یک ساله ">50 هزار تومان یکساله</option>
+				<select class="cost" name="tamdid_info" >
+					<option value="1"> 10هزار تومان دو ماهه</option>
+					<option value="2"> 20هزار تومان پنج ماهه</option>
+					<option value="3"> 50هزار تومان  یکساله</option>
 				</select>
 				هستم.
 				<input type="submit" value="اتصال با بانک" class="bank btn btn-info"/>
 			</form>
+			{%endif%}
 		</div>
 
 	</div>

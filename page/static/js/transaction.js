@@ -67,13 +67,7 @@ $(function() {
 	// edit each (sub)category
 		$('.cat-table').on('click', '.xrow .edit', function() {
 			var row = $(this).parent()
-			if (row.data('pressed')) {
-				row.find('form.forSub').addClass ('edt')
-				row.data('pressed', false)
-			} else {
-				row.find('form.edt').removeClass('edt')
-				row.data('pressed', true)
-			}
+			row.find('form.edt').removeClass('edt')
 		})
 	// remove each (sub)category
 	$('.cat-table').on('click', '.xrow .remove', function() {
@@ -115,6 +109,10 @@ $(function() {
 	});
 	$('.cancelEdit').click(function(ev) {
 		ev.preventDefault();
+		if ($(this).parent().hasClass("forSub")){		
+		$(this).parent().addClass('edt')
+		}
+		else
 		$(this).parent().css('display', 'none');
 	});
 

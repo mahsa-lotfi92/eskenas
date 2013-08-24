@@ -50,6 +50,7 @@ $(function() {
 		var input = row.find('.newInp');
 		input.find('.inp').val("");
 		input.fadeIn("slow");
+		input.find('.inp').focus();
 	})
 
 	$('.passTable').submit(function(ev) {
