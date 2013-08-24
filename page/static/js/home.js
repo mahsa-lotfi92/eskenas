@@ -2,6 +2,7 @@ $(function() {
 	$('#login_link').click(function(ev) {
 		ev.preventDefault();
 		$('#login').removeClass("hide fade");
+		$('#login').find('.passRow').eq(0).find('.passIn').focus();
 		$('#reg').addClass("hide fade");
 		$('#main').addClass('setOpacity');
 	});
@@ -9,6 +10,7 @@ $(function() {
 	$('#reg_link').click(function(ev) {
 		ev.preventDefault();
 		$('#reg').removeClass("hide fade");
+		$('#reg').find('.passRow').eq(0).find('.passIn').focus();
 		$('#login').addClass("hide fade");
 		$('#main').addClass('setOpacity');
 	});
