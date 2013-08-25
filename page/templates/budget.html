@@ -45,9 +45,10 @@
 		{%for b in bugs%}
 		<div class="remainBug">
 			
+					<i class="icon-pencil edit"></i><i class="icon-trash remove"></i>
 					<div class="bugName">
 						{{b.bugCat.name}}
-					</div><i class="icon-pencil edit"></i><i class="icon-trash remove"></i>
+					</div>
 					<form action='/budget/edit/' method="post" class= "edt forSub">
 					<input name= "id" value="{{b.id}}" type="hidden">
 					<input name= "new" type="text" placeholder="مبلغ جدید" class="limitEdit">
@@ -84,9 +85,30 @@
 
 			{%endif%}
 			
-			 	<div class="bar" style="width: {{b.per}}%;"> {{b.cost|intcomma}} </div>
+			 	<div class="bar" style="width: {{b.per}}%;">  </div>
+			 	
+			 	
+			 	<span  data-toggle="tooltip" title="{{b.per}}%">{{b.per}}%</span>
 			</div>
+			
 			{{b.limit|intcomma}}
+			
+			{%if b.per >= 75%}
+				<div class="des dan">
+	
+				{%elif b.per >= 50 %}
+				<div class="des war">
+				
+				{%elif b.per >= 25 %}
+				<div class="des suc">
+	
+				{%else %}
+				<div class="des inf">
+	
+				{%endif%}
+			</div>	
+			
+			
 		<div class="clearfix"></div>
 		{%endfor%}
 		{%else%}

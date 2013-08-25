@@ -17,6 +17,7 @@ def budgetForm(req):
         i.per = i.cost * 100.0 / i.limit
         if i.per > 100:
             i.per = 100
+        i.per = int (i.per)
 
     return render(req, 'budget.html', {'cats': Cat.objects.filter(isSub=False, user=req.user), 'bugs': bugs, 'myUser': userCredit.objects.get(user=req.user)})
 
