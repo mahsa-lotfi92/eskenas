@@ -148,7 +148,6 @@ $(function() {
 		var cid = $(this);
 		$("#ctgrID").val(cid.val());
 		$("#two_level").text(cid.text());
-		$(this).popover("show");
 
 	});
 	$(".sbctgr").click(function(ev) {
