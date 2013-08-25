@@ -98,10 +98,12 @@ span {
 }
 .des{
 	height: 50px;
-	width: 100%;
+	width: 50%;
 	background: #d9edf7;
-	margin-top: 10px;
+	left: 50%;
+	margin-right: 180px;
 	border-radius: 10px;
+	margin-top: 15px;
 }
 .edit, .remove{
 	margin-top: 10px;
@@ -117,4 +119,7 @@ span {
 }
 .inf{
 	background: #D0D9E4;
+}
+.forDes{
+	margin-right: 360px;
 }
