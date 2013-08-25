@@ -59,13 +59,12 @@
 	float: right;
 	width: 100px;
 	font-size: 16px;
-	/*font-weight: bold;*/
 }
 .inf {
 	font-size: 14px;
 	margin: 25px 7px;
 	float: right;
-	width: 220px;
+	width: 160px;
 }
 .profRow {
 	height: 70px;
@@ -74,28 +73,25 @@
 }
 
 .edit {
-	width: 42px;
-	height: 42px;
 	float: left;
-	background: url(../img/edit-icon.png) no-repeat 0 10px;
-	margin-top: 4px;
-	margin-left: 15px;
+	margin: 28px 0 20px 20px;
 }
 
 .save {
-	width: 42px;
-	height: 42px;
 	float: right;
-	background: url(../img/save-icon.png) no-repeat;
+	margin: 10px 10px 0 0;
 }
 .newInp {
 	float: right;
 	
-	margin: 15px;
+	/* margin: 15px; */
+	margin-top: 20px;
 	display: none;
 }
 .inp {
 	float: right;
+	margin: 0;
+	padding: 0;
 }
 .passIn {
 	float: right;
@@ -197,4 +193,9 @@ float: right;
 margin: 15px 21px 0px 0px;
 color:rgb(5,164,77);
 display: none;
+}
+.edt{
+	text-align: left;	
+	width: 63px;
+	margin-right: 4px;
 }
