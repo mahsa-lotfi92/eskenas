@@ -1,6 +1,6 @@
-#sidebar {
-	width: 180px;
-	height: 100px;
+#sidebar{
+	padding: 10px;
+	width: 160px;
 }
 #addBudget {
 	width: 680px;
@@ -12,7 +12,7 @@
 	height: 50px;
 	float: right;
 	margin: 1px;
-	text-align: center;
+/*	text-align: center;*/
 	padding: 63px 0 0 0;
 }
 #cat > a{
@@ -104,6 +104,8 @@ span {
 	margin-right: 180px;
 	border-radius: 10px;
 	margin-top: 15px;
+	text-align: center;
+	padding: 10px;
 }
 .edit, .remove{
 	margin-top: 10px;
@@ -122,4 +124,46 @@ span {
 }
 .forDes{
 	margin-right: 360px;
+}
+
+#one_level {
+	width:120px;
+	height: 20px;
+	overflow: hidden;
+}
+#catList > li {/* Top Level */
+	float: right;
+	margin-right: 3px;
+	position: relative;
+	width: 120px;
+	border-radius: 10px;
+}
+
+#catList > li > option {
+	display: block;
+	/* background:#0ac;*/
+	padding: 3px 10px;
+}
+
+#catList > li > ul {/* Second Level */
+	display: none;
+	width: 100px;
+	/*    background:#08a;*/
+}
+#catList > li:hover > ul {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 90%;
+}
+#catList > li > ul > li > option {
+	display: block;
+	padding: 3px 10px;
+	border-top: solid 1px #fff;
+	position: relative;
+}
+#catList > li > ul > li:hover > option {
+	background-color: rgb(0, 129, 194);
+	color: #FFFFFF;
+	cursor: pointer;
 }

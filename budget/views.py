@@ -10,6 +10,7 @@ def budgetForm(req):
     bugs = Bug.objects.all()
     for i in bugs:
         i.cost = 0
+        i.res= 0
 
         for j in Transaction.objects.filter(Q(Category=i.bugCat, isIncome=False) | Q(Category__parentCat=i.bugCat, isIncome=False)):
             i.cost += j.cost
@@ -18,6 +19,9 @@ def budgetForm(req):
         if i.per > 100:
             i.per = 100
         i.per = int (i.per)
+        i.res= i.limit - i.cost
+        if (i.res <0):
+            i.plusRes= -i.res
 
     return render(req, 'budget.html', {'cats': Cat.objects.filter(isSub=False, user=req.user), 'bugs': bugs, 'myUser': userCredit.objects.get(user=req.user)})
 

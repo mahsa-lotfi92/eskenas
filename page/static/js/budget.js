@@ -48,4 +48,13 @@ $(function() {
 		ev.preventDefault();
 		$('form.forSub').addClass('edt')
 	})
+	
+
+		$(".ctgr").click(function(ev) {
+		ev.preventDefault();
+		var cid = $(this);
+		$("#ctgrID").val(cid.val());
+		$("#one_level").text(cid.text());
+
+	});
 })
