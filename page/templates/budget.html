@@ -10,9 +10,9 @@
 
 
 {%block sidebar%}
-برای دسته‌های خود سقف مالی تعیین کنید
+برای دسته‌های خود سقف مالی تعیین کنید.
 <br />
-به کمک بودجه بندی در یک نگاه از وضعیت مخارج خود در دسته‌های مختلف با خبر شوید
+به کمک بودجه بندی در یک نگاه از وضعیت مخارج خود در دسته‌های مختلف با خبر شوید.
 <br />
 {%endblock%}
 
@@ -27,21 +27,6 @@
 				<input type="text" placeholder="مبلغ" name="limit" id="budgetLimit">
 			</div>
 			<div class="budgetPart">
-<!-- 				<input type="hidden" name="list" id="list" />
-				<ul id="catList" >
-					<li>
-						<a id="one_level" class="btn dropdown-toggle subject" href="#" data-toggle="dropdown"> دسته‌ها <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							{%for c in cats%}
-							<li>
-								<option class="bnkacnt" value="{{c.id}}">{{c.name}}</option>
-
-							</li>
-							{%endfor%}
-
-						</ul>
-					</li>
-				</ul> -->
 				
 				<select name= "catList" id="catList">
 					{%for c in cats%}
@@ -133,10 +118,17 @@
 				{{b.limit|intcomma}}
 				 تومان
 				<br />
-				{%if b.res >=0 %}
+				{%if b.res >= 0%}
 				مبلغ باقی مانده تا  سقف تایین شده:
 				{{b.res|intcomma}}
 				 تومان
+				{%else%}
+				<div>
+				<i class="icon-warning-sign"></i>
+				مبلغ
+				{{b.res|intcomma}}
+				بیش از حد تعیین شده
+				</div>
 				{%endif%}
 			</div>	
 			
