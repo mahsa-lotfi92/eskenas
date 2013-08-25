@@ -314,8 +314,10 @@ window.report.ui = (function () {
                     xAxis: {
                         categories: category,
                         labels: {
+                            useHTML: true,
                             style: {
-                                color: '#444'
+                                color: '#444',
+                                direction: 'rtl'
                             }
                         }
                     },
