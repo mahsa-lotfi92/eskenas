@@ -19,7 +19,10 @@ $(function () {
         $('#general .chart-container').highcharts({
             chart: {
                 type: 'column',
-                width: 350
+                width: 350,
+                height: 350,
+                borderColor: '#ccc',
+                borderWidth: 1
             },
             title: {
                 text: 'وضعیت مالی',

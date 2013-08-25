@@ -241,7 +241,10 @@ transition: all 0.4s ease-in-out;
 /* --------------------- Detail ------------------------------ */
 
 #content .detail{
-	margin-top: 20px;
+    margin: 10px 0px 0px 0px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 13px; 
+    color: #777;
 }
 
 #content .detail .tableWrapper{
@@ -275,7 +278,7 @@ transition: all 0.4s ease-in-out;
     background: #ffffff;
     border: 1px solid #eee ;
     border-radius: 5px;
-    margin: 0px 0px 40px 0px;
+    margin: 0px 0px 43px 0px;
 }
 
 #general .boxes .item .head-item{
@@ -305,3 +308,54 @@ transition: all 0.4s ease-in-out;
 #general .boxes .item .row-item:not(:last-child){
     border-bottom: 1px dotted #ccc;
 }
+
+#general .info .title-header{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    color: #333;
+    margin-bottom: 38px;
+}
+
+/* --------------------- Budget ------------------------------ */
+	#general .budget-info{
+    position: relative;
+    margin-top: -40px;
+}
+#general .budget-info .title{
+    position: absolute;
+    background: #B1ADF9;     border-radius: 5px 5px 0px 0px;     padding: 8px 10px;     font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;     font-size: 21px;     color: #274B6D;
+    
+    width: 246px;
+    border: 1px solid #ccc;
+    border-bottom: 0px;
+    margin-bottom: -1px;
+    top: -36px;
+}
+#general .budget-info .budget-container{
+    background: #fff;
+    border: 1px solid #ccc ;
+    border-radius: 7px 0px 5px 5px;
+    margin: 0px 0px 40px 0px;
+    width: 92%;
+    padding: 15px 17px;
+}
+
+#general .budget-info .remainBug:not(:last-child){
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #ccc;
+}
+
+
+#general .budget-info .bugName{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 15px; color:  #4D759E; 
+    padding: 5px 0px 8px 15px;
+
+    float: right;
+}
+
+#general .budget-info .bug-detail{
+    float: left;
+
+}
+

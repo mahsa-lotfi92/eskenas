@@ -23,7 +23,7 @@
 }
 .remainBug {
 	text-align: right;
-	margin-top: 90px;
+	margin: 30px 0px 5px 0px;
 	height: 40px;
 }
 .bugName {
@@ -97,13 +97,12 @@ span {
     width: 100%;
 }
 .des{
+	float: left;
 	height: 50px;
 	width: 50%;
 	background: #d9edf7;
 	left: 50%;
-	margin-right: 180px;
 	border-radius: 10px;
-	margin-top: 15px;
 	text-align: center;
 	padding: 10px;
 }
@@ -123,7 +122,7 @@ span {
 	background: #D0D9E4;
 }
 .forDes{
-	margin-right: 360px;
+	margin-right: 90%;
 }
 
 #one_level {
