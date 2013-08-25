@@ -264,11 +264,13 @@ h3 {
 	width: 520px;
 	margin-left: 60px;
 }
-.tranPayEdit, .tranDateEdit, .tranDesEdit, .tranTypeEdit, .tranCatEdit, .catEditList, .BAEditList {
+.tranPayEdit, .tranDateEdit,  .tranTypeEdit, .tranCatEdit, .catEditList, .BAEditList, #upOrDownEdit  {
+	float:right;
+	margin-left:10px;
 	margin-top: 10px;
 }
 #upOrDownEdit {
-	margin: 0px;
+	margin: 8px;
 	direction: ltr;
 }
 #upOrDownEdit .btn {
@@ -287,13 +289,13 @@ h3 {
 
 #BAList {
 	width: 150px;
+	float:right;
 }
-.catEditList {
-	width: 140px;
+#catList {
+	width: 100px;
+	float:right;
 }
-.BAEditList {
-	width: 140px;
-}
+
 .edt {
 	display: none;
 }
@@ -312,6 +314,11 @@ h3 {
 	height: 20px;
 	overflow: hidden;
 }
+.TRedit #catList{
+	margin-top:10px;
+	margin-left: 40px;
+}
+
 #catList > li {/* Top Level */
 	float: right;
 	margin-right: 3px;
@@ -373,7 +380,9 @@ h3 {
 }
 
 
-
+.TRedit #BAList{
+	margin-top:10px;
+}
 
 #BAList > li {/* Top Level */
 	float: right;
