@@ -222,7 +222,7 @@ bank acount tu jadval ezafe beshe
 							{%for b in bankAccounts%}
 							<li>
 								<option class="bnkacnt" value="{{b.id}}">{{b.name}}</option>
-			
+
 							</li>
 							{%endfor%}
 
@@ -237,6 +237,7 @@ bank acount tu jadval ezafe beshe
 				</select> -->
 
 			</div>
+
 			<div class="tranPart">
 				<input type="text" placeholder="توضیحات" id= "desc" name="description">
 			</div>
@@ -298,6 +299,7 @@ bank acount tu jadval ezafe beshe
 					<div class="tranBA">
 						{{t.bankAccount}}
 					</div>
+					<a class=" tozih" data-animation="top" data-content="{{t.description}}" title="" data-toggle="popover" href="#" data-original-title=" توضیحات">توضیحات </a>
 
 					<!-- 	<div class="tranDes">
 					{{t.description}}

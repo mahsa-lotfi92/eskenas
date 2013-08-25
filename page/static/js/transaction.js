@@ -1,40 +1,40 @@
 $(function() {
-    function getRequestsParams() {
-        var r = {}
-        var s1 = location.search.substring(1).split('&')
-        for (var i = 0; i < s1.length; i++) {
-            var s2 = s1[i].split('=')
-            r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1])
-        }
-        return r
-    }
+	function getRequestsParams() {
+		var r = {}
+		var s1 = location.search.substring(1).split('&')
+		for (var i = 0; i < s1.length; i++) {
+			var s2 = s1[i].split('=')
+			r[decodeURIComponent(s2[0]).toLowerCase()] = decodeURIComponent(s2[1])
+		}
+		return r
+	}
 
-    function switchTab(idx, noAnim) {
-        // Select the idx'th tab and add active class to the corresponding element
+	function switchTab(idx, noAnim) {
+		// Select the idx'th tab and add active class to the corresponding element
 
-        if (noAnim)
-            $('#inCon').addClass('noanim')
+		if (noAnim)
+			$('#inCon').addClass('noanim')
 
-        var mr = -20 - $('#inCon > div').eq(0).outerWidth() * idx
-        $('#inCon').css('margin-right', mr)
-        $('.barItem').removeClass('active')
-        $('.barItem').eq(idx).addClass('active')
+		var mr = -20 - $('#inCon > div').eq(0).outerWidth() * idx
+		$('#inCon').css('margin-right', mr)
+		$('.barItem').removeClass('active')
+		$('.barItem').eq(idx).addClass('active')
 
-        if (noAnim) {
-            $('#inCon').height()
-            $('#inCon').removeClass('noanim')
-        }
-    }
+		if (noAnim) {
+			$('#inCon').height()
+			$('#inCon').removeClass('noanim')
+		}
+	}
 
-    function loadTab() {
-        params = getRequestsParams()
-        if ('tab' in params)
-            switchTab(+params['tab'], true)
-        else
-            switchTab(0, true)
-    }
+	function loadTab() {
+		params = getRequestsParams()
+		if ('tab' in params)
+			switchTab(+params['tab'], true)
+		else
+			switchTab(0, true)
+	}
 
-    loadTab()
+	loadTab()
 
 	$('#sidebar').on('click', '.barItem', function(ev) {
 		ev.preventDefault()
@@ -57,19 +57,18 @@ $(function() {
 			row.data('pressed', true)
 		}
 	})
-	
+
 	$('.cat-table').on('click', '.add .icon-chevron-right', function() {
 		var row = $(this).parent()
-			row.removeClass('out')
-			row.data('pressed', false)
+		row.removeClass('out')
+		row.data('pressed', false)
 	})
-	
 	// edit each (sub)category
-		$('.cat-table').on('click', '.xrow .edit', function() {
-			var row = $(this).parent()
-			row.find('form.edt').removeClass('edt')
-			row.find(".nameEdit").focus()
-		})
+	$('.cat-table').on('click', '.xrow .edit', function() {
+		var row = $(this).parent()
+		row.find('form.edt').removeClass('edt')
+		row.find(".nameEdit").focus()
+	})
 	// remove each (sub)category
 	$('.cat-table').on('click', '.xrow .remove', function() {
 		var row = $(this).parent()
@@ -92,7 +91,6 @@ $(function() {
 })
 $(function() {
 
-
 	$('#addTranSubmit').click(function(ev) {
 		ev.preventDefault();
 		$(this).parent().parent().submit()
@@ -102,7 +100,8 @@ $(function() {
 	$('.TranRemove').click(function(ev) {
 		ev.preventDefault();
 		if (confirm('این تراکنش حذف شود؟')) {
-			$(this).parent().parent().submit()}
+			$(this).parent().parent().submit()
+		}
 
 	});
 	$('.TranEdit').click(function(ev) {
@@ -111,14 +110,13 @@ $(function() {
 	});
 	$('.cancelEdit').click(function(ev) {
 		ev.preventDefault();
-		if ($(this).parent().hasClass("forSub")){		
-		$(this).parent().addClass('edt')
-		}
-		else
-		$(this).parent().css('display', 'none');
+		if ($(this).parent().hasClass("forSub")) {
+			$(this).parent().addClass('edt')
+		} else
+			$(this).parent().css('display', 'none');
 	});
 
-		$('.catEditItem').click(function(ev) {
+	$('.catEditItem').click(function(ev) {
 		ev.preventDefault();
 		$(this).parent().parent().find('.tranCatEdit').val($(this).text());
 
@@ -135,31 +133,43 @@ $(function() {
 		$('.isIncome').val(0);
 		$(this).addClass('selected')
 		$('.income').removeClass("selected")
-		
 
 	});
-		$(".bnkacnt").click(function(ev){
+	$(".bnkacnt").click(function(ev) {
 		ev.preventDefault();
-		var baid=$(this);
+		var baid = $(this);
 		$("#bid_post").val(baid.val());
 		$("#one_level").text(baid.text());
-		
+
 	});
 
-	$(".ctgr").click(function(ev){
+	$(".ctgr").click(function(ev) {
 		ev.preventDefault();
-		var cid=$(this);
+		var cid = $(this);
 		$("#ctgrID").val(cid.val());
-		$("#two_level").text(cid.text())
-		
+		$("#two_level").text(cid.text());
+		$(this).popover("show");
+
 	});
-		$(".sbctgr").click(function(ev){
+	$(".sbctgr").click(function(ev) {
 		ev.preventDefault();
-		var cid=$(this).parent().parent().parent().find(".ctgr");
-		var sbcid=$(this);
+		var cid = $(this).parent().parent().parent().find(".ctgr");
+		var sbcid = $(this);
 		$("#sbctgrID").val(sbcid.val());
 		$("#ctgrID").val(cid.val());
-		$("#two_level").text(cid.text()+" - "+sbcid.text());
-		
+		$("#two_level").text(cid.text() + " - " + sbcid.text());
+
+	});
+	$(".tozih").mouseover(function(ev) {
+
+		ev.preventDefault();
+		$(this).popover("show");
+
+	});
+		$(".tozih").mouseleave(function(ev) {
+
+		ev.preventDefault();
+		$(this).popover("toggle");
+
 	});
 })
