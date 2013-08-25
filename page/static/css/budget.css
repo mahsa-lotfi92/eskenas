@@ -23,15 +23,16 @@
 }
 .remainBug {
 	text-align: right;
-	padding: 15px;
-	margin-top: 70px;
+	margin-top: 90px;
 	height: 40px;
 }
 .bugName {
 	text-align: right;
 	font-size: 20px;
-	width: 177px;
 	float: right;
+	margin-right: 15px;
+	line-height: 10px;
+	margin-top: 10px;
 }
 .progress {
 	margin-bottom: 0px;
@@ -47,6 +48,7 @@ padding: 5px;
 	margin: 0;
 	float: right;
 	margin-right: 20px;
+	line-height: 10px;
 }
 .advGold{
 	height: 120px;
@@ -79,4 +81,40 @@ padding: 5px;
 }
 i{
 	float: right;
+}
+.progress {
+    position: relative;
+}
+
+.bar{
+	color: white;
+}
+span {
+    position: absolute;
+    z-index: 2;
+    color: black;
+    text-align: center;
+    width: 100%;
+}
+.des{
+	height: 50px;
+	width: 100%;
+	background: #d9edf7;
+	margin-top: 10px;
+	border-radius: 10px;
+}
+.edit, .remove{
+	margin-top: 10px;
+}
+.dan{
+	background: #F3A9A6;
+}
+.war{
+	background: #FFF18B;
+}
+.suc{
+	background: rgb(190, 233, 170);
+}
+.inf{
+	background: #D0D9E4;
 }
