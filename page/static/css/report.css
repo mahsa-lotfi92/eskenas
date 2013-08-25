@@ -258,6 +258,49 @@ transition: all 0.4s ease-in-out;
 }
 
 
-.tmpTooltip{
-    color: #f00;
+/* --------------------- Genral ------------------------------ */
+#general .chart{
+     width:370px;
+    display: inline-block;
+    float: left ;
+}
+
+#general .boxes{
+    float: right;
+    width: 270px;
+    display: inline-block;
+}
+
+#general .boxes .item{
+    background: #ffffff;
+    border: 1px solid #eee ;
+    border-radius: 5px;
+    margin: 0px 0px 40px 0px;
+}
+
+#general .boxes .item .head-item{
+    background: #B1ADF9;
+    border-radius: 5px 5px 0px 0px;
+    padding: 8px 10px;
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    color: #274B6D;
+}
+#general .boxes .item .row-item{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #4D759E;
+    padding: 10px 15px;
+}
+
+#general .boxes .item .row-item .title{
+    float: right;
+}
+
+#general .boxes .item .row-item .value{
+    float: left;
+}
+
+#general .boxes .item .row-item:not(:last-child){
+    border-bottom: 1px dotted #ccc;
 }

@@ -80,7 +80,10 @@ def general(request):
                 sum += val
                 cnt += 1
         total[name] = (Transaction.objects.filter(user=usr, isIncome = isIncome).aggregate(Sum('cost')))['cost__sum']
-        avg[name] = math.floor(sum / cnt)
+        if cnt == 0:
+            avg[name] = 0
+        else:
+            avg[name] = math.floor(sum / cnt)
     data = {"account": account, "current": current, "avg": avg, "total": total}
     #------------------------------------
     bugs = Bug.objects.all()

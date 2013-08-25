@@ -59,17 +59,51 @@ console.log(window.data.current)
 {%block content%}
 <div id="content">
 	<div id="inCon" class="anim">
-		<div class="solsCon">
+		<div id="general" class="solsCon">
+
             <div class="info">
-               <div class="item">
-                    میانگین
-               </div>
-                <div class="item">
-کل
-               </div>
-                <div class="item">
-ماه حاضر
-               </div>
+                <div class="chart">
+
+                    <div class="chart-container" style="height: 400px;"></div>
+
+                </div>
+                <div class="boxes">
+
+                    <div class="item current">
+                        <div class="head-item">
+                            ماه حاضر
+                        </div>
+                        <div class="row-item">
+                            <span class="title">درآمد</span>
+                            <span class="value"></span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row-item">
+                             <span class="title">هزینه</span>
+                            <span class="value"></span>
+                            <div class="clearfix"></div>
+                        </div>
+                   </div>
+                   <div class="item average">
+                        <div class="head-item">
+    میانگین ماهانه
+                        </div>
+                        <div class="row-item">
+                            <span class="title">درآمد</span>
+                            <span class="value"></span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="row-item">
+                             <span class="title">هزینه</span>
+                            <span class="value"></span>
+                            <div class="clearfix"></div>
+                        </div>
+                   </div>
+
+                </div>
+
+
+                <div class="clearfix"></div>
             </div>
             <div class="budget-info">
                 <div class = "title">
