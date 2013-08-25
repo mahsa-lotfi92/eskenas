@@ -101,7 +101,8 @@ $(function() {
 
 	$('.TranRemove').click(function(ev) {
 		ev.preventDefault();
-		$(this).parent().parent().submit()
+		if (confirm('این تراکنش حذف شود؟')) {
+			$(this).parent().parent().submit()}
 
 	});
 	$('.TranEdit').click(function(ev) {
