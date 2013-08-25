@@ -11,12 +11,14 @@
 {%block sidebar%}
 برای دسته‌های خود سقف مالی تعیین کنید.
 <br />
+<br />
 به کمک بودجه بندی در یک نگاه از وضعیت مخارج خود در دسته‌های مختلف با خبر شوید.
 <br />
 {%endblock%}
 
 {%block content%}
 {%if myUser.isGolden%}
+<h1>بودجه‌بندی</h1>
 <form method="post" action="/budget/add/">
 	<div id="addBudget">
 		<div class="budgetPart">
@@ -131,10 +133,11 @@
 							تومان
 							{%else%}
 							<div>
-								<i class="icon-warning-sign"></i>
 								مبلغ
-								{{b.res|intcomma}}
-								بیش از حد تعیین شده
+								{{b.plusRes|intcomma}}
+								تومان بیش از حد تعیین شده
+								<br />
+								<i class="icon-warning-sign"></i>
 							</div>
 							{%endif%}
 						</div>
