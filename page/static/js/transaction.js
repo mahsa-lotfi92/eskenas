@@ -142,6 +142,12 @@ $(function() {
 		$("#one_level").text(baid.text());
 
 	});
+	$(".BAEditItem").click(function(ev) {
+		ev.preventDefault();
+		$(this).parent().parent().find(".BAEdited").val($(this).val());
+		$(this).parent().parent().parent().find("#one_level").text($(this).text());
+
+	});
 
 	$(".ctgr").click(function(ev) {
 		ev.preventDefault();
@@ -159,13 +165,32 @@ $(function() {
 		$("#two_level").text(cid.text() + " - " + sbcid.text());
 
 	});
+
+	$(".ctgrE").click(function(ev) {
+		ev.preventDefault();
+		$(this).parent().parent().find(".catEdited").val($(this).val());
+		$(this).parent().parent().parent().find("#two_level").text($(this).text());
+
+	});
+	$(".sbctgrE").click(function(ev) {
+		ev.preventDefault();
+		var cid = $(this).parent().parent().parent().find(".ctgrE");
+		var sbcid = $(this);
+		$(this).parent().parent().parent().parent().find(".catEdited").val(cid.val());
+		$(this).parent().parent().parent().parent().find(".subCatEdited").val(sbcid.val());
+
+		var tl = $(this).parent().parent().parent().parent().parent().find("#two_level");
+		tl.text(cid.text() + " - " + sbcid.text());
+
+	});
+
 	$(".tozih").mouseover(function(ev) {
 
 		ev.preventDefault();
 		$(this).popover("show");
 
 	});
-		$(".tozih").mouseleave(function(ev) {
+	$(".tozih").mouseleave(function(ev) {
 
 		ev.preventDefault();
 		$(this).popover("toggle");
