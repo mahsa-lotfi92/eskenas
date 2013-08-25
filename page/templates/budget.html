@@ -133,9 +133,11 @@
 				{{b.limit|intcomma}}
 				 تومان
 				<br />
+				{%if b.res >=0 %}
 				مبلغ باقی مانده تا  سقف تایین شده:
-				{{b.cost|intcomma}}
+				{{b.res|intcomma}}
 				 تومان
+				{%endif%}
 			</div>	
 			
 		<div class="clearfix"></div>
