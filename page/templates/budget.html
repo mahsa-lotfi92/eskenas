@@ -10,6 +10,10 @@
 
 
 {%block sidebar%}
+برای دسته‌های خود سقف مالی تعیین کنید
+<br />
+به کمک بودجه بندی در یک نگاه از وضعیت مخارج خود در دسته‌های مختلف با خبر شوید
+<br />
 {%endblock%}
 
 
@@ -107,11 +111,10 @@
 			 	<span  data-toggle="tooltip" title="{{b.per}}%">{{b.per}}%</span>
 			</div>
 			
-<!-- 			<div class="bugName">
-			{{b.limit|intcomma}}
-			</div> -->
+			
 			<div class="clearfix"></div>
-			<i class="icon-chevron-down forDes"></i>
+			<i class="icon-chevron-up forDes">
+			</i>
 			
 			{%if b.per >= 75%}
 				<div class="des dan">
@@ -126,8 +129,14 @@
 				<div class="des inf">
 	
 				{%endif%}
+				سقف تایین شده:
+				{{b.limit|intcomma}}
+				 تومان
+				<br />
+				مبلغ باقی مانده تا  سقف تایین شده:
+				{{b.cost|intcomma}}
+				 تومان
 			</div>	
-			
 			
 		<div class="clearfix"></div>
 		{%endfor%}
