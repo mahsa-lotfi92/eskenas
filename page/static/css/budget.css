@@ -1,6 +1,6 @@
-#sidebar {
-	width: 180px;
-	height: 100px;
+#sidebar{
+	padding: 10px;
+	width: 160px;
 }
 #addBudget {
 	width: 680px;
