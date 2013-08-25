@@ -18,40 +18,7 @@ $(function () {
 	
 		// Build the chart
         $('#income .chart-container').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                percentageDecimals: 1,
-                formatter: function() {
-                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2); +' %';
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                        },
-                        style:
-                        {
-                            direction: "rtl",
-                            fontSize: "16px"
-                        }
-                    }
-                }
-            }
         });
-
-
 
    	 	$('#spending .chart-container').highcharts({
             chart: {
@@ -59,6 +26,15 @@ $(function () {
                 plotBorderWidth: null,
                 plotShadow: false
             },
+            title: {
+                text: 'هزینه‌ها',
+                style: {
+                    fontSize: '20px'
+                }
+            },
+            subtitle: {
+                text: 'به تفکیک دسته بندی'
+            },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage}%</b>',
                 percentageDecimals: 1,
@@ -87,40 +63,18 @@ $(function () {
             }
         });
 
-
-
-
         $('#monthly .chart-container').highcharts({
             chart: {
                 type: 'column'
             },
             title: {
-                text: null
+                text: 'گزارش زمانی',
+                style: {
+                    fontSize: '20px'
+                }
             },
             subtitle: {
-                text: null
-            },
-            xAxis: {
-                categories: [
-                    'فروردین',
-                    'اردیبهشت',
-                    'خرداد',
-                    'تیر',
-                    'مرداد',
-                    'شهریور',
-                    'مهر',
-                    'آبان',
-                    'آذر',
-                    'دی',
-                    'بهمن',
-                    'اسفند'
-                ]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: null
-                }
+                text: 'درآمد و هزینه به تفکیک زمانی',
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -140,29 +94,13 @@ $(function () {
                     direction: "rtl",
                     fontSize: "16px"
                 }
-            },
-            series: [{
-                name: 'درآمد',
-                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-            }, {
-                name: 'هزینه',
-                data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-            }]
+            }
         });
-
-
 
     });
 
 
 $(function () {
-//	$ ('#inCon').css('margin-right', -790 )
-//	$ ('.barItem').removeClass('active')
-//	$('#sidebar .barItem').eq(1).addClass('active')
-//	window.report.core.refresh();
-
 	$('#sidebar .barItem').eq(0).click(function(ev) {
 		ev.preventDefault()
 
@@ -347,12 +285,83 @@ window.report.ui = (function () {
                 arr.push([cat, data[cat]])
                 category.push(cat)
             }
-
+            console.log(type);
             var  variable =   [{
                 type: type,
                 name: name,
-                data: arr
+                data: arr,
+                showInLegend: false
             }];
+
+
+            chart.destroy();
+
+            base.find('.chart-container').each(function(){
+                var chartOptions = {
+                    chart: {
+                        renderTo: this,
+                        type: 'bar'
+                    },
+                    title: {
+                        text: name,
+                        style: {
+                            fontSize: '20px'
+                        }
+                    },
+                    subtitle: {
+                        text: 'به تفکیک دسته بندی'
+                    },
+                    xAxis: {
+                        categories: category,
+                        labels: {
+                            style: {
+                                color: '#444'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        title: null
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                        percentageDecimals: 1,
+                        useHTML: true,
+                        formatter: function() {
+                            var ret = this.point.name + ' <b>' + Highcharts.numberFormat(this.y, 0) + '</b>'
+                            return ret
+                        },
+                        style: {
+                            direction: 'rtl',
+                            fontSize: '12px'
+                        }
+                    },
+                    plotOptions: {
+                        series: {
+                            borderRadiusTopLeft: 10,
+                            borderRadiusTopRight: 10
+                        },
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'cursor',
+                            dataLabels: {
+                                enabled: true,
+                                color: '#000000',
+                                connectorColor: '#000000',
+                                formatter: function() {
+                                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                                },
+                                style:
+                                {
+                                    direction: "rtl",
+                                    fontSize: "16px"
+                                }
+                            }
+                        }
+                    }
+                };
+                chart = new Highcharts.Chart(chartOptions);
+            });
+
             for(var i in variable) {
                 console.log(variable[i])
                 chart.addSeries(variable[i], false);
@@ -495,4 +504,67 @@ window.report.ui = (function () {
         }
 	};
 })();
+
+
+
+
+
+
+
+/**
+ * Highcharts plugin for creating individual rounded borders.
+ *
+ * Author: Torstein Hønsi
+ * Last revision: 2013-05-06
+ * License: MIT License
+ *
+ * Known issues:
+ * - Animation isn't working. To overcome that, create a method on the Renderer which points
+ *   to a symbol definition, like it is currently done with "arc" in PieSeries.
+ * - Dom exception on showing/hiding the series
+ */
+(function (H) {
+    H.wrap(H.seriesTypes.column.prototype, 'translate', function (proceed) {
+        var options = this.options,
+            rTopLeft = options.borderRadiusTopLeft || 0,
+            rTopRight = options.borderRadiusTopRight || 0,
+            rBottomRight = options.borderRadiusBottomRight || 0,
+            rBottomLeft = options.borderRadiusBottomLeft || 0;
+
+        proceed.call(this);
+
+        if (rTopLeft || rTopRight || rBottomRight || rBottomLeft) {
+            H.each(this.points, function (point) {
+                var shapeArgs = point.shapeArgs,
+                    w = shapeArgs.width,
+                    h = shapeArgs.height,
+                    x = shapeArgs.x,
+                    y = shapeArgs.y;
+                point.shapeType = 'path';
+                point.shapeArgs = [
+                    'M', x + rTopLeft, y,
+                    // top side
+                    'L', x + w - rTopRight, y,
+                    // top right corner
+                    'C', x + w - rTopRight / 2, y, x + w, y + rTopRight / 2, x + w, y + rTopRight,
+                    // right side
+                    'L', x + w, y + h - rBottomRight,
+                    // bottom right corner
+                    'C', x + w, y + h - rBottomRight / 2, x + w - rBottomRight / 2, y + h, x + w - rBottomRight, y + h,
+                    // bottom side
+                    'L', x + rBottomLeft, y + h,
+                    // bottom left corner
+                    'C', x + rBottomLeft / 2, y + h, x, y + h - rBottomLeft / 2, x, y + h - rBottomLeft,
+                    // left side
+                    'L', x, y + rTopLeft,
+                    // top left corner
+                    'C', x, y + rTopLeft / 2, x + rTopLeft / 2, y, x + rTopLeft, y,
+                    'Z'
+                ];
+
+            });
+        }
+    });
+}(Highcharts));
+// End of plugin
 
