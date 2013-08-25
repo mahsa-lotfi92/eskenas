@@ -295,6 +295,7 @@ transition: all 0.4s ease-in-out;
 
 #general .boxes .item .row-item .title{
     float: right;
+    color: #666;
 }
 
 #general .boxes .item .row-item .value{

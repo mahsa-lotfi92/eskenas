@@ -4,6 +4,7 @@ moratab kardane transaction
 bank acount tu jadval ezafe beshe
 </TODO> -->
 {%extends 'base.html'%}
+{% load humanize %}
 {%block css%}
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/transaction.css">
 {%endblock%}
@@ -286,7 +287,7 @@ bank acount tu jadval ezafe beshe
 
 					</div>
 					<div class="tranPay">
-						{{t.cost}}
+						{{t.cost|intcomma}}
 					</div>
 					<div class="tranCat">
 						{%if t.Category.isSub%}
@@ -321,7 +322,7 @@ bank acount tu jadval ezafe beshe
 					</div>
 					<input type="hidden" value="{{t.id}}" name="id">
 					<input type="text" class="tranDateEdit" value="{{t.date|date:"Y-m-d"}}" name="date"/>
-					<input type="text" class="tranPayEdit" value="{{t.cost}}" name="cost"/>
+					<input type="text" class="tranPayEdit" value="{{t.cost|intcomma}}" name="cost"/>
 
 					<ul id="catList" >
 						<li>

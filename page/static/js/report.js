@@ -108,6 +108,17 @@ $(function () {
                 shared: true,
                 useHTML: true
             },
+            legend: {
+                useHTML: true,
+                style: {
+                    direction: 'rtl'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: null
+                }
+            },
             plotOptions: {
                 column: {
                     pointPadding: 0.2,
