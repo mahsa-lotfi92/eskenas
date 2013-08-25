@@ -63,7 +63,7 @@ padding: 5px;
 
 .budgWar{
 	color: rgb(202, 1, 1);
-	margin-right: 10px;
+	float: left;
 }
 .forSub{
 	width: 100%;

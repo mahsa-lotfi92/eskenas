@@ -68,6 +68,7 @@ $(function() {
 		$('.cat-table').on('click', '.xrow .edit', function() {
 			var row = $(this).parent()
 			row.find('form.edt').removeClass('edt')
+			row.find(".nameEdit").focus()
 		})
 	// remove each (sub)category
 	$('.cat-table').on('click', '.xrow .remove', function() {

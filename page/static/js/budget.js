@@ -23,6 +23,7 @@ $(function() {
 	$('.remainBug').on('click', '.edit', function() {
 		var row = $(this).parent()
 		row.find('form.edt').removeClass('edt')
+		row.find('.limitEdit').focus()
 	})
 	
 	$('.edtSubmit').click(function(ev) {
