@@ -152,7 +152,9 @@ bank acount tu jadval ezafe beshe
 	</div>
 	<div class="solsCon">
 		{%if error%}
-		<div id="addTR-err">{{error}}</div>
+		<div id="addTR-err">
+			{{error}}
+		</div>
 		{%endif%}
 
 		<form method="post" id="addTran" action="/transaction/add/">
@@ -175,23 +177,64 @@ bank acount tu jadval ezafe beshe
 				<input type="text" placeholder="مبلغ" class="transaction" name="cost">
 			</div>
 			<div class="tranPart">
+				<input type="hidden" id="ctgrID" name="catId"/>
+				<input type="hidden" id="sbctgrID" name="subcatId"/>
 
-				<select id="catList" name="catId">
-					{%for c in cats%}
-					{% for b in c.cat_set.all %}
-					<option class="catItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
-					{%endfor%}
-					{%endfor%}
-				</select>
+				<ul id="catList" >
+					<li>
+						<a id="two_level" class="btn dropdown-toggle" href="#" data-toggle="dropdown"> دسته‌ها <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{%for c in cats%}
+							<li>
+								<option class="ctgr" value="{{c.id}}">{{c.name}}</option>
+								{%if  c.cat_set.all%}
+								<ul class="dropdown-menu">
+
+									{% for b in c.cat_set.all %}
+									<li>
+										<option class="sbctgr" value="{{b.id}}">{{b.name}}</option>
+									</li>
+									{%endfor%}
+								</ul>
+								{%endif%}
+							</li>
+							{%endfor%}
+
+						</ul>
+					</li>
+				</ul>
+
+				<!-- 		<select id="catList" name="catId">
+				{%for c in cats%}
+				{% for b in c.cat_set.all %}
+				<option class="catItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
+				{%endfor%}
+				{%endfor%}
+				</select> -->
 
 			</div>
 			<div class="tranPart">
+				<input type="hidden" name="BAId" id="bid_post" />
+				<ul id="BAList" >
+					<li>
+						<a id="one_level" class="btn dropdown-toggle" href="#" data-toggle="dropdown"> حساب <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{%for b in bankAccounts%}
+							<li>
+								<option class="bnkacnt" value="{{b.id}}">{{b.name}}</option>
+			
+							</li>
+							{%endfor%}
 
-				<select id="BAList" name="BAId">
-					{%for b in bankAccounts%}
-					<option class="BAItem" value="{{b.id}}">{{b.name}}</option>
-					{%endfor%}
-				</select>
+						</ul>
+					</li>
+				</ul>
+
+				<!-- 				<select id="BAList" name="BAId">
+				{%for b in bankAccounts%}
+				<option class="BAItem" value="{{b.id}}">{{b.name}}</option>
+				{%endfor%}
+				</select> -->
 
 			</div>
 			<div class="tranPart">
@@ -245,7 +288,11 @@ bank acount tu jadval ezafe beshe
 						{{t.cost}}
 					</div>
 					<div class="tranCat">
+						{%if t.Category.isSub%}
 						{{t.Category.parentCat}} - {{t.Category}}
+						{%else%}
+						{{t.Category}}
+						{%endif%}
 
 					</div>
 					<div class="tranBA">

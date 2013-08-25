@@ -11,9 +11,13 @@ def addTransaction(request):
     t.isIncome = request.POST["isIncome"] == '1' 
     if  not "catId" in request.POST or not "BAId" in request.POST:
         return redirect('/transaction/')
-    cid = request.POST["catId"]
+    if "subcatId" in request.POST:
+        sbcid= request.POST["subcatId"]
+        c = Cat.objects.get(id=sbcid)
+    else:
+        cid = request.POST["catId"]
+        c = Cat.objects.get(id=cid)
     bid = request.POST["BAId"]
-    c = Cat.objects.get(id=cid)
     ba = BankAccount.objects.get(id=bid)
     t.Category = c
     t.bankAccount = ba

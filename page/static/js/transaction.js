@@ -136,5 +136,28 @@ $(function() {
 		
 
 	});
+		$(".bnkacnt").click(function(ev){
+		ev.preventDefault();
+		var baid=$(this);
+		$("#bid_post").val(baid.val());
+		$("#one_level").text(baid.text());
+		
+	});
 
+	$(".ctgr").click(function(ev){
+		ev.preventDefault();
+		var cid=$(this);
+		$("#ctgrID").val(cid.val());
+		$("#two_level").text(cid.text())
+		
+	});
+		$(".sbctgr").click(function(ev){
+		ev.preventDefault();
+		var cid=$(this).parent().parent().parent().find(".ctgr");
+		var sbcid=$(this);
+		$("#sbctgrID").val(sbcid.val());
+		$("#ctgrID").val(cid.val());
+		$("#two_level").text(cid.text()+" - "+sbcid.text());
+		
+	});
 })
