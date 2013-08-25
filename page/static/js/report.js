@@ -4,8 +4,7 @@ window.report = {} ;
 
 
 $(function () {
-	
-    	// Radialize the colors
+	    // Radialize the colors
 		Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
 		    return {
 		        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
@@ -15,53 +14,11 @@ $(function () {
 		        ]
 		    };
 		});
-	
-		// Build the chart
-        $('#income .chart-container').highcharts({
-        });
 
-   	 	$('#spending .chart-container').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            title: {
-                text: 'هزینه‌ها',
-                style: {
-                    fontSize: '20px'
-                }
-            },
-            subtitle: {
-                text: 'به تفکیک دسته بندی'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                percentageDecimals: 1,
-                formatter: function() {
-                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2); +' %';
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                        },
-                        style:
-                        {
-                            direction: "rtl",
-                            fontSize: "16px"
-                        }
-                    }
-                }
-            }
-        });
+		// Build the chart
+        $('#income .chart-container').highcharts({ });
+
+   	 	$('#spending .chart-container').highcharts({ });
 
         $('#monthly .chart-container').highcharts({
             chart: {
@@ -79,7 +36,7 @@ $(function () {
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y}</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
@@ -187,9 +144,19 @@ window.report.core = (function () {
 	var filter
 	var chartData, sortable, total, tabIndex;
     var title = ['', 'درآمد', 'هزینه', 'زمانی']
-	
+
+    function loadTrans(data){
+        console.log('salam')
+        console.log(data)
+    }
+
 	function refresh(){
-		window.report.ui.beginLoading() ;
+        var tmp = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': tabIndex==1, 'category': 1} ;
+        console.log(tmp);
+		//---------------
+		$.post('/ajax/transaction_report/', tmp, loadTrans);
+
+        window.report.ui.beginLoading() ;
 		//---------------
 		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': tabIndex==1, 'type': (tabIndex==3?'time':'category')} ;
         console.log(additionalData);
@@ -329,7 +296,7 @@ window.report.ui = (function () {
                         percentageDecimals: 1,
                         useHTML: true,
                         formatter: function() {
-                            var ret = this.point.name + ' <b>' + Highcharts.numberFormat(this.y, 0) + '</b>'
+                            var ret = this.point.name + ': <b>' + Highcharts.numberFormat(this.y, 0) + '</b>'
                             return ret
                         },
                         style: {
@@ -339,6 +306,7 @@ window.report.ui = (function () {
                     },
                     plotOptions: {
                         series: {
+                            cursor: 'cursor',
                             borderRadiusTopLeft: 10,
                             borderRadiusTopRight: 10
                         },
@@ -346,16 +314,16 @@ window.report.ui = (function () {
                             allowPointSelect: true,
                             cursor: 'cursor',
                             dataLabels: {
+                                useHTML: true,
                                 enabled: true,
                                 color: '#000000',
                                 connectorColor: '#000000',
                                 formatter: function() {
-                                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
+                                    return this.point.name +': <b>'+ Highcharts.numberFormat(this.percentage, 1) +'%<b>';
                                 },
                                 style:
                                 {
-                                    direction: "rtl",
-                                    fontSize: "16px"
+                                    direction: "rtl"
                                 }
                             }
                         }

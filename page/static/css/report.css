@@ -199,7 +199,8 @@ transition: all 0.4s ease-in-out;
 #content .filter .criteria.type{
 	float:left;
 	float: right;
-    margin: 5px 45px 0px 60px;
+    
+	margin: 5px 152px 0px 60px;
 }
 
 #content .filter .criteria.type .bar{
@@ -232,7 +233,7 @@ transition: all 0.4s ease-in-out;
 }
 
 #content .filter .refresh{
-    margin: 0px 45px 0px 15px;
+    margin: 0px -100px 0px 15px;
     float: left;
     width: 100px;
 }

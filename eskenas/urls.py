@@ -27,6 +27,7 @@ urlpatterns = patterns('',
      
      url(r'^report/$', 'report.views.general'),
      url(r'^ajax/monthly_report/$', 'report.views.monthly'),
+     url(r'^ajax/transaction_report/$', 'report.views.getTransaction'),
      
      url(r'^budget/$', 'budget.views.budgetForm'),
      url(r'^budget/add/$', 'budget.views.budgetAdd'),

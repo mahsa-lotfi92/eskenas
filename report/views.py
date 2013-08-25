@@ -112,9 +112,35 @@ def next_year(d):
     return datetime.date(d.year+1, 1, 1)
 
 
+def getTransaction(request):
+    print request.POST
+    #------------------------------------------------------
+    if not request.user.is_authenticated():
+        s = json.dumps({'result': 'ERROR', 'usr' : 'not logged in'}, cls=DjangoJSONEncoder)
+        return HttpResponse(s, mimetype='application/json')
+    #------------------------------------------------------
+    usr = request.user
+    isIncome = request.POST['isIncome'] == 'true' and True or False
+    accountID = int(request.POST['account'])
+    catID = int(request.POST['category'])
+    startDate = datetime.datetime.fromtimestamp(float(request.POST['startDate']))
+    endDate   = datetime.datetime.fromtimestamp(float(request.POST['endDate']))
+
+    baseTran = Transaction.objects.filter(user=usr, isIncome = isIncome, Category__parentCat= catID, date__range= [startDate, endDate])
+    if accountID != -1:
+        baseTran = baseTran.filter(bankAccount__id = accountID)
+
+    print baseTran
+
+    obj = list(baseTran.order_by('-date').values('isIncome', 'date', 'cost', 'Category__name', 'description', 'bankAccount__name'))
+    s = json.dumps({'result': 'OK', 'data' : obj}, cls=DjangoJSONEncoder)
+
+    return HttpResponse(s, mimetype='application/json')
+
+
 # @csrf_exempt
 def monthly(request):
-    print request.POST
+    # print request.POST
 
     # form = SimpleFilter(request.POST)
     # if not form.is_valid():
@@ -142,8 +168,8 @@ def monthly(request):
     # print isIncome
     # for t in Transaction.objects.all():
     #     print t.isIncome
-    print startDate
-    print endDate
+    # print startDate
+    # print endDate
 
     baseTran = Transaction.objects.filter(user=usr)
     if accountID != -1:
@@ -194,6 +220,6 @@ def monthly(request):
                         del obj[k][kk]
 
     #------------------------------------------------------
-    print obj
+    # print obj
     s = json.dumps({'result': 'OK', 'data' : obj}, cls=DjangoJSONEncoder)
     return HttpResponse(s, mimetype='application/json')
