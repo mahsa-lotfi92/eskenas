@@ -15,7 +15,74 @@ $(function () {
 		    };
 		});
 
-		// Build the chart
+        // Build the chart
+        $('#general .chart-container').highcharts({
+            chart: {
+                type: 'column',
+                width: 350
+            },
+            title: {
+                text: 'وضعیت مالی',
+                style: {
+                    fontSize: '20px'
+                }
+            },
+            subtitle: {
+                text: 'مجموع درآمد و هزینه کلی شما'
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                percentageDecimals: 1,
+                useHTML: true,
+                formatter: function() {
+                    var ret = this.key + ': <b>' + Highcharts.numberFormat(this.y, 0) + '</b>'
+                    return ret
+                },
+                style: {
+                    direction: 'rtl',
+                    fontSize: '12px'
+                }
+            },
+            plotOptions: {
+                series: {
+                    colorByPoint: true,
+                    cursor: 'cursor',
+                    borderRadiusTopLeft: 10,
+                    borderRadiusTopRight: 10
+                },
+                style:
+                {
+                    direction: "rtl",
+                    fontSize: "16px"
+                }
+            },
+            xAxis: {
+                categories: [
+                    'درآمد',
+                    'هزینه'
+                ],
+                labels: {
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                title: {
+                    text: null
+                }
+            },
+            series: [{
+                data: [window.data.total['درآمد'], window.data.total['هزینه']],
+                showInLegend: false
+            }],
+            colors: [
+                'green',
+                'red'
+            ]
+        });
+
         $('#income .chart-container').highcharts({ });
 
    	 	$('#spending .chart-container').highcharts({ });
@@ -31,7 +98,7 @@ $(function () {
                 }
             },
             subtitle: {
-                text: 'درآمد و هزینه به تفکیک زمانی',
+                text: 'درآمد و هزینه به تفکیک زمانی'
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -54,6 +121,13 @@ $(function () {
             }
         });
 
+
+
+        $('#general .boxes .current .value').eq(0).html(window.data.current['درآمد'])
+        $('#general .boxes .current .value').eq(1).html(window.data.current['هزینه'])
+
+        $('#general .boxes .average .value').eq(0).html(window.data.avg['درآمد'])
+        $('#general .boxes .average .value').eq(1).html(window.data.avg['هزینه'])
     });
 
 

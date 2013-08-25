@@ -346,6 +346,7 @@ h3 {
 #catList > li > ul > li:hover > option {
 	background-color: rgb(0, 129, 194);
 	color: #FFFFFF;
+	cursor: pointer;
 }
 
 #catList > li > ul li > ul {/* Third Level & beyond */
@@ -368,6 +369,7 @@ h3 {
 #catList > li > ul > li ul > li:hover {
 	background-color: rgb(0, 129, 194);
 	color: #FFFFFF;
+	cursor: pointer;
 }
 
 
@@ -403,6 +405,7 @@ h3 {
 	padding: 3px 10px;
 	border-top: solid 1px #fff;
 	position: relative;
+	cursor: pointer;
 }
 #BAList > li > ul > li:hover > option {
 	background-color: rgb(0, 129, 194);

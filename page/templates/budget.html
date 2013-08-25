@@ -23,6 +23,22 @@
 				<input type="text" placeholder="مبلغ" name="limit" id="budgetLimit">
 			</div>
 			<div class="budgetPart">
+<!-- 				<input type="hidden" name="list" id="list" />
+				<ul id="catList" >
+					<li>
+						<a id="one_level" class="btn dropdown-toggle subject" href="#" data-toggle="dropdown"> دسته‌ها <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{%for c in cats%}
+							<li>
+								<option class="bnkacnt" value="{{c.id}}">{{c.name}}</option>
+
+							</li>
+							{%endfor%}
+
+						</ul>
+					</li>
+				</ul> -->
+				
 				<select name= "catList" id="catList">
 					{%for c in cats%}
 					<option class="catItem" value="{{c.id}}">{{c.name}}</option>
@@ -91,7 +107,11 @@
 			 	<span  data-toggle="tooltip" title="{{b.per}}%">{{b.per}}%</span>
 			</div>
 			
+<!-- 			<div class="bugName">
 			{{b.limit|intcomma}}
+			</div> -->
+			<div class="clearfix"></div>
+			<i class="icon-chevron-down forDes"></i>
 			
 			{%if b.per >= 75%}
 				<div class="des dan">

@@ -48,4 +48,12 @@ $(function() {
 		ev.preventDefault();
 		$('form.forSub').addClass('edt')
 	})
+	
+	$(".bnkacnt").click(function(ev) {
+		ev.preventDefault();
+		var baid = $(this);
+		$("#bid_post").val(baid.val());
+		$("#one_level").text(baid.text());
+
+	});
 })
