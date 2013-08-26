@@ -12,7 +12,7 @@ import math
 from cat.models import Cat, BankAccount
 from transaction.models import Transaction
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
 
 import json
@@ -54,8 +54,7 @@ class DjangoJSONEncoder(simplejson.JSONEncoder):
 
 def general(request):
     if not request.user.is_authenticated():
-        s = json.dumps({'result': 'ERROR', 'usr' : 'not logged in'}, cls=DjangoJSONEncoder)
-        return HttpResponse(s, mimetype='application/json')
+        return HttpResponseRedirect("/home/")
 
     usr = request.user
     account = BankAccount.objects.filter(user = usr)

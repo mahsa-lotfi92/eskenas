@@ -462,6 +462,19 @@ ul.base-menu{
     min-width: 150px;
 }
 
+
+.edit-cat-account > * {
+    min-width: 110px;
+}
+
+.edit-cat-menu > * {
+    min-width: 150px;
+}
+
+.edit-cat-menu, .edit-cat-account{
+    margin: 10px 8px 7px 8px;
+}
+
 .filter-cat .caret{
     position: absolute;
     left: 10px;
