@@ -256,8 +256,8 @@ bank acount tu jadval ezafe beshe
 	</div>
 	<div class="solsCon">
 		<form method="post" id="addAutoTran" action="/auto_transaction/add/">
-		<div id="addTR-err" {%if error%} style="display: block"{%endif%}>
-			{{error}}
+		<div id="addTR-err" {%if auto_error%} style="display: block"{%endif%}>
+			{{auto_error}}
 		</div>
 			<div class="tranPart">
 				<input  name="isIncome" class="isIncome"  type="hidden"/>
@@ -274,16 +274,16 @@ bank acount tu jadval ezafe beshe
 	<!-- 			<button id="calendar" class="btn">
 					<div id="calendar-icon"></div>
 				</button> -->
-				<input type="text" placeholder="تاریخ"  class="transaction" name="date" id="cal_date" >
+				<input type="text" placeholder="تاریخ"  class="transaction" name="date" id="auto_cal_date" >
 
 			</div>
 			<div class="tranPart">
-				<input type="text" placeholder="مبلغ" class="transaction" name="cost" {% if error_cost %} id="shado"{% endif %}>
+				<input type="text" placeholder="مبلغ" class="transaction" name="cost" {% if auto_error_cost %} id="shado"{% endif %}>
 			</div>
 
 
             <div class="tranPart">
-				<input type="hidden" id="ctgrID" name="catId" class="subCatEdited"/>
+				<input type="hidden" id="ctgrID" name="catId"  class="subCatEdited"/>
 				<input type="hidden" id="sbctgrID" name="subcatId" class="subCatEdited"/>
                 <div id = "cat-menu" class="cat-menu btn-group filter-cat">
                   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">

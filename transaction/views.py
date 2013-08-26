@@ -3,9 +3,12 @@ from django.shortcuts import render, redirect
 from cat.models import Cat, BankAccount
 from transaction.models import Transaction, AutoTransaction
 from datetime import date
+from django.http.response import HttpResponseRedirect
 
 
 def addTransaction(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     t = Transaction()
     t.description = request.POST["description"]
     t.isIncome = request.POST["isIncome"] == '1' 
@@ -43,6 +46,8 @@ def addTransaction(request):
     return redirect('/transaction/')
 
 def transaction(req, extra={}):
+    if not req.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     if req.method == "POST" and 'formID' in req.POST:
         if req.POST['formID'] == "1":
             new = Cat(name=req.POST['name'], isSub=False, parentCat=None, user=req.user)
@@ -64,6 +69,8 @@ def transaction(req, extra={}):
 
 
 def deleteTransaction(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     id = request.POST["id"]
     T = Transaction.objects.get(id=id)
     T.delete()
@@ -72,6 +79,8 @@ def deleteTransaction(request):
 
 
 def editTransaction(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     id = request.POST["id"]
     t = Transaction.objects.get(id=id)
     t.date = request.POST["date"]
@@ -88,13 +97,19 @@ def editTransaction(request):
     t.save()
     return redirect('/transaction/')
 def bankAccountAdd (req):
+    if not req.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     new = BankAccount(name=req.POST['name'], user=req.user)
     new.save()
     return redirect('/transaction/') 
 def bankAccountDel (req):
+    if not req.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     BankAccount.objects.filter(id=req.POST['id']).delete()
     return redirect('/transaction/')
 def bankAccountEdit (req):
+    if not req.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     p = BankAccount.objects.get(id=req.POST['id'])
     p.name = req.POST['new']
     p.save()
@@ -104,6 +119,8 @@ def bankAccountEdit (req):
 
 
 def addAutoTransaction(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     print 1
     t = AutoTransaction()
     print 2
@@ -134,7 +151,7 @@ def addAutoTransaction(request):
         t.save()
     except :
         t.delete()
-        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.', 'error_cost':'1'})
+        return transaction(request, {'auto_error':'مبلغ را به عدد وارد کنید.', 'auto_error_cost':'1'})
 
     try:
         t.date = request.POST["date"]
@@ -142,12 +159,14 @@ def addAutoTransaction(request):
         t.save()
     except:
         t.delete()
-        return transaction(request, {'error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'error_date':'1'})
+        return transaction(request, {'auto_error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'auto_error_date':'1'})
 
     t.save()
     return redirect('/transaction/')
 
 def editAutoTransaction(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     id = request.POST["id"]
     t = AutoTransaction.objects.get(id=id)
     t.interval = request.POST["interval"]
@@ -166,6 +185,8 @@ def editAutoTransaction(request):
     return redirect('/transaction/')
 
 def deleteAutoTransaction(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     id = request.POST["id"]
     T = AutoTransaction.objects.get(id=id)
     T.delete()
