@@ -151,7 +151,7 @@ def addAutoTransaction(request):
         t.save()
     except :
         t.delete()
-        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.', 'error_cost':'1'})
+        return transaction(request, {'auto_error':'مبلغ را به عدد وارد کنید.', 'auto_error_cost':'1'})
 
     try:
         t.date = request.POST["date"]
@@ -159,7 +159,7 @@ def addAutoTransaction(request):
         t.save()
     except:
         t.delete()
-        return transaction(request, {'error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'error_date':'1'})
+        return transaction(request, {'auto_error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'auto_error_date':'1'})
 
     t.save()
     return redirect('/transaction/')
