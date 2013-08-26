@@ -68,7 +68,6 @@ console.log(window.data.current)
 
                 </div>
                 <div class="boxes">
-
                     <div class="item current">
                         <div class="head-item">
                             ماه حاضر
@@ -106,19 +105,24 @@ console.log(window.data.current)
                 <div class="clearfix"></div>
             </div>
             <div class="budget-info">
-                <div class = "title">
-                    وضعیت بودجه بانکی
-                </div>
+                <div class = "title">وضعیت بودجه بندی                </div>
+                <div class="budget-container">
                 {%for b in bugs%}
-                    <div class="remainBug">
 
+                    <div class="remainBug">
+<div>
                         <div class="bugName">
                             {{b.bugCat.name}}
                         </div>
 
 
-                        <div class="clearfix"></div>
+                        <div class="bug-detail">
+                            {{b.cost|intcomma}} / {{b.limit|intcomma}}
+                            تومان
+                        </div>
 
+                        <div class="clearfix"></div>
+</div>
                         {%if b.per >= 75%}
                         <div class="progress progress-danger">
 
@@ -133,12 +137,14 @@ console.log(window.data.current)
 
                         {%endif%}
 
-                        <div class="bar" style="width: {{b.per}}%;"> {{b.cost|intcomma}} </div>
+                        <div class="bar" style="width: {{b.per}}%;">  </div>
+
                         </div>
-                        {{b.limit|intcomma}}
+
                     <div class="clearfix"></div>
                  </div>
                 {%endfor%}
+                </div>
             </div>
 		</div>
 		
@@ -540,9 +546,3 @@ console.log(window.data.current)
 	<div class="clearfix"></div>
 </div>
 {%endblock%}
-
-
-
-	
-	
-	

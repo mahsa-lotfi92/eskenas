@@ -160,7 +160,7 @@ display: none;
 	width: 30%;
 	height: 100%
 }
-.advText{
+#home .advText{
 	width: 68%;
 	height: 100%;
 	line-height: 25px;

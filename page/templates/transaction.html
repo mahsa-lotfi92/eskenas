@@ -37,6 +37,14 @@ bank acount tu jadval ezafe beshe
 		<div id= 'catHead'>
 			<h1>دسته‌بندی‌ها</h1>
 		</div>
+
+
+
+
+
+
+
+
 		<div id= 'addCat'>
 
 			<form action='.' method="post">
@@ -176,67 +184,52 @@ bank acount tu jadval ezafe beshe
 			<div class="tranPart">
 				<input type="text" placeholder="مبلغ" class="transaction" name="cost">
 			</div>
-			<div class="tranPart">
+
+
+            <div class="tranPart">
 				<input type="hidden" id="ctgrID" name="catId"/>
 				<input type="hidden" id="sbctgrID" name="subcatId"/>
+                <div id = "cat-menu" class="btn-group filter-cat">
+                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    دسته‌ها
+                    <span class="caret"></span>
+                  </a>
+                    <ul class="base-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
 
-				<ul id="catList" >
-					<li>
-						<a id="two_level" class="btn dropdown-toggle" href="#" data-toggle="dropdown"> دسته‌ها <span class="caret"></span></a>
-						<ul class="dropdown-menu" >
-							{%for c in cats%}
-							<li>
-								<option class="ctgr" value="{{c.id}}">{{c.name}}</option>
-								{%if  c.cat_set.all%}
-								<ul class="dropdown-menu">
+                    </ul>
 
-									{% for b in c.cat_set.all %}
-									<li>
-										<option class="sbctgr" value="{{b.id}}">{{b.name}}</option>
-									</li>
-									{%endfor%}
-								</ul>
-								{%endif%}
-							</li>
-							{%endfor%}
 
-						</ul>
-					</li>
-				</ul>
 
-				<!-- 		<select id="catList" name="catId">
-				{%for c in cats%}
-				{% for b in c.cat_set.all %}
-				<option class="catItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
-				{%endfor%}
-				{%endfor%}
-				</select> -->
+                    <div class="hide hidden">
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">More options</a>
+                            <ul class="dropdown-menu">
 
-			</div>
-			<div class="tranPart">
+
+                            </ul>
+                        </li>
+
+                        <li><a tabindex="-1" href="#">Second level link</a></li>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tranPart">
 				<input type="hidden" name="BAId" id="bid_post" />
-				<ul id="BAList" >
-					<li>
-						<a id="one_level" class="btn dropdown-toggle" href="#" data-toggle="dropdown"> حساب <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							{%for b in bankAccounts%}
-							<li>
-								<option class="bnkacnt" value="{{b.id}}">{{b.name}}</option>
 
-							</li>
-							{%endfor%}
+                <div id = "cat-account" class="btn-group filter-cat">
+                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    حساب
+                    <span class="caret"></span>
+                  </a>
+                    <ul class="base-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
 
-						</ul>
-					</li>
-				</ul>
+                    </ul>
 
-				<!-- 				<select id="BAList" name="BAId">
-				{%for b in bankAccounts%}
-				<option class="BAItem" value="{{b.id}}">{{b.name}}</option>
-				{%endfor%}
-				</select> -->
+                </div>
 
-			</div>
+            </div>
+
 
 			<div class="tranPart">
 				<input type="text" placeholder="توضیحات" id= "desc" name="description">
@@ -634,5 +627,96 @@ bank acount tu jadval ezafe beshe
 		</form>
 
 	</div>
+
+
 </div>
+
+<script>
+window.data = {}
+window.data.cat = {}
+window.data.par = {}
+window.data.childCat = {}
+{%for c in cats%}
+    window.data.cat[{{c.id}}] = '{{c.name}}'
+    {%if  c.cat_set.all%}
+        window.data.childCat[{{c.id}}] = []
+        {% for b in c.cat_set.all %}
+        window.data.childCat[{{c.id}}].push({{b.id}})
+        window.data.par[{{b.id}}] = {{c.id}}
+        window.data.cat[{{b.id}}] = '{{b.name}}'
+        {%endfor%}
+    {%endif%}
+{%endfor%}
+
+window.data.accounts = {}
+{% for m in bankAccounts %}
+window.data.accounts[{{m.id}}] = '{{m.name}}' ;
+{% endfor %}
+
+
+
+$(function(){
+    for (var key in window.data.childCat){
+        console.log(window.data.cat[key])
+        var base = $('#cat-menu .hide li').eq(0).clone()
+        var item = $('#cat-menu .hide li').eq(1).clone()
+        console.log(base)
+        console.log(item)
+        base.find('a').html(window.data.cat[key])
+
+        for(var j = 0; j < window.data.childCat[key].length; j++) {
+            var sub = window.data.childCat[key][j]
+            console.log('\t' + window.data.cat[sub])
+            var tmp = item.clone() ;
+            tmp.find('a').html(window.data.cat[sub])
+            tmp.appendTo(base.find('ul'))
+
+            tmp.data('name', window.data.cat[sub]).data('id', sub)
+
+            tmp.click(function(){
+                sID = $(this).data('id')
+                cID = window.data.par[sID]
+                $('#ctgrID').val(cID)
+                $('#sbctgrID').val(sID)
+                $('#cat-menu a.btn').html($(this).data('name') + '<span class=\"caret\"></span>');
+            });
+        }
+        base.appendTo('#cat-menu ul.base-menu')
+        console.log('------------')
+    }
+
+
+
+
+     setAccount(window.data.accounts)
+
+
+
+
+});
+
+function setAccount(accounts){
+        base = $('#cat-account')
+        var list = base.find('.dropdown-menu')
+        list.html('')
+
+        var tmp = $("<li><a href=\"#\"><span class=\"name\"> </span> <span class=\"bank\"> </span></a></li>")
+
+        var item = tmp.clone() ;
+
+        for (var key in accounts) {
+            var item = tmp.clone() ;
+            item.find(".name").html(accounts[key])
+            item.data('id', key).data('name', accounts[key]) ;
+            item.appendTo(list) ;
+        }
+
+        $('#cat-account .dropdown-menu li').click(function(event){
+            $('#bid_post').val($(this).data('id'))
+            base.find('.btn').html($(this).data('name') + '<span class=\"caret\"></span></button>');
+            event.preventDefault() ;
+        });
+    }
+</script>
 {%endblock%}
+

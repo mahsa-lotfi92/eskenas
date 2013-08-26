@@ -242,6 +242,7 @@ h3 {
 .TranER {
 	width: 80px;
 	float: left;
+	margin-top: -17px;
 }
 
 .TRedit {
@@ -428,4 +429,21 @@ h3 {
 }
 a:link {
 	text-decoration: none;
+}
+
+
+ul.base-menu{
+    text-align: left;
+}
+
+#cat-account > * {
+    min-width: 110px;
+}
+
+#cat-menu > * {
+    min-width: 150px;
+}
+
+.filter-cat .caret{
+    float: left;
 }
