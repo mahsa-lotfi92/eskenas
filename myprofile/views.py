@@ -11,21 +11,21 @@ def profile(request):
         #plan=user_plan.objects.order_by('-plan_end').filter(user=request.user)[0]
         plan = user_plan.objects.order_by('plan_begin').filter(user=request.user)
         for p in plan:
-            p.duration= (p.plan_end-p.plan_begin).days/31
+            p.duration = (p.plan_end - p.plan_begin).days / 31
         if c.isGolden:
-            c.remain=(c.credit-date.today()).days
+            c.remain = (c.credit - date.today()).days
         return  render(request, 'profile.html', {"plan":plan, "credit":c})
    
 def edit(request):
-    user=request.user
-    if request.POST['formID']=="1":
+    user = request.user
+    if request.POST['formID'] == "1":
         user.first_name = request.POST['first_name']
         user.save() 
-    if request.POST['formID']=="2":
+    if request.POST['formID'] == "2":
         user.last_name = request.POST['last_name']
         user.save()
            
-    if request.POST['formID']=="3":
+    if request.POST['formID'] == "3":
         user.email = request.POST['email']
         user.save()
     return redirect('/profile')
@@ -42,7 +42,7 @@ def myLogin(request):
             else:
                 return  render(request, 'home.html', {'error': 'user suspended'})
         else:
-            return  render(request, 'home.html', {'error':'err' ,'login_error':'نام کاربری یا رمز عبور اشتباه است!'})
+            return  render(request, 'home.html', {'error':'err' , 'login_error':'نام کاربری یا رمز عبور اشتباه است!'})
     return  render(request, 'home.html', {})
 
 
@@ -53,19 +53,19 @@ def register(request):
         u.last_name = request.POST['last_name']
         u.username = request.POST['username']
         if User.objects.filter(username=u.username).count():
-            return  render(request, 'home.html', {'error':'err','reg_error':"قبلا ثبت شده"})
+            return  render(request, 'home.html', {'error':'err', 'reg_error':"قبلا ثبت شده"})
             
         u.email = request.POST['email']
         u.set_password(request.POST['password'])
         u.save()
-        uc=userCredit()
-        uc.registerDate=date.today()
-        uc.credit=date.today()
-        uc.user=u
+        uc = userCredit()
+        uc.registerDate = date.today()
+        uc.credit = date.today()
+        uc.user = u
         uc.save()
             
         
-    return redirect('/home/') 
+    return  render(request, 'home.html', {'success':"1"})
 
 def logout_view(request):
     logout(request)
@@ -79,7 +79,7 @@ def changePass(request):
         
         return  render(request, 'profile.html', {'sabt':'هوراا'})
     else:
-        return  render(request, 'profile.html', {'error':'err','change_pass_err':"رمز عبور نادرست است."})
+        return  render(request, 'profile.html', {'error':'err', 'change_pass_err':"رمز عبور نادرست است."})
     return redirect('/profile/')
 
 def index(request):
@@ -88,43 +88,43 @@ def index(request):
     else:
         return redirect('/home/')
 def ertegha(request):
-    up=user_plan()
-    up.user=request.user
-    up.plan_begin=date.today()
-    if request.POST['ertegha_info']=='1':
-        up.plan_end=date.today()+datetime.timedelta(days=31*2)
-        up.plan_money=10000
-    if request.POST['ertegha_info']=='2':
-        up.plan_end=date.today()+datetime.timedelta(days=31*5)
-        up.plan_money=20000
-    if request.POST['ertegha_info']=='3':
-        up.plan_end=date.today()+datetime.timedelta(days=31*12)
-        up.plan_money=50000
+    up = user_plan()
+    up.user = request.user
+    up.plan_begin = date.today()
+    if request.POST['ertegha_info'] == '1':
+        up.plan_end = date.today() + datetime.timedelta(days=31 * 2)
+        up.plan_money = 10000
+    if request.POST['ertegha_info'] == '2':
+        up.plan_end = date.today() + datetime.timedelta(days=31 * 5)
+        up.plan_money = 20000
+    if request.POST['ertegha_info'] == '3':
+        up.plan_end = date.today() + datetime.timedelta(days=31 * 12)
+        up.plan_money = 50000
     up.save()
     uc = userCredit.objects.get(user=request.user)
-    uc.isGolden=True
-    uc.credit=up.plan_end
+    uc.isGolden = True
+    uc.credit = up.plan_end
     uc.save()
     return redirect('/profile/')    
 
 def tamdid(request):
     last_plan = user_plan.objects.order_by('-plan_begin').filter(user=request.user)[0]
-    up=user_plan()
-    up.isTamdid=True
-    up.user=request.user
-    up.plan_begin=last_plan.plan_end
-    if request.POST['tamdid_info']=='1':
-        up.plan_end=up.plan_begin+datetime.timedelta(days=31*2)
-        up.plan_money=10000
-    if request.POST['tamdid_info']=='2':
-        up.plan_end=up.plan_begin+datetime.timedelta(days=31*5)
-        up.plan_money=20000
-    if request.POST['tamdid_info']=='3':
-        up.plan_end=up.plan_begin+datetime.timedelta(days=31*12)
-        up.plan_money=50000
+    up = user_plan()
+    up.isTamdid = True
+    up.user = request.user
+    up.plan_begin = last_plan.plan_end
+    if request.POST['tamdid_info'] == '1':
+        up.plan_end = up.plan_begin + datetime.timedelta(days=31 * 2)
+        up.plan_money = 10000
+    if request.POST['tamdid_info'] == '2':
+        up.plan_end = up.plan_begin + datetime.timedelta(days=31 * 5)
+        up.plan_money = 20000
+    if request.POST['tamdid_info'] == '3':
+        up.plan_end = up.plan_begin + datetime.timedelta(days=31 * 12)
+        up.plan_money = 50000
     up.save()
     uc = userCredit.objects.get(user=request.user)
-    uc.credit=up.plan_end
+    uc.credit = up.plan_end
     uc.save()
     
     return redirect('/profile/')    
