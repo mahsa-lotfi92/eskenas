@@ -186,7 +186,7 @@ bank acount tu jadval ezafe beshe
 					</div>
 				</form>
 				<form class="TRedit" method="post" action="/transaction/edit/">
-					<input  name="isIncome" class="isIncome"  type="hidden"/>
+					<input  name="isIncome" class="isIncome" {%if t.isIncome%}value="1"{%else%}value="0"{%endif%} type="hidden"/>
 					<div class="btn-group" id="upOrDownEdit">
 						<button class="btn income {% if t.isIncome %}selected{%endif%} " >
 							<div class="icoUp" ></div>
@@ -196,7 +196,7 @@ bank acount tu jadval ezafe beshe
 						</button>
 					</div>
 					<input type="hidden" value="{{t.id}}" name="id">
-					<input type="text" class="tranDateEdit" value="{{t.date|date:"Y-m-d"}}" name="date" id="cal-ed"/>
+					<input type="text" class="tranDateEdit" value="{{t.date|date:"Y-m-d"}}" name="date" id="cal-ed-{{t.id}}"/>
 					<input type="text" class="tranPayEdit" value="{{t.cost}}" name="cost"/>
 
 
@@ -426,7 +426,7 @@ bank acount tu jadval ezafe beshe
 					</div>
 				</form>
 				<form class="TRedit" method="post" action="/auto_transaction/edit/">
-					<input  name="isIncome" class="isIncome"  type="hidden"/>
+					<input  name="isIncome" class="isIncome" {%if t.isIncome%}value="1"{%else%}value="0"{%endif%} type="hidden"/>
 					<div class="btn-group" id="upOrDownEdit">
 						<button class="btn income" >
 							<div class="icoUp"></div>
@@ -436,7 +436,7 @@ bank acount tu jadval ezafe beshe
 						</button>
 					</div>
 					<input type="hidden" value="{{t.id}}" name="id">
-					<input type="text" class="tranDateEdit" value="{{t.date|date:"Y-m-d"}}" name="date" id="cal-ed"/>
+					<input type="text" class="tranDateEdit auto_edit_cal" value="{{t.date|date:"Y-m-d"}}" name="date" id="auto-cal-ed-{{t.id}}" />
 					<input type="text" class="tranPayEdit" value="{{t.cost}}" name="cost"/>
 
 
