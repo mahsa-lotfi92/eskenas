@@ -13,10 +13,7 @@
 	height: 13px;
 	background: url(../img/cal/closeButton_normal.gif) left top no-repeat;
 }
-.TRedit .JsDatePickBox {
-	top: 36px!important;
-	left: 305px!important;
-}
+
 .JsDatePickBox .jsDatePickCloseButtonOver {
 	cursor: pointer;
 	position: absolute;
