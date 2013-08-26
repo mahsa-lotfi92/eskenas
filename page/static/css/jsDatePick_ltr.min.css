@@ -11,7 +11,7 @@
 	right: 10px;
 	width: 33px;
 	height: 13px;
-	background: url(img/closeButton_normal.gif) left top no-repeat;
+	background: url(../img/cal/closeButton_normal.gif) left top no-repeat;
 }
 .TRedit .JsDatePickBox {
 	top: 36px!important;
@@ -25,7 +25,7 @@
 	right: 10px;
 	width: 33px;
 	height: 13px;
-	background: url(img/closeButton_over.gif) left top no-repeat;
+	background: url(../img/cal/closeButton_over.gif) left top no-repeat;
 }
 .JsDatePickBox .jsDatePickCloseButtonDown {
 	cursor: pointer;
@@ -35,7 +35,7 @@
 	right: 10px;
 	width: 33px;
 	height: 13px;
-	background: url(img/closeButton_down.gif) left top no-repeat;
+	background: url(../img/cal/closeButton_down.gif) left top no-repeat;
 }
 .JsDatePickBox .boxLeftWall {
 	float: left;
@@ -48,7 +48,7 @@
 	padding: 0;
 	width: 7px;
 	height: 8px;
-	background: url(img/boxTopLeftCorner.png) left top no-repeat;
+	background: url(../img/cal/boxTopLeftCorner.png) left top no-repeat;
 	overflow: hidden;
 }
 .JsDatePickBox .boxLeftWall .leftBottomCorner {
@@ -56,14 +56,14 @@
 	padding: 0;
 	width: 7px;
 	height: 8px;
-	background: url(img/boxBottomLeftCorner.png) left top no-repeat;
+	background: url(../img/cal/boxBottomLeftCorner.png) left top no-repeat;
 	overflow: hidden;
 }
 .JsDatePickBox .boxLeftWall .leftWall {
 	margin: 0;
 	padding: 0;
 	width: 7px;
-	background: url(img/boxSideWallPx.gif) #fff left top repeat-y;
+	background: url(../img/cal/boxSideWallPx.gif) #fff left top repeat-y;
 	overflow: hidden;
 }
 .JsDatePickBox .boxRightWall {
@@ -77,7 +77,7 @@
 	padding: 0;
 	width: 7px;
 	height: 8px;
-	background: url(img/boxTopRightCorner.png) left top no-repeat;
+	background: url(../img/cal/boxTopRightCorner.png) left top no-repeat;
 	overflow: hidden;
 }
 .JsDatePickBox .boxRightWall .rightBottomCorner {
@@ -85,14 +85,14 @@
 	padding: 0;
 	width: 7px;
 	height: 8px;
-	background: url(img/boxBottomRightCorner.png) left top no-repeat;
+	background: url(../img/cal/boxBottomRightCorner.png) left top no-repeat;
 	overflow: hidden;
 }
 .JsDatePickBox .boxRightWall .rightWall {
 	margin: 0;
 	padding: 0;
 	width: 7px;
-	background: url(img/boxSideWallPx.gif) #fff right top repeat-y;
+	background: url(../img/cal/boxSideWallPx.gif) #fff right top repeat-y;
 	overflow: hidden;
 }
 .JsDatePickBox .topWall {
@@ -102,7 +102,7 @@
 	left: 7px;
 	width: 198px;
 	height: 4px;
-	background: url(img/boxTopPx.gif) #fff left top repeat-x;
+	background: url(../img/cal/boxTopPx.gif) #fff left top repeat-x;
 }
 .JsDatePickBox .bottomWall {
 	position: absolute;
@@ -111,7 +111,7 @@
 	left: 7px;
 	width: 198px;
 	height: 4px;
-	background: url(img/boxTopPx.gif) #fff left top repeat-x;
+	background: url(../img/cal/boxTopPx.gif) #fff left top repeat-x;
 }
 .JsDatePickBox .hiddenBoxLeftWall {
 	float: left;
@@ -196,7 +196,7 @@
 	position: absolute;
 	top: 0;
 	right: 22px;
-	background: url(img/monthForward_normal.gif) left top no-repeat;
+	background: url(../img/cal/monthForward_normal.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .monthForwardButtonOver {
 	overflow: hidden;
@@ -206,7 +206,7 @@
 	position: absolute;
 	top: 0;
 	right: 22px;
-	background: url(img/monthForward_over.gif) left top no-repeat;
+	background: url(../img/cal/monthForward_over.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .monthForwardButtonDown {
 	overflow: hidden;
@@ -216,7 +216,7 @@
 	position: absolute;
 	top: 0;
 	right: 22px;
-	background: url(img/monthForward_down.gif) left top no-repeat;
+	background: url(../img/cal/monthForward_down.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .monthBackwardButton {
 	overflow: hidden;
@@ -226,7 +226,7 @@
 	position: absolute;
 	top: 0;
 	left: 22px;
-	background: url(img/monthBackward_normal.gif) left top no-repeat;
+	background: url(../img/cal/monthBackward_normal.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .monthBackwardButtonOver {
 	overflow: hidden;
@@ -236,7 +236,7 @@
 	position: absolute;
 	top: 0;
 	left: 22px;
-	background: url(img/monthBackward_over.gif) left top no-repeat;
+	background: url(../img/cal/monthBackward_over.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .monthBackwardButtonDown {
 	overflow: hidden;
@@ -246,7 +246,7 @@
 	position: absolute;
 	top: 0;
 	left: 22px;
-	background: url(img/monthBackward_down.gif) left top no-repeat;
+	background: url(../img/cal/monthBackward_down.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .yearForwardButton {
 	overflow: hidden;
@@ -256,7 +256,7 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	background: url(img/yearForward_normal.gif) left top no-repeat;
+	background: url(../img/cal/yearForward_normal.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .yearForwardButtonOver {
 	overflow: hidden;
@@ -266,7 +266,7 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	background: url(img/yearForward_over.gif) left top no-repeat;
+	background: url(../img/cal/yearForward_over.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .yearForwardButtonDown {
 	overflow: hidden;
@@ -276,7 +276,7 @@
 	position: absolute;
 	top: 0;
 	right: 0;
-	background: url(img/yearForward_down.gif) left top no-repeat;
+	background: url(../img/cal/yearForward_down.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .yearBackwardButton {
 	overflow: hidden;
@@ -286,7 +286,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: url(img/yearBackward_normal.gif) left top no-repeat;
+	background: url(../img/cal/yearBackward_normal.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .yearBackwardButtonOver {
 	overflow: hidden;
@@ -296,7 +296,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: url(img/yearBackward_over.gif) left top no-repeat;
+	background: url(../img/cal/yearBackward_over.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .yearBackwardButtonDown {
 	overflow: hidden;
@@ -306,7 +306,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: url(img/yearBackward_down.gif) left top no-repeat;
+	background: url(../img/cal/yearBackward_down.gif) left top no-repeat;
 }
 .JsDatePickBox .boxMainInner .skipDay {
 	cursor: default;
