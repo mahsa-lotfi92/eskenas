@@ -184,11 +184,11 @@ bank acount tu jadval ezafe beshe
 	<!-- 			<button id="calendar" class="btn">
 					<div id="calendar-icon"></div>
 				</button> -->
-				<input type="text" placeholder="تاریخ" class="transaction" name="date" id="cal_date">
+				<input type="text" placeholder="تاریخ"  class="transaction" name="date" id="cal_date" >
 
 			</div>
 			<div class="tranPart">
-				<input type="text" placeholder="مبلغ" class="transaction" name="cost">
+				<input type="text" placeholder="مبلغ" class="transaction" name="cost" {% if error_cost %} id="shado"{% endif %}>
 			</div>
 
 
