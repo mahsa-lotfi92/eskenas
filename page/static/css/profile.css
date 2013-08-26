@@ -199,3 +199,7 @@ display: none;
 	width: 63px;
 	margin-right: 4px;
 }
+
+.edit:hover{
+    cursor: pointer;
+}
