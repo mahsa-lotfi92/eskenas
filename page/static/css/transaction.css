@@ -462,6 +462,10 @@ ul.base-menu{
     min-width: 150px;
 }
 
+.cat-interval > * {
+    min-width: 110px;
+}
+
 
 .cat-account > * {
     min-width: 110px;

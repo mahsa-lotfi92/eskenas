@@ -104,17 +104,20 @@ def bankAccountEdit (req):
 
 
 def addAutoTransaction(request):
+    print 1
     t = AutoTransaction()
+    print 2
     t.description = request.POST["description"]
+    print 3
     t.isIncome = request.POST["isIncome"] == '1'
-
+    print 4
     if request.POST["subcatId"]!="":
         sbcid= request.POST["subcatId"]
         c = Cat.objects.get(id=sbcid)
     else:
         cid = request.POST["catId"]
         c = Cat.objects.get(id=cid)
-
+    print 5
     bid = request.POST["BAId"]
     ba = BankAccount.objects.get(id=bid)
     t.Category = c
@@ -122,6 +125,8 @@ def addAutoTransaction(request):
     t.user = request.user
     t.date=date.today()
 
+    print '-------------------------'
+    print request.POST["interval"]
     t.interval = request.POST["interval"]
 
     try:

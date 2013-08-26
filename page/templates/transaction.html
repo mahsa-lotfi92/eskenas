@@ -283,8 +283,8 @@ bank acount tu jadval ezafe beshe
 
 
             <div class="tranPart">
-				<input type="hidden" id="ctgrID" name="catId"/>
-				<input type="hidden" id="sbctgrID" name="subcatId"/>
+				<input type="hidden" id="ctgrID" name="catId" class="subCatEdited"/>
+				<input type="hidden" id="sbctgrID" name="subcatId" class="subCatEdited"/>
                 <div id = "cat-menu" class="cat-menu btn-group filter-cat">
                   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     دسته‌ها
@@ -311,7 +311,7 @@ bank acount tu jadval ezafe beshe
             </div>
 
             <div class="tranPart">
-				<input type="hidden" name="BAId" id="bid_post" />
+				<input type="hidden" name="BAId" id="bid_post" class="BAEdited"/>
 
                 <div id = "cat-account" class="cat-account btn-group filter-cat">
                   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -332,9 +332,9 @@ bank acount tu jadval ezafe beshe
 			</div>
 
              <div class="tranPart">
-				<input type="hidden" name="interval" id="interval_post" />
+				<input type="hidden" name="interval" id="interval_post" class="interval_post" />
 
-                <div id = "cat-account" class="btn-group filter-cat">
+                <div id = "cat-interval" class="cat-interval btn-group filter-cat">
                   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
 بازه زمانی
                     <span class="caret"></span>
@@ -820,6 +820,31 @@ function setAccount(accounts){
 
             base.find('.dropdown-menu li').click(function(event){
                 $(this).parents('form:eq(0)').find('.BAEdited').val($(this).data('id'))
+{#                console.log($(this).parents('form:eq(0)').find('.BAEdited'))#}
+                $(this).parents('div:eq(0)').find('.btn').html($(this).data('name') + '<span class=\"caret\"></span></button>');
+                event.preventDefault() ;
+            });
+        })
+
+        $('.cat-interval').each(function(){
+            base = $(this) ;
+            var list = base.find('.dropdown-menu')
+            list.html('')
+
+            var tmp = $("<li><a href=\"#\"><span class=\"name\"> </span> <span class=\"bank\"> </span></a></li>")
+
+            var item = tmp.clone() ;
+
+            dict = {1: 'روزانه', 2: 'هفتگی', 3: 'ماهانه'};
+            for (var key in dict) {
+                var item = tmp.clone() ;
+                item.find(".name").html(dict[key])
+                item.data('id', key).data('name', dict[key]) ;
+                item.appendTo(list) ;
+            }
+
+            base.find('.dropdown-menu li').click(function(event){
+                $(this).parents('form:eq(0)').find('.interval_post').val($(this).data('id'))
 {#                console.log($(this).parents('form:eq(0)').find('.BAEdited'))#}
                 $(this).parents('div:eq(0)').find('.btn').html($(this).data('name') + '<span class=\"caret\"></span></button>');
                 event.preventDefault() ;
