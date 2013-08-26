@@ -89,6 +89,7 @@ $(function() {
 		$('#syncConfig').slideDown()
 	})
 })
+
 $(function() {
 
 	$('#addTranSubmit').click(function(ev) {
