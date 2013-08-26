@@ -265,7 +265,7 @@ bank acount tu jadval ezafe beshe
 					<button class="btn income" >
 						<div class="icoUp"></div>
 					</button>
-					<button class="btn outcome" >
+					<button class="btn outcome selected" >
 						<div class="icoDown"></div>
 					</button>
 				</div>
@@ -284,7 +284,7 @@ bank acount tu jadval ezafe beshe
 
             <div class="tranPart">
 				<input type="hidden" id="auto_ctgrID" name="catId"  class="subCatEdited"/>
-				<input type="hidden" id="auto_sbctgrID" name="subcatId" class="subCatEdited"/>
+				<input type="hidden" id="auto-sbctgrID" name="subcatId" class="subCatEdited"/>
                 <div id = "cat-menu" class="cat-menu btn-group filter-cat">
                   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     دسته‌ها
@@ -428,10 +428,10 @@ bank acount tu jadval ezafe beshe
 				<form class="TRedit" method="post" action="/auto_transaction/edit/">
 					<input  name="isIncome" class="isIncome" {%if t.isIncome%}value="1"{%else%}value="0"{%endif%} type="hidden"/>
 					<div class="btn-group" id="upOrDownEdit">
-						<button class="btn income" >
+						<button class="btn income {% if t.isIncome %}selected{%endif%}" >
 							<div class="icoUp"></div>
 						</button>
-						<button class="btn outcome" >
+						<button class="btn outcome {% if not t.isIncome %}selected{%endif%}">
 							<div class="icoDown"></div>
 						</button>
 					</div>
