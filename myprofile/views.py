@@ -5,8 +5,11 @@ from django.contrib.auth import authenticate, login, logout
 from myprofile.models import userCredit, user_plan
 from datetime import date
 import datetime
+from django.http.response import HttpResponseRedirect
 
 def profile(request):
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect("/home/")
         c = userCredit.objects.filter(user=request.user)[0]
         #plan=user_plan.objects.order_by('-plan_end').filter(user=request.user)[0]
         plan = user_plan.objects.order_by('plan_begin').filter(user=request.user)
@@ -17,6 +20,8 @@ def profile(request):
         return  render(request, 'profile.html', {"plan":plan, "credit":c})
    
 def edit(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     user = request.user
     if request.POST['formID'] == "1":
         user.first_name = request.POST['first_name']
@@ -73,6 +78,8 @@ def logout_view(request):
     
 
 def changePass(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     if request.user.check_password(request.POST['last_pass']):
         request.user.set_password(request.POST['new_pass'])
         request.user.save()
@@ -88,6 +95,8 @@ def index(request):
     else:
         return redirect('/home/')
 def ertegha(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     up = user_plan()
     up.user = request.user
     up.plan_begin = date.today()
@@ -108,6 +117,8 @@ def ertegha(request):
     return redirect('/profile/')    
 
 def tamdid(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     last_plan = user_plan.objects.order_by('-plan_begin').filter(user=request.user)[0]
     up = user_plan()
     up.isTamdid = True

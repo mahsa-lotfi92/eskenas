@@ -152,13 +152,15 @@
 	overflow: hidden;
 }
 #inCon {
-	width: 3060px;
+	width: 3825px;
 	margin-right: 1000px;
 }
 .solsCon {
 	width: 725px;
 	float: right;
 	padding: 20px;
+	min-height: 1000px;
+	padding-bottom: 200px;
 }
 #content {
 	overflow: hidden;
