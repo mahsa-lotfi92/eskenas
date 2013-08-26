@@ -352,10 +352,16 @@ transition: all 0.4s ease-in-out;
     padding: 5px 0px 8px 15px;
 
     float: right;
+    display: inline-block;
 }
 
 #general .budget-info .bug-detail{
     float: left;
 
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    text-align: left;
+    margin-top: 5px;
 }
 

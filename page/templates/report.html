@@ -108,20 +108,21 @@ console.log(window.data.current)
                 <div class = "title">وضعیت بودجه بندی                </div>
                 <div class="budget-container">
                 {%for b in bugs%}
-                    <div class="remainBug">
 
+                    <div class="remainBug">
+<div>
                         <div class="bugName">
                             {{b.bugCat.name}}
                         </div>
 
 
-                    <div class="bug-detail">
-                        {{b.cost|intcomma}} / {{b.limit|intcomma}}
-                        تومان
-                    </div>
+                        <div class="bug-detail">
+                            {{b.cost|intcomma}} / {{b.limit|intcomma}}
+                            تومان
+                        </div>
 
                         <div class="clearfix"></div>
-
+</div>
                         {%if b.per >= 75%}
                         <div class="progress progress-danger">
 
