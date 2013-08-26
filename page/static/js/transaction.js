@@ -125,14 +125,14 @@ $(function() {
 		ev.preventDefault();
 		$('.isIncome').val(1);
 		$(this).addClass('selected')
-		$('.outcome').removeClass("selected")
+		$(this).parent().find(".outcome").removeClass("selected")
 
 	});
 	$('.outcome').click(function(ev) {
 		ev.preventDefault();
 		$('.isIncome').val(0);
 		$(this).addClass('selected')
-		$('.income').removeClass("selected")
+		$(this).parent().find(".income").removeClass("selected")
 
 	});
 	$(".bnkacnt").click(function(ev) {

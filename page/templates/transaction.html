@@ -46,10 +46,10 @@ bank acount tu jadval ezafe beshe
 			<div class="tranPart">
 				<input  name="isIncome" class="isIncome"  type="hidden"/>
 				<div class="btn-group" id="upOrDown">
-					<button class="btn income" >
+					<button class="btn income " >
 						<div class="icoUp"></div>
 					</button>
-					<button class="btn outcome" >
+					<button class="btn outcome selected" >
 						<div class="icoDown"></div>
 					</button>
 				</div>
@@ -188,10 +188,10 @@ bank acount tu jadval ezafe beshe
 				<form class="TRedit" method="post" action="/transaction/edit/">
 					<input  name="isIncome" class="isIncome"  type="hidden"/>
 					<div class="btn-group" id="upOrDownEdit">
-						<button class="btn income" >
-							<div class="icoUp"></div>
+						<button class="btn income {% if t.isIncome %}selected{%endif%} " >
+							<div class="icoUp" ></div>
 						</button>
-						<button class="btn outcome" >
+						<button class="btn outcome {% if  not t.isIncome %} selected{%endif%}" >
 							<div class="icoDown"></div>
 						</button>
 					</div>
