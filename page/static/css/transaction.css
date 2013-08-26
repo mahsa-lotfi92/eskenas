@@ -240,9 +240,8 @@ h3 {
 	cursor: pointer;
 }
 .TranER {
-	width: 80px;
-	float: left;
-	margin-top: -17px;
+    width: 35px;
+	margin-right: 0px;
 }
 
 .TRedit {
@@ -448,5 +447,12 @@ ul.base-menu{
 }
 
 .filter-cat .caret{
-    float: left;
+    position: absolute;
+    left: 10px;
+}
+
+
+.tranTZ{
+    width: 100px;
+    display: table-cell;
 }

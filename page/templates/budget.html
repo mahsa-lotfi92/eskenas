@@ -26,27 +26,24 @@
 			<input type="text" placeholder="مبلغ" name="limit" id="budgetLimit">
 		</div>
 		<div class="budgetPart">
-			<ul id="catList" >
-				<input name="catList" id="ctgrID" type="hidden" />
-				<li>
-					<a id="one_level" class="btn dropdown-toggle" href="#" data-toggle="dropdown"> دسته <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						{%for c in cats%}
-						<li>
-							<option class="ctgr" value="{{c.id}}">{{c.name}}</option>
+			<input name="catList" id="ctgrID" type="hidden" />
 
-						</li>
-						{%endfor%}
+            <div id = "cat-menu" class="btn-group filter-cat">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                دسته‌ها
+                <span class="caret"></span>
+              </a>
+                <ul class="base-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
 
-					</ul>
-				</li>
-			</ul>
+                </ul>
 
-			<!-- 		<select name= "catList" id="catList">
-			{%for c in cats%}
-			<option class="catItem" value="{{c.id}}">{{c.name}}</option>
-			{%endfor%}
-			</select> -->
+
+
+                <div class="hide hidden">
+                    <li><a tabindex="-1" href="#">Action</a></li>
+                </div>
+            </div>
+
 		</div>
 		<div class="budgetPart">
 			<button class="btn btn-success">
@@ -143,7 +140,46 @@
 						</div>
 
 						<div class="clearfix"></div>
+
 						{%endfor%}
+
+     <script>
+window.data = {}
+window.data.cat = {}
+window.data.par = {}
+window.data.childCat = {}
+{%for c in cats%}
+    window.data.cat[{{c.id}}] = '{{c.name}}'
+    {%if  c.cat_set.all%}
+        window.data.childCat[{{c.id}}] = []
+        {% for b in c.cat_set.all %}
+        window.data.childCat[{{c.id}}].push({{b.id}})
+        window.data.par[{{b.id}}] = {{c.id}}
+        window.data.cat[{{b.id}}] = '{{b.name}}'
+        {%endfor%}
+    {%endif%}
+{%endfor%}
+
+
+$(function(){
+    console.log('salam')
+    for (var key in window.data.childCat){
+        console.log(key + ' '  +window.data.cat[key])
+        var base = $('#cat-menu .hide li').eq(0).clone()
+
+        base.find('a').html(window.data.cat[key])
+        base.data('name', window.data.cat[key]).data('id', key)
+        base.click(function(){
+                sID = $(this).data('id')
+                $('#ctgrID').val(sID)
+                $('#cat-menu a.btn').html($(this).data('name') + '<span class=\"caret\"></span>');
+            });
+        base.appendTo('#cat-menu ul.base-menu')
+        console.log('------------')
+    }
+
+});
+</script>
 						{%else%}
 
 						<div class="advGold">
@@ -155,5 +191,7 @@
 						<div class="clearfix"></div>
 						<img id="budgetImg" src="/static/img/bugShow.png" />
 						{%endif%}
+
+
 
 						{%endblock%}

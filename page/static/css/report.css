@@ -189,7 +189,8 @@ transition: all 0.4s ease-in-out;
 }
 
 #content .filter .criteria .caret{
-    float: left ;
+    position: absolute;
+    left: 10px;
 }
 
 #content .filter .criteria.time{
