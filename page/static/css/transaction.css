@@ -300,6 +300,7 @@ h3 {
 	padding-right: 5px;
 	text-shadow: 0px 1px 0px #ddd;
 	color: #f00;
+	display: none;
 }
 
 #BAList {
