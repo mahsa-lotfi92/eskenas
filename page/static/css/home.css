@@ -125,62 +125,68 @@
 }
 .menuItem.active {
 	background: rgb(253, 255, 176);
-	
 }
 .menuItem:hover {
 	font-weight: bold;
 	cursor: pointer;
-
 }
 .menuItem.active:hover {
 	background: rgb(253, 255, 176);
 	font-weight: normal;
 }
 .error {
-text-shadow: 0px 1px 0px #ddd;
-width: 200px;
-float: right;
-margin: 15px 51px 0px 0px;
-color: #f00;
-display: none;
+	text-shadow: 0px 1px 0px #ddd;
+	width: 200px;
+	float: right;
+	margin: 15px 51px 0px 0px;
+	color: #f00;
+	display: none;
 }
-.setOpacity{
+.setOpacity {
 	opacity: 0.5;
 }
-.show{
+.show {
 	display: block !important;
 }
-.adv{
+.adv {
 	height: 120px;
 	margin: 5px 0 0 0;
 	border-radius: 5px;
 	padding: 20px;
 }
-.advImg{
+.advImg {
 	width: 30%;
 	height: 100%
 }
-#home .advText{
+#home .advText {
 	width: 68%;
 	height: 100%;
 	line-height: 25px;
 	padding: 0 10px 0 0;
 }
-.right{
+.right {
 	float: right;
 }
-.left{
+.left {
 	float: left;
 }
-.topic{
+.topic {
 	font-size: 20px;
 	font-weight: bold;
 	font-family: Tahoma;
 }
-.exit{
+.exit {
 	float: left;
 }
-.verify{
+.verify {
 	float: left;
 	margin-left: 70px;
+}
+.successReg {
+	width: 220px;
+	height: 25px;
+	margin-right: 355px;
+}
+#forReg{
+	padding: 20px;
 }
