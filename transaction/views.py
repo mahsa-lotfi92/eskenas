@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from cat.models import Cat, BankAccount
 from transaction.models import Transaction, AutoTransaction
 from datetime import date
-from django.http.response import HttpResponseRedirect
+from django.http import HttpResponseRedirect
 
 
 def addTransaction(request):
@@ -141,20 +141,21 @@ def addAutoTransaction(request):
     t.bankAccount = ba
     t.user = request.user
     t.date=date.today()
+    t.lastModified = date.today()
 
-    print '-------------------------'
-    print request.POST["interval"]
     t.interval = request.POST["interval"]
+    print 6
 
     try:
         t.cost = request.POST["cost"]
         t.save()
     except :
-        t.delete()
         return transaction(request, {'auto_error':'مبلغ را به عدد وارد کنید.', 'auto_error_cost':'1'})
 
+    print 7
     try:
         t.date = request.POST["date"]
+        t.lastModified = None
         print t.date
         t.save()
     except:

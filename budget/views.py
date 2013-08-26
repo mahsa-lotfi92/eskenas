@@ -4,7 +4,7 @@ from budget.models import Bug
 from transaction.models import Transaction
 from myprofile.models import userCredit
 from django.db.models import Q
-from django.http.response import HttpResponseRedirect
+from django.http import HttpResponseRedirect
 
 
 def budgetForm(req):

@@ -278,7 +278,7 @@ h3 {
 	margin-top: 25px;
 }
 .tranDesEdit {
-	width: 520px;
+	width: 420px;
 	margin-left: 40px;
 	margin-right: 10px;
 }
@@ -477,9 +477,11 @@ ul.base-menu{
     min-width: 150px;
 }
 
-.edit-cat-menu, .edit-cat-account{
+.edit-cat-menu, .edit-cat-account, .edit-cat{
     margin: 10px 8px 7px 8px;
 }
+
+
 
 .filter-cat .caret{
     position: absolute;
@@ -499,4 +501,13 @@ ul.base-menu{
 
 #addAutoTran .btn#addTranSubmit{
     width: 138px;
+}
+
+
+.TRedit .tranDesEdit{
+    margin: 0px 8px 0px 0px;
+}
+
+.cat-interval.edit-cat{
+    margin-top:7px;
 }

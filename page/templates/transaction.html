@@ -440,7 +440,7 @@ bank acount tu jadval ezafe beshe
 					<input type="text" class="tranPayEdit" value="{{t.cost}}" name="cost"/>
 
 
-                    <div class="cat-menu btn-group filter-cat">
+                    <div class="cat-menu btn-group filter-cat  edit-cat">
                       <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                         {{t.Category.name}}
                         <span class="caret"></span>
@@ -464,7 +464,7 @@ bank acount tu jadval ezafe beshe
                         </div>
                     </div>
 
-                    <div class="cat-account btn-group filter-cat">
+                    <div class="cat-account btn-group filter-cat  edit-cat">
                       <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                         {{t.bankAccount.name}}
                         <span class="caret"></span>
@@ -482,6 +482,29 @@ bank acount tu jadval ezafe beshe
     				<br />
 
 					<input type="text" class="tranDesEdit" value="{{t.description}}" name="description"/>
+
+
+                    <input type="hidden" name="interval" id="interval_post" class="interval_post" value="{{ t.interval }}" />
+
+                    <div id = "cat-interval" class="cat-interval btn-group filter-cat edit-cat">
+                      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+     {%if t.interval == 1%}
+                        روزانه
+                        {%elif t.interval == 2 %}
+هفتگی
+                        {%else%}
+                            ماهانه
+                        {%endif%}
+                        <span class="caret"></span>
+                      </a>
+                        <ul class="base-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+
+                        </ul>
+
+                    </div>
+
+
+
 					<input type="submit" class="btn-success editAction" value="ثبت"/>
 					<button class="btn-warning editAction cancelEdit" >
 						انصراف
@@ -758,7 +781,7 @@ function setEditCategory(){
 
             for(var j = 0; j < window.data.childCat[key].length; j++) {
                 var sub = window.data.childCat[key][j]
-                console.log('\t' + window.data.cat[sub])
+{#                console.log('\t' + window.data.cat[sub])#}
                 var tmp = item.clone() ;
                 tmp.find('a').html(window.data.cat[sub])
                 tmp.appendTo(base.find('ul'))

@@ -16,6 +16,7 @@ class Transaction(models.Model):
 class AutoTransaction(models.Model):
     isIncome=models.BooleanField();
     date = models.DateField()
+    lastModified = models.DateField(null=True, blank=True)
     cost=models.IntegerField()
     Category= models.ForeignKey(Cat)
     user = models.ForeignKey(User)
