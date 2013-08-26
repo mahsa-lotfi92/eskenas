@@ -212,6 +212,29 @@ $(function() {
 		}
 
 	});
+		$('#addAutoTran').submit(function(ev) {
+
+		if ($(this).find("#auto_ctgrID").val() == "") {
+			$("#auto_addTR-err").text("دسته را مشخص کنید.");
+			$("#auto_addTR-err").css("display", "block");
+			return false;
+
+		}
+		
+		if ($(this).find("#auto_bid_post").val() == "") {
+			$("#auto_addTR-err").text("  حساب را مشخص کنید.");
+			$("#auto_addTR-err").css("display", "block");
+			return false;
+
+		}
+			if ($(this).find("#interval_post").val() == "") {
+			$("#auto_addTR-err").text("  بازه را مشخص کنید.");
+			$("#auto_addTR-err").css("display", "block");
+			return false;
+
+		}
+
+	});
 	$("#cal_date").focus(function() {
 
 		new JsDatePick({

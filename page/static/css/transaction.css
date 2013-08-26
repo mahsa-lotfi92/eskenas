@@ -312,7 +312,7 @@ h3 {
 .edtCat {
 	margin-bottom: 10px;
 }
-#addTR-err {
+#addTR-err, #auto_addTR-err {
 	padding-bottom: 10px;
 	padding-right: 5px;
 	text-shadow: 0px 1px 0px #ddd;

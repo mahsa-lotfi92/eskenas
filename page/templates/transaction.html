@@ -256,7 +256,7 @@ bank acount tu jadval ezafe beshe
 	</div>
 	<div class="solsCon">
 		<form method="post" id="addAutoTran" action="/auto_transaction/add/">
-		<div id="addTR-err" {%if auto_error%} style="display: block"{%endif%}>
+		<div id="auto_addTR-err" {%if auto_error%} style="display: block"{%endif%}>
 			{{auto_error}}
 		</div>
 			<div class="tranPart">
@@ -283,8 +283,8 @@ bank acount tu jadval ezafe beshe
 
 
             <div class="tranPart">
-				<input type="hidden" id="ctgrID" name="catId"  class="subCatEdited"/>
-				<input type="hidden" id="sbctgrID" name="subcatId" class="subCatEdited"/>
+				<input type="hidden" id="auto_ctgrID" name="catId"  class="subCatEdited"/>
+				<input type="hidden" id="auto_sbctgrID" name="subcatId" class="subCatEdited"/>
                 <div id = "cat-menu" class="cat-menu btn-group filter-cat">
                   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     دسته‌ها
@@ -311,7 +311,7 @@ bank acount tu jadval ezafe beshe
             </div>
 
             <div class="tranPart">
-				<input type="hidden" name="BAId" id="bid_post" class="BAEdited"/>
+				<input type="hidden" name="BAId" id="auto_bid_post" class="BAEdited"/>
 
                 <div id = "cat-account" class="cat-account btn-group filter-cat">
                   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
