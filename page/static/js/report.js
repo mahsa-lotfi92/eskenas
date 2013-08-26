@@ -509,9 +509,10 @@ window.report.ui = (function () {
         var times = [] ;
         times[0] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 0, 7), 'name' : 'هفته‌ گذشته'};
         times[1] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 1, 0), 'name' : 'ماه‌ گذشته'};
-        times[2] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(1, 0, 0), 'name' : 'سال گذشته'};
-        times[3] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(10, 0, 0), 'name' : 'تمام ادوار'};
-        times[4] = {'eDate' : null, 'sDate' : null, 'name': 'بازه‌ دلخواه'};
+        times[2] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 6, 0), 'name' : '۶ ماه‌ گذشته'};
+        times[3] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(1, 0, 0), 'name' : 'سال گذشته'};
+        times[4] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(10, 0, 0), 'name' : 'تمام ادوار'};
+
 
         var list = base.find('.filter .time .dropdown-menu')
         list.html('')
@@ -524,7 +525,7 @@ window.report.ui = (function () {
             item.appendTo(list) ;
         }
 
-        $('.filter .time .dropdown-menu li:not(:last-child)').click(function(event){
+        $('.filter .time .dropdown-menu li').click(function(event){
             var dict = $(this).data('date') ;
             window.report.filter.setTime(dict['sDate'], dict['eDate']);
             base.find('.filter .time .btn').html(dict['name'] + '<span class=\"caret\"></span></button>');
