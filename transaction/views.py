@@ -9,9 +9,8 @@ def addTransaction(request):
     t = Transaction()
     t.description = request.POST["description"]
     t.isIncome = request.POST["isIncome"] == '1' 
-    if  not "catId" in request.POST or not "BAId" in request.POST:
-        return redirect('/transaction/')
-    if "subcatId" in request.POST:
+    
+    if request.POST["subcatId"]!="":
         sbcid= request.POST["subcatId"]
         c = Cat.objects.get(id=sbcid)
     else:

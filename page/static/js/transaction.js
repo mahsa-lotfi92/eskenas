@@ -197,4 +197,20 @@ $(function() {
 		$(this).popover("toggle");
 
 	});
+	$('#addTran').submit(function(ev) {
+
+		if ($(this).find("#ctgrID").val() == "") {
+			$("#addTR-err").text("دسته را مشخص کنید.");
+			$("#addTR-err").css("display", "block");
+			return false;
+
+		}
+		if ($(this).find("#bid_post").val() == "") {
+			$("#addTR-err").text("  حساب را مشخص کنید.");
+			$("#addTR-err").css("display", "block");
+			return false;
+
+		}
+
+	});
 })
