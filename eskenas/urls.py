@@ -17,6 +17,10 @@ urlpatterns = patterns('',
      url(r'^transaction/addBankAccount/$', 'transaction.views.bankAccountAdd'),
      url(r'^transaction/delBankAccount/$', 'transaction.views.bankAccountDel'),
      url(r'^transaction/editBankAccount/$', 'transaction.views.bankAccountEdit'),
+
+     url(r'^auto_transaction/add/$', 'transaction.views.addAutoTransaction'),
+     url(r'^auto_transaction/delete/$', 'transaction.views.deleteAutoTransaction'),
+     url(r'^auto_transaction/edit/$', 'transaction.views.editAutoTransaction'),
      
      url(r'^logout/$', 'myprofile.views.logout_view'),
      url(r'^profile/edit/$', 'myprofile.views.edit'),

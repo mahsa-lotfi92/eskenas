@@ -463,11 +463,11 @@ ul.base-menu{
 }
 
 
-.edit-cat-account > * {
+.cat-account > * {
     min-width: 110px;
 }
 
-.edit-cat-menu > * {
+.cat-menu > * {
     min-width: 150px;
 }
 
@@ -484,4 +484,13 @@ ul.base-menu{
 .tranTZ{
     width: 100px;
     display: table-cell;
+}
+
+#addAutoTran input#desc{
+    width: 396px;
+    margin-left: 2px;
+}
+
+#addAutoTran .btn#addTranSubmit{
+    width: 138px;
 }
