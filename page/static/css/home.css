@@ -186,6 +186,8 @@
 	width: 220px;
 	height: 25px;
 	margin-right: 355px;
+	background: #DEFFAE;
+	display:none;
 }
 #forReg{
 	padding: 20px;

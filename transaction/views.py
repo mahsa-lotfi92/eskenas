@@ -27,7 +27,7 @@ def addTransaction(request):
         t.cost = request.POST["cost"]
         t.save()
     except :
-        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.', 'error-cost':'1'})
+        return transaction(request, {'error':'مبلغ را به عدد وارد کنید.', 'error_cost':'1'})
     
     try:
         t.date = request.POST["date"]
@@ -35,7 +35,7 @@ def addTransaction(request):
         t.save()
     except:
         t.delete()
-        return transaction(request, {'error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'error-date':'1'})
+        return transaction(request, {'error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'error_date':'1'})
     
     
     

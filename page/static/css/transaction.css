@@ -12,6 +12,18 @@
 	-ms-transition: none !important;
 	transition: none !important;
 }
+#calendar{
+	margin-bottom: 10px;
+	margin-left: -4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	
+}
+#calendar-icon {
+	width: 25px;
+	height: 22px;
+	background: url(../img/Calendar-icon-1.png) repeat;
+}
 .tranTable {
 	background: #FFF3DA;
 	font-family: tahoma;
@@ -304,6 +316,10 @@ h3 {
 	text-shadow: 0px 1px 0px #ddd;
 	color: #f00;
 	display: none;
+}
+#shado{
+	    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(237, 27, 36, 0.6);
+
 }
 
 #BAList {
