@@ -261,6 +261,9 @@ h3 {
 .tranDateEdit {
 	width: 80px;
 }
+#addTran{
+	margin-top: 25px;
+}
 .tranDesEdit {
 	width: 520px;
 	margin-left: 40px;
