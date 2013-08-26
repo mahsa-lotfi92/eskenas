@@ -4,9 +4,12 @@ from budget.models import Bug
 from transaction.models import Transaction
 from myprofile.models import userCredit
 from django.db.models import Q
+from django.http.response import HttpResponseRedirect
 
 
 def budgetForm(req):
+    if not req.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     bugs = Bug.objects.all()
     for i in bugs:
         i.cost = 0
@@ -27,17 +30,23 @@ def budgetForm(req):
 
 
 def budgetAdd(req):
+    if not req.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     new = Bug(limit=req.POST['limit'], bugCat=Cat.objects.get(id=req.POST['catList']))
     new.save()
     return redirect('/budget/') 
 
 
 def budgetDel(req):
+    if not req.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     Bug.objects.filter(id=req.POST['id']).delete()
     return redirect('/budget/')
 
 
 def budgetEdit(req):
+    if not req.user.is_authenticated():
+        return HttpResponseRedirect("/home/")
     p = Bug.objects.get(id=req.POST['id'])
     p.limit = req.POST['new']
     p.save()
