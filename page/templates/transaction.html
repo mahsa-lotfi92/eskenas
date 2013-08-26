@@ -325,86 +325,48 @@ bank acount tu jadval ezafe beshe
 					<input type="text" class="tranDateEdit" value="{{t.date|date:"Y-m-d"}}" name="date" id="cal-ed"/>
 					<input type="text" class="tranPayEdit" value="{{t.cost}}" name="cost"/>
 
-					<ul id="catList" >
-						<li>
-							<a id="two_level" class="btn dropdown-toggle" href="#" data-toggle="dropdown"> {%if t.Category.isSub%}
-							{{t.Category}}
-							{%else%}
-							{{t.Category}}
-							{%endif%} <span class="caret"></span></a>
-							<ul class="dropdown-menu" >
-								<input type="hidden" value="{{t.Category.id}}" name="catId" class="subCatEdited"/>
 
-								{%for c in cats%}
-								<li>
-									<option class="ctgrE" value="{{c.id}}">{{c.name}}</option>
-									{%if  c.cat_set.all%}
-									<ul class="dropdown-menu">
+<!--TODO-->
+                    <div class="edit-cat-menu btn-group filter-cat">
+                      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        {{t.Category.name}}
+                        <span class="caret"></span>
+                      </a>
+                        <ul class="base-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
 
-										{% for b in c.cat_set.all %}
-										<li>
-											<option class="sbctgrE" value="{{b.id}}">{{b.name}}</option>
-										</li>
-										{%endfor%}
-									</ul>
-									{%endif%}
-								</li>
-								{%endfor%}
+                        </ul>
 
-							</ul>
-						</li>
-					</ul>
 
-					<!-- 			<select class="catEditList" name="catId">
-					{%for c in cats%}
-					{%if c.id == t.Category.parentCat.id%}
-					{% for b in c.cat_set.all %}
-					{%if b.id == t.Category.id%}
-					<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
-					{%endif%}
-					{%endfor%}
-					{% for b in c.cat_set.all %}
-					{%if b.id != t.Category.id%}
-					<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
-					{%endif%}
-					{%endfor%}
-					{%endif%}
-					{%endfor%}
-					{%for c in cats%}
-					{%if c.id != t.Category.parentCat.id%}
-					{% for b in c.cat_set.all %}
-					<option class="catEditItem" value="{{b.id}}">{{c.name}} - {{b.name}}</option>
-					{%endfor%}
 
-					{%endif%}
+                        <div class="hide hidden">
+                            <li class="dropdown-submenu">
+                                <a tabindex="-1" href="#">More options</a>
+                                <ul class="dropdown-menu">
 
-					{%endfor%}
-					</select> -->
-					<ul id="BAList" >
-						<li>
-							<a id="one_level" class="btn dropdown-toggle" href="#" data-toggle="dropdown"> {{t.bankAccount.name}} <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<input type="hidden" name="BAId" class="BAEdited" value="{{t.bankAccount.id}}" />
 
-								{%for b in bankAccounts%}
-								{%if b.id == t.bankAccount.id%}
-								<li>
-									<option class="BAEditItem" value={{b.id}}>{{b.name}}</option>
-								</li>
-								{%endif%}
-								{%endfor%}
-								{%for b in bankAccounts%}
-								{%if b.id != t.bankAccount.id%}
-								<li>
-									<option class="BAEditItem" value={{b.id}}>{{b.name}}</option>
-								</li>
-								{%endif%}
-								{%endfor%}
+                                </ul>
+                            </li>
 
-							</ul>
-						</li>
-					</ul>
-					<br />
+                            <li><a tabindex="-1" href="#">Second level link</a></li>
+                        </div>
+                    </div>
+
+                    <div class="edit-cat-account btn-group filter-cat">
+                      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                        {{t.bankAccount.name}}
+                        <span class="caret"></span>
+                      </a>
+                        <ul class="base-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+
+                        </ul>
+
+                    </div>
+                    <input type="hidden" value="{{t.Category.id}}" name="catId" class="subCatEdited"/>
+                    <input type="hidden" name="BAId" class="BAEdited" value="{{t.bankAccount.id}}" />
+
+
+
+    				<br />
 
 					<input type="text" class="tranDesEdit" value="{{t.description}}" name="description"/>
 					<input type="submit" class="btn-success editAction" value="ثبت"/>
@@ -696,6 +658,9 @@ $(function(){
 
 
 
+
+
+    setEditCategory()
      setAccount(window.data.accounts)
 
 
@@ -703,8 +668,40 @@ $(function(){
 
 });
 
+function setEditCategory(){
+
+    $('.edit-cat-menu').each(function(){
+        var org = $(this) ;
+
+        for (var key in window.data.childCat){
+            var base = $('#cat-menu .hide li').eq(0).clone()
+            var item = $('#cat-menu .hide li').eq(1).clone()
+            base.find('a').html(window.data.cat[key])
+
+            for(var j = 0; j < window.data.childCat[key].length; j++) {
+                var sub = window.data.childCat[key][j]
+                console.log('\t' + window.data.cat[sub])
+                var tmp = item.clone() ;
+                tmp.find('a').html(window.data.cat[sub])
+                tmp.appendTo(base.find('ul'))
+
+                tmp.data('name', window.data.cat[sub]).data('id', sub)
+
+                tmp.click(function(){
+                    $(this).parents('form:eq(0)').find('.subCatEdited').val($(this).data('id'))
+                    $(this).parents('div:eq(0)').find('.btn').html($(this).data('name') + '<span class=\"caret\"></span></button>');
+                    event.preventDefault() ;
+                });
+            }
+            base.appendTo(org.find('ul.base-menu'))
+        }
+
+    })
+
+}
+
 function setAccount(accounts){
-        base = $('#cat-account')
+        var base = $('#cat-account')
         var list = base.find('.dropdown-menu')
         list.html('')
 
@@ -724,7 +721,35 @@ function setAccount(accounts){
             base.find('.btn').html($(this).data('name') + '<span class=\"caret\"></span></button>');
             event.preventDefault() ;
         });
+
+
+
+        $('.edit-cat-account').each(function(){
+            base = $(this) ;
+            var list = base.find('.dropdown-menu')
+            list.html('')
+
+            var tmp = $("<li><a href=\"#\"><span class=\"name\"> </span> <span class=\"bank\"> </span></a></li>")
+
+            var item = tmp.clone() ;
+
+            for (var key in accounts) {
+                var item = tmp.clone() ;
+                item.find(".name").html(accounts[key])
+                item.data('id', key).data('name', accounts[key]) ;
+                item.appendTo(list) ;
+            }
+
+            base.find('.dropdown-menu li').click(function(event){
+                $(this).parents('form:eq(0)').find('.BAEdited').val($(this).data('id'))
+{#                console.log($(this).parents('form:eq(0)').find('.BAEdited'))#}
+                $(this).parents('div:eq(0)').find('.btn').html($(this).data('name') + '<span class=\"caret\"></span></button>');
+                event.preventDefault() ;
+            });
+        })
+
     }
+
 </script>
 {%endblock%}
 
