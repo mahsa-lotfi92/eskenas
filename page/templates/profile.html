@@ -1,5 +1,7 @@
 {%extends 'base.html'%}
+{% load humanize %}
 {%block css%}
+
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profile.css">
 {%endblock%}
 
@@ -162,7 +164,7 @@
 					{{p.plan_begin}}
 				</div>
 				<div class="tranPay">
-					{{p.plan_money}}
+					{{p.plan_money|intcomma}}
 				</div>
 				<div class="tranDes">
 					{%if p.isTamdid%}

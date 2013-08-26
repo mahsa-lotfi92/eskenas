@@ -11,7 +11,7 @@ class userCredit(models.Model):
     user = models.ForeignKey(User)
 
     @staticmethod  
-    def stillGolden(d):
+    def stillGolden(d=None):
         d = datetime.date.today()
         for u in User.objects.all():
             uc=userCredit.objects.get(user=u)
