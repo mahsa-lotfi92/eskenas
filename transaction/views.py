@@ -61,6 +61,7 @@ def transaction(req, extra={}):
             p = Cat.objects.get(id=req.POST['id'], user=req.user)
             p.name = req.POST['new']
             p.save()
+        return redirect('/transaction/?tab=3')
     T = Transaction.objects.all().filter(user=req.user).order_by('-date')
     TT = AutoTransaction.objects.all().filter(user=req.user).order_by('-date')
     a = {"Tran":T, "AutoTran": TT, 'cats': Cat.objects.filter(isSub=False , user=req.user), 'bankAccounts': BankAccount.objects.filter(user=req.user)}
