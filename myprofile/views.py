@@ -87,9 +87,10 @@ def changePass(request):
         request.user.set_password(request.POST['new_pass'])
         request.user.save()
         
-        return  render(request, 'profile.html', {'sabt':'هوراا', 'tab': 2})
+        
+        return  profile(request, {'sabt':'هوراا', 'tab': 2})
     else:
-        return  render(request, 'profile.html', {'error':'err', 'tab': 2, 'change_pass_err':"رمز عبور نادرست است."})
+        return  profile(request, {'error':'err', 'tab': 2, 'change_pass_err':"رمز عبور نادرست است."})
     return redirect('/profile/?tab=2')
 
 def index(request):
