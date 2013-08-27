@@ -21,14 +21,11 @@
 	<a href="?">تغییر رمزعبور</a>
 </div>
 <div class="barItem lastBarItem">
-	<a href="?">
-		{%if credit.isGolden%}
-		تمدید حساب طلائی
-		{%else%}
-		  ارتقا به حساب طلائی
-		{%endif%}
-		
-		</a>
+	<a href="?"> {%if credit.isGolden%}
+	تمدید حساب طلائی
+	{%else%}
+	ارتقا به حساب طلائی
+	{%endif%} </a>
 </div>
 
 {%endblock%}
@@ -49,10 +46,10 @@
 					<form method="post" action="/profile/edit/">
 						<input name= "formID" value="1" type="hidden">
 						<input type="text" class="inp" name="first_name">
-					<input type= "submit" value="تایید" class="btn btn-success edt">
-					<button class="btn btn-warning cancelEdit edt" >
-						انصراف
-					</button>
+						<input type= "submit" value="تایید" class="btn btn-success edt">
+						<button class="btn btn-warning cancelEdit edt" >
+							انصراف
+						</button>
 					</form>
 
 				</div>
@@ -70,9 +67,9 @@
 						<input name= "formID" value="2" type="hidden">
 						<input type="text" class="inp" name="last_name">
 						<input type= "submit" value="تایید" class="btn btn-success edt">
-					<button class="btn btn-warning cancelEdit edt" >
-						انصراف
-					</button>
+						<button class="btn btn-warning cancelEdit edt" >
+							انصراف
+						</button>
 					</form>
 
 				</div>
@@ -91,9 +88,9 @@
 						<input name= "formID" value="3" type="hidden">
 						<input type="text" class="inp" name="email">
 						<input type= "submit" value="تایید" class="btn btn-success edt">
-					<button class="btn btn-warning cancelEdit edt" >
-						انصراف
-					</button>
+						<button class="btn btn-warning cancelEdit edt" >
+							انصراف
+						</button>
 					</form>
 
 				</div>
@@ -115,7 +112,7 @@
 				</div>
 				<div class="inf">
 					{{credit.remain}}
-					 روز
+					روز
 				</div>
 
 			</div>
@@ -205,7 +202,9 @@
 				<input type="password"  class="passIn" name="re-new_pass">
 			</div>
 			<div class="passRow">
-				<div class="txt" {%if sabt%} style="display: block" {%endif%}>با موفقیت ثبت شد.</div>
+				<div class="txt" {%if sabt%} style="display: block" {%endif%}>
+					با موفقیت ثبت شد.
+				</div>
 				<div class="savePass">
 					<input type="submit" value="ثبت رمز" class="btn btn-primary">
 				</div>
@@ -219,10 +218,11 @@
 			<div class="message">
 				{%if error%} {{change_pass_err}}{%endif%}
 			</div>
-			
+
 		</div>
 	</div>
 	<div class="solsCon">
+	
 		<div class="profTable">
 			{% if not credit.isGolden%}
 			<form class="extRow" id="ertegha-form" method="post" action="/profile/ertegha/">
@@ -256,6 +256,12 @@
 				<input type="submit" value="اتصال با بانک" class="bank btn btn-info"/>
 			</form>
 			{%endif%}
+		</div>
+			<div id="forReg">
+			<div class="alert alert-block alert-success  successReg" {%if success%}Style="display: block"{%endif%}>
+				<a class="close" data-dismiss="alert" href="#">&times;</a>
+				با موفقیت انجام شد.
+			</div>
 		</div>
 
 	</div>
