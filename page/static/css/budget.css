@@ -4,7 +4,7 @@
 }
 #addBudget {
 	width: 680px;
-	height: 100px;
+	height: 150px;
 }
 .budgetPart {
 	width: 117px;
@@ -96,7 +96,7 @@ i{
 }
 span {
     position: absolute;
-    z-index: 2;
+/*    z-index: 1;*/
     color: black;
     text-align: center;
     width: 100%;
@@ -193,5 +193,10 @@ span {
 	width: 100px;
 }
 .limitEdit{
-	width: 124px;
+	width: 112px;
+}
+.startDiv, .endDiv{
+	float: right;
+	height: 40px;
+	width: 147px;
 }
