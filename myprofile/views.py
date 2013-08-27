@@ -87,16 +87,17 @@ def changePass(request):
         request.user.set_password(request.POST['new_pass'])
         request.user.save()
         
-        return  render(request, 'profile.html', {'sabt':'هوراا'})
+        return  render(request, 'profile.html', {'sabt':'هوراا', 'tab': 2})
     else:
-        return  render(request, 'profile.html', {'error':'err', 'change_pass_err':"رمز عبور نادرست است."})
-    return redirect('/profile/')
+        return  render(request, 'profile.html', {'error':'err', 'tab': 2, 'change_pass_err':"رمز عبور نادرست است."})
+    return redirect('/profile/?tab=2')
 
 def index(request):
     if request.user.is_authenticated():
         return redirect('/transaction/')
     else:
         return redirect('/home/')
+
 def ertegha(request):
     if not request.user.is_authenticated():
         return HttpResponseRedirect("/home/")
@@ -117,7 +118,7 @@ def ertegha(request):
     uc.isGolden = True
     uc.credit = up.plan_end
     uc.save()
-    return  profile(request,{'success':'1'})     
+    return  profile(request,{'success':'1', 'tab': 3})
 
 def tamdid(request):
     if not request.user.is_authenticated():
@@ -141,6 +142,5 @@ def tamdid(request):
     uc.credit = up.plan_end
     uc.save()
     
-    return  profile(request,{'success':'1'})  
+    return  profile(request,{'success':'1', 'tab': 3})
 
-        

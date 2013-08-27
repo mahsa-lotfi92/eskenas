@@ -15,6 +15,20 @@ input, textarea, select {
 button.btn {
 	font-family: b nazanin;
 }
+.anim {
+	-webkit-transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-ms-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+.noanim {
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	-ms-transition: none !important;
+	transition: none !important;
+}
 #header {
 	background: url(../img/header.png) -18px 0 no-repeat;
 	text-align: right;
