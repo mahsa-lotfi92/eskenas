@@ -34,7 +34,7 @@ def edit(request):
     if request.POST['formID'] == "3":
         user.email = request.POST['email']
         user.save()
-    return redirect('/profile')
+    return redirect('/profile/')
     
 def myLogin(request):
     if request.method == "POST":

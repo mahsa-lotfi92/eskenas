@@ -101,19 +101,19 @@ def bankAccountAdd (req):
         return HttpResponseRedirect("/home/")
     new = BankAccount(name=req.POST['name'], user=req.user)
     new.save()
-    return redirect('/transaction/') 
+    return redirect('/transaction/?tab=4')
 def bankAccountDel (req):
     if not req.user.is_authenticated():
         return HttpResponseRedirect("/home/")
     BankAccount.objects.filter(id=req.POST['id']).delete()
-    return redirect('/transaction/')
+    return redirect('/transaction/?tab=4')
 def bankAccountEdit (req):
     if not req.user.is_authenticated():
         return HttpResponseRedirect("/home/")
     p = BankAccount.objects.get(id=req.POST['id'])
     p.name = req.POST['new']
     p.save()
-    return redirect('/transaction/')
+    return redirect('/transaction/?tab=4')
 
 
 
@@ -163,7 +163,7 @@ def addAutoTransaction(request):
         return transaction(request, {'auto_error':'فرمت تاریخ نادرست است. YYYY-MM-DD', 'auto_error_date':'1'})
 
     t.save()
-    return redirect('/transaction/')
+    return redirect('/transaction/?tab=1')
 
 def editAutoTransaction(request):
     if not request.user.is_authenticated():
@@ -183,7 +183,7 @@ def editAutoTransaction(request):
     t.Category = c
     t.bankAccount = ba
     t.save()
-    return redirect('/transaction/')
+    return redirect('/transaction/?tab=1')
 
 def deleteAutoTransaction(request):
     if not request.user.is_authenticated():
@@ -192,7 +192,7 @@ def deleteAutoTransaction(request):
     T = AutoTransaction.objects.get(id=id)
     T.delete()
     print "@"*20
-    return redirect('/transaction/')
+    return redirect('/transaction/?tab=1')
 
 
 
