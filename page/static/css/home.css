@@ -7,7 +7,7 @@
 }
 .profTable {
 	background: #FFF3DA;
-	font-family: b-yekan;
+	font-family: b nazanin;
 	font-size: 13px;
 	border-radius: 10px;
 }
@@ -30,7 +30,7 @@
 }
 .warning {
 	font-size: 26px;
-	font-family: b yekan;
+	font-family: b nazanin;
 	width: 220px;
 	border-bottom: 2px solid rgb(213, 203, 203);
 	height: 30px;
@@ -81,7 +81,7 @@
 	text-align: center;
 	float: left;
 	color: black;
-	font-family: b-yekan;
+	font-family: b nazanin;
 	font-size: 13px;
 	margin: 7px;
 }
@@ -173,7 +173,7 @@
 .topic {
 	font-size: 20px;
 	font-weight: bold;
-	font-family: b-yekan;
+	font-family: b nazanin;
 }
 .exit {
 	float: left;

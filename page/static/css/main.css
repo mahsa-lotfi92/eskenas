@@ -1,19 +1,19 @@
 h1, h2, h3, h4, h5, h6 {
-    font-family: b-yekan;
+    font-family: b nazanin;
 }
 
 body {
 	direction: rtl;
-	font-family: b-yekan;
+	font-family: b nazanin;
 }
 ul{
 	list-style: none;
 }
 input, textarea, select {
-	font-family: b-yekan;
+	font-family: b nazanin;
 }
 button.btn {
-	font-family: b-yekan;
+	font-family: b nazanin;
 }
 #header {
 	background: url(../img/header.png) -18px 0 no-repeat;
@@ -40,8 +40,8 @@ button.btn {
 	width: 180px;
 	margin: 5px;
 	border-radius: 5px;
-	font-family: tahoma;
-	font-size: 13px;
+	font-family: b nazanin;
+	font-size: 14px;
 }
 #main {
 	margin: 0 auto;
