@@ -12,8 +12,8 @@
 }
 .tranTable {
 	background: #FFF3DA;
-	font-family: b nazanin;
-	font-size: 13px;
+	font-family: Tahoma;
+	font-size: 11px!important;
 	border-radius: 10px;
 	margin-top: 20px;
 }
@@ -21,7 +21,7 @@
 	height: 50px;
 	display: table-row;
 	padding-right: 30px;
-	font-size: 14px;
+	font-size: 12px;
 }
 .tranRow.head {
 	font-size: 22px;
@@ -261,11 +261,11 @@ h3 {
 	padding: 0px;
 }
 .btn-warning {
-	font-family: b nazanin;
+	font-family: Tahoma;
 	height: auto;
 }
 .editAction {
-	font-family: b nazanin;
+	font-family: Tahoma;
 	height: 23px;
 	text-align: center;
 	border-radius: 3px;

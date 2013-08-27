@@ -7,7 +7,7 @@ transition: all 0.4s ease-in-out;
 }
 .tranTable {
 	background: #FFF3DA;
-	font-family: b nazanin;
+	font-family: Tahoma;
 	font-size: 15px;
 	border-radius: 10px;
 	padding: 15px 10px;
@@ -19,7 +19,7 @@ transition: all 0.4s ease-in-out;
 }
 .tranRow.head {
 	font-size: 22px;
-	font-family: b nazanin;;
+	font-family: b nazanin;
 }
 .tranPay, .tranDate, .tranDes, .tranCat{
 	line-height: 40px;
@@ -209,7 +209,7 @@ transition: all 0.4s ease-in-out;
 
 #content .detail{
     margin: 10px 0px 0px 0px;
-    font-family: b nazanin;;
+    font-family: Tahoma;
     font-size: 13px; 
     color: #777;
 }
@@ -252,12 +252,12 @@ transition: all 0.4s ease-in-out;
     background: #B1ADF9;
     border-radius: 5px 5px 0px 0px;
     padding: 8px 10px;
-    font-family: b nazanin;;
+    font-family: b nazanin;
     font-size: 21px;
     color: #274B6D;
 }
 #general .boxes .item .row-item{
-    font-family: b nazanin;;
+    font-family: Tahoma;
     font-size: 13px;
     color: #4D759E;
     padding: 10px 15px;
@@ -277,7 +277,7 @@ transition: all 0.4s ease-in-out;
 }
 
 #general .info .title-header{
-    font-family: b nazanin;;
+    font-family: b nazanin;
     font-size: 21px;
     color: #333;
     margin-bottom: 38px;
@@ -291,7 +291,7 @@ transition: all 0.4s ease-in-out;
 #general .budget-info .title{
     position: absolute;
     background: #B1ADF9;     border-radius: 5px 5px 0px 0px;     padding: 8px 10px;
-    font-family: b nazanin;;
+    font-family: b nazanin;
     font-size: 21px;     color: #274B6D;
     
     width: 246px;
@@ -316,7 +316,7 @@ transition: all 0.4s ease-in-out;
 
 
 #general .budget-info .bugName{
-    font-family: b nazanin;;
+    font-family: Tahoma;
     font-size: 15px; color:  #4D759E; 
     padding: 5px 0px 8px 15px;
 

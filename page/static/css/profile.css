@@ -1,11 +1,11 @@
 .profTable {
 	background: #FFF3DA;
-	font-family: b nazanin;
+	font-family: Tahoma;
 	font-size: 13px;
 	border-radius: 10px;
 }
 .passTable {
-	font-family: b nazanin;
+	font-family: Tahoma;
 	font-size: 13px;
 	border-radius: 10px;
 	width: 400px;
@@ -25,11 +25,11 @@
 	overflow: hidden;
 }
 .infType {
-	font-family: b nazanin;
+	font-family: Tahoma;
 	margin: 25px 20px;
 	float: right;
 	width: 120px;
-	font-size: 16px;
+	font-size: 14px;
 }
 .inf {
 	font-size: 14px;
@@ -74,7 +74,7 @@
 	float: right;
 	width: 130px;
 	font-size: 13px;
-	font-family: b nazanin;
+	font-family: Tahoma;
 }
 .savePass {
 	width: 100px;
