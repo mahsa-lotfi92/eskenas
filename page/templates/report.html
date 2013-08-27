@@ -20,6 +20,8 @@ window.data.accounts = {}
 window.data.accounts[{{m.id}}] = '{{m.name}}' ;
 {% endfor %}
 
+var None = '-'
+
 window.data.avg = {} ; window.data.total = {} ; window.data.current = {}
 {% for key, value in avg.items %}
 window.data.avg['{{ key }}'] = {{ value }}
