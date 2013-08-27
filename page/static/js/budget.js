@@ -8,7 +8,7 @@ $(function() {
 				k++;
 			}
 		}
-		if($("#budgetLimit").val()==""){
+		if($("#budgetLimit").val()=="" || $("#budgetLimit").val()==0){
 				ev.preventDefault()
 			$('.budgWar').hide()
 			$('.budgWar').text("مبلغ را وارد کنید.")
