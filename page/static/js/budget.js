@@ -23,13 +23,13 @@ $(function() {
 	$('.remainBug').on('click', '.edit', function() {
 		var row = $(this).parent()
 		row.find('form.edt').removeClass('edt')
-		row.find('.limitEdit').focus()
+		row.find('#pay').focus()
 	})
 	
 	$('.edtSubmit').click(function(ev) {
 		var row = $(this).parent()
 		var i= $(".edtSubmit").index(this);
-		s= $('.limitEdit').eq(i).val()
+		s= $('#pay').eq(i).val()
 		console.log(s);
 		var k=0
 		for (var x=0; x< s.length; x++){

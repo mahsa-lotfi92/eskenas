@@ -75,7 +75,9 @@
 	</div>
 	<form action='/budget/edit/' method="post" class= "edt forSub">
 		<input name= "id" value="{{b.id}}" type="hidden">
-		<input name= "new" type="text" placeholder="مبلغ جدید" class="limitEdit">
+		<input name= "newLimit" type="text" placeholder="مبلغ جدید" class="limitEdit" id="pay">
+		<input name= "newStart" type="text" placeholder="شروع جدید" class="limitEdit" id="startDateEdit-{{b.id}}">
+		<input name= "newEnd" type="text" placeholder="پایان جدید" class="limitEdit" id="endDateEdit-{{b.id}}">
 		<input type="submit" value="تایید" class="btn btn-success edtSubmit">
 		<button class="btn btn-warning cancelEdit" >
 			انصراف
@@ -136,11 +138,21 @@
 							مبلغ باقی مانده تا  سقف تایین شده:
 							{{b.res|intcomma}}
 							تومان
+							<br />
+							از تاریخ 
+							{{b.startDate}}
+							تا تاریخ 
+							{{b.endDate}}
 							{%else%}
 							<div>
 								مبلغ
 								{{b.plusRes|intcomma}}
 								تومان بیش از حد تعیین شده
+							<br />
+							از تاریخ 
+							{{b.startDate}}
+							تا تاریخ 
+							{{b.endDate}}
 								<br />
 								<i class="icon-warning-sign"></i>
 							</div>

@@ -103,13 +103,14 @@ span {
 }
 .des{
 	float: left;
-	height: 50px;
+	height: 80px;
 	width: 50%;
 	background: #d9edf7;
 	left: 50%;
 	border-radius: 10px;
 	text-align: center;
 	padding: 10px;
+	line-height: 25px;
 }
 .edit, .remove{
 	margin-top: 10px;
@@ -190,4 +191,7 @@ span {
 }
 .budgetInp{
 	width: 100px;
+}
+.limitEdit{
+	width: 124px;
 }
