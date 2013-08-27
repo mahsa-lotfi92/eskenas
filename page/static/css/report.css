@@ -7,8 +7,8 @@ transition: all 0.4s ease-in-out;
 }
 .tranTable {
 	background: #FFF3DA;
-	font-family: tahoma;
-	font-size: 13px;
+	font-family: b nazanin;
+	font-size: 15px;
 	border-radius: 10px;
 	padding: 15px 10px;
 }
@@ -19,7 +19,7 @@ transition: all 0.4s ease-in-out;
 }
 .tranRow.head {
 	font-size: 22px;
-	font-family: b yekan;
+	font-family: b nazanin;;
 }
 .tranPay, .tranDate, .tranDes, .tranCat{
 	line-height: 40px;
@@ -189,7 +189,8 @@ transition: all 0.4s ease-in-out;
 }
 
 #content .filter .criteria .caret{
-    float: left ;
+    position: absolute;
+    left: 10px;
 }
 
 #content .filter .criteria.time{
@@ -199,7 +200,8 @@ transition: all 0.4s ease-in-out;
 #content .filter .criteria.type{
 	float:left;
 	float: right;
-    margin: 5px 45px 0px 60px;
+    
+	margin: 5px 152px 0px 60px;
 }
 
 #content .filter .criteria.type .bar{
@@ -232,7 +234,7 @@ transition: all 0.4s ease-in-out;
 }
 
 #content .filter .refresh{
-    margin: 0px 45px 0px 15px;
+    margin: 0px -100px 0px 15px;
     float: left;
     width: 100px;
 }
@@ -240,7 +242,10 @@ transition: all 0.4s ease-in-out;
 /* --------------------- Detail ------------------------------ */
 
 #content .detail{
-	margin-top: 20px;
+    margin: 10px 0px 0px 0px;
+    font-family: b nazanin;;
+    font-size: 13px; 
+    color: #777;
 }
 
 #content .detail .tableWrapper{
@@ -254,4 +259,120 @@ transition: all 0.4s ease-in-out;
 	float: right;
 	width: 346px;
 	margin-right: 20px;
+}
+
+
+/* --------------------- Genral ------------------------------ */
+#general .chart{
+     width:370px;
+    display: inline-block;
+    float: left ;
+}
+
+#general .boxes{
+    float: right;
+    width: 270px;
+    display: inline-block;
+}
+
+#general .boxes .item{
+    background: #ffffff;
+    border: 1px solid #eee ;
+    border-radius: 5px;
+    margin: 0px 0px 43px 0px;
+}
+
+#general .boxes .item .head-item{
+    background: #B1ADF9;
+    border-radius: 5px 5px 0px 0px;
+    padding: 8px 10px;
+    font-family: b nazanin;;
+    font-size: 21px;
+    color: #274B6D;
+}
+#general .boxes .item .row-item{
+    font-family: b nazanin;;
+    font-size: 13px;
+    color: #4D759E;
+    padding: 10px 15px;
+}
+
+#general .boxes .item .row-item .title{
+    float: right;
+    color: #666;
+}
+
+#general .boxes .item .row-item .value{
+    float: left;
+}
+
+#general .boxes .item .row-item:not(:last-child){
+    border-bottom: 1px dotted #ccc;
+}
+
+#general .info .title-header{
+    font-family: b nazanin;;
+    font-size: 21px;
+    color: #333;
+    margin-bottom: 38px;
+}
+
+/* --------------------- Budget ------------------------------ */
+	#general .budget-info{
+    position: relative;
+    margin-top: -40px;
+}
+#general .budget-info .title{
+    position: absolute;
+    background: #B1ADF9;     border-radius: 5px 5px 0px 0px;     padding: 8px 10px;
+    font-family: b nazanin;;
+    font-size: 21px;     color: #274B6D;
+    
+    width: 246px;
+    border: 1px solid #ccc;
+    border-bottom: 0px;
+    margin-bottom: -1px;
+    top: -36px;
+}
+#general .budget-info .budget-container{
+    background: #fff;
+    border: 1px solid #ccc ;
+    border-radius: 7px 0px 5px 5px;
+    margin: 0px 0px 40px 0px;
+    width: 92%;
+    padding: 15px 17px;
+}
+
+#general .budget-info .remainBug:not(:last-child){
+    margin-bottom: 10px;
+    border-bottom: 1px dotted #ccc;
+}
+
+
+#general .budget-info .bugName{
+    font-family: b nazanin;;
+    font-size: 15px; color:  #4D759E; 
+    padding: 5px 0px 8px 15px;
+
+    float: right;
+    display: inline-block;
+}
+
+#general .budget-info .bug-detail{
+    float: left;
+
+    display: inline-block;
+    position: absolute;
+    left: 50px;
+    text-align: left;
+    margin-top: 5px;
+}
+
+#content .detail .extra h5{
+    font-size: 25px;
+}
+
+#content .detail .extra .total{
+    margin: 15px;
+    font-size: 23px;
 }

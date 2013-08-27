@@ -1,5 +1,7 @@
 {%extends 'base.html'%}
+{% load humanize %}
 {%block css%}
+
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/profile.css">
 {%endblock%}
 
@@ -47,11 +49,14 @@
 					<form method="post" action="/profile/edit/">
 						<input name= "formID" value="1" type="hidden">
 						<input type="text" class="inp" name="first_name">
-					<div class="save"></div>
+					<input type= "submit" value="تایید" class="btn btn-success edt">
+					<button class="btn btn-warning cancelEdit edt" >
+						انصراف
+					</button>
 					</form>
 
 				</div>
-				<div class="edit"></div>
+				<div class="icon-pencil edit"></div>
 			</div>
 			<div class="profRow">
 				<div class="infType">
@@ -61,14 +66,17 @@
 					{{user.last_name}}
 				</div>
 				<div class="newInp">
-					<form method="post" action="/profile/edit">
+					<form method="post" action="/profile/edit/">
 						<input name= "formID" value="2" type="hidden">
 						<input type="text" class="inp" name="last_name">
-					<div class="save" ></div>
+						<input type= "submit" value="تایید" class="btn btn-success edt">
+					<button class="btn btn-warning cancelEdit edt" >
+						انصراف
+					</button>
 					</form>
 
 				</div>
-				<div class="edit"></div>
+				<i class="icon-pencil edit"></i>
 			</div>
 			<div class="profRow">
 				<div class="infType">
@@ -79,14 +87,17 @@
 				</div>
 
 				<div class="newInp">
-					<form method="post" action="/profile/edit">
+					<form method="post" action="/profile/edit/">
 						<input name= "formID" value="3" type="hidden">
 						<input type="text" class="inp" name="email">
-						<div class="save"></div>
+						<input type= "submit" value="تایید" class="btn btn-success edt">
+					<button class="btn btn-warning cancelEdit edt" >
+						انصراف
+					</button>
 					</form>
 
 				</div>
-				<div class="edit"></div>
+				<div class="icon-pencil edit"></div>
 			</div>
 			{% if credit.isGolden%}
 			<div class="profRow">
@@ -153,7 +164,7 @@
 					{{p.plan_begin}}
 				</div>
 				<div class="tranPay">
-					{{p.plan_money}}
+					{{p.plan_money|intcomma}}
 				</div>
 				<div class="tranDes">
 					{%if p.isTamdid%}

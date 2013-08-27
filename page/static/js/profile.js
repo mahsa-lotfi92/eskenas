@@ -49,8 +49,13 @@ $(function() {
 		var row = $(this).parent();
 		var input = row.find('.newInp');
 		input.find('.inp').val("");
-		input.fadeIn("slow");
+		input.fadeIn("fast");
 		input.find('.inp').focus();
+	})
+	$('.cancelEdit').click(function(ev){
+		ev.preventDefault();
+		var row = $(this).parent().parent();
+		row.fadeOut("fast");
 	})
 
 	$('.passTable').submit(function(ev) {

@@ -6,15 +6,27 @@
 	transition: all 0.4s ease-in-out;
 }
 .noanim {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-  -ms-transition: none !important;
-  transition: none !important;
+	-webkit-transition: none !important;
+	-moz-transition: none !important;
+	-o-transition: none !important;
+	-ms-transition: none !important;
+	transition: none !important;
+}
+#calendar{
+	margin-bottom: 10px;
+	margin-left: -4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	
+}
+#calendar-icon {
+	width: 25px;
+	height: 22px;
+	background: url(../img/Calendar-icon-1.png) repeat;
 }
 .tranTable {
 	background: #FFF3DA;
-	font-family: tahoma;
+	font-family: b nazanin;
 	font-size: 13px;
 	border-radius: 10px;
 	margin-top: 20px;
@@ -23,10 +35,11 @@
 	height: 50px;
 	display: table-row;
 	padding-right: 30px;
+	font-size: 14px;
 }
 .tranRow.head {
 	font-size: 22px;
-	font-family: b yekan;
+	font-family: b nazanin;
 }
 .tranPay, .tranDate, .tranDes, .tranCat, .tranBA {
 	line-height: 40px;
@@ -40,6 +53,7 @@
 	border-bottom: 1px solid rgb(213, 203, 203);
 	border-bottom: 1px solid rgb(213, 203, 203);
 }
+
 .tranType.up {
 	background: url(../img/uarr.png) no-repeat 0 10px;
 }
@@ -56,10 +70,10 @@
 	width: 320px;
 }
 .tranCat {
-	width: 110px;
+	width: 160px;
 }
 .tranBA {
-	width: 160px;
+	width: 120px;
 }
 .barItem {
 	line-height: 40px;
@@ -152,6 +166,8 @@
 	width: 725px;
 	float: right;
 	padding: 20px;
+	min-height: 1000px;
+	padding-bottom: 200px;
 }
 #content {
 	overflow: hidden;
@@ -180,20 +196,20 @@ input#auto {
 	width: 31px;
 	background-image: url(../img/darr.png);
 }
-.selected{
+.selected {
 	background: rgb(200,200,200);
-	background-position:0px -15px;
+	background-position: 0px -15px;
 }
 #upOrDown .btn {
 	padding: 0px;
 }
 input#desc.auto {
-	width: 502px;
+	width: 512px;
 	margin-left: 50px;
 }
 input#desc {
 	width: 520px;
-	margin-left: 60px;
+	margin-left: 73px;
 }
 
 input.transaction {
@@ -226,7 +242,7 @@ h3 {
 }
 #catHead {
 	float: right;
-	width: 350px;
+	width: 328px;
 }
 #addCat {
 	float: right;
@@ -245,8 +261,8 @@ h3 {
 	cursor: pointer;
 }
 .TranER {
-	width: 130px;
-	float: left;
+    width: 35px;
+	margin-right: 0px;
 }
 
 .TRedit {
@@ -265,51 +281,244 @@ h3 {
 .tranDateEdit {
 	width: 80px;
 }
-.tranDesEdit {
-	width: 520px;
-	margin-left: 60px;
+#addTran{
+	margin-top: 25px;
 }
-.tranPayEdit, .tranDateEdit, .tranDesEdit, .tranTypeEdit, .tranCatEdit, .catEditList, .BAEditList {
+.tranDesEdit {
+	width: 420px;
+	margin-left: 40px;
+	margin-right: 10px;
+}
+.tranPayEdit, .tranDateEdit, .tranTypeEdit, .tranCatEdit, .catEditList, .BAEditList, #upOrDownEdit {
+	float: right;
+	margin-left: 10px;
 	margin-top: 10px;
 }
 #upOrDownEdit {
-	margin: 0px;
+	margin: 8px;
 	direction: ltr;
 }
 #upOrDownEdit .btn {
 	padding: 0px;
 }
 .btn-warning {
-	font-family: Tahoma;
+	font-family: b nazanin;
 	height: auto;
 }
 .editAction {
-	font-family: Tahoma;
+	font-family: b nazanin;
 	height: 23px;
 	text-align: center;
 	border-radius: 3px;
 }
-#catList {
-	width: 150px;
-}
-#BAList {
-	width: 150px;
-}
-.catEditList {
-	width: 140px;
-}
-.BAEditList {
-	width: 140px;
-}
+
+
 .edt {
 	display: none;
 }
 .edtCat {
 	margin-bottom: 10px;
 }
-#addTR-err{
+#addTR-err, #auto_addTR-err {
 	padding-bottom: 10px;
 	padding-right: 5px;
 	text-shadow: 0px 1px 0px #ddd;
 	color: #f00;
+	display: none;
+}
+#shado{
+	    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(237, 27, 36, 0.6);
+
+}
+
+#BAList {
+	width: 110px;
+	float: right;
+}
+#catList {
+	width: 150px;
+	float: right;
+}
+#two_level {
+	width: 150px;
+	height: 20px;
+	overflow: hidden;
+}
+#one_level {
+	width: 110px;
+	height: 20px;
+	overflow: hidden;
+}
+.TRedit #catList {
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+#catList > li {/* Top Level */
+	float: right;
+	margin-right: 3px;
+	position: relative;
+	width: 130px;
+	border-radius: 10px;
+}
+
+#catList > li > option {
+	display: block;
+	/* background:#0ac;*/
+	padding: 3px 10px;
+}
+
+#catList > li > ul {/* Second Level */
+	display: none;
+	width: 100px;
+	/*    background:#08a;*/
+}
+#catList > li:hover > ul {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 90%;
+}
+#catList > li > ul > li > option {
+	display: block;
+	padding: 3px 10px;
+	border-top: solid 1px #fff;
+	position: relative;
+}
+#catList > li > ul > li:hover > option {
+	background-color: rgb(0, 129, 194);
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+#catList > li > ul li > ul {/* Third Level & beyond */
+	display: none;
+	/*    background:#068;*/
+}
+#catList > li > ul li:hover > ul {
+	display: block;
+	position: absolute;
+	right: 100%;
+	border-right: solid 1px #fff;
+	top: 0;
+	width: auto;
+}
+#catList > li > ul > li ul > li {
+	display: block;
+	padding: 3px 10px;
+	border-top: solid 1px #fff;
+}
+#catList > li > ul > li ul > li:hover {
+	background-color: rgb(0, 129, 194);
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.TRedit #BAList {
+	margin-top: 10px;
+}
+
+#BAList > li {/* Top Level */
+	float: right;
+	margin-right: 3px;
+	position: relative;
+	width: 150px;
+	border-radius: 10px;
+}
+
+#BAList > li > option {
+	display: block;
+	/* background:#0ac;*/
+	padding: 3px 10px;
+}
+
+#BAList > li > ul {/* Second Level */
+	display: none;
+	width: 100px;
+	/*    background:#08a;*/
+}
+#BAList > li:hover > ul {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 90%;
+}
+#BAList > li > ul > li > option {
+	display: block;
+	padding: 3px 10px;
+	border-top: solid 1px #fff;
+	position: relative;
+	cursor: pointer;
+}
+#BAList > li > ul > li:hover > option {
+	background-color: rgb(0, 129, 194);
+	color: #FFFFFF;
+}
+a:link {
+	text-decoration: none;
+}
+
+
+ul.base-menu{
+    text-align: left;
+}
+
+#cat-account > * {
+    min-width: 110px;
+}
+
+#cat-menu > * {
+    min-width: 150px;
+}
+
+.cat-interval > * {
+    min-width: 110px;
+}
+
+
+.cat-account > * {
+    min-width: 110px;
+}
+
+.cat-menu > * {
+    min-width: 150px;
+}
+
+.edit-cat-menu, .edit-cat-account, .edit-cat{
+    margin: 10px 8px 7px 8px;
+}
+
+
+
+.filter-cat .caret{
+    position: absolute;
+    left: 10px;
+}
+
+
+.tranTZ{
+    width: 100px;
+    display: table-cell;
+}
+
+#addAutoTran input#desc{
+    width: 396px;
+    margin-left: 2px;
+}
+
+#addAutoTran .btn#addTranSubmit{
+    width: 138px;
+}
+
+
+.TRedit .tranDesEdit{
+    margin: 0px 8px 0px 0px;
+}
+
+.cat-interval.edit-cat{
+    margin-top:7px;
+}
+
+#addAutoTran{
+	margin-top: 25px;
 }

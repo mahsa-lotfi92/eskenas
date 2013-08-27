@@ -42,6 +42,7 @@ $(function() {
 		return false;
 
 	});
+	$('#forReg').delay(5000).fadeOut(400)
 	
 });
 

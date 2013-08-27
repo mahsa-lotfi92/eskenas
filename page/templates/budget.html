@@ -2,103 +2,221 @@
 {% load humanize %}
 {%block css%}
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/budget.css">
+<link rel="stylesheet" type="text/css" media="all" href="{{STATIC_URL}}css/jsDatePick_ltr.min.css" />
 {%endblock%}
 
 {%block js%}
 <script src="{{STATIC_URL}}js/budget.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/jsDatePick.jquery.min.1.3.js"></script>
 {%endblock%}
-
 
 {%block sidebar%}
+برای دسته‌های خود سقف مالی تعیین کنید.
+<br />
+<br />
+به کمک بودجه بندی در یک نگاه از وضعیت مخارج خود در دسته‌های مختلف با خبر شوید.
+<br />
 {%endblock%}
 
-
-
 {%block content%}
-			{%if myUser.isGolden%}
-			<form method="post" action="/budget/add/">
-				<div id="addBudget">
-			<div class="budgetPart">
-				<input name= "formID" value="1" type="hidden">
-				<input type="text" placeholder="مبلغ" name="limit" id="budgetLimit">
-			</div>
-			<div class="budgetPart">
-				<select name= "catList" id="catList">
-					{%for c in cats%}
-					<option class="catItem" value="{{c.id}}">{{c.name}}</option>
-					{%endfor%}
-				</select>
-			</div>
-			<div class="budgetPart">
-				<button class="btn btn-success">
-					<i class="icon-plus icon-white"></i> بودجه
-				</button>
-				
-			</div>
-			<div class="budgWar hide">
-				مبلغ نادرست
-				
-			</div>
+{%if myUser.isGolden%}
+<h1>بودجه‌بندی</h1>
+<form method="post" action="/budget/add/">
+	<div id="addBudget">
+		<div class="budgetPart">
+			<input name= "formID" value="1" type="hidden">
+			<input type="text" placeholder="مبلغ" name="limit" id="budgetLimit" class="budgetInp">
 		</div>
-		</form>
-		<div class="clearfix"></div>
-		{%for b in bugs%}
-		<div class="remainBug">
-			
-					<div class="bugName">
-						{{b.bugCat.name}}
-					</div><i class="icon-pencil edit"></i><i class="icon-remove remove"></i>
-					<form action='/budget/edit/' method="post" class= "edt forSub">
-					<input name= "id" value="{{b.id}}" type="hidden">
-					<input name= "new" type="text" placeholder="مبلغ جدید" class="limitEdit">
-					<input type="submit" value="تایید" class="btn btn-success edtSubmit">
-					<button class="btn btn-warning cancelEdit" >
-						انصراف
-					</button>
-			<div class="budgWar hide">
-			مبلغ نادرست
-			</div>
-			</form>
-			
-			
-			<form action='/budget/del/' method="post"  id="delete">
-					<input name= "id" value="{{b.id}}" type="hidden">
-			</form>
-				
-			
-			
-			</div>
-			<div class="clearfix"></div>
-			
-			{%if b.per >= 75%}
-			<div class="progress progress-danger">
+		<div class="budgetPart">
+			<input name= "formID" value="1" type="hidden">
+			<input type="text" placeholder="تاریخ شروع" name="start" id="startDate" class="budgetInp">
+		</div>
+		<div class="budgetPart">
+			<input name= "formID" value="1" type="hidden">
+			<input type="text" placeholder="تاریخ پایان" name="end" id="endDate"class="budgetInp">
+		</div>
+		<div id="catList">
+			<input name="catList" id="ctgrID" type="hidden" />
 
-			{%elif b.per >= 50 %}
-			<div class="progress progress-warning">
-			
-			{%elif b.per >= 25 %}
-			<div class="progress progress-success">
+            <div id = "cat-menu" class="btn-group filter-cat">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                دسته‌ها
+                <span class="caret"></span>
+              </a>
+                <ul class="base-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+
+                </ul>
+
+
+
+                <div class="hide hidden">
+                    <li><a tabindex="-1" href="#">Action</a></li>
+                </div>
+            </div>
+
+		</div>
+		<div class="budgetPart">
+			<button class="btn btn-success">
+				<i class="icon-plus icon-white"></i> بودجه
+			</button>
+
+		</div>
+		<div class="budgWar hide">
+
+		</div>
+	</div>
+</form>
+<div class="clearfix"></div>
+{%for b in bugs%}
+<div class="remainBug">
+
+	<i class="icon-pencil edit"></i><i class="icon-trash remove"></i>
+	<div class="bugName">
+		{{b.bugCat.name}}
+	</div>
+	<form action='/budget/edit/' method="post" class= "edt forSub">
+		<input name= "id" value="{{b.id}}" type="hidden">
+		<input name= "newLimit" type="text" placeholder="مبلغ جدید" class="limitEdit" id="pay" value={{b.limit}}>
+		<div class="startDiv">
+		<input name= "newStart" type="text" placeholder="شروع جدید" class="limitEdit dateEdit startMahya" id="startDateEdit-{{b.id}}" value="{{b.startDate|date:"Y-m-d"}}">
+		</div>
+		<div class="endDiv">
+		<input name= "newEnd" type="text" placeholder="پایان جدید" class="limitEdit dateEdit endMahya" id="endDateEdit-{{b.id}}" value="{{b.endDate|date:"Y-m-d"}}">
+		</div>
+		<input type="submit" value="تایید" class="btn btn-success edtSubmit">
+		<button class="btn btn-warning cancelEdit" >
+			انصراف
+		</button>
+		<div class="budgWar-edit hide">
+			مبلغ نادرست
+		</div>
+
+	</form>
+
+	<form action='/budget/del/' method="post"  id="delete">
+		<input name= "id" value="{{b.id}}" type="hidden">
+	</form>
+
+</div>
+<div class="clearfix"></div>
+
+{%if b.per >= 75%}
+<div class="progress progress-danger">
+
+	{%elif b.per >= 50 %}
+	<div class="progress progress-warning">
+
+		{%elif b.per >= 25 %}
+		<div class="progress progress-success">
 
 			{%else %}
 			<div class="progress progress-info">
 
-			{%endif%}
-			
-			 	<div class="bar" style="width: {{b.per}}%;"> {{b.cost|intcomma}} </div>
+				{%endif%}
+
+				<div class="bar" style="width: {{b.per}}%;"></div>
+
+				<span  data-toggle="tooltip" title="{{b.cost|intcomma}} تومان">{{b.per}}%</span>
 			</div>
-			{{b.limit|intcomma}}
-		<div class="clearfix"></div>
-		{%endfor%}
-		{%else%}
-		
-		<div class="advGold">
-			<h2> طلایی شوید</h2>
-			شما کاربر طلایی نیستید! طلایی شوید تا از امکان بودجه‌بندی دسته‌های مخارجی خود بهره‌مند شوید.
-			<br />
-			به کمک بودجه بندی سقف مخارج خود را مدیریت کرده و صرفه‌جویی کنید.
-		</div>
-		<div class="clearfix"></div>
-		<img id="budgetImg" src="/static/img/bugShow.png" />
-		{%endif%}
-		
-{%endblock%}
+
+			<div class="clearfix"></div>
+			<i class="icon-chevron-up forDes"> </i>
+
+			{%if b.per >= 75%}
+			<div class="des dan">
+
+				{%elif b.per >= 50 %}
+				<div class="des war">
+
+					{%elif b.per >= 25 %}
+					<div class="des suc">
+
+						{%else %}
+						<div class="des inf">
+
+							{%endif%}
+							سقف تایین شده:
+							{{b.limit|intcomma}}
+							تومان
+							<br />
+							{%if b.res >= 0%}
+							مبلغ باقی مانده تا  سقف تایین شده:
+							{{b.res|intcomma}}
+							تومان
+							<br />
+							از تاریخ 
+							{{b.startDate}}
+							تا تاریخ 
+							{{b.endDate}}
+							{%else%}
+							<div>
+								مبلغ
+								{{b.plusRes|intcomma}}
+								تومان بیش از حد تعیین شده
+							<br />
+							از تاریخ 
+							{{b.startDate}}
+							تا تاریخ 
+							{{b.endDate}}
+								<br />
+								<i class="icon-warning-sign"></i>
+							</div>
+							{%endif%}
+						</div>
+
+						<div class="clearfix"></div>
+
+						{%endfor%}
+
+     <script>
+window.data = {}
+window.data.cat = {}
+window.data.par = {}
+window.data.childCat = {}
+{%for c in cats%}
+    window.data.cat[{{c.id}}] = '{{c.name}}'
+    {%if  c.cat_set.all%}
+        window.data.childCat[{{c.id}}] = []
+        {% for b in c.cat_set.all %}
+        window.data.childCat[{{c.id}}].push({{b.id}})
+        window.data.par[{{b.id}}] = {{c.id}}
+        window.data.cat[{{b.id}}] = '{{b.name}}'
+        {%endfor%}
+    {%endif%}
+{%endfor%}
+
+
+$(function(){
+    console.log('salam')
+    for (var key in window.data.childCat){
+        console.log(key + ' '  +window.data.cat[key])
+        var base = $('#cat-menu .hide li').eq(0).clone()
+
+        base.find('a').html(window.data.cat[key])
+        base.data('name', window.data.cat[key]).data('id', key)
+        base.click(function(){
+                sID = $(this).data('id')
+                $('#ctgrID').val(sID)
+                $('#cat-menu a.btn').html($(this).data('name') + '<span class=\"caret\"></span>');
+            });
+        base.appendTo('#cat-menu ul.base-menu')
+        console.log('------------')
+    }
+
+});
+</script>
+						{%else%}
+
+						<div class="advGold">
+							<h2> طلایی شوید</h2>
+							شما کاربر طلایی نیستید! طلایی شوید تا از امکان بودجه‌بندی دسته‌های مخارجی خود بهره‌مند شوید.
+							<br />
+							به کمک بودجه بندی سقف مخارج خود را مدیریت کرده و صرفه‌جویی کنید.
+						</div>
+						<div class="clearfix"></div>
+						<img id="budgetImg" src="/static/img/bugShow.png" />
+						{%endif%}
+
+
+
+						{%endblock%}

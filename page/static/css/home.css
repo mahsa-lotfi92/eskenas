@@ -1,186 +1,186 @@
+
 .anim {
-	-webkit-transition: all 0.4s ease-in-out;
-	-moz-transition: all 0.4s ease-in-out;
-	-ms-transition: all 0.4s ease-in-out;
-	-o-transition: all 0.4s ease-in-out;
-	transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out 0s;
 }
 .profTable {
-	background: #FFF3DA;
-	font-family: tahoma;
-	font-size: 13px;
-	border-radius: 10px;
+    background: none repeat scroll 0 0 #FFF3DA;
+    border-radius: 10px 10px 10px 10px;
+    font-family: b nazanin;
+    font-size: 13px;
 }
 .home {
-	background: rgb(253, 255, 176);
-	float: top;
-	min-height: 500px;
-	border-radius: 5px;
-	padding: 20px;
-	padding-bottom: 100px;
+    background: none repeat scroll 0 0 #FDFFB0;
+    border-radius: 5px 5px 5px 5px;
+    min-height: 500px;
+    padding: 20px 20px 100px;
 }
 .message-box {
-	background: #FFF3DA;
-	width: 260px;
-	height: 180px;
-	float: right;
-	margin: 15px 25px;
-	border-radius: 8px;
-	display: none;
+    background: none repeat scroll 0 0 #FFF3DA;
+    border-radius: 8px 8px 8px 8px;
+    display: none;
+    float: right;
+    height: 180px;
+    margin: 15px 25px;
+    width: 260px;
 }
 .warning {
-	font-size: 26px;
-	font-family: b yekan;
-	width: 220px;
-	border-bottom: 2px solid rgb(213, 203, 203);
-	height: 30px;
-	margin: 20px 23px;
-	display: none;
+    border-bottom: 2px solid #D5CBCB;
+    display: none;
+    font-family: b nazanin;
+    font-size: 26px;
+    height: 30px;
+    margin: 20px 23px;
+    width: 220px;
 }
 .message {
-	width: 250px;
-	height: 100px;
-	margin: 20px 30px;
+    height: 100px;
+    margin: 20px 30px;
+    width: 250px;
 }
 .textBox {
-	height: 200px;
-	width: 700px;
+    height: 200px;
+    width: 700px;
 }
 .head {
-	font-size: 40px;
-	font-family: phalls tannaz;
-	padding: 15px 30px;
-	width: 500px;
+    font-family: phalls tannaz;
+    font-size: 40px;
+    padding: 15px 30px;
+    width: 500px;
 }
-
 #contact {
-	width: 40%;
-	box-shadow: 2px 2px 5px #666;
-	border: 1px solid #999;
-	padding: 8px;
-	/*	margin: 0 auto;*/
+    border: 1px solid #999999;
+    box-shadow: 2px 2px 5px #666666;
+    padding: 8px;
+    width: 40%;
 }
 .rrow {
-	padding: 5px;
+    padding: 5px;
 }
 .rrow label {
-	width: 100px;
-	display: inline-block;
+    display: inline-block;
+    width: 100px;
 }
 #menu {
-	height: 49px;
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 49px;
 }
-
 .home_menuItem a {
-	display: block;
-	padding: 10px 10px 10px 10px;
-	width: 40px;
-	line-height: 13px;
-	text-align: center;
-	float: left;
-	color: black;
-	font-family: tahoma;
-	font-size: 13px;
-	margin: 7px;
+    color: #000000;
+    display: block;
+    float: left;
+    font-family: b nazanin;
+    font-size: 13px;
+    line-height: 13px;
+    margin: 7px;
+    padding: 10px;
+    text-align: center;
+    width: 40px;
 }
 .passIn {
-	float: right;
-	margin-top: 22px;
-	width: 180px;
+    float: right;
+    margin-top: 22px;
+    width: 180px;
 }
-
 .pass {
-	margin-top: 25px;
-	margin-right: 45px;
-	margin-left: 10PX;
-	float: right;
-	width: 100px;
-	font-size: 13px;
+    float: right;
+    font-size: 13px;
+    margin-left: 10px;
+    margin-right: 45px;
+    margin-top: 25px;
+    width: 100px;
 }
 .passRow {
-	height: 60px;
-	border-top-width: 2px;
-	width: 100%;
-	float: right;
+    border-top-width: 2px;
+    float: right;
+    height: 60px;
+    width: 100%;
 }
 .errRow {
-	height: 30px;
-	width: 390px;
-	margin-left: 5px;
-	margin-right: 5px;
-	float: right;
+    float: right;
+    height: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 390px;
 }
 #line {
-	height: 10px;
-	background: rgb(253, 255, 176);
-	float: top;
+    background: none repeat scroll 0 0 #FDFFB0;
+    height: 10px;
 }
 .menuItem {
-	width: 120px;
-	float: right;
-	text-align: center;
-	line-height: 50px;
+    float: right;
+    line-height: 50px;
+    text-align: center;
+    width: 120px;
 }
 .menuItem.active {
-	background: rgb(253, 255, 176);
-	
+    background: none repeat scroll 0 0 #FDFFB0;
 }
 .menuItem:hover {
-	font-weight: bold;
-	cursor: pointer;
-
+    cursor: pointer;
+    font-weight: bold;
 }
 .menuItem.active:hover {
-	background: rgb(253, 255, 176);
-	font-weight: normal;
+    background: none repeat scroll 0 0 #FDFFB0;
+    font-weight: normal;
 }
 .error {
-text-shadow: 0px 1px 0px #ddd;
-width: 200px;
-float: right;
-margin: 15px 51px 0px 0px;
-color: #f00;
-display: none;
+    color: #FF0000;
+    display: none;
+    float: right;
+    margin: 15px 51px 0 0;
+    text-shadow: 0 1px 0 #DDDDDD;
+    width: 200px;
 }
-.setOpacity{
-	opacity: 0.5;
+.setOpacity {
+    opacity: 0.5;
 }
-.show{
-	display: block !important;
+.show {
+    display: block !important;
 }
-.adv{
-	height: 120px;
-	margin: 5px 0 0 0;
-	border-radius: 5px;
-	padding: 20px;
+.adv {
+    border-radius: 5px 5px 5px 5px;
+    height: 120px;
+    margin: 5px 0 0;
+    padding: 20px;
 }
-.advImg{
-	width: 30%;
-	height: 100%
+.advImg {
+    height: 100%;
+    width: 30%;
 }
-.advText{
-	width: 68%;
-	height: 100%;
-	line-height: 25px;
-	padding: 0 10px 0 0;
+#home .advText {
+    height: 100%;
+    line-height: 25px;
+    padding: 0 10px 0 0;
+    width: 68%;
 }
-.right{
-	float: right;
+.right {
+    float: right;
+    margin-right: 25px;
 }
-.left{
-	float: left;
+.left {
+    float: left;
+    margin-left: 25px;
 }
-.topic{
-	font-size: 20px;
-	font-weight: bold;
-	font-family: Tahoma;
+.topic {
+    font-family: b nazanin;
+    font-size: 20px;
+    font-weight: bold;
 }
-.exit{
-	float: left;
+.exit {
+    float: left;
 }
-.verify{
-	float: left;
-	margin-left: 70px;
+.verify {
+    float: left;
+    margin-left: 70px;
+}
+.successReg {
+    background: none repeat scroll 0 0 #DEFFAE;
+    display: none;
+    height: 25px;
+    margin-right: 355px;
+    width: 220px;
+}
+#forReg {
+    padding: 20px;
 }

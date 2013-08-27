@@ -81,7 +81,7 @@
 			<div class="pass">
 				نام کاربری
 			</div>
-			<input type="text"  class="passIn" name="username">
+			<input type="text"  class="passIn" name="username" autofocus="autofocus" >
 		</div>
 		<div class="passRow">
 			<div class="pass">
@@ -101,6 +101,13 @@
 
 	<div id="main" class="{%if error%}setOpacity{%endif%}">
 		<div id="header">
+			
+			<div id="forReg">
+			<div class="alert alert-block alert-success  successReg" {%if success%}Style="display: block"{%endif%}>
+			<a class="close" data-dismiss="alert" href="#">&times;</a>
+			ثبت نام با موفقیت انجام شد.
+			</div>
+			</div>
 		</div>
 		<div id="menu">
 			<div class="menuItem active">
@@ -118,7 +125,7 @@
 			<div class="clearfix"></div>
 
 		</div>
-		<div class="home">
+		<div id = "#home" class="home">
 			<div class="adv">
 				<div class="advImg right">
 					<img src="/static/img/tran.png" />

@@ -1,18 +1,23 @@
-#sidebar {
-	width: 180px;
-	height: 100px;
+#sidebar{
+	padding: 10px;
+	width: 160px;
 }
 #addBudget {
 	width: 680px;
-	height: 100px;
-	padding-right: 50px;
+	height: 150px;
 }
 .budgetPart {
-	width: 224px;
+	width: 117px;
 	height: 50px;
 	float: right;
 	margin: 1px;
-	text-align: center;
+	padding: 63px 0 0 0;
+}
+#catList{
+	width: 200px;
+	height: 50px;
+	float: right;
+	margin: 1px;
 	padding: 63px 0 0 0;
 }
 #cat > a{
@@ -23,15 +28,19 @@
 }
 .remainBug {
 	text-align: right;
-	padding: 15px;
-	margin-top: 70px;
-	height: 40px;
+	margin: 30px 0px 5px 0px;
+	height: 55px;
+}
+#sidebar{
+	text-align: justify;
 }
 .bugName {
 	text-align: right;
 	font-size: 20px;
-	width: 177px;
 	float: right;
+	margin-right: 15px;
+	line-height: 10px;
+	margin-top: 10px;
 }
 .progress {
 	margin-bottom: 0px;
@@ -47,6 +56,7 @@ padding: 5px;
 	margin: 0;
 	float: right;
 	margin-right: 20px;
+	line-height: 10px;
 }
 .advGold{
 	height: 120px;
@@ -63,7 +73,12 @@ padding: 5px;
 
 .budgWar{
 	color: rgb(202, 1, 1);
-	margin-right: 10px;
+	float: left;
+}
+.budgWar-edit{
+	color: rgb(202, 1, 1);
+	float: left;
+	padding-bottom: 5px;
 }
 .forSub{
 	width: 100%;
@@ -79,4 +94,117 @@ padding: 5px;
 }
 i{
 	float: right;
+}
+.progress {
+    position: relative;
+}
+
+.bar{
+	color: white;
+}
+span {
+    position: absolute;
+/*    z-index: 1;*/
+    color: black;
+    text-align: center;
+    width: 100%;
+}
+.des{
+	float: left;
+	height: 80px;
+	width: 50%;
+	background: #d9edf7;
+	left: 50%;
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+	line-height: 25px;
+}
+.edit, .remove{
+	margin-top: 10px;
+}
+.dan{
+	background: #F3A9A6;
+}
+.war{
+	background: #FFF18B;
+}
+.suc{
+	background: rgb(190, 233, 170);
+}
+.inf{
+	background: #D0D9E4;
+}
+.forDes{
+	margin-right: 50%;
+}
+
+#one_level {
+	width:120px;
+	height: 20px;
+	overflow: hidden;
+}
+#catList > li {/* Top Level */
+	float: right;
+	margin-right: 3px;
+	position: relative;
+	width: 120px;
+	border-radius: 10px;
+}
+
+#catList > li > option {
+	display: block;
+	/* background:#0ac;*/
+	padding: 3px 10px;
+}
+
+#catList > li > ul {/* Second Level */
+	display: none;
+	width: 100px;
+	/*    background:#08a;*/
+}
+#catList > li:hover > ul {
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 90%;
+}
+#catList > li > ul > li > option {
+	display: block;
+	padding: 3px 10px;
+	border-top: solid 1px #fff;
+	position: relative;
+}
+#catList > li > ul > li:hover > option {
+	background-color: rgb(0, 129, 194);
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+#cat-menu > * {
+    min-width: 150px;
+}
+
+.filter-cat .caret{
+    position: absolute;
+    left: 10px;
+}
+
+
+
+.progress:hover{
+-moz-box-shadow: 1px 1px 1px #777;
+ -webkit-box-shadow: 1px 1px 1px #777;
+ box-shadow: 1px 1px 1px #777;
+}
+.budgetInp{
+	width: 100px;
+}
+.limitEdit{
+	width: 112px;
+}
+.startDiv, .endDiv{
+	float: right;
+	height: 40px;
+	width: 147px;
 }

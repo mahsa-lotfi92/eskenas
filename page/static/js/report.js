@@ -4,8 +4,7 @@ window.report = {} ;
 
 
 $(function () {
-	
-    	// Radialize the colors
+	    // Radialize the colors
 		Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
 		    return {
 		        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
@@ -15,120 +14,113 @@ $(function () {
 		        ]
 		    };
 		});
-	
-		// Build the chart
-        $('#income .chart-container').highcharts({
+
+        // Build the chart
+        $('#general .chart-container').highcharts({
             chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
+                type: 'column',
+                width: 350,
+                height: 350,
+                borderColor: '#ccc',
+                borderWidth: 1
+            },
+            title: {
+                text: 'وضعیت مالی',
+                style: {
+                    fontSize: '20px'
+                }
+            },
+            subtitle: {
+                text: 'مجموع درآمد و هزینه کلی شما'
             },
             tooltip: {
                 pointFormat: '{series.name}: <b>{point.percentage}%</b>',
                 percentageDecimals: 1,
+                useHTML: true,
                 formatter: function() {
-                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2); +' %';
+                    var ret = this.key + ': <b>' + Highcharts.numberFormat(this.y, 0) + '</b>'
+                    return ret
+                },
+                style: {
+                    direction: 'rtl',
+                    fontSize: '12px'
                 }
             },
             plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                        },
-                        style:
-                        {
-                            direction: "rtl",
-                            fontSize: "16px"
-                        }
-                    }
-                }
-            }
-        });
-
-
-
-   	 	$('#spending .chart-container').highcharts({
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage}%</b>',
-                percentageDecimals: 1,
-                formatter: function() {
-                    return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2); +' %';
+                series: {
+                    colorByPoint: true,
+                    cursor: 'cursor',
+                    borderRadiusTopLeft: 10,
+                    borderRadiusTopRight: 10
+                },
+                style:
+                {
+                    direction: "rtl",
+                    fontSize: "16px"
                 }
             },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        formatter: function() {
-                            return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                        },
-                        style:
-                        {
-                            direction: "rtl",
-                            fontSize: "16px"
-                        }
+            xAxis: {
+                categories: [
+                    'درآمد',
+                    'هزینه'
+                ],
+                labels: {
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
                     }
                 }
-            }
+            },
+            yAxis: {
+                title: {
+                    text: null
+                }
+            },
+            series: [{
+                data: [window.data.total['درآمد'], window.data.total['هزینه']],
+                showInLegend: false
+            }],
+            colors: [
+                'green',
+                'red'
+            ]
         });
 
+        $('#income .chart-container').highcharts({ });
 
-
+   	 	$('#spending .chart-container').highcharts({ });
 
         $('#monthly .chart-container').highcharts({
             chart: {
                 type: 'column'
             },
             title: {
-                text: null
+                text: 'گزارش زمانی',
+                style: {
+                    fontSize: '20px'
+                }
             },
             subtitle: {
-                text: null
-            },
-            xAxis: {
-                categories: [
-                    'فروردین',
-                    'اردیبهشت',
-                    'خرداد',
-                    'تیر',
-                    'مرداد',
-                    'شهریور',
-                    'مهر',
-                    'آبان',
-                    'آذر',
-                    'دی',
-                    'بهمن',
-                    'اسفند'
-                ]
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: null
-                }
+                text: 'درآمد و هزینه به تفکیک زمانی'
             },
             tooltip: {
                 headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
                 pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                    '<td style="padding:0"><b>{point.y}</b></td></tr>',
                 footerFormat: '</table>',
                 shared: true,
                 useHTML: true
+            },
+            legend: {
+                useHTML: true,
+                style: {
+                    direction: 'rtl'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: null
+                }
             },
             plotOptions: {
                 column: {
@@ -140,29 +132,20 @@ $(function () {
                     direction: "rtl",
                     fontSize: "16px"
                 }
-            },
-            series: [{
-                name: 'درآمد',
-                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-
-            }, {
-                name: 'هزینه',
-                data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
-
-            }]
+            }
         });
 
 
 
+        $('#general .boxes .current .value').eq(0).html(window.helper.format_with_tousand_seperator(window.data.current['درآمد'])+' تومان')
+        $('#general .boxes .current .value').eq(1).html(window.helper.format_with_tousand_seperator(window.data.current['هزینه'])+' تومان')
+
+        $('#general .boxes .average .value').eq(0).html(window.helper.format_with_tousand_seperator(window.data.avg['درآمد'])+' تومان')
+        $('#general .boxes .average .value').eq(1).html(window.helper.format_with_tousand_seperator(window.data.avg['هزینه'])+' تومان')
     });
 
 
 $(function () {
-//	$ ('#inCon').css('margin-right', -790 )
-//	$ ('.barItem').removeClass('active')
-//	$('#sidebar .barItem').eq(1).addClass('active')
-//	window.report.core.refresh();
-
 	$('#sidebar .barItem').eq(0).click(function(ev) {
 		ev.preventDefault()
 
@@ -249,9 +232,19 @@ window.report.core = (function () {
 	var filter
 	var chartData, sortable, total, tabIndex;
     var title = ['', 'درآمد', 'هزینه', 'زمانی']
-	
+
+    function loadTrans(data){
+        console.log('salam')
+        console.log(data)
+    }
+
 	function refresh(){
-		window.report.ui.beginLoading() ;
+        var tmp = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': tabIndex==1, 'category': 1} ;
+        console.log(tmp);
+		//---------------
+		$.post('/ajax/transaction_report/', tmp, loadTrans);
+
+        window.report.ui.beginLoading() ;
 		//---------------
 		var additionalData = {'startDate': filter.getStartDate(), 'endDate': filter.getEndDate(), 'account': filter.getAccount(), 'isIncome': tabIndex==1, 'type': (tabIndex==3?'time':'category')} ;
         console.log(additionalData);
@@ -278,7 +271,7 @@ window.report.core = (function () {
 			
 			//---------------
 			window.report.ui.loadChart(chartData, window.report.filter.getType(), title[tabIndex], tabIndex) ;
-			window.report.ui.loadDetail(sortable, total) ;
+			window.report.ui.loadDetail(sortable, total, tabIndex) ;
 		}else{
 			//TODO show error
 			console.log(data);
@@ -288,6 +281,8 @@ window.report.core = (function () {
 	return {
 		//Public 
 		initialize: function(tabindex){
+
+
             tabIndex = tabindex ;
             //--------------------
             var base = null ;
@@ -297,9 +292,17 @@ window.report.core = (function () {
                 base = $("#spending")
             else if (tabIndex == 3)
                 base = $("#monthly")
+
             //------------------
             window.report.ui.initialize(base, window.data.accounts);
 			window.report.filter.initialize(base);
+
+
+            base.find('.filter .account button').html('تمام حساب‌ها'+'<span class=\"caret\"></span>')
+            base.find('.filter .criteria.time button').html('هفته گذشته'+'<span class=\"caret\"></span>')
+            base.find('.filter .criteria .pie').addClass('inactive').removeClass('active')
+            base.find('.filter .criteria .bar').removeClass('inactive').addClass('active')
+
             filter = window.report.filter ;
             //------------------
             isIncome = (tabIndex == 1) ;
@@ -317,18 +320,37 @@ window.report.core = (function () {
 window.report.ui = (function () {
     var base ;
 	//Private
-	function loadDetail(data, total){
-		for(var i = 0 ; i < 4 ; i++){
-			if (i < data.length){
-				base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
-				base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(data[i][1]);
-			}else{
-				base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
-				base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html('');
-			}
-		}
-		base.find('.detail .total').eq(0).html(total)
-		base.find('.detail .total').eq(1).html(data[0][0])
+	function loadDetail(data, total, tabIndex){
+        if (tabIndex == 3){
+            total = {}
+            for(var key = 0 ; key < 2 ; key++){
+                total[key] = 0 ;
+                for(var time in data[key][1]){
+                    total[key] += data[key][1][time] ;
+                }
+                base.find('.detail .tranRow').eq(key+1).find(' .tranCat').html('مجموع ' + data[key][0]);
+                base.find('.detail .tranRow').eq(key+1).find(' .tranPay').html(window.helper.format_with_tousand_seperator(total[key]));
+            }
+            base.find('.detail .total').eq(0).html(window.helper.format_with_tousand_seperator(total[1] - total[0])+' تومان')
+        }else{
+            for(var i = 0 ; i < 4 ; i++){
+                if (i < data.length){
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(window.helper.format_with_tousand_seperator(data[i][1]));
+                }else{
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html('');
+                }
+            }
+            var m = window.helper.format_with_tousand_seperator(total)
+            console.log(m)
+            console.log(total)
+            base.find('.detail .total').eq(0).html(m + ' تومان')
+            if (data.length > 0){
+                base.find('.detai   l .total').eq(1).html('- ' + data[0][0])
+            }
+
+        }
 	}
 	
 	function loadChart(data, type, name, tabIndex){
@@ -347,12 +369,86 @@ window.report.ui = (function () {
                 arr.push([cat, data[cat]])
                 category.push(cat)
             }
-
+            console.log(type);
             var  variable =   [{
                 type: type,
                 name: name,
-                data: arr
+                data: arr,
+                showInLegend: false
             }];
+
+
+            chart.destroy();
+
+            base.find('.chart-container').each(function(){
+                var chartOptions = {
+                    chart: {
+                        renderTo: this,
+                        type: 'bar'
+                    },
+                    title: {
+                        text: name,
+                        style: {
+                            fontSize: '20px'
+                        }
+                    },
+                    subtitle: {
+                        text: 'به تفکیک دسته بندی'
+                    },
+                    xAxis: {
+                        categories: category,
+                        labels: {
+                            useHTML: true,
+                            style: {
+                                color: '#444',
+                                direction: 'rtl'
+                            }
+                        }
+                    },
+                    yAxis: {
+                        title: null
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+                        percentageDecimals: 1,
+                        useHTML: true,
+                        formatter: function() {
+                            var ret = this.point.name + ': <b>' + Highcharts.numberFormat(this.y, 0) + '</b>'
+                            return ret
+                        },
+                        style: {
+                            direction: 'rtl',
+                            fontSize: '12px'
+                        }
+                    },
+                    plotOptions: {
+                        series: {
+                            cursor: 'cursor',
+                            borderRadiusTopLeft: 10,
+                            borderRadiusTopRight: 10
+                        },
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'cursor',
+                            dataLabels: {
+                                useHTML: true,
+                                enabled: true,
+                                color: '#000000',
+                                connectorColor: '#000000',
+                                formatter: function() {
+                                    return this.point.name +': <b>'+ Highcharts.numberFormat(this.percentage, 1) +'%<b>';
+                                },
+                                style:
+                                {
+                                    direction: "rtl"
+                                }
+                            }
+                        }
+                    }
+                };
+                chart = new Highcharts.Chart(chartOptions);
+            });
+
             for(var i in variable) {
                 console.log(variable[i])
                 chart.addSeries(variable[i], false);
@@ -367,6 +463,11 @@ window.report.ui = (function () {
                  //---------------------------------
 
                 tmpDates.sort(function(a, b) {return a - b})
+                var all = days_between(new Date(Math.floor(tmpDates[0])), new Date(Math.floor(tmpDates[tmpDates.length-1])))
+                console.log('--------------------')
+                console.log(all)
+
+
                 for(var i = 0; i < tmpDates.length ; i++){
                     var cat = tmpDates[i]
                     var d = new Date(Math.floor(cat))
@@ -374,12 +475,35 @@ window.report.ui = (function () {
                     var curr_month = d.getMonth() + 1; //Months are zero based
                     var curr_year = d.getFullYear();
                     //-------------------------------------------------
+                    var monthNames = [ "January", "February", "March", "April", "May", "June",
+                                        "July", "August", "September", "October", "November", "December" ];
+                    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+                    var mmm = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
                     var tmp = curr_date + "-" + curr_month + "-" + curr_year
-                    if (Object.keys(data[up]).length > 10)
+                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+
+                    if (all == 1 || all > 30 * (12 + 6)){
+                        tmp = curr_year
+                        tmp2 = curr_year
+                    }else if (all <= 7){
+                        tmp = days[d.getDay()]
+                        tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+                    }
+                    else if (all <= 31){
                         tmp = curr_date
+                        tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+                    }else if (all <= 6 * 31 + 10){
+                        tmp = monthNames[curr_month-1]
+                        tmp2 =curr_month + "-" + curr_year
+                    }else{
+                        tmp = mmm[curr_month-1]
+                        tmp2 =curr_month + "-" + curr_year
+                    }
+
                     category.push(tmp);
                     //----------------------------------------------
-                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+//                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
                     arr.push([tmp2, data[up][cat]])
                 }
                  //---------------------------------
@@ -388,6 +512,7 @@ window.report.ui = (function () {
                     name: up,
                     data: arr
                 }];
+
 
                 for(var i in variable) {
                     console.log(variable[i])
@@ -398,6 +523,11 @@ window.report.ui = (function () {
         }
 		chart.redraw(); 
 	}
+
+    function days_between(firstDate, secondDate){
+        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
+    }
 
     function setAccount(accounts){
         var list = base.find('.filter .account .dropdown-menu')
@@ -442,9 +572,10 @@ window.report.ui = (function () {
         var times = [] ;
         times[0] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 0, 7), 'name' : 'هفته‌ گذشته'};
         times[1] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 1, 0), 'name' : 'ماه‌ گذشته'};
-        times[2] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(1, 0, 0), 'name' : 'سال گذشته'};
-        times[3] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(10, 0, 0), 'name' : 'تمام ادوار'};
-        times[4] = {'eDate' : null, 'sDate' : null, 'name': 'بازه‌ دلخواه'};
+        times[2] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(0, 6, 0), 'name' : '۶ ماه‌ گذشته'};
+        times[3] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(1, 0, 0), 'name' : 'سال گذشته'};
+        times[4] = {'eDate' : getBefore(0, 0, 0), 'sDate' : getBefore(10, 0, 0), 'name' : 'تمام ادوار'};
+
 
         var list = base.find('.filter .time .dropdown-menu')
         list.html('')
@@ -457,7 +588,7 @@ window.report.ui = (function () {
             item.appendTo(list) ;
         }
 
-        $('.filter .time .dropdown-menu li:not(:last-child)').click(function(event){
+        $('.filter .time .dropdown-menu li').click(function(event){
             var dict = $(this).data('date') ;
             window.report.filter.setTime(dict['sDate'], dict['eDate']);
             base.find('.filter .time .btn').html(dict['name'] + '<span class=\"caret\"></span></button>');
@@ -495,4 +626,69 @@ window.report.ui = (function () {
         }
 	};
 })();
+
+
+
+
+
+
+
+/**
+ * Highcharts plugin for creating individual rounded borders.
+ *
+ * Author: Torstein Hønsi
+ * Last revision: 2013-05-06
+ * License: MIT License
+ *
+ * Known issues:
+ * - Animation isn't working. To overcome that, create a method on the Renderer which points
+ *   to a symbol definition, like it is currently done with "arc" in PieSeries.
+ * - Dom exception on showing/hiding the series
+ */
+(function (H) {
+    H.wrap(H.seriesTypes.column.prototype, 'translate', function (proceed) {
+        var options = this.options,
+            rTopLeft = options.borderRadiusTopLeft || 0,
+            rTopRight = options.borderRadiusTopRight || 0,
+            rBottomRight = options.borderRadiusBottomRight || 0,
+            rBottomLeft = options.borderRadiusBottomLeft || 0;
+
+        proceed.call(this);
+
+        if (rTopLeft || rTopRight || rBottomRight || rBottomLeft) {
+            H.each(this.points, function (point) {
+                var shapeArgs = point.shapeArgs,
+                    w = shapeArgs.width,
+                    h = shapeArgs.height,
+                    x = shapeArgs.x,
+                    y = shapeArgs.y;
+                point.shapeType = 'path';
+                point.shapeArgs = [
+                    'M', x + rTopLeft, y,
+                    // top side
+                    'L', x + w - rTopRight, y,
+                    // top right corner
+                    'C', x + w - rTopRight / 2, y, x + w, y + rTopRight / 2, x + w, y + rTopRight,
+                    // right side
+                    'L', x + w, y + h - rBottomRight,
+                    // bottom right corner
+                    'C', x + w, y + h - rBottomRight / 2, x + w - rBottomRight / 2, y + h, x + w - rBottomRight, y + h,
+                    // bottom side
+                    'L', x + rBottomLeft, y + h,
+                    // bottom left corner
+                    'C', x + rBottomLeft / 2, y + h, x, y + h - rBottomLeft / 2, x, y + h - rBottomLeft,
+                    // left side
+                    'L', x, y + rTopLeft,
+                    // top left corner
+                    'C', x, y + rTopLeft / 2, x + rTopLeft / 2, y, x + rTopLeft, y,
+                    'Z'
+                ];
+
+            });
+        }
+    });
+}(Highcharts));
+// End of plugin
+
+
 
