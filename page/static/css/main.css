@@ -44,6 +44,33 @@ button.btn {
 	/*font-family: b nazanin;*/
 	/*font-size: 14px;*/
 }
+.barItem {
+	line-height: 40px;
+	color: black;
+	border-bottom: 1px solid #FFE594;
+}
+.barItem a {
+	display: block;
+	text-decoration: none;
+	color: black;
+	padding: 0px 10px 0px 0px;
+}
+.barItem a:hover {
+	background: #FFD996;
+	color: rgb(29, 29, 148);
+}
+.barItem:first-child{
+	border-top: none;
+}
+.barItem.active {
+	/* background: #FFD44D; */
+	font-weight: bold;
+
+	font-size: 16px;
+}
+.barItem.active a{
+    color: #C02626;
+}
 #main {
 	margin: 0 auto;
 	width: 960px;

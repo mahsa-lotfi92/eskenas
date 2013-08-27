@@ -49,40 +49,6 @@ transition: all 0.4s ease-in-out;
 .tranCat{
 	width: 160px;
 }
-.lastBarItem a{
-	display: block;
-	text-decoration: none;
-	color: black;
-	padding: 0px 10px 0px 0px;
-}
-.lastBarItem{
-	line-height: 28px;
-	color: black;
-}
-.barItem{
-	line-height: 28px;
-	color: black;
-	border-bottom: 1px solid rgb(213, 213, 213);
-}
-.barItem a{
-	display: block;
-	text-decoration: none;
-	color: black;
-	padding: 0px 10px 0px 0px;
-}
-.barItem a:hover{
-	background: rgb(207, 207, 207);
-	color: rgb(29, 29, 148);
-}
-.lastBarItem a:hover{
-	background: rgb(207, 207, 207);
-	font-weight: normal;
-	color: rgb(29, 29, 148);
-}
-.barItem.active{
-	background: rgb(191, 191, 245);
-}
-
 
 .cat-table{
 	/*box-shadow: 5px 5px 10px #888;*/
