@@ -8,13 +8,13 @@ $(function() {
 				k++;
 			}
 		}
-		if($("#budgetLimit").val()=="" || $("#budgetLimit").val()==0){
-				ev.preventDefault()
+		if ($("#budgetLimit").val() == "" || $("#budgetLimit").val() == 0) {
+			ev.preventDefault()
 			$('.budgWar').hide()
 			$('.budgWar').text("مبلغ را وارد کنید.")
 			$('.budgWar').eq(0).show()
 			return false
-			
+
 		}
 		if (k != s.length || s.length == 0) {
 			ev.preventDefault()
@@ -40,6 +40,18 @@ $(function() {
 			return false
 
 		}
+
+		var d1 = new Date($('#startDate').val());
+		var d2 = new Date($('#endDate').val());
+
+		if (d1 > d2) {
+			ev.preventDefault()
+			$('.budgWar').hide()
+			$('.budgWar').text("تاریخ شروع از تاریخ پایان بزرگتر است.")
+			$('.budgWar').eq(0).show()
+			return false
+		}
+
 		if ($("#ctgrID").val() == "") {
 			ev.preventDefault()
 			$('.budgWar').hide()
