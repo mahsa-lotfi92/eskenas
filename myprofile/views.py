@@ -115,7 +115,7 @@ def ertegha(request):
     uc.isGolden = True
     uc.credit = up.plan_end
     uc.save()
-    return redirect('/profile/')    
+    return  render(request, 'profile.html', {'success':'1'})     
 
 def tamdid(request):
     if not request.user.is_authenticated():
@@ -139,6 +139,6 @@ def tamdid(request):
     uc.credit = up.plan_end
     uc.save()
     
-    return redirect('/profile/')    
+    return  render(request, 'profile.html', {'success':'1'})  
 
         

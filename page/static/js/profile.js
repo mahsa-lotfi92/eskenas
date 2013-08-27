@@ -75,4 +75,5 @@ $(function() {
 		$('.barItem').removeClass('active');
 		$('#sidebar .barItem').eq(2).addClass('active');
 	})
+	$('#forReg').delay(5000).fadeOut(400)
 })

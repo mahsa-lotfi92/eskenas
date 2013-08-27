@@ -181,3 +181,7 @@ display: none;
 .edit:hover{
     cursor: pointer;
 }
+.successReg {
+    background: none repeat scroll 0 0 #DEFFAE;
+    display: none;
+}
