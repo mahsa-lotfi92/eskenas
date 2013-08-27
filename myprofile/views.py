@@ -3,9 +3,107 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from cat.models import Cat, BankAccount
 from myprofile.models import userCredit, user_plan
 from datetime import date
 import datetime
+
+
+def addDefaultEntriesForUser(user):
+    """
+    Add default categories and a bank account for the specified user
+    """
+    c = Cat.objects.create(user=user, name=u'حمل و نقل', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u' کرایه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سوخت', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'تعمیرات', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'جریمه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'بیمه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'آموزشی', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'شهریه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'کمک درسی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'لوازم‌التحریر', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'درمانی', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'ویزیت', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'دارو', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'آزمایش', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'مسافرت', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'بلیت', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'هتل', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'جابه‌جایی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'غذا', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'بهداشتی', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'آرایشگاه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'لوازم آرایشی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'لوازم بهداشتی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'خانه', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'کرایه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'شارژ', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'تعمیرات', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'لوازم خانگی', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'لوازم برقی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'اسباب', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'زینتی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'قبوض', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'برق', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'گاز', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'تلفن ثابت', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'تلفن همراه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'اینترنت', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'پوشاک', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'لباس خانه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'لباس رسمی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'لباس زیر', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'کفش', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'خوراک', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'پروتئینی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سبزیجات', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'صبحانه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'رستوران', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'کافه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'هله هوله', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'سرگرمی', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'سینما', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'کتاب و مجله', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'بازی', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'شغل', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'حقوق', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'کارانه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'پروژه', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سایر', isSub=True, parentCat=c)
+
+    c = Cat.objects.create(user=user, name=u'سرمایه', isSub=False, parentCat=None)
+    Cat.objects.create(user=user, name=u'سود معامله', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'سود سرمایه‌گذاری', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'دریافت اجاره', isSub=True, parentCat=c)
+    Cat.objects.create(user=user, name=u'فروش', isSub=True, parentCat=c)
+
+
+
+
+    BankAccount.objects.create(user=user, name=u'کیف پول')
 
 
 def profile(request,extra={}):
@@ -66,6 +164,8 @@ def register(request):
         u.email = request.POST['email']
         u.set_password(request.POST['password'])
         u.save()
+        addDefaultEntriesForUser(u)
+
         uc = userCredit()
         uc.registerDate = date.today()
         uc.credit = date.today()
