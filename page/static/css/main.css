@@ -1,15 +1,19 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: b-yekan;
+}
+
 body {
 	direction: rtl;
-	font-family: tahoma;
+	font-family: b-yekan;
 }
 ul{
 	list-style: none;
 }
 input, textarea, select {
-	font-family: tahoma;
+	font-family: b-yekan;
 }
 button.btn {
-	font-family: tahoma;
+	font-family: b-yekan;
 }
 #header {
 	background: url(../img/header.png) -18px 0 no-repeat;
@@ -108,3 +112,4 @@ button.btn {
     background: url(../img/signout-red.png) 0px 0 no-repeat;
     cursor: pointer;
 }
+
