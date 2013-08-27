@@ -271,7 +271,7 @@ window.report.core = (function () {
 			
 			//---------------
 			window.report.ui.loadChart(chartData, window.report.filter.getType(), title[tabIndex], tabIndex) ;
-			window.report.ui.loadDetail(sortable, total) ;
+			window.report.ui.loadDetail(sortable, total, tabIndex) ;
 		}else{
 			//TODO show error
 			console.log(data);
@@ -281,6 +281,8 @@ window.report.core = (function () {
 	return {
 		//Public 
 		initialize: function(tabindex){
+
+
             tabIndex = tabindex ;
             //--------------------
             var base = null ;
@@ -290,9 +292,17 @@ window.report.core = (function () {
                 base = $("#spending")
             else if (tabIndex == 3)
                 base = $("#monthly")
+
             //------------------
             window.report.ui.initialize(base, window.data.accounts);
 			window.report.filter.initialize(base);
+
+
+            base.find('.filter .account button').html('تمام حساب‌ها'+'<span class=\"caret\"></span>')
+            base.find('.filter .criteria.time button').html('هفته گذشته'+'<span class=\"caret\"></span>')
+            base.find('.filter .criteria .pie').addClass('inactive').removeClass('active')
+            base.find('.filter .criteria .bar').removeClass('inactive').addClass('active')
+
             filter = window.report.filter ;
             //------------------
             isIncome = (tabIndex == 1) ;
@@ -310,18 +320,32 @@ window.report.core = (function () {
 window.report.ui = (function () {
     var base ;
 	//Private
-	function loadDetail(data, total){
-		for(var i = 0 ; i < 4 ; i++){
-			if (i < data.length){
-				base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
-				base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(data[i][1]);
-			}else{
-				base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
-				base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html('');
-			}
-		}
-		base.find('.detail .total').eq(0).html(total)
-		base.find('.detail .total').eq(1).html(data[0][0])
+	function loadDetail(data, total, tabIndex){
+        if (tabIndex == 3){
+            total = {}
+            for(var key = 0 ; key < 2 ; key++){
+                total[key] = 0 ;
+                for(var time in data[key][1]){
+                    total[key] += data[key][1][time] ;
+                }
+                base.find('.detail .tranRow').eq(key+1).find(' .tranCat').html('مجموع ' + data[key][0]);
+                base.find('.detail .tranRow').eq(key+1).find(' .tranPay').html(total[key]);
+            }
+            base.find('.detail .total').eq(0).html(total[1] - total[0])
+        }else{
+            for(var i = 0 ; i < 4 ; i++){
+                if (i < data.length){
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(data[i][1]);
+                }else{
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html('');
+                }
+            }
+            base.find('.detail .total').eq(0).html(total)
+            if (data.length > 0)
+                base.find('.detail .total').eq(1).html(data[0][0])
+        }
 	}
 	
 	function loadChart(data, type, name, tabIndex){
