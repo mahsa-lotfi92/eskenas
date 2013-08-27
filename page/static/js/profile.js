@@ -1,36 +1,4 @@
 $(function() {
-	$('#sidebar .barItem').eq(0).click(function(ev) {
-		ev.preventDefault()
-
-		$('#inCon').css('margin-right', -20)
-		$('.barItem').removeClass('active')
-		$(this).addClass('active')
-	})
-
-	$('#sidebar .barItem').eq(1).click(function(ev) {
-		ev.preventDefault()
-
-		$('#inCon').css('margin-right', -785)
-		$('.barItem').removeClass('active')
-		$(this).addClass('active')
-	})
-
-	$('#sidebar .barItem').eq(2).click(function(ev) {
-		ev.preventDefault()
-
-		$('#inCon').css('margin-right', -1550)
-		$('.barItem').removeClass('active')
-		$(this).addClass('active')
-	})
-	$('#sidebar .barItem').eq(3).click(function(ev) {
-		ev.preventDefault()
-
-		$('#inCon').css('margin-right', -2316)
-		$('.barItem').removeClass('active')
-		$(this).addClass('active')
-	})
-})
-$(function() {
 	//save edit
 	$('.save').click(function() {
 
@@ -68,7 +36,8 @@ $(function() {
 			$(this).parent().find('.message-box').fadeIn();
 			$(this).parent().find('.message-box').find('.warning').fadeIn();
 			$(this).parent().find('.message-box').find('.message').text("تکرار رمز جدید نادرست است.");
-			return false;
+			return false;
+
 		} else {
 			$(this).submit();
 		}
