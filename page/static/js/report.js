@@ -137,11 +137,11 @@ $(function () {
 
 
 
-        $('#general .boxes .current .value').eq(0).html(window.data.current['درآمد'])
-        $('#general .boxes .current .value').eq(1).html(window.data.current['هزینه'])
+        $('#general .boxes .current .value').eq(0).html(window.helper.format_with_tousand_seperator(window.data.current['درآمد'])+' تومان')
+        $('#general .boxes .current .value').eq(1).html(window.helper.format_with_tousand_seperator(window.data.current['هزینه'])+' تومان')
 
-        $('#general .boxes .average .value').eq(0).html(window.data.avg['درآمد'])
-        $('#general .boxes .average .value').eq(1).html(window.data.avg['هزینه'])
+        $('#general .boxes .average .value').eq(0).html(window.helper.format_with_tousand_seperator(window.data.avg['درآمد'])+' تومان')
+        $('#general .boxes .average .value').eq(1).html(window.helper.format_with_tousand_seperator(window.data.avg['هزینه'])+' تومان')
     });
 
 
@@ -271,7 +271,7 @@ window.report.core = (function () {
 			
 			//---------------
 			window.report.ui.loadChart(chartData, window.report.filter.getType(), title[tabIndex], tabIndex) ;
-			window.report.ui.loadDetail(sortable, total) ;
+			window.report.ui.loadDetail(sortable, total, tabIndex) ;
 		}else{
 			//TODO show error
 			console.log(data);
@@ -281,6 +281,8 @@ window.report.core = (function () {
 	return {
 		//Public 
 		initialize: function(tabindex){
+
+
             tabIndex = tabindex ;
             //--------------------
             var base = null ;
@@ -290,9 +292,17 @@ window.report.core = (function () {
                 base = $("#spending")
             else if (tabIndex == 3)
                 base = $("#monthly")
+
             //------------------
             window.report.ui.initialize(base, window.data.accounts);
 			window.report.filter.initialize(base);
+
+
+            base.find('.filter .account button').html('تمام حساب‌ها'+'<span class=\"caret\"></span>')
+            base.find('.filter .criteria.time button').html('هفته گذشته'+'<span class=\"caret\"></span>')
+            base.find('.filter .criteria .pie').addClass('inactive').removeClass('active')
+            base.find('.filter .criteria .bar').removeClass('inactive').addClass('active')
+
             filter = window.report.filter ;
             //------------------
             isIncome = (tabIndex == 1) ;
@@ -310,18 +320,37 @@ window.report.core = (function () {
 window.report.ui = (function () {
     var base ;
 	//Private
-	function loadDetail(data, total){
-		for(var i = 0 ; i < 4 ; i++){
-			if (i < data.length){
-				base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
-				base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(data[i][1]);
-			}else{
-				base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
-				base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html('');
-			}
-		}
-		base.find('.detail .total').eq(0).html(total)
-		base.find('.detail .total').eq(1).html(data[0][0])
+	function loadDetail(data, total, tabIndex){
+        if (tabIndex == 3){
+            total = {}
+            for(var key = 0 ; key < 2 ; key++){
+                total[key] = 0 ;
+                for(var time in data[key][1]){
+                    total[key] += data[key][1][time] ;
+                }
+                base.find('.detail .tranRow').eq(key+1).find(' .tranCat').html('مجموع ' + data[key][0]);
+                base.find('.detail .tranRow').eq(key+1).find(' .tranPay').html(window.helper.format_with_tousand_seperator(total[key]));
+            }
+            base.find('.detail .total').eq(0).html(window.helper.format_with_tousand_seperator(total[1] - total[0])+' تومان')
+        }else{
+            for(var i = 0 ; i < 4 ; i++){
+                if (i < data.length){
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(window.helper.format_with_tousand_seperator(data[i][1]));
+                }else{
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html('');
+                }
+            }
+            var m = window.helper.format_with_tousand_seperator(total)
+            console.log(m)
+            console.log(total)
+            base.find('.detail .total').eq(0).html(m + ' تومان')
+            if (data.length > 0){
+                base.find('.detai   l .total').eq(1).html('- ' + data[0][0])
+            }
+
+        }
 	}
 	
 	function loadChart(data, type, name, tabIndex){
@@ -434,6 +463,11 @@ window.report.ui = (function () {
                  //---------------------------------
 
                 tmpDates.sort(function(a, b) {return a - b})
+                var all = days_between(new Date(Math.floor(tmpDates[0])), new Date(Math.floor(tmpDates[tmpDates.length-1])))
+                console.log('--------------------')
+                console.log(all)
+
+
                 for(var i = 0; i < tmpDates.length ; i++){
                     var cat = tmpDates[i]
                     var d = new Date(Math.floor(cat))
@@ -441,12 +475,35 @@ window.report.ui = (function () {
                     var curr_month = d.getMonth() + 1; //Months are zero based
                     var curr_year = d.getFullYear();
                     //-------------------------------------------------
+                    var monthNames = [ "January", "February", "March", "April", "May", "June",
+                                        "July", "August", "September", "October", "November", "December" ];
+                    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+                    var mmm = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
                     var tmp = curr_date + "-" + curr_month + "-" + curr_year
-                    if (Object.keys(data[up]).length > 10)
+                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+
+                    if (all == 1 || all > 30 * (12 + 6)){
+                        tmp = curr_year
+                        tmp2 = curr_year
+                    }else if (all <= 7){
+                        tmp = days[d.getDay()]
+                        tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+                    }
+                    else if (all <= 31){
                         tmp = curr_date
+                        tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+                    }else if (all <= 6 * 31 + 10){
+                        tmp = monthNames[curr_month-1]
+                        tmp2 =curr_month + "-" + curr_year
+                    }else{
+                        tmp = mmm[curr_month-1]
+                        tmp2 =curr_month + "-" + curr_year
+                    }
+
                     category.push(tmp);
                     //----------------------------------------------
-                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+//                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
                     arr.push([tmp2, data[up][cat]])
                 }
                  //---------------------------------
@@ -455,6 +512,7 @@ window.report.ui = (function () {
                     name: up,
                     data: arr
                 }];
+
 
                 for(var i in variable) {
                     console.log(variable[i])
@@ -465,6 +523,11 @@ window.report.ui = (function () {
         }
 		chart.redraw(); 
 	}
+
+    function days_between(firstDate, secondDate){
+        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
+    }
 
     function setAccount(accounts){
         var list = base.find('.filter .account .dropdown-menu')
@@ -626,4 +689,6 @@ window.report.ui = (function () {
     });
 }(Highcharts));
 // End of plugin
+
+
 
