@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 def budgetForm(req):
     if not req.user.is_authenticated():
         return HttpResponseRedirect("/home/")
-    bugs = Bug.objects.all()
+    bugs = Bug.objects.filter(bugCat__user=req.user)
     for i in bugs:
         i.cost = 0
         i.res= 0
