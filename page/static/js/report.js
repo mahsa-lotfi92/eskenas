@@ -137,11 +137,11 @@ $(function () {
 
 
 
-        $('#general .boxes .current .value').eq(0).html(window.data.current['درآمد'])
-        $('#general .boxes .current .value').eq(1).html(window.data.current['هزینه'])
+        $('#general .boxes .current .value').eq(0).html(window.helper.format_with_tousand_seperator(window.data.current['درآمد'])+' تومان')
+        $('#general .boxes .current .value').eq(1).html(window.helper.format_with_tousand_seperator(window.data.current['هزینه'])+' تومان')
 
-        $('#general .boxes .average .value').eq(0).html(window.data.avg['درآمد'])
-        $('#general .boxes .average .value').eq(1).html(window.data.avg['هزینه'])
+        $('#general .boxes .average .value').eq(0).html(window.helper.format_with_tousand_seperator(window.data.avg['درآمد'])+' تومان')
+        $('#general .boxes .average .value').eq(1).html(window.helper.format_with_tousand_seperator(window.data.avg['هزینه'])+' تومان')
     });
 
 
@@ -329,22 +329,27 @@ window.report.ui = (function () {
                     total[key] += data[key][1][time] ;
                 }
                 base.find('.detail .tranRow').eq(key+1).find(' .tranCat').html('مجموع ' + data[key][0]);
-                base.find('.detail .tranRow').eq(key+1).find(' .tranPay').html(total[key]);
+                base.find('.detail .tranRow').eq(key+1).find(' .tranPay').html(window.helper.format_with_tousand_seperator(total[key]));
             }
-            base.find('.detail .total').eq(0).html(total[1] - total[0])
+            base.find('.detail .total').eq(0).html(window.helper.format_with_tousand_seperator(total[1] - total[0])+' تومان')
         }else{
             for(var i = 0 ; i < 4 ; i++){
                 if (i < data.length){
                     base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html(data[i][0]);
-                    base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(data[i][1]);
+                    base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html(window.helper.format_with_tousand_seperator(data[i][1]));
                 }else{
                     base.find('.detail .tranRow').eq(i+1).find(' .tranCat').html('');
                     base.find('.detail .tranRow').eq(i+1).find(' .tranPay').html('');
                 }
             }
-            base.find('.detail .total').eq(0).html(total)
-            if (data.length > 0)
-                base.find('.detail .total').eq(1).html(data[0][0])
+            var m = window.helper.format_with_tousand_seperator(total)
+            console.log(m)
+            console.log(total)
+            base.find('.detail .total').eq(0).html(m + ' تومان')
+            if (data.length > 0){
+                base.find('.detai   l .total').eq(1).html('- ' + data[0][0])
+            }
+
         }
 	}
 	
@@ -650,4 +655,6 @@ window.report.ui = (function () {
     });
 }(Highcharts));
 // End of plugin
+
+
 

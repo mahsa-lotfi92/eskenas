@@ -368,3 +368,11 @@ transition: all 0.4s ease-in-out;
     margin-top: 5px;
 }
 
+#content .detail .extra h5{
+    font-size: 25px;
+}
+
+#content .detail .extra .total{
+    margin: 15px;
+    font-size: 23px;
+}
