@@ -12,6 +12,7 @@ $(function() {
 			ev.preventDefault()
 			$('.budgWar').hide()
 			$('.budgWar').text("مبلغ را وارد کنید.")
+			$("#budgetLimit").addClass("shado")
 			$('.budgWar').eq(0).show()
 			return false
 
@@ -20,6 +21,7 @@ $(function() {
 			ev.preventDefault()
 			$('.budgWar').hide()
 			$('.budgWar').text("مبلغ را به عدد وارد کنید.")
+			$("#budgetLimit").addClass("shado")
 			$('.budgWar').eq(0).show()
 			return false
 
@@ -28,6 +30,8 @@ $(function() {
 			ev.preventDefault()
 			$('.budgWar').hide()
 			$('.budgWar').text("تاریخ شروع را مشخص کنید.")
+			$("#budgetLimit").removeClass("shado")
+			$("#startDate").addClass("shado")
 			$('.budgWar').eq(0).show()
 			return false
 
@@ -36,6 +40,9 @@ $(function() {
 			ev.preventDefault()
 			$('.budgWar').hide()
 			$('.budgWar').text("تاریخ پایان را مشخص کنید.")
+			$("#budgetLimit").removeClass("shado")
+			$("#startDate").removeClass("shado")
+			$("#endtDate").addClass("shado")
 			$('.budgWar').eq(0).show()
 			return false
 
@@ -48,6 +55,9 @@ $(function() {
 			ev.preventDefault()
 			$('.budgWar').hide()
 			$('.budgWar').text("تاریخ شروع از تاریخ پایان بزرگتر است.")
+			$("#budgetLimit").removeClass("shado")
+			$("#endDate").addClass("shado")
+			$("#startDate").addClass("shado")
 			$('.budgWar').eq(0).show()
 			return false
 		}
@@ -55,6 +65,8 @@ $(function() {
 		if ($("#ctgrID").val() == "") {
 			ev.preventDefault()
 			$('.budgWar').hide()
+			$("#startDate").removeClass("shado")
+			$("#endDate").removeClass("shado")
 			$('.budgWar').text("دسته را مشخص کنید.")
 			$('.budgWar').eq(0).show()
 			return false

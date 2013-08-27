@@ -221,6 +221,7 @@ $(function() {
 		if (!intRegex.test(cost.val())) {
 			$("#addTR-err").text("مبلغ را به عدد وارد کنید.");
 			$("#addTR-err").css("display", "block");
+			$(this).find("#cal_date").removeClass("shado");
 			$(this).find("#cost-mahya").addClass("shado");
 			return false;
 		}
@@ -228,20 +229,23 @@ $(function() {
 		if ($(this).find("#ctgrID").val() == "") {
 			$("#addTR-err").text("دسته را مشخص کنید.");
 			$("#addTR-err").css("display", "block");
+			$(this).find("#cal_date").removeClass("shado");
+			$(this).find("#cost-mahya").removeClass("shado");
 			return false;
 
 		}
 		if ($(this).find("#bid_post").val() == "") {
 			$("#addTR-err").text("  حساب را مشخص کنید.");
 			$("#addTR-err").css("display", "block");
+			$(this).find("#cal_date").removeClass("shado");
+			$(this).find("#cost-mahya").removeClass("shado");
 			return false;
 
 		}
 
 	});
 	$('#addAutoTran').submit(function(ev) {
-		
-		
+
 		if ($(this).find("#auto_cal_date").val() == "") {
 			$("#auto_addTR-err").text("تاریخ را مشخص کنید.");
 			$("#auto_addTR-err").css("display", "block");
@@ -249,15 +253,15 @@ $(function() {
 			return false;
 
 		}
-
+		$(this).find("#auto_cal_date").removeClass("shado");
 		if ($(this).find("#auto_cost-mahya").val() == "") {
 			$("#auto_addTR-err").text("مبلغ را مشخص کنید.");
 			$("#auto_addTR-err").css("display", "block");
-			$(this).find("#auto_cal_date").removeClass("shado");
 			$(this).find("#auto_cost-mahya").addClass("shado");
 			return false;
 
 		}
+		$(this).find("#auto_cost-mahya").removeClass("shado");
 		var cost = $(this).find("#auto_cost-mahya");
 		var intRegex = /^\d+$/;
 		if (!intRegex.test(cost.val())) {
@@ -266,8 +270,7 @@ $(function() {
 			$(this).find("#auto_cost-mahya").addClass("shado");
 			return false;
 		}
-
-
+		$(this).find("#auto_cost-mahya").removeClass("shado");
 		if ($(this).find("#auto_ctgrID").val() == "") {
 			$("#auto_addTR-err").text("دسته را مشخص کنید.");
 			$("#auto_addTR-err").css("display", "block");
