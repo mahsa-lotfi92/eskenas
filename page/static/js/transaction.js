@@ -104,6 +104,14 @@ $(function() {
 		}
 
 	});
+	$(".submitEdit").click(function(ev) {
+		var cost=$(this).parent().find(".tranPayEdit");
+		var intRegex = /^\d+$/;
+		if (!intRegex.test(cost.val())) {
+			return false;
+		}
+
+	});
 	$('.TranEdit').click(function(ev) {
 		ev.preventDefault();
 		$(this).parent().parent().parent().find('.TRedit').css('display', 'inherit');
@@ -212,7 +220,7 @@ $(function() {
 		}
 
 	});
-		$('#addAutoTran').submit(function(ev) {
+	$('#addAutoTran').submit(function(ev) {
 
 		if ($(this).find("#auto_ctgrID").val() == "") {
 			$("#auto_addTR-err").text("دسته را مشخص کنید.");
@@ -220,14 +228,14 @@ $(function() {
 			return false;
 
 		}
-		
+
 		if ($(this).find("#auto_bid_post").val() == "") {
 			$("#auto_addTR-err").text("  حساب را مشخص کنید.");
 			$("#auto_addTR-err").css("display", "block");
 			return false;
 
 		}
-			if ($(this).find("#interval_post").val() == "") {
+		if ($(this).find("#interval_post").val() == "") {
 			$("#auto_addTR-err").text("  بازه را مشخص کنید.");
 			$("#auto_addTR-err").css("display", "block");
 			return false;
@@ -254,8 +262,8 @@ $(function() {
 			 weekStartDay:5*/
 		});
 	});
-	
-		$("#auto_cal_date").focus(function() {
+
+	$("#auto_cal_date").focus(function() {
 
 		new JsDatePick({
 			useMode : 2,
@@ -274,7 +282,7 @@ $(function() {
 			 weekStartDay:5*/
 		});
 	});
-		$(".tranDateEdit").focus(function() {
+	$(".tranDateEdit").focus(function() {
 
 		new JsDatePick({
 			useMode : 2,
@@ -293,7 +301,7 @@ $(function() {
 			 weekStartDay:5*/
 		});
 	});
-			$(".auto_edit_cal").focus(function() {
+	$(".auto_edit_cal").focus(function() {
 
 		new JsDatePick({
 			useMode : 2,
