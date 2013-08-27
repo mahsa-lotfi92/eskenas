@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from cat.models import Cat, BankAccount
 from transaction.models import Transaction, AutoTransaction
 from datetime import date
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 
 def addTransaction(request):
@@ -194,3 +194,28 @@ def deleteAutoTransaction(request):
     print "@"*20
     return redirect('/transaction/')
 
+
+
+def autoTransCheck(request):
+    const = dict()
+    const[1] = 1 ; const[2] = 7 ; const[3] = 30 ;
+
+    for tran in AutoTransaction.objects.all():
+        if date.today() >= tran.date:
+            if tran.lastModified == None or (date.today()-tran.lastModified).days >= const[tran.interval]:
+                print '------------------'
+                tran.lastModified = date.today()
+
+                t = Transaction()
+                t.description = u'خودکار - '+ tran.description
+                t.isIncome = tran.isIncome
+                t.date = date.today()
+                t.Category = tran.Category
+                t.bankAccount = tran.bankAccount
+                t.user = tran.user
+                t.cost = tran.cost
+                t.save()
+
+                tran.save()
+
+    return redirect('/transaction/')

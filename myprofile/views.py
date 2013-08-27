@@ -142,4 +142,3 @@ def tamdid(request):
     return redirect('/profile/')    
 
         
-

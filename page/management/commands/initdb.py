@@ -47,6 +47,7 @@ class Command(BaseCommand):
         baseDate = datetime.date(2013, 8, 10)
         bug_khorak, _ = Bug.objects.get_or_create(limit=70000, bugCat=cat_khorak, startDate= baseDate + datetime.timedelta(days=0), endDate = baseDate + datetime.timedelta(days=60))
         bug_haml, _ = Bug.objects.get_or_create(limit=30000, bugCat=cat_haml, startDate= baseDate + datetime.timedelta(days=-10), endDate = baseDate + datetime.timedelta(days=30))
+        bug_pushak, _ = Bug.objects.get_or_create(limit=220000, bugCat=cat_pushak, startDate= baseDate + datetime.timedelta(days=-30), endDate = baseDate + datetime.timedelta(days=20))
 
         
         print 'bank account...'
