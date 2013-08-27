@@ -45,9 +45,9 @@ class Command(BaseCommand):
 
         print 'budgets...'
         baseDate = datetime.date(2013, 8, 10)
-        bug_khorak, _ = Bug.objects.get_or_create(limit=70000, bugCat=cat_khorak, startDate= baseDate + datetime.timedelta(days=0), endDate = baseDate + datetime.timedelta(days=60))
-        bug_haml, _ = Bug.objects.get_or_create(limit=30000, bugCat=cat_haml, startDate= baseDate + datetime.timedelta(days=-10), endDate = baseDate + datetime.timedelta(days=30))
-        bug_pushak, _ = Bug.objects.get_or_create(limit=220000, bugCat=cat_pushak, startDate= baseDate + datetime.timedelta(days=-30), endDate = baseDate + datetime.timedelta(days=20))
+        bug_khorak, _ = Bug.objects.get_or_create(limit=70 * 1000, bugCat=cat_khorak, startDate= baseDate + datetime.timedelta(days=0), endDate = baseDate + datetime.timedelta(days=60))
+        bug_haml, _ = Bug.objects.get_or_create(limit=30 * 1000, bugCat=cat_haml, startDate= baseDate + datetime.timedelta(days=-10), endDate = baseDate + datetime.timedelta(days=30))
+        bug_pushak, _ = Bug.objects.get_or_create(limit=23 *  1000, bugCat=cat_pushak, startDate= baseDate + datetime.timedelta(days=-30), endDate = baseDate + datetime.timedelta(days=20))
 
         
         print 'bank account...'
@@ -70,5 +70,5 @@ class Command(BaseCommand):
             Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=3), Category = cat_mive, isIncome = False, cost = 22 * 1000, description='گیلاس و هلو انجیری :X')
             Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=4), Category = cat_taxi, isIncome = False, cost = 2 * 1000, description='')
             Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=4), Category = cat_benzin, isIncome = False, cost = 15 * 1000, description='')
-            Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=4), Category = cat_huquq1, isIncome = True, cost = 2 * 1000, description='')
-            Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=6), Category = cat_mehmuni, isIncome = False, cost = 120 * 1000, description='پیرهن سبزه')
+            Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=4), Category = cat_huquq1, isIncome = True, cost = 80 * 1000, description='')
+            Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=6), Category = cat_mehmuni, isIncome = False, cost = 12 * 1000, description='پیرهن سبزه')
