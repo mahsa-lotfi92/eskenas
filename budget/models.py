@@ -7,4 +7,4 @@ class Bug(models.Model):
 #    startDate = models.DateField()
 #    startDate = models.DateField()
     def __unicode__ (self):
-        return unicode(self.bugCat) + " " + self.limit
+        return unicode(self.bugCat) + " " + unicode(self.limit)
