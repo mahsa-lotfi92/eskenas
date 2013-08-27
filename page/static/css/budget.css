@@ -29,7 +29,10 @@
 .remainBug {
 	text-align: right;
 	margin: 30px 0px 5px 0px;
-	height: 40px;
+	height: 55px;
+}
+#sidebar{
+	text-align: justify;
 }
 .bugName {
 	text-align: right;
@@ -71,6 +74,11 @@ padding: 5px;
 .budgWar{
 	color: rgb(202, 1, 1);
 	float: left;
+}
+.budgWar-edit{
+	color: rgb(202, 1, 1);
+	float: left;
+	padding-bottom: 5px;
 }
 .forSub{
 	width: 100%;

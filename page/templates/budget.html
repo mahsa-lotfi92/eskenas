@@ -78,16 +78,16 @@
 		<input name= "id" value="{{b.id}}" type="hidden">
 		<input name= "newLimit" type="text" placeholder="مبلغ جدید" class="limitEdit" id="pay" value={{b.limit}}>
 		<div class="startDiv">
-		<input name= "newStart" type="text" placeholder="شروع جدید" class="limitEdit dateEdit" id="startDateEdit-{{b.id}}" value="{{b.startDate|date:"Y-m-d"}}">
+		<input name= "newStart" type="text" placeholder="شروع جدید" class="limitEdit dateEdit startMahya" id="startDateEdit-{{b.id}}" value="{{b.startDate|date:"Y-m-d"}}">
 		</div>
 		<div class="endDiv">
-		<input name= "newEnd" type="text" placeholder="پایان جدید" class="limitEdit dateEdit" id="endDateEdit-{{b.id}}" value="{{b.endDate|date:"Y-m-d"}}">
+		<input name= "newEnd" type="text" placeholder="پایان جدید" class="limitEdit dateEdit endMahya" id="endDateEdit-{{b.id}}" value="{{b.endDate|date:"Y-m-d"}}">
 		</div>
 		<input type="submit" value="تایید" class="btn btn-success edtSubmit">
 		<button class="btn btn-warning cancelEdit" >
 			انصراف
 		</button>
-		<div class="budgWar hide">
+		<div class="budgWar-edit hide">
 			مبلغ نادرست
 		</div>
 
