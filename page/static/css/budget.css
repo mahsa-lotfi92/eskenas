@@ -5,14 +5,19 @@
 #addBudget {
 	width: 680px;
 	height: 100px;
-	padding-right: 50px;
 }
 .budgetPart {
-	width: 224px;
+	width: 117px;
 	height: 50px;
 	float: right;
 	margin: 1px;
-/*	text-align: center;*/
+	padding: 63px 0 0 0;
+}
+#catList{
+	width: 200px;
+	height: 50px;
+	float: right;
+	margin: 1px;
 	padding: 63px 0 0 0;
 }
 #cat > a{
@@ -182,4 +187,7 @@ span {
 -moz-box-shadow: 1px 1px 1px #777;
  -webkit-box-shadow: 1px 1px 1px #777;
  box-shadow: 1px 1px 1px #777;
+}
+.budgetInp{
+	width: 100px;
 }
