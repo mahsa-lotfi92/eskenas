@@ -26,7 +26,7 @@
 }
 .tranTable {
 	background: #FFF3DA;
-	font-family: b-yekan;
+	font-family: b nazanin;
 	font-size: 13px;
 	border-radius: 10px;
 	margin-top: 20px;
@@ -35,10 +35,11 @@
 	height: 50px;
 	display: table-row;
 	padding-right: 30px;
+	font-size: 14px;
 }
 .tranRow.head {
 	font-size: 22px;
-	font-family: b yekan;
+	font-family: b nazanin;
 }
 .tranPay, .tranDate, .tranDes, .tranCat, .tranBA {
 	line-height: 40px;
@@ -296,11 +297,11 @@ h3 {
 	padding: 0px;
 }
 .btn-warning {
-	font-family: b-yekan;
+	font-family: b nazanin;
 	height: auto;
 }
 .editAction {
-	font-family: b-yekan;
+	font-family: b nazanin;
 	height: 23px;
 	text-align: center;
 	border-radius: 3px;

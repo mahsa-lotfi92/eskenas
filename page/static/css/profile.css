@@ -7,12 +7,12 @@
 }
 .profTable {
 	background: #FFF3DA;
-	font-family: b-yekan;
+	font-family: b nazanin;
 	font-size: 13px;
 	border-radius: 10px;
 }
 .passTable {
-	font-family: b-yekan;
+	font-family: b nazanin;
 	font-size: 13px;
 	border-radius: 10px;
 	width: 400px;
@@ -54,7 +54,7 @@
 	overflow: hidden;
 }
 .infType {
-	font-family: b-yekan;
+	font-family: b nazanin;
 	margin: 25px 20px;
 	float: right;
 	width: 120px;
@@ -103,7 +103,7 @@
 	float: right;
 	width: 130px;
 	font-size: 13px;
-	font-family: b-yekan;
+	font-family: b nazanin;
 }
 .savePass {
 	width: 100px;
@@ -126,7 +126,7 @@
 }
 .warning {
 	font-size: 26px;
-	font-family: b-yekan;
+	font-family: b nazanin;
 	width: 220px;
 	border-bottom: 2px solid rgb(213, 203, 203);
 	height: 30px;
@@ -153,7 +153,7 @@
 	margin-left: 20px;
 }
 .exTitle {
-	font-family: b-yekan;
+	font-family: b nazanin;
 	font-size: 20px;
 	width: 130px;
 	height: 40px;
@@ -165,7 +165,7 @@
 }
 .historyRow.head {
 	font-size: 22px;
-	font-family: b-yekan;
+	font-family: b nazanin;
 }
 
 .tranPay, .tranDate, .tranDes, .tranCat{
