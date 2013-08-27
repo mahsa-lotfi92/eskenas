@@ -508,96 +508,30 @@ bank acount tu jadval ezafe beshe
     </div>
 
 
-    <div class="solsCon">
-        <h3>همگام سازی با بانک فیلان</h3>
-        <span id="moshakhasat">بانک پاسارگاد - شماره حساب ۵۶۴۱۹۸۰۱۲۷ </span>
-        <button class="btn btn-success" id="btnSyncNow">
-            همگام شو
-        </button>
-        <br>
-        <br>
-
-        <div class="loading hide"></div>
-        <br>
-
-        <div class="tranTable hide">
-            <div class="tranRow head">
-                <div class="tranType"></div>
-                <div class="tranDate">
-                    تاریخ
-                </div>
-                <div class="tranPay">
-                    مبلغ
-                </div>
-                <div class="tranDes">
-                    توضیحات
-                </div>
-            </div>
-            <div class="tranRow">
-                <div class="tranType down"></div>
-                <div class="tranDate">
-                    ۲۲/۱۱/۹۱
-                </div>
-                <div class="tranPay">
-                    ۱۰۰۰۰
-                </div>
-                <div class="tranDes">
-                    خرج ناهار
-                </div>
-            </div>
-            <div class="tranRow">
-                <div class="tranType down"></div>
-                <div class="tranDate">
-                    ۲۲/۴/۹۰
-                </div>
-                <div class="tranPay">
-                    ۱۵۰۰۰
-                </div>
-                <div class="tranDes">
-                    خرید بلوز
-                </div>
-            </div>
-            <div class="tranRow">
-                <div class="tranType down"></div>
-                <div class="tranDate">
-                    ۴/۳/۹۱
-                </div>
-                <div class="tranPay">
-                    ۲۵۰۰۰
-                </div>
-                <div class="tranDes">
-                    کادوی ماعده
-                </div>
-            </div>
-            <div class="tranRow">
-                <div class="tranType up"></div>
-                <div class="tranDate">
-                    ۲۵/۴/۹۱
-                </div>
-                <div class="tranPay">
-                    ۲۰۰۰۰۰
-                </div>
-                <div class="tranDes">
-                    دریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاددریافت از پدر خرید خیلی خیلی خیلی بزرگ دریافت زیاد
-                </div>
-            </div>
+    <div class="solsCon" id="sync">
+         <div id='catHead'>
+            <h1>همگام‌سازی</h1>
         </div>
+        <div class="clearfix"></div>
 
-        <button class="btn btn-warning" id="btnSyncConfig">
-            تنظیم همگام‌سازی بانک
-        </button>
+        <div>تاریخ آخرین همگام سازی: ۱۸-۹-۱۳۹۲</div>
         <br>
+        <br>
+        <form id="syncExcel" class="clearfix" method="post" action="/sync/excel/" enctype="multipart/form-data">
 
-        <form action="" id="syncConfig" class="hide">
-            <input type="text" placeholder="شماره حساب">
-            <br>
-            <input type="text" placeholder="شماره کاربری">
-            <br>
-            <input type="text" placeholder="رمز عبوربانک">
-            <br>
-            <br>
-            <input type="submit" class="btn btn-success" value="اعمال">
+                <input type="hidden" name="BAId" class="BAEdited" />
+                <div class="cat-account btn-group filter-cat">
+                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">حساب <span class="caret"></span></a>
+                    <ul class="base-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    </ul>
+                </div>
+
+            <div class="inf">حساب بانکی مربوطه را انتخاب کنید.</div>
+            <input type="file" name="excel" >
+                                <div class="inf">فایل اکسل را از اینترنت بانک دریافت و در اینجا وارد کنید.<br>توجه کنید فقط بانک پاسارگاد با سیستم سازگار است.</div>
+            <input type="submit" class="btn btn-success pull-left" value="همگام شو">
         </form>
+
 
     </div>
 
