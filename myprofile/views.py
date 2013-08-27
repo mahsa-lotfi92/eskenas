@@ -8,7 +8,7 @@ from datetime import date
 import datetime
 
 
-def profile(request):
+def profile(request,extra={}):
         if not request.user.is_authenticated():
             return HttpResponseRedirect("/home/")
         c = userCredit.objects.filter(user=request.user)[0]
@@ -18,7 +18,9 @@ def profile(request):
             p.duration = (p.plan_end - p.plan_begin).days / 31
         if c.isGolden:
             c.remain = (c.credit - date.today()).days
-        return  render(request, 'profile.html', {"plan":plan, "credit":c})
+        a={"plan":plan, "credit":c}
+        a.update(extra)
+        return  render(request, 'profile.html',a )
    
 def edit(request):
     if not request.user.is_authenticated():
@@ -115,7 +117,7 @@ def ertegha(request):
     uc.isGolden = True
     uc.credit = up.plan_end
     uc.save()
-    return  render(request, 'profile.html', {'success':'1'})     
+    return  profile(request,{'success':'1'})     
 
 def tamdid(request):
     if not request.user.is_authenticated():
@@ -139,6 +141,6 @@ def tamdid(request):
     uc.credit = up.plan_end
     uc.save()
     
-    return  render(request, 'profile.html', {'success':'1'})  
+    return  profile(request,{'success':'1'})  
 
         
