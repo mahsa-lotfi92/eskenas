@@ -193,3 +193,4 @@ def deleteAutoTransaction(request):
     T.delete()
     print "@"*20
     return redirect('/transaction/')
+
