@@ -43,15 +43,19 @@ class Command(BaseCommand):
         cat_sayer1, _ = Cat.objects.get_or_create(user=user_admin, name=u'متفرقه', defaults={'isSub': True, 'parentCat': cat_sayer})
 
 
-        bug_khorak, _ = Bug.objects.get_or_create(limit=70000, bugCat=cat_khorak)
-        bug_haml, _ = Bug.objects.get_or_create(limit=30000, bugCat=cat_haml)
+        print 'budgets...'
+        baseDate = datetime.date(2013, 8, 10)
+        bug_khorak, _ = Bug.objects.get_or_create(limit=70000, bugCat=cat_khorak, startDate= baseDate + datetime.timedelta(days=0), endDate = baseDate + datetime.timedelta(days=60))
+        bug_haml, _ = Bug.objects.get_or_create(limit=30000, bugCat=cat_haml, startDate= baseDate + datetime.timedelta(days=-10), endDate = baseDate + datetime.timedelta(days=30))
 
         
         print 'bank account...'
-        account_kif, _ = BankAccount.objects.get_or_create(user=user_admin, name=u'کیف پول')
+
+
+        account_kif, _ = BankAccount.objects.get_or_create(user=user_admin, name=u'کیف پول' )
         account_saman, _ = BankAccount.objects.get_or_create(user=user_admin, name=u'بانک سامان')
         account_parsian, _ =  BankAccount.objects.get_or_create(user=user_admin, name=u'پارسیان')
-        
+
     
         if Transaction.objects.filter(user=user_admin).count() == 0:
             print 'transactions...'
