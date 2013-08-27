@@ -109,7 +109,7 @@ def ertegha(request):
         up.plan_money = 20000
     if request.POST['ertegha_info'] == '3':
         up.plan_end = date.today() + datetime.timedelta(days=31 * 12)
-        up.plan_money = 50000
+        up.plan_money = 40000
     up.save()
     uc = userCredit.objects.get(user=request.user)
     uc.isGolden = True
@@ -133,7 +133,7 @@ def tamdid(request):
         up.plan_money = 20000
     if request.POST['tamdid_info'] == '3':
         up.plan_end = up.plan_begin + datetime.timedelta(days=31 * 12)
-        up.plan_money = 50000
+        up.plan_money = 40000
     up.save()
     uc = userCredit.objects.get(user=request.user)
     uc.credit = up.plan_end
