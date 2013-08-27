@@ -60,7 +60,7 @@ class Command(BaseCommand):
     
         if Transaction.objects.filter(user=user_admin).count() == 0:
             print 'transactions...'
-            baseDate = datetime.date(2013, 8, 10)
+            baseDate = datetime.date(2013, 8, 18)
             
             Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=0), Category = cat_sayer1, isIncome = False, cost = 10 * 1000, description='خرج اضافی')
             Transaction.objects.create(bankAccount=account_kif, user = user_admin, date = baseDate + datetime.timedelta(days=0), Category = cat_sayer1, isIncome = True, cost = 40 * 1000, description='پول توجیبی')

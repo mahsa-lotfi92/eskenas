@@ -281,6 +281,8 @@ window.report.core = (function () {
 	return {
 		//Public 
 		initialize: function(tabindex){
+
+
             tabIndex = tabindex ;
             //--------------------
             var base = null ;
@@ -290,9 +292,17 @@ window.report.core = (function () {
                 base = $("#spending")
             else if (tabIndex == 3)
                 base = $("#monthly")
+
             //------------------
             window.report.ui.initialize(base, window.data.accounts);
 			window.report.filter.initialize(base);
+
+
+            base.find('.filter .account button').html('تمام حساب‌ها'+'<span class=\"caret\"></span>')
+            base.find('.filter .criteria.time button').html('هفته گذشته'+'<span class=\"caret\"></span>')
+            base.find('.filter .criteria .pie').addClass('inactive').removeClass('active')
+            base.find('.filter .criteria .bar').removeClass('inactive').addClass('active')
+
             filter = window.report.filter ;
             //------------------
             isIncome = (tabIndex == 1) ;
