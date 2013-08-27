@@ -463,6 +463,11 @@ window.report.ui = (function () {
                  //---------------------------------
 
                 tmpDates.sort(function(a, b) {return a - b})
+                var all = days_between(new Date(Math.floor(tmpDates[0])), new Date(Math.floor(tmpDates[tmpDates.length-1])))
+                console.log('--------------------')
+                console.log(all)
+
+
                 for(var i = 0; i < tmpDates.length ; i++){
                     var cat = tmpDates[i]
                     var d = new Date(Math.floor(cat))
@@ -470,12 +475,35 @@ window.report.ui = (function () {
                     var curr_month = d.getMonth() + 1; //Months are zero based
                     var curr_year = d.getFullYear();
                     //-------------------------------------------------
+                    var monthNames = [ "January", "February", "March", "April", "May", "June",
+                                        "July", "August", "September", "October", "November", "December" ];
+                    var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+                    var mmm = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
                     var tmp = curr_date + "-" + curr_month + "-" + curr_year
-                    if (Object.keys(data[up]).length > 10)
+                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+
+                    if (all == 1 || all > 30 * (12 + 6)){
+                        tmp = curr_year
+                        tmp2 = curr_year
+                    }else if (all <= 7){
+                        tmp = days[d.getDay()]
+                        tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+                    }
+                    else if (all <= 31){
                         tmp = curr_date
+                        tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+                    }else if (all <= 6 * 31 + 10){
+                        tmp = monthNames[curr_month-1]
+                        tmp2 =curr_month + "-" + curr_year
+                    }else{
+                        tmp = mmm[curr_month-1]
+                        tmp2 =curr_month + "-" + curr_year
+                    }
+
                     category.push(tmp);
                     //----------------------------------------------
-                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
+//                    var tmp2 = curr_date + "-" + curr_month + "-" + curr_year
                     arr.push([tmp2, data[up][cat]])
                 }
                  //---------------------------------
@@ -484,6 +512,7 @@ window.report.ui = (function () {
                     name: up,
                     data: arr
                 }];
+
 
                 for(var i in variable) {
                     console.log(variable[i])
@@ -494,6 +523,11 @@ window.report.ui = (function () {
         }
 		chart.redraw(); 
 	}
+
+    function days_between(firstDate, secondDate){
+        var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+        return Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay))) + 1;
+    }
 
     function setAccount(accounts){
         var list = base.find('.filter .account .dropdown-menu')
